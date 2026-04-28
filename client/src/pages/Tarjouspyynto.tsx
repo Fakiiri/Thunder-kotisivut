@@ -42,9 +42,33 @@ export default function Tarjouspyynto() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSent(true);
+    try {
+      const res = await fetch("https://formspree.io/f/mdayqggn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          package: form.package,
+          bookTitle: form.bookTitle,
+          genre: form.genre,
+          pages: form.pages,
+          manuscript: form.manuscript,
+          audiobook: form.audiobook,
+          message: form.message,
+        }),
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        alert("Lomakkeen lähetys epäonnistui. Yritä uudelleen tai ota yhteyttä sähköpostilla: info@thunderkustannus.fi");
+      }
+    } catch {
+      alert("Verkkovirhe. Tarkista yhteys ja yritä uudelleen.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (sent) {
