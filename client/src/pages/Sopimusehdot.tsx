@@ -2,8 +2,15 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { COMPANY } from "@/lib/data";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Sopimusehdot() {
+  useSEO({
+    title: "Sopimusehdot",
+    description: "Thunder Kustannuksen sopimusehdot. Kirjailija omistaa kaikki oikeudet teokseensa. Selkeät ehdot, läpinäkyvä prosessi.",
+    canonical: "/sopimusehdot",
+    noIndex: false,
+  });
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />

@@ -4,8 +4,15 @@ import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { COMPANY } from "@/lib/data";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Meista() {
+  useSEO({
+    title: "Meistä — Thunder Kustannus",
+    description: "Thunder Kustannus on suomalainen palvelukustantamo. Autamme kirjailijoita julkaisemaan kirjansa ammattimaisesti. Kirjailija säilyttää oikeudet, me hoidamme loput.",
+    canonical: "/meista",
+    keywords: "Thunder Kustannus, suomalainen kustantamo, palvelukustantamo, omakustanne",
+  });
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />

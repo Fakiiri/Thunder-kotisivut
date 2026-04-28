@@ -4,11 +4,19 @@ import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { GUIDES } from "@/lib/data";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Opas() {
   const { slug } = useParams<{ slug: string }>();
   const guide = GUIDES.find((g) => g.slug === slug);
   const others = GUIDES.filter((g) => g.slug !== slug).slice(0, 3);
+  useSEO({
+    title: guide ? guide.title : "Opas",
+    description: guide ? guide.excerpt : "Thunder Kustannuksen oppaat kirjailijoille.",
+    canonical: guide ? `/oppaat/${guide.slug}` : "/oppaat",
+    keywords: guide ? `${guide.category}, kirjan julkaiseminen, omakustanne` : "kirjan julkaiseminen",
+    ogType: "article",
+  });
 
   if (!guide) {
     return (

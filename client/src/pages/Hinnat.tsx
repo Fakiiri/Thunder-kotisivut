@@ -3,9 +3,16 @@ import { Link } from "wouter";
 import { CheckCircle2, XCircle, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { PACKAGES, COMPANY } from "@/lib/data";
+import { PACKAGES } from "@/lib/data";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Hinnat() {
+  useSEO({
+    title: "Hinnat ja paketit — Kirjan julkaiseminen",
+    description: "Thunder Kustannuksen julkaisupaketit: Digi 890 €, Printti 1 690 €, Premium 2 990 €. Kaikki sisältävät taiton, kansisuunnittelun, ISBN-tunnuksen ja jakelun. Hinnat sis. ALV 25,5 %.",
+    canonical: "/hinnat",
+    keywords: "omakustanne hinta, kirjan julkaiseminen hinta, kustantamo paketti, äänikirja hinta",
+  });
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />

@@ -4,8 +4,15 @@ import { ArrowRight, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { GUIDES } from "@/lib/data";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Oppaat() {
+  useSEO({
+    title: "Oppaat kirjailijoille — Kirjan julkaiseminen",
+    description: "Kaikki mitä tarvitset oman kirjan julkaisemiseen. Oppaat käsikirjoituksesta valmiiseen kirjaan, markkinointiin, äänikirjaan ja jakeluun.",
+    canonical: "/oppaat",
+    keywords: "kirjan julkaiseminen opas, omakustanne opas, äänikirja opas, kirjan markkinointi",
+  });
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />

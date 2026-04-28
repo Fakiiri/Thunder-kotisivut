@@ -4,8 +4,14 @@ import { Mail, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { COMPANY } from "@/lib/data";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Yhteystiedot() {
+  useSEO({
+    title: "Yhteystiedot",
+    description: "Ota yhteyttä Thunder Kustannukseen. Vastaamme kaikkiin viesteihin 24 tunnin sisään. Pyydä tarjous kirjasi julkaisemisesta.",
+    canonical: "/yhteystiedot",
+  });
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />

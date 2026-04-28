@@ -1,6 +1,7 @@
 // Thunder Kustannus — Etusivu v2
 // Design: Warm white bg, charcoal text, orange accents, Plus Jakarta Sans headings
 import { Link } from "wouter";
+import { useSEO } from "@/hooks/useSEO";
 import { ArrowRight, BookOpen, Headphones, Store, CheckCircle2, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -17,6 +18,12 @@ const fadeUp = {
 };
 
 export default function Home() {
+  useSEO({
+    title: "Julkaise kirjasi ammattimaisesti",
+    description: "Thunder Kustannus on suomalainen palvelukustantamo. Julkaisemme kirjasi painettuna, e-kirjana ja äänikirjana — jakelu Storyteliin, BookBeatiin, Spotifyhin, Suomalaiseen Kirjakauppaan ja kaikkiin kirjakauppoihin.",
+    canonical: "/",
+    keywords: "omakustanne, kirjan julkaiseminen, äänikirja, e-kirja, kustantamo, palvelukustantamo, omakustannekirja",
+  });
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />

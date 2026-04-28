@@ -4,6 +4,7 @@ import { CheckCircle2, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PACKAGES } from "@/lib/data";
+import { useSEO } from "@/hooks/useSEO";
 
 type FormData = {
   name: string; email: string; phone: string; package: string;
@@ -21,6 +22,12 @@ const labelCls = "block text-foreground/70 text-sm font-medium mb-1.5";
 
 export default function Tarjouspyynto() {
   const [form, setForm] = useState<FormData>(INITIAL);
+  useSEO({
+    title: "Pyydä tarjous — Kirjan julkaiseminen",
+    description: "Pyydä ilmainen tarjous kirjasi julkaisemisesta. Vastaamme 24 tunnin sisään. Ei sitoumuksia. Thunder Kustannus — suomalainen palvelukustantamo.",
+    canonical: "/tarjouspyynto",
+    keywords: "tarjouspyyntö, kirjan julkaiseminen tarjous, omakustanne tarjous",
+  });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
 
