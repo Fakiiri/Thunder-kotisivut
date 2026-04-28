@@ -1,6 +1,7 @@
-// Thunder Kustannus — Hinnoittelusivu v2 (vaalea)
+// Thunder Kustannus — Hinnoittelusivu v3 (SEO-parannettu)
 import { Link } from "wouter";
 import { CheckCircle2, XCircle, ArrowRight } from "lucide-react";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PACKAGES } from "@/lib/data";
@@ -13,6 +14,41 @@ export default function Hinnat() {
     canonical: "/hinnat",
     keywords: "omakustanne hinta, kirjan julkaiseminen hinta, kustantamo paketti, äänikirja hinta",
   });
+
+  useEffect(() => {
+    const schemaId = "hinnat-schema";
+    let el = document.getElementById(schemaId);
+    if (!el) {
+      el = document.createElement("script");
+      el.id = schemaId;
+      (el as HTMLScriptElement).type = "application/ld+json";
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "Kuinka kauan julkaisuprosessi kestää?", "acceptedAnswer": { "@type": "Answer", "text": "Tyypillisesti 4–8 viikkoa käsikirjoituksen vastaanottamisesta valmiiseen kirjaan. Äänikirjan tuotanto voi lisätä 2–4 viikkoa." } },
+            { "@type": "Question", "name": "Säilytänkö oikeudet kirjaani?", "acceptedAnswer": { "@type": "Answer", "text": "Kyllä, täysin. Kirjailija omistaa aina tekijänoikeudet kirjaansa. Me hoidamme julkaisuprosessin, mutta oikeudet pysyvät sinulla." } },
+            { "@type": "Question", "name": "Miten tekijänpalkkiot maksetaan?", "acceptedAnswer": { "@type": "Answer", "text": "Maksamme tekijänpalkkiot neljännesvuosittain. Saat yksityiskohtaiset myyntiraportit kaikista jakelukanavista." } },
+            { "@type": "Question", "name": "Voinko muuttaa kirjan hintaa myöhemmin?", "acceptedAnswer": { "@type": "Answer", "text": "Kyllä. Voit muuttaa kirjan myyntihintaa milloin tahansa — me päivitämme hinnan kaikkiin jakelukanaviin." } },
+            { "@type": "Question", "name": "Mitä tapahtuu jos haluan lopettaa sopimuksen?", "acceptedAnswer": { "@type": "Answer", "text": "Sopimus on irtisanottavissa 3 kuukauden varoitusajalla. Kirjasi poistetaan jakelusta ja oikeudet pysyvät sinulla." } }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Etusivu", "item": "https://thunderkustannus.fi/" },
+            { "@type": "ListItem", "position": 2, "name": "Hinnat", "item": "https://thunderkustannus.fi/hinnat" }
+          ]
+        }
+      ]
+    });
+    return () => { const s = document.getElementById(schemaId); if (s) s.remove(); };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />

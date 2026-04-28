@@ -61,6 +61,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://thunderkustannus.fi/oppaat/kirjan-kustannukset</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thunderkustannus.fi/oppaat/kirjailijan-tulot</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thunderkustannus.fi/oppaat/e-kirjan-julkaiseminen</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thunderkustannus.fi/oppaat/kirjan-kirjoittaminen-aloittelijalle</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://thunderkustannus.fi/meista</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>

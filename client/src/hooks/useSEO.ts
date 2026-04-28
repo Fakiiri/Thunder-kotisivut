@@ -14,7 +14,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = "Thunder Kustannus";
-const BASE_URL = "https://www.thunderkustannus.fi";
+const BASE_URL = "https://thunderkustannus.fi";
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
 
 export function useSEO({
