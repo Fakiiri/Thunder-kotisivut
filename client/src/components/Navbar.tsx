@@ -1,5 +1,5 @@
-// Thunder Kustannus — Navbar
-// Design: Dark bg, orange accent, Syne font, sticky top
+// Thunder Kustannus — Navbar v2
+// Design: White/light bg when scrolled, transparent on hero, orange CTA
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Zap } from "lucide-react";
@@ -17,38 +17,45 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
 
+  // Hero pages have dark bg — nav text should be white until scrolled
+  const isHeroPage = location === "/";
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => setOpen(false), [location]);
 
+  const onDark = isHeroPage && !scrolled;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[oklch(0.09_0.005_240/0.97)] backdrop-blur-md border-b border-white/10 shadow-xl"
-          : "bg-transparent"
+          ? "bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm"
+          : isHeroPage
+          ? "bg-transparent"
+          : "bg-white border-b border-gray-100"
       }`}
     >
-      <div className="container flex items-center justify-between h-16 md:h-20">
+      <div className="container flex items-center justify-between h-16 md:h-18">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded flex items-center justify-center thunder-orange-bg">
-            <Zap className="w-4 h-4 text-black" fill="black" />
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center thunder-orange-bg">
+            <Zap className="w-4 h-4 text-white" fill="white" />
           </div>
           <span
-            className="text-white font-bold text-lg tracking-tight"
-            style={{ fontFamily: "Syne, sans-serif" }}
+            className={`font-bold text-lg tracking-tight transition-colors ${onDark ? "text-white" : "text-foreground"}`}
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             Thunder<span className="thunder-orange">Kustannus</span>
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -56,9 +63,10 @@ export default function Navbar() {
               className={`text-sm font-medium transition-colors duration-200 ${
                 location === link.href
                   ? "thunder-orange"
-                  : "text-white/70 hover:text-white"
+                  : onDark
+                  ? "text-white/75 hover:text-white"
+                  : "text-foreground/60 hover:text-foreground"
               }`}
-              style={{ fontFamily: "DM Sans, sans-serif" }}
             >
               {link.label}
             </Link>
@@ -69,7 +77,7 @@ export default function Navbar() {
         <div className="hidden md:block">
           <Link
             href="/tarjouspyynto"
-            className="thunder-btn-primary px-5 py-2.5 rounded text-sm font-bold inline-block"
+            className="thunder-btn-primary px-5 py-2.5 rounded-lg text-sm font-bold inline-block"
           >
             Pyydä tarjous
           </Link>
@@ -77,7 +85,7 @@ export default function Navbar() {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden text-white p-2"
+          className={`md:hidden p-2 ${onDark ? "text-white" : "text-foreground"}`}
           onClick={() => setOpen(!open)}
           aria-label="Avaa valikko"
         >
@@ -87,16 +95,16 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[oklch(0.09_0.005_240)] border-t border-white/10">
-          <nav className="container py-6 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
+          <nav className="container py-5 flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-base font-medium py-2 transition-colors ${
+                className={`text-sm font-medium py-2.5 px-2 rounded transition-colors ${
                   location === link.href
-                    ? "thunder-orange"
-                    : "text-white/80 hover:text-white"
+                    ? "thunder-orange bg-orange-50"
+                    : "text-foreground/70 hover:text-foreground hover:bg-gray-50"
                 }`}
               >
                 {link.label}
@@ -104,7 +112,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/tarjouspyynto"
-              className="thunder-btn-primary px-5 py-3 rounded text-sm font-bold inline-block text-center mt-2"
+              className="thunder-btn-primary px-5 py-3 rounded-lg text-sm font-bold text-center mt-3"
             >
               Pyydä tarjous
             </Link>

@@ -1,5 +1,5 @@
-// Thunder Kustannus — Etusivu
-// Design: Bold black/orange, Syne headings, asymmetric editorial layout
+// Thunder Kustannus — Etusivu v2
+// Design: Warm white bg, charcoal text, orange accents, Plus Jakarta Sans headings
 import { Link } from "wouter";
 import { ArrowRight, BookOpen, Headphones, Store, CheckCircle2, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -12,8 +12,8 @@ const AUDIOBOOK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663402214228/
 const BOOKS_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663402214228/kjokCxRA3tYow9xSz5Mijk/thunder_books_stack-4eaNEqNXq3hg3xEhNouWJe.webp";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 export default function Home() {
@@ -21,95 +21,63 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      {/* ── HERO ── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background image */}
+      {/* ── HERO — tumma osio, valkoisella tekstillä ── */}
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src={HERO_IMG} alt="Thunder Kustannus" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/65 to-black/20" />
         </div>
 
-        <div className="container relative z-10 pt-28 pb-20">
-          <div className="max-w-2xl">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-            >
-              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest thunder-orange mb-6">
-                <span className="w-8 h-px bg-orange-400 inline-block" />
+        <div className="container relative z-10 pt-24 pb-16">
+          <div className="max-w-xl">
+            <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-orange-400 mb-5">
+                <span className="w-6 h-px bg-orange-400 inline-block" />
                 Suomen modernein kustantamo
               </span>
             </motion.div>
 
             <motion.h1
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              className="thunder-heading text-5xl md:text-7xl text-white mb-6"
+              initial="hidden" animate="visible" variants={fadeUp}
+              className="thunder-heading text-5xl md:text-6xl lg:text-7xl text-white mb-5"
             >
-              Sinun tarinasi
-              <br />
-              <span className="thunder-orange">ansaitsee</span>
-              <br />
-              tulla kuulluksi.
+              Sinun tarinasi ansaitsee tulla kuulluksi.
             </motion.h1>
 
             <motion.p
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              className="text-white/70 text-lg md:text-xl leading-relaxed mb-10 max-w-xl"
+              initial="hidden" animate="visible" variants={fadeUp}
+              className="text-white/75 text-lg leading-relaxed mb-8 max-w-md"
             >
               Thunder Kustannus julkaisee kirjasi ammattimaisesti — painettu kirja, e-kirja ja äänikirja. Jakelu kaikkiin suomalaisiin kirjakauppoihin ja suoratoistopalveluihin.
             </motion.p>
 
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              className="flex flex-wrap gap-4"
-            >
-              <Link href="/tarjouspyynto" className="thunder-btn-primary px-8 py-4 rounded text-base font-bold inline-flex items-center gap-2">
-                Pyydä ilmainen tarjous
-                <ArrowRight className="w-4 h-4" />
+            <motion.div initial="hidden" animate="visible" variants={fadeUp} className="flex flex-wrap gap-3">
+              <Link href="/tarjouspyynto" className="thunder-btn-primary px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2">
+                Pyydä ilmainen tarjous <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/hinnat" className="thunder-btn-outline px-8 py-4 rounded text-base font-bold inline-flex items-center gap-2">
+              <Link href="/hinnat" className="px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2 border-2 border-white/30 text-white hover:border-white/60 transition-colors">
                 Katso hinnat
               </Link>
             </motion.div>
 
-            {/* Trust badges */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              className="flex flex-wrap gap-6 mt-12"
-            >
-              {["Storytel", "BookBeat", "Spotify", "Suomalainen Kirjakauppa"].map((b) => (
-                <span key={b} className="text-white/40 text-xs font-medium uppercase tracking-wider">
-                  {b}
-                </span>
+            <motion.div initial="hidden" animate="visible" variants={fadeUp} className="flex flex-wrap gap-5 mt-10">
+              {COMPANY.distribution.slice(0, 4).map((b) => (
+                <span key={b} className="text-white/35 text-xs font-medium uppercase tracking-wider">{b}</span>
               ))}
             </motion.div>
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-bounce">
-          <div className="w-px h-12 bg-gradient-to-b from-orange-400/60 to-transparent" />
-        </div>
       </section>
 
-      {/* ── PALVELUT ── */}
-      <section className="thunder-section thunder-section-light">
+      {/* ── PALVELUT — vaalea tausta ── */}
+      <section className="thunder-section bg-background">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <span className="orange-line mx-auto" />
-            <h2 className="thunder-heading text-4xl md:text-5xl text-white mb-4">
+            <h2 className="thunder-heading text-4xl md:text-5xl text-foreground mb-3">
               Kaikki yhdeltä kustantamolta
             </h2>
-            <p className="text-white/60 text-lg max-w-xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
               Hoidamme kaiken käsikirjoituksesta valmiiseen kirjaan — ja siitä eteenpäin jakeluun.
             </p>
           </div>
@@ -141,26 +109,24 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="group relative overflow-hidden rounded-lg border border-white/10 bg-[oklch(0.11_0.005_240)] hover:border-orange-400/40 transition-all duration-300"
+                className="thunder-card overflow-hidden group"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-44 overflow-hidden">
                   <img
                     src={item.img}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.11_0.005_240)] to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <div className="w-10 h-10 rounded thunder-orange-bg flex items-center justify-center">
-                      <item.icon className="w-5 h-5 text-black" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-3 left-4">
+                    <div className="w-9 h-9 rounded-lg thunder-orange-bg flex items-center justify-center">
+                      <item.icon className="w-4 h-4 text-white" />
                     </div>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-white font-bold text-xl mb-2" style={{ fontFamily: "Syne, sans-serif" }}>
-                    {item.title}
-                  </h3>
-                  <p className="text-white/60 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="text-foreground font-bold text-lg mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -168,15 +134,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── HINNAT (preview) ── */}
-      <section className="thunder-section">
+      {/* ── HINNAT — alt-tausta ── */}
+      <section className="thunder-section thunder-section-alt">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <span className="orange-line mx-auto" />
-            <h2 className="thunder-heading text-4xl md:text-5xl text-white mb-4">
+            <h2 className="thunder-heading text-4xl md:text-5xl text-foreground mb-3">
               Selkeä hinnoittelu
             </h2>
-            <p className="text-white/60 text-lg max-w-xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
               Ei piilokuluja. Ei yllätyksiä. Valitse paketti, joka sopii sinulle.
             </p>
           </div>
@@ -189,48 +155,42 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className={`relative rounded-lg p-8 border transition-all duration-300 ${
+                className={`relative rounded-xl p-7 border flex flex-col transition-all duration-300 ${
                   pkg.highlight
-                    ? "border-orange-400 bg-[oklch(0.13_0.006_240)] shadow-[0_0_40px_oklch(0.70_0.19_42/0.15)]"
-                    : "border-white/10 bg-[oklch(0.11_0.005_240)] hover:border-white/20"
+                    ? "border-orange-400 bg-white shadow-[0_0_0_1px_oklch(0.68_0.20_42/0.3),0_8px_40px_oklch(0.68_0.20_42/0.12)]"
+                    : "border-border bg-white hover:border-orange-200 hover:shadow-md"
                 }`}
               >
                 {pkg.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="thunder-orange-bg text-black text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                    <span className="thunder-orange-bg text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
                       Suosituin
                     </span>
                   </div>
                 )}
                 <div className="mb-6">
-                  <p className="text-white/50 text-xs uppercase tracking-widest mb-1">{pkg.tagline}</p>
-                  <h3 className="text-white text-2xl font-bold mb-3" style={{ fontFamily: "Syne, sans-serif" }}>
-                    {pkg.name}
-                  </h3>
+                  <p className="text-muted-foreground text-xs uppercase tracking-widest mb-1">{pkg.tagline}</p>
+                  <h3 className="text-foreground text-2xl font-bold mb-3">{pkg.name}</h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="thunder-orange text-4xl font-extrabold" style={{ fontFamily: "Syne, sans-serif" }}>
-                      {pkg.price} €
-                    </span>
-                    <span className="text-white/40 text-sm">{pkg.priceNote}</span>
+                    <span className="thunder-orange text-4xl font-extrabold">{pkg.price} €</span>
+                    <span className="text-muted-foreground text-sm">{pkg.priceNote}</span>
                   </div>
                 </div>
-                <ul className="space-y-2 mb-8">
+                <ul className="space-y-2 mb-7 flex-1">
                   {pkg.features.slice(0, 5).map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-white/70">
+                    <li key={f} className="flex items-start gap-2 text-sm text-foreground/80">
                       <CheckCircle2 className="w-4 h-4 thunder-orange mt-0.5 flex-shrink-0" />
                       {f}
                     </li>
                   ))}
                   {pkg.features.length > 5 && (
-                    <li className="text-white/40 text-xs pl-6">+ {pkg.features.length - 5} muuta</li>
+                    <li className="text-muted-foreground text-xs pl-6">+ {pkg.features.length - 5} muuta</li>
                   )}
                 </ul>
                 <Link
                   href="/tarjouspyynto"
-                  className={`w-full py-3 rounded text-sm font-bold text-center block transition-all ${
-                    pkg.highlight
-                      ? "thunder-btn-primary"
-                      : "thunder-btn-outline"
+                  className={`w-full py-3 rounded-lg text-sm font-bold text-center block transition-all ${
+                    pkg.highlight ? "thunder-btn-primary" : "thunder-btn-outline"
                   }`}
                 >
                   {pkg.cta}
@@ -240,31 +200,31 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-8">
-            <Link href="/hinnat" className="inline-flex items-center gap-2 text-white/50 hover:text-white text-sm transition-colors">
+            <Link href="/hinnat" className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground text-sm transition-colors">
               Katso kaikki paketin sisällöt <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── OPPAAT (preview) ── */}
-      <section className="thunder-section thunder-section-light">
+      {/* ── OPPAAT ── */}
+      <section className="thunder-section bg-background">
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
               <span className="orange-line" />
-              <h2 className="thunder-heading text-4xl md:text-5xl text-white mb-2">
+              <h2 className="thunder-heading text-4xl md:text-5xl text-foreground mb-2">
                 Oppaat kirjailijoille
               </h2>
-              <p className="text-white/60 text-lg">Kaikki mitä tarvitset kirjan julkaisemiseen.</p>
+              <p className="text-muted-foreground text-lg">Kaikki mitä tarvitset kirjan julkaisemiseen.</p>
             </div>
-            <Link href="/oppaat" className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold text-sm transition-colors whitespace-nowrap">
+            <Link href="/oppaat" className="inline-flex items-center gap-2 thunder-orange hover:opacity-80 font-semibold text-sm transition-opacity whitespace-nowrap">
               Kaikki oppaat <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {GUIDES.slice(0, 3).map((guide, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {GUIDES.slice(0, 3).map((guide) => (
               <motion.article
                 key={guide.id}
                 initial="hidden"
@@ -272,18 +232,16 @@ export default function Home() {
                 viewport={{ once: true }}
                 variants={fadeUp}
               >
-                <Link href={`/oppaat/${guide.slug}`} className="block group">
-                  <div className="rounded-lg border border-white/10 bg-[oklch(0.11_0.005_240)] p-6 h-full hover:border-orange-400/30 transition-all duration-300">
+                <Link href={`/oppaat/${guide.slug}`} className="block group h-full">
+                  <div className="thunder-card p-6 h-full">
                     <span className="text-xs font-semibold uppercase tracking-widest thunder-orange mb-3 block">
                       {guide.category}
                     </span>
-                    <h3 className="text-white font-bold text-lg leading-snug mb-3 group-hover:text-orange-300 transition-colors" style={{ fontFamily: "Syne, sans-serif" }}>
+                    <h3 className="text-foreground font-bold text-base leading-snug mb-3 group-hover:text-orange-500 transition-colors">
                       {guide.title}
                     </h3>
-                    <p className="text-white/50 text-sm leading-relaxed mb-4">{guide.excerpt}</p>
-                    <div className="flex items-center gap-2 text-white/30 text-xs">
-                      <span>{guide.readTime} lukuaika</span>
-                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">{guide.excerpt}</p>
+                    <div className="text-muted-foreground text-xs">{guide.readTime} lukuaika</div>
                   </div>
                 </Link>
               </motion.article>
@@ -292,20 +250,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CTA BANNER ── */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 thunder-orange-bg opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
+      {/* ── CTA — tumma osio ── */}
+      <section className="py-24 thunder-dark relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <img src={HERO_IMG} alt="" className="w-full h-full object-cover" />
+        </div>
         <div className="container relative z-10 text-center">
-          <h2 className="thunder-heading text-4xl md:text-6xl text-white mb-6">
+          <span className="orange-line mx-auto" />
+          <h2 className="thunder-heading text-4xl md:text-6xl text-white mb-5">
             Valmis julkaisemaan?
           </h2>
-          <p className="text-white/70 text-xl mb-10 max-w-lg mx-auto">
+          <p className="text-white/65 text-xl mb-10 max-w-lg mx-auto">
             Pyydä ilmainen tarjous — vastaamme 24 tunnin sisällä.
           </p>
-          <Link href="/tarjouspyynto" className="thunder-btn-primary px-10 py-5 rounded text-lg font-bold inline-flex items-center gap-3">
-            Pyydä tarjous nyt
-            <ArrowRight className="w-5 h-5" />
+          <Link href="/tarjouspyynto" className="thunder-btn-primary px-10 py-4 rounded-lg text-base font-bold inline-flex items-center gap-3">
+            Pyydä tarjous nyt <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
       </section>

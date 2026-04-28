@@ -1,35 +1,33 @@
-// Thunder Kustannus — Footer
+// Thunder Kustannus — Footer v2 (vaalea)
 import { Link } from "wouter";
 import { Zap } from "lucide-react";
 import { COMPANY } from "@/lib/data";
 
 export default function Footer() {
   return (
-    <footer className="bg-[oklch(0.07_0.005_240)] border-t border-white/10 pt-16 pb-8">
+    <footer className="bg-[oklch(0.12_0.005_240)] pt-16 pb-8">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded flex items-center justify-center thunder-orange-bg">
-                <Zap className="w-4 h-4 text-black" fill="black" />
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center thunder-orange-bg">
+                <Zap className="w-4 h-4 text-white" fill="white" />
               </div>
-              <span className="text-white font-bold text-lg" style={{ fontFamily: "Syne, sans-serif" }}>
+              <span className="text-white font-bold text-lg" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 Thunder<span className="thunder-orange">Kustannus</span>
               </span>
             </Link>
-            <p className="text-white/50 text-sm leading-relaxed max-w-xs">
+            <p className="text-white/45 text-sm leading-relaxed max-w-xs">
               Moderni suomalainen palvelukustantamo. Julkaise kirjasi ammattimaisesti — painettu kirja, e-kirja ja äänikirja.
             </p>
-            <p className="text-white/30 text-xs mt-4">{COMPANY.legalName}</p>
+            <p className="text-white/25 text-xs mt-4">{COMPANY.legalName}</p>
           </div>
 
           {/* Palvelut */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest" style={{ fontFamily: "Syne, sans-serif" }}>
-              Palvelut
-            </h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-semibold text-xs mb-4 uppercase tracking-widest">Palvelut</h4>
+            <ul className="space-y-2.5">
               {[
                 { href: "/hinnat", label: "Hinnoittelu" },
                 { href: "/tarjouspyynto", label: "Pyydä tarjous" },
@@ -37,7 +35,7 @@ export default function Footer() {
                 { href: "/meista", label: "Meistä" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-white/50 hover:text-white text-sm transition-colors">
+                  <Link href={l.href} className="text-white/45 hover:text-white/80 text-sm transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -47,29 +45,26 @@ export default function Footer() {
 
           {/* Jakelu */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest" style={{ fontFamily: "Syne, sans-serif" }}>
-              Jakelu
-            </h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-semibold text-xs mb-4 uppercase tracking-widest">Jakelu</h4>
+            <ul className="space-y-2.5">
               {COMPANY.distribution.map((d) => (
                 <li key={d}>
-                  <span className="text-white/50 text-sm">{d}</span>
+                  <span className="text-white/45 text-sm">{d}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/30 text-xs">
+          <p className="text-white/25 text-xs">
             © {new Date().getFullYear()} {COMPANY.legalName}. Kaikki oikeudet pidätetään.
           </p>
           <div className="flex gap-6">
-            <Link href="/sopimusehdot" className="text-white/30 hover:text-white/60 text-xs transition-colors">
+            <Link href="/sopimusehdot" className="text-white/25 hover:text-white/50 text-xs transition-colors">
               Sopimusehdot
             </Link>
-            <Link href="/tietosuoja" className="text-white/30 hover:text-white/60 text-xs transition-colors">
+            <Link href="/tietosuoja" className="text-white/25 hover:text-white/50 text-xs transition-colors">
               Tietosuoja
             </Link>
           </div>
