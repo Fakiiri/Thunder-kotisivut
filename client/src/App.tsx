@@ -12,6 +12,7 @@ import Opas from "./pages/Opas";
 import Meista from "./pages/Meista";
 import Sopimusehdot from "./pages/Sopimusehdot";
 import Yhteystiedot from "./pages/Yhteystiedot";
+import CookieBanner from "./components/CookieBanner";
 
 function Router() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <CookieBanner />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
