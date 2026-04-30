@@ -13,8 +13,9 @@ import Meista from "./pages/Meista";
 import Sopimusehdot from "./pages/Sopimusehdot";
 import Yhteystiedot from "./pages/Yhteystiedot";
 import CookieBanner from "./components/CookieBanner";
-
+import LataaSivu from "./pages/LataaSivu";
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -26,6 +27,7 @@ function Router() {
       <Route path="/sopimusehdot" component={Sopimusehdot} />
       <Route path="/tietosuoja" component={Sopimusehdot} />
       <Route path="/yhteystiedot" component={Yhteystiedot} />
+      <Route path="/lataa-opas" component={LataaSivu} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

@@ -109,7 +109,7 @@ export default function Home() {
                 desc: "EPUB3-formaatti, jakelu kaikkiin digitaalisiin kanaviin ja suoratoistopalveluihin.",
                 img: HERO_IMG,
               },
-            ].map((item, i) => (
+            ].map((item) => (
               <motion.div
                 key={item.title}
                 initial="hidden"
@@ -155,7 +155,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {PACKAGES.map((pkg, i) => (
+            {PACKAGES.map((pkg) => (
               <motion.div
                 key={pkg.id}
                 initial="hidden"
@@ -257,6 +257,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── LATAA OPAS — sähköpostikeräys ── */}
+      <section className="thunder-section thunder-section-alt">
+        <div className="container">
+          <div className="max-w-2xl mx-auto text-center">
+            <span className="orange-line mx-auto" />
+            <h2 className="thunder-heading text-3xl md:text-4xl text-foreground mb-3">
+              Ilmainen opas: Kirjan julkaisemisen tarkistuslista
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              Lataa 10 askeleen tarkistuslista — kaikki mitä tarvitset käsikirjoituksesta valmiiseen kirjaan.
+            </p>
+            <Link href="/lataa-opas" className="thunder-btn-primary px-8 py-4 rounded-lg text-base font-bold inline-flex items-center gap-2">
+              Lataa ilmainen opas <ArrowRight className="w-5 h-5" />
+            </Link>
+            <p className="text-muted-foreground text-xs mt-3">Ei roskapostia. Voit peruuttaa milloin tahansa.</p>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA — tumma osio ── */}
       <section className="py-24 thunder-dark relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
@@ -270,7 +289,7 @@ export default function Home() {
           <p className="text-white/65 text-xl mb-10 max-w-lg mx-auto">
             Pyydä ilmainen tarjous — vastaamme 24 tunnin sisällä.
           </p>
-          <Link href="/tarjouspyynto" className="thunder-btn-primary px-10 py-4 rounded-lg text-base font-bold inline-flex items-center gap-3">
+          <Link href="/tarjouspyynto" className="thunder-btn-primary px-10 py-4 rounded-lg text-base font-bold inline-flex items-center gap-2">
             Pyydä tarjous nyt <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1777540851393,
+      "tag": "0000_cold_gladiator",
+      "breakpoints": true
+    }
+  ]
+}
