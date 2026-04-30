@@ -74,7 +74,13 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            href="/lataa-opas"
+            className={`text-sm font-semibold transition-colors duration-200 flex items-center gap-1.5 ${onDark ? "text-white/80 hover:text-white" : "text-foreground/70 hover:text-foreground"}`}
+          >
+            <span className="text-orange-500">↓</span> Ilmainen opas
+          </Link>
           <Link
             href="/tarjouspyynto"
             className="thunder-btn-primary px-5 py-2.5 rounded-lg text-sm font-bold inline-block"
@@ -111,8 +117,14 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
+              href="/lataa-opas"
+              className="border-2 border-orange-400 text-orange-500 px-5 py-3 rounded-lg text-sm font-bold text-center mt-2 block"
+            >
+              ↓ Lataa ilmainen opas
+            </Link>
+            <Link
               href="/tarjouspyynto"
-              className="thunder-btn-primary px-5 py-3 rounded-lg text-sm font-bold text-center mt-3"
+              className="thunder-btn-primary px-5 py-3 rounded-lg text-sm font-bold text-center mt-2 block"
             >
               Pyydä tarjous
             </Link>
