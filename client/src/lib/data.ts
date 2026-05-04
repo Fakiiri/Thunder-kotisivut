@@ -69,12 +69,12 @@ export const PACKAGES = [
 export const GUIDES = [
   {
     id: "miten-julkaisen-oman-kirjan",
-    title: "Miten julkaisen oman kirjan? — Täydellinen opas 2025",
+    title: "Miten julkaisen oman kirjan? — Täydellinen opas 2026",
     slug: "miten-julkaisen-oman-kirjan",
     excerpt: "Haaveiletko oman kirjan julkaisemisesta mutta et tiedä mistä aloittaa? Tässä oppaassa käymme läpi koko prosessin käsikirjoituksesta valmiiseen kirjaan — vaihe vaiheelta.",
     category: "Aloittelijalle",
     readTime: "12 min",
-    date: "2025-01-15",
+    date: "2026-01-15",
     content: `
 Oman kirjan julkaiseminen on helpompaa kuin koskaan ennen. Omakustantaminen on kasvanut räjähdysmäisesti viime vuosina, ja nykyään kirjailijalla on enemmän vaihtoehtoja ja välineitä kuin missään aiemmassa vaiheessa kirjallisuuden historiaa. Tässä oppaassa käymme läpi koko prosessin — käsikirjoituksesta valmiiseen, myyvään kirjaan.
 
@@ -142,7 +142,7 @@ Thunder Kustannus hoitaa puolestasi taiton, kansisuunnittelun, ISBN-tunnuksen, j
     excerpt: "Perinteinen kustantamo vai omakustantaminen? Vertailemme molemmat vaihtoehdot rehellisesti, jotta voit tehdä parhaan päätöksen kirjallesi.",
     category: "Strategia",
     readTime: "10 min",
-    date: "2025-02-01",
+    date: "2026-02-01",
     content: `
 Kirjailijan yksi tärkeimmistä päätöksistä on valita, miten kirja julkaistaan. Perinteinen kustantamo vai omakustantaminen? Tässä rehellinen, faktoihin perustuva vertailu — ilman kaunistelua.
 
@@ -207,7 +207,7 @@ Perinteinen kustantamo on oikea valinta harvoille. Omakustantaminen palvelukusta
     excerpt: "Äänikirjojen suosio on räjähtänyt Suomessa. Tässä oppaassa kerromme, miten kirjastasi tehdään äänikirja ja miten se jaellaan Storyteliin, BookBeatiin ja Spotifyhin.",
     category: "Äänikirjat",
     readTime: "10 min",
-    date: "2025-02-15",
+    date: "2026-02-15",
     content: `
 Äänikirjat ovat Suomen nopeimmin kasvava kirjaformaatti. Storytel, BookBeat ja Spotify ovat tuoneet äänikirjat kaikkien saataville — ja samalla avanneet kirjailijoille uuden tulonlähteen. Jos sinulla on jo kirja tai käsikirjoitus, äänikirja on luonnollinen seuraava askel.
 
@@ -279,7 +279,7 @@ Thunder Kustannus hoitaa koko äänikirjaprosessin puolestasi: käsikirjoituksen
     excerpt: "Kirja on julkaistu — mitä seuraavaksi? Tässä 10 konkreettista tapaa markkinoida omakustannekirjaasi ja saada se lukijoiden käsiin.",
     category: "Markkinointi",
     readTime: "12 min",
-    date: "2025-03-01",
+    date: "2026-03-01",
     content: `
 Kirjan julkaiseminen on vasta puoliväli. Markkinointi ratkaisee, kuinka moni lukija löytää kirjasi — ja kuinka paljon myyt. Tässä 10 konkreettista tapaa markkinoida omakustannekirjaasi tehokkaasti.
 
@@ -368,7 +368,7 @@ Thunder Kustannuksen Premium-paketti sisältää markkinointipaketin, lehdistöt
     excerpt: "ISBN-tunnus on kirjan kansainvälinen tunniste. Ilman sitä kirjaasi ei voi myydä kirjakaupoissa. Tässä kaikki mitä sinun täytyy tietää.",
     category: "Käytännön asiat",
     readTime: "7 min",
-    date: "2025-03-15",
+    date: "2026-03-15",
     content: `
 ISBN (International Standard Book Number) on kirjan kansainvälinen tunnistenumero. Se on pakollinen, jos haluat myydä kirjaasi kirjakaupoissa, tilata kirjastoihin tai saada kirjasi mukaan kansainvälisiin tietokantoihin. Tässä oppaassa kerromme kaiken, mitä sinun täytyy tietää ISBN-tunnuksesta.
 
@@ -438,7 +438,7 @@ Sinun ei tarvitse huolehtia teknisistä yksityiskohdista — me hoidamme sen, jo
     excerpt: "Kirjan ulkoasu ratkaisee ensivaikutelman. Ammattimainen taitto ja kansisuunnittelu ovat investointi, joka maksaa itsensä takaisin myynnissä.",
     category: "Tuotanto",
     readTime: "9 min",
-    date: "2025-04-01",
+    date: "2026-04-01",
     content: `
 Kirjan ulkoasu on ensimmäinen asia, jonka lukija näkee. Tutkimusten mukaan ostopäätös tehdään alle 3 sekunnissa kannen perusteella — erityisesti verkkokaupassa, jossa kirja näkyy pienessä kuvakkeessa muiden kirjojen joukossa. Ammattimainen taitto ja kansisuunnittelu eivät ole ylellisyys, vaan välttämättömyys.
 
@@ -506,7 +506,7 @@ Kaikki Thunder Kustannuksen paketit sisältävät ammattimaisen taiton ja kansis
     excerpt: "Paljonko kirjan julkaiseminen oikeasti maksaa? Vertailemme eri vaihtoehdot rehellisesti: itse tekeminen, palvelukustantamo ja perinteinen kustantamo.",
     category: "Käytännön asiat",
     readTime: "10 min",
-    date: "2025-04-10",
+    date: "2026-04-10",
     content: `
 Yksi yleisimmistä kysymyksistä, joita kirjailijat esittävät, on: "Paljonko kirjan julkaiseminen maksaa?" Vastaus riippuu siitä, mitä valitset — ja mitä jätät tekemättä. Tässä rehellinen katsaus kustannuksiin.
 
@@ -576,7 +576,7 @@ Kirjan julkaiseminen maksaa 0–5 000 euroa riippuen valituista palveluista ja l
     excerpt: "Paljonko omakustannekirjailija oikeasti tienaa? Vertailemme rojaltit, myyntimäärät ja realistiset tulot eri julkaisumalleissa.",
     category: "Strategia",
     readTime: "11 min",
-    date: "2025-04-20",
+    date: "2026-04-20",
     content: `
 Yksi tärkeimmistä kysymyksistä kirjailijalle on: "Paljonko voin tienata kirjallani?" Vastaus riippuu julkaisumallista, hinnoittelusta, myyntimääristä ja markkinoinnista. Tässä rehellinen katsaus kirjailijan tuloihin.
 
@@ -663,12 +663,12 @@ Omakustannekirjailija voi tienata merkittävästi enemmän kuin perinteisen kust
   },
   {
     id: "e-kirjan-julkaiseminen",
-    title: "E-kirjan julkaiseminen Suomessa — täydellinen opas 2025",
+    title: "E-kirjan julkaiseminen Suomessa — täydellinen opas 2026",
     slug: "e-kirjan-julkaiseminen",
     excerpt: "Miten julkaistaan e-kirja Suomessa? Tässä oppaassa käymme läpi koko prosessin EPUB-tiedostosta jakeluun Suomalaiseen Kirjakauppaan, Adlibrikseen ja suoratoistopalveluihin.",
     category: "E-kirjat",
     readTime: "10 min",
-    date: "2025-05-01",
+    date: "2026-05-01",
     content: `
 E-kirja on nopein ja edullisin tapa julkaista kirja. Se ei vaadi painatusta, varastointia tai fyysistä jakelua — ja se on saatavilla lukijalle välittömästi ostoksen jälkeen. Tässä oppaassa käymme läpi kaiken, mitä sinun täytyy tietää e-kirjan julkaisemisesta Suomessa.
 
@@ -749,7 +749,7 @@ Thunder Kustannuksen Digi-paketti sisältää e-kirjan ja äänikirjan tuotannon
     excerpt: "Haaveiletko kirjan kirjoittamisesta mutta et tiedä mistä aloittaa? Tässä käytännön opas kirjan kirjoittamiseen aloittelijalle — vaihe vaiheelta.",
     category: "Aloittelijalle",
     readTime: "11 min",
-    date: "2025-05-15",
+    date: "2026-05-15",
     content: `
 Lähes jokaisella on kirja sisällään — idea, tarina tai asiantuntemus, joka ansaitsee tulla jaetuksi. Mutta miten aloittaa? Kirjan kirjoittaminen tuntuu usein ylivoimaiselta tehtävältä, kunnes sen pilkkoo pienempiin osiin. Tässä oppaassa käymme läpi kirjan kirjoittamisen vaihe vaiheelta.
 
@@ -845,6 +845,6 @@ export const COMPANY = {
   phone: "",
   address: "",
   businessId: "",
-  founded: "2025",
+  founded: "2026",
   distribution: ["Suomalainen Kirjakauppa", "Adlibris", "Storytel", "BookBeat", "Nextory", "Spotify", "Suomen kirjastot"],
 };
