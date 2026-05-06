@@ -80,9 +80,9 @@ Oman kirjan julkaiseminen on helpompaa kuin koskaan ennen. Omakustantaminen on k
 
 ## Mitä omakustantaminen tarkoittaa?
 
-Omakustantaminen (self-publishing) tarkoittaa, että kirjailija itse vastaa kirjan julkaisemisesta — tai käyttää palvelukustantamoa apunaan. Toisin kuin perinteisessä kustantamisessa, kirjailija säilyttää täyden kontrollin sisältöön, hintaan ja tekijänoikeuksiin. Tämä tarkoittaa myös, että suurempi osa myyntituloista jää kirjailijalle itselleen: tyypillisesti 70–80 % verrattuna perinteisen kustantamon 8–15 prosenttiin.
+Omakustantaminen (self-publishing) tarkoittaa, että kirjailija itse vastaa kirjan julkaisemisesta — tai käyttää hybridikustantamoa apunaan. Toisin kuin perinteisessä kustantamisessa, kirjailija säilyttää täyden kontrollin sisältöön, hintaan ja tekijänoikeuksiin. Tämä tarkoittaa myös, että suurempi osa myyntituloista jää kirjailijalle itselleen: tyypillisesti 70–80 % verrattuna perinteisen kustantamon 8–15 prosenttiin.
 
-Palvelukustantamo, kuten Thunder Kustannus, toimii välimaastossa: kirjailija maksaa julkaisuprosessista, mutta saa ammattilaisten avun taittoon, kansisuunnitteluun, ISBN-tunnukseen ja jakeluun — ilman, että luovuttaa oikeuksiaan tai kontrolliaan.
+Hybridikustantamo, kuten Thunder Kustannus, toimii välimaastossa: kirjailija maksaa julkaisuprosessista, mutta saa ammattilaisten avun taittoon, kansisuunnitteluun, ISBN-tunnukseen ja jakeluun — ilman, että luovuttaa oikeuksiaan tai kontrolliaan.
 
 ## Vaihe 1: Käsikirjoituksen viimeistely
 
@@ -108,7 +108,7 @@ E-kirjaa varten tarvitaan erillinen EPUB3-taitto, joka skaalautuu eri laitteille
 
 Jokainen kirja tarvitsee oman ISBN-tunnuksen (International Standard Book Number). Ilman ISBN:ää kirjaasi ei voi myydä kirjakaupoissa tai tilata kirjastoihin. Suomessa ISBN-tunnukset myöntää Kansalliskirjasto maksutta.
 
-Muista: jokaisella julkaisumuodolla on oma ISBN:nsä. Painettu kirja, e-kirja ja äänikirja tarvitsevat kukin oman tunnuksensa. Kun käytät palvelukustantamoa, ISBN haetaan kustantamon nimissä — tämä tekee kirjastasi ammattimaisemman näköisen kirjakaupoissa.
+Muista: jokaisella julkaisumuodolla on oma ISBN:nsä. Painettu kirja, e-kirja ja äänikirja tarvitsevat kukin oman tunnuksensa. Kun käytät hybridikustantamoa, ISBN haetaan kustantamon nimissä — tämä tekee kirjastasi ammattimaisemman näköisen kirjakaupoissa.
 
 ## Vaihe 4: Jakelu — miten kirja päätyy lukijalle
 
@@ -160,13 +160,13 @@ Kuulostaa hyvältä — mutta todellisuus on monimutkaisempi.
 
 **Kustantamo omistaa oikeudet.** Sopimuksen myötä kustantamo saa laajat oikeudet kirjaan — usein kymmeniksi vuosiksi. Tämä voi rajoittaa kirjailijan mahdollisuuksia myöhemmin.
 
-## Omakustantaminen palvelukustantamon kautta
+## Omakustantaminen hybridikustantamon kautta
 
-Palvelukustantamo (kuten Thunder Kustannus) tarjoaa parhaan yhdistelmän: kirjailija säilyttää kontrollin ja oikeudet, mutta saa ammattilaisten avun julkaisuprosessiin.
+Hybridikustantamo (kuten Thunder Kustannus) tarjoaa parhaan yhdistelmän: kirjailija säilyttää kontrollin ja oikeudet, mutta saa ammattilaisten avun julkaisuprosessiin.
 
 **Julkaisu 4–8 viikossa.** Kun käsikirjoitus on valmis, prosessi etenee nopeasti. Ei odottelua, ei hylkäyskirjeitä.
 
-**Kirjailija saa 70–80 % myyntituloista.** Palvelukustantamon mallissa kirjailija maksaa julkaisuprosessista kerran ja saa sen jälkeen suurimman osan myyntituloista itselleen.
+**Kirjailija saa 70–80 % myyntituloista.** Hybridikustantamon mallissa kirjailija maksaa julkaisuprosessista kerran ja saa sen jälkeen suurimman osan myyntituloista itselleen.
 
 **Täysi kontrolli sisältöön ja hintaan.** Sinä päätät, mitä kirjassasi sanotaan, miltä se näyttää ja mihin hintaan sitä myydään. Kustantamo ei voi vaatia muutoksia sisältöön.
 
@@ -184,7 +184,7 @@ Asiantuntijakirja on yksi tehokkaimmista markkinointivälineistä. Se rakentaa u
 
 ## Vertailutaulukko
 
-| Kriteeri | Perinteinen kustantamo | Palvelukustantamo |
+| Kriteeri | Perinteinen kustantamo | Hybridikustantamo |
 |---|---|---|
 | Hyväksymisprosentti | alle 1 % | 100 % |
 | Aika julkaisuun | 1–3 vuotta | 4–8 viikkoa |
@@ -195,7 +195,7 @@ Asiantuntijakirja on yksi tehokkaimmista markkinointivälineistä. Se rakentaa u
 
 ## Yhteenveto
 
-Perinteinen kustantamo on oikea valinta harvoille. Omakustantaminen palvelukustantamon avulla on oikea valinta suurimmalle osalle kirjailijoista — erityisesti asiantuntijoille ja yrittäjille, jotka haluavat kirjan osaksi omaa brändiään.
+Perinteinen kustantamo on oikea valinta harvoille. Omakustantaminen hybridikustantamon avulla on oikea valinta suurimmalle osalle kirjailijoista — erityisesti asiantuntijoille ja yrittäjille, jotka haluavat kirjan osaksi omaa brändiään.
 
 [Katso Thunder Kustannuksen paketit](/hinnat) ja pyydä ilmainen tarjous.
     `,
@@ -420,7 +420,7 @@ Tässä on tärkeä ero, jota monet eivät tiedä:
 
 **Oma ISBN (omissa nimissä):** Voit hakea ISBN:n omissa nimissäsi. Tällöin sinusta tulee virallisesti kustantaja. Tämä on mahdollista, mutta vaatii enemmän byrokratiaa ja kirjasi saattaa näyttää "kotikutoisemmalta" kirjakaupoissa.
 
-**Kustantamon ISBN:** Kun käytät palvelukustantamoa, ISBN haetaan kustantamon nimissä. Tämä tekee kirjastasi ammattimaisemman näköisen — kirjakaupat näkevät kustantamona Thunder Kustannus eikä yksityishenkilö.
+**Kustantamon ISBN:** Kun käytät hybridikustantamoa, ISBN haetaan kustantamon nimissä. Tämä tekee kirjastasi ammattimaisemman näköisen — kirjakaupat näkevät kustantamona Thunder Kustannus eikä yksityishenkilö.
 
 ## Thunder Kustannus hoitaa ISBN:n puolestasi
 
@@ -503,7 +503,7 @@ Kaikki Thunder Kustannuksen paketit sisältävät ammattimaisen taiton ja kansis
     id: "kirjan-kustannukset",
     title: "Kirjan julkaisemisen kustannukset — mitä omakustanne oikeasti maksaa?",
     slug: "kirjan-kustannukset",
-    excerpt: "Paljonko kirjan julkaiseminen oikeasti maksaa? Vertailemme eri vaihtoehdot rehellisesti: itse tekeminen, palvelukustantamo ja perinteinen kustantamo.",
+    excerpt: "Paljonko kirjan julkaiseminen oikeasti maksaa? Vertailemme eri vaihtoehdot rehellisesti: itse tekeminen, hybridikustantamo ja perinteinen kustantamo.",
     category: "Käytännön asiat",
     readTime: "10 min",
     date: "2026-04-10",
@@ -543,9 +543,9 @@ Toinen vaihtoehto on ostaa palvelut erikseen ammattilaisilta.
 
 Lisäksi jokainen palveluntarjoaja on eri toimija — koordinointi vie aikaa ja energiaa.
 
-## Vaihtoehto 3: Palvelukustantamo
+## Vaihtoehto 3: Hybridikustantamo
 
-Palvelukustantamo, kuten Thunder Kustannus, tarjoaa kaikki palvelut yhtenä pakettina. Tämä tarkoittaa:
+Hybridikustantamo, kuten Thunder Kustannus, tarjoaa kaikki palvelut yhtenä pakettina. Tämä tarkoittaa:
 - Yksi sopimus, yksi yhteyshenkilö
 - Kaikki palvelut koordinoitu yhteen prosessiin
 - Selkeä kokonaishinta ilman yllätyksiä
@@ -564,7 +564,7 @@ Thunder Kustannuksen paketit alkavat 890 eurosta (Digi-paketti, sis. ALV 25,5 %)
 
 ## Yhteenveto
 
-Kirjan julkaiseminen maksaa 0–5 000 euroa riippuen valituista palveluista ja laadusta. Palvelukustantamo tarjoaa selkeimmän ja usein kustannustehokkaimman tavan julkaista kirja ammattimaisesti.
+Kirjan julkaiseminen maksaa 0–5 000 euroa riippuen valituista palveluista ja laadusta. Hybridikustantamo tarjoaa selkeimmän ja usein kustannustehokkaimman tavan julkaista kirja ammattimaisesti.
 
 [Katso Thunder Kustannuksen paketit ja hinnat](/hinnat) tai [pyydä ilmainen tarjous](/tarjouspyynto).
     `,
@@ -587,8 +587,8 @@ Julkaisumalli vaikuttaa suoraan siihen, kuinka suuren osan myyntituloista kirjai
 | Julkaisumalli | Kirjailijan osuus |
 |---|---|
 | Perinteinen kustantamo | 8–15 % |
-| Palvelukustantamo (painettu) | 50–70 % |
-| Palvelukustantamo (e-kirja) | 70–80 % |
+| Hybridikustantamo (painettu) | 50–70 % |
+| Hybridikustantamo (e-kirja) | 70–80 % |
 | Amazon KDP (e-kirja, hinta 2,99–9,99 €) | 70 % |
 | Suoratoistopalvelut (äänikirja) | 25–40 % |
 
@@ -601,7 +601,7 @@ Oletetaan, että kirjasi myy 500 kappaletta painettuna (hinta 25 €) ja 200 kap
 - E-kirja: 200 × 12 € × 12 % = 288 €
 - Yhteensä: 1 788 €
 
-**Palvelukustantamo (60 % painettu, 75 % e-kirja):**
+**Hybridikustantamo (60 % painettu, 75 % e-kirja):**
 - Painettu: 500 × 25 € × 60 % = 7 500 €
 - E-kirja: 200 × 12 € × 75 % = 1 800 €
 - Yhteensä: 9 300 €
@@ -840,7 +840,7 @@ export const COMPANY = {
   name: "Thunder Kustannus",
   legalName: "Thunder Media Oy",
   tagline: "Julkaise kirjasi ammattilaisena",
-  description: "Thunder Kustannus on moderni suomalainen palvelukustantamo. Autamme kirjailijoita julkaisemaan kirjansa ammattimaisesti — painettu kirja, e-kirja ja äänikirja. Jakelu kaikkiin suomalaisiin kirjakauppoihin ja suoratoistopalveluihin.",
+  description: "Thunder Kustannus on moderni suomalainen hybridikustantamo. Autamme kirjailijoita julkaisemaan kirjansa ammattimaisesti — painettu kirja, e-kirja ja äänikirja. Jakelu kaikkiin suomalaisiin kirjakauppoihin ja suoratoistopalveluihin.",
   email: "info@thunderkustannus.fi",
   phone: "",
   address: "",

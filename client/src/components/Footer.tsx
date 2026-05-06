@@ -19,7 +19,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-white/45 text-sm leading-relaxed max-w-xs">
-              Moderni suomalainen palvelukustantamo. Julkaise kirjasi ammattimaisesti — painettu kirja, e-kirja ja äänikirja.
+              Moderni suomalainen hybridikustantamo. Julkaise kirjasi ammattimaisesti — painettu kirja, e-kirja ja äänikirja.
             </p>
             <p className="text-white/25 text-xs mt-4">{COMPANY.legalName}</p>
           </div>

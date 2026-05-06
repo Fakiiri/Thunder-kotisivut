@@ -24,7 +24,7 @@ export default function Tarjouspyynto() {
   const [form, setForm] = useState<FormData>(INITIAL);
   useSEO({
     title: "Pyydä tarjous — Kirjan julkaiseminen",
-    description: "Pyydä ilmainen tarjous kirjasi julkaisemisesta. Vastaamme 24 tunnin sisään. Ei sitoumuksia. Thunder Kustannus — suomalainen palvelukustantamo.",
+    description: "Pyydä ilmainen tarjous kirjasi julkaisemisesta. Vastaamme 24 tunnin sisään. Ei sitoumuksia. Thunder Kustannus — suomalainen hybridikustantamo.",
     canonical: "/tarjouspyynto",
     keywords: "tarjouspyyntö, kirjan julkaiseminen tarjous, omakustanne tarjous",
   });

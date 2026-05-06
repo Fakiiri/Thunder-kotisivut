@@ -9,9 +9,9 @@ import { useSEO } from "@/hooks/useSEO";
 export default function Meista() {
   useSEO({
     title: "Meistä — Thunder Kustannus",
-    description: "Thunder Kustannus on suomalainen palvelukustantamo. Autamme kirjailijoita julkaisemaan kirjansa ammattimaisesti. Kirjailija säilyttää oikeudet, me hoidamme loput.",
+    description: "Thunder Kustannus on suomalainen hybridikustantamo. Autamme kirjailijoita julkaisemaan kirjansa ammattimaisesti. Kirjailija säilyttää oikeudet, me hoidamme loput.",
     canonical: "/meista",
-    keywords: "Thunder Kustannus, suomalainen kustantamo, palvelukustantamo, omakustanne",
+    keywords: "Thunder Kustannus, suomalainen kustantamo, hybridikustantamo, omakustanne",
   });
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -32,7 +32,7 @@ export default function Meista() {
               <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
                 <p>Perinteiset kustantamot hylkäävät yli 99 % käsikirjoituksista. Prosessi kestää vuosia. Kirjailija saa vain murto-osan myyntituloista.</p>
                 <p>Toisessa ääripäässä on täysin omatoiminen julkaiseminen — mutta se vaatii osaamista taitosta jakelusopimusten neuvotteluun ja markkinointiin.</p>
-                <p>Thunder Kustannus on kolmas tie: ammattimainen palvelukustantamo, jossa kirjailija säilyttää kontrollin ja oikeudet, mutta saa kaiken tarvitsemansa avun.</p>
+                <p>Thunder Kustannus on kolmas tie: ammattimainen hybridikustantamo, jossa kirjailija säilyttää kontrollin ja oikeudet, mutta saa kaiken tarvitsemansa avun.</p>
               </div>
             </div>
             <div className="space-y-4">

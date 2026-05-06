@@ -20,9 +20,9 @@ const fadeUp = {
 export default function Home() {
   useSEO({
     title: "Julkaise kirjasi ammattimaisesti",
-    description: "Thunder Kustannus on suomalainen palvelukustantamo. Julkaisemme kirjasi painettuna, e-kirjana ja äänikirjana — jakelu Storyteliin, BookBeatiin, Spotifyhin, Suomalaiseen Kirjakauppaan ja kaikkiin kirjakauppoihin.",
+    description: "Thunder Kustannus on suomalainen hybridikustantamo. Julkaisemme kirjasi painettuna, e-kirjana ja äänikirjana — jakelu Storyteliin, BookBeatiin, Spotifyhin, Suomalaiseen Kirjakauppaan ja kaikkiin kirjakauppoihin.",
     canonical: "/",
-    keywords: "omakustanne, kirjan julkaiseminen, äänikirja, e-kirja, kustantamo, palvelukustantamo, omakustannekirja",
+    keywords: "omakustanne, kirjan julkaiseminen, äänikirja, e-kirja, kustantamo, hybridikustantamo, omakustannekirja",
   });
   return (
     <div className="min-h-screen bg-background text-foreground">
