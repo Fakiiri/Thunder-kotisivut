@@ -1,6 +1,6 @@
-// Thunder Kustannus — Tarjouspyyntösivu v2 (vaalea)
+// Thunder Kustannus — Tarjouspyyntösivu v3
 import { useState } from "react";
-import { CheckCircle2, Send } from "lucide-react";
+import { CheckCircle2, Send, Phone, Mail, User, BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PACKAGES } from "@/lib/data";
@@ -9,22 +9,23 @@ import { useSEO } from "@/hooks/useSEO";
 type FormData = {
   name: string; email: string; phone: string; package: string;
   bookTitle: string; genre: string; pages: string;
-  manuscript: string; audiobook: string; message: string; agree: boolean;
+  manuscript: string; audiobook: string; timeline: string; message: string; agree: boolean;
 };
 
 const INITIAL: FormData = {
   name: "", email: "", phone: "", package: "", bookTitle: "",
-  genre: "", pages: "", manuscript: "", audiobook: "", message: "", agree: false,
+  genre: "", pages: "", manuscript: "", audiobook: "", timeline: "", message: "", agree: false,
 };
 
 const inputCls = "w-full bg-white border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all placeholder:text-muted-foreground/60";
 const labelCls = "block text-foreground/70 text-sm font-medium mb-1.5";
+const requiredStar = <span className="text-orange-500 ml-0.5">*</span>;
 
 export default function Tarjouspyynto() {
   const [form, setForm] = useState<FormData>(INITIAL);
   useSEO({
-    title: "Pyydä tarjous — Kirjan julkaiseminen",
-    description: "Pyydä ilmainen tarjous kirjasi julkaisemisesta. Vastaamme 24 tunnin sisään. Ei sitoumuksia. Thunder Kustannus — suomalainen hybridikustantamo.",
+    title: "Pyydä tarjous — Kirjan julkaiseminen | Thunder Kustannus",
+    description: "Pyydä ilmainen tarjous kirjasi julkaisemisesta. Vastaamme 24 tunnin sisällä. Ei sitoumuksia. Thunder Kustannus — suomalainen hybridikustantamo.",
     canonical: "/tarjouspyynto",
     keywords: "tarjouspyyntö, kirjan julkaiseminen tarjous, omakustanne tarjous",
   });
@@ -56,13 +57,14 @@ export default function Tarjouspyynto() {
           pages: form.pages,
           manuscript: form.manuscript,
           audiobook: form.audiobook,
+          timeline: form.timeline,
           message: form.message,
         }),
       });
       if (res.ok) {
         setSent(true);
       } else {
-        alert("Lomakkeen lähetys epäonnistui. Yritä uudelleen tai ota yhteyttä sähköpostilla: info@thunderkustannus.fi");
+        alert("Lomakkeen lähetys epäonnistui. Yritä uudelleen tai ota yhteyttä: info@thunderkustannus.fi");
       }
     } catch {
       alert("Verkkovirhe. Tarkista yhteys ja yritä uudelleen.");
@@ -76,12 +78,16 @@ export default function Tarjouspyynto() {
       <div className="min-h-screen bg-background text-foreground">
         <Navbar />
         <div className="pt-40 pb-20 flex flex-col items-center justify-center text-center container">
-          <div className="w-16 h-16 rounded-full thunder-orange-bg flex items-center justify-center mb-6">
-            <CheckCircle2 className="w-8 h-8 text-white" />
+          <div className="w-20 h-20 rounded-full thunder-orange-bg flex items-center justify-center mb-6">
+            <CheckCircle2 className="w-10 h-10 text-white" />
           </div>
-          <h1 className="thunder-heading text-4xl text-foreground mb-4">Tarjouspyyntö lähetetty!</h1>
-          <p className="text-muted-foreground text-lg max-w-md">
-            Kiitos yhteydenotostasi. Vastaamme sinulle 24 tunnin sisällä sähköpostiosoitteeseen{" "}
+          <h1 className="thunder-heading text-4xl text-foreground mb-4">Tarjouspyyntö vastaanotettu!</h1>
+          <p className="text-muted-foreground text-lg max-w-lg mb-2">
+            Kiitos yhteydenotostasi, <strong className="text-foreground">{form.name}</strong>.
+          </p>
+          <p className="text-muted-foreground text-lg max-w-lg">
+            Olemme sinuun yhteydessä 24 tunnin sisällä — puhelimitse numeroon{" "}
+            <strong className="text-foreground">{form.phone}</strong> tai sähköpostilla{" "}
             <strong className="text-foreground">{form.email}</strong>.
           </p>
         </div>
@@ -95,30 +101,66 @@ export default function Tarjouspyynto() {
       <Navbar />
       <div className="pt-24 pb-20">
         <div className="container max-w-3xl">
-          <div className="mb-12">
+
+          {/* Otsikko */}
+          <div className="mb-10">
             <span className="orange-line" />
             <h1 className="thunder-heading text-5xl text-foreground mb-4">Pyydä tarjous</h1>
             <p className="text-muted-foreground text-lg">
-              Täytä lomake ja saat henkilökohtaisen tarjouksen 24 tunnin sisällä. Ei sitoumuksia.
+              Täytä lomake huolellisesti — mitä enemmän kerrot kirjastasi, sitä tarkemman tarjouksen voimme antaa.
+              Vastaamme <strong className="text-foreground">24 tunnin sisällä</strong>. Ei sitoumuksia.
             </p>
           </div>
 
+          {/* Luottamusindikaattorit */}
+          <div className="grid grid-cols-3 gap-4 mb-10">
+            {[
+              { icon: <Phone className="w-4 h-4" />, text: "Soitamme sinulle" },
+              { icon: <Mail className="w-4 h-4" />, text: "Vastaus 24 h sisällä" },
+              { icon: <CheckCircle2 className="w-4 h-4" />, text: "Ei sitoumuksia" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 bg-orange-50 border border-orange-100 rounded-lg px-4 py-3">
+                <span className="thunder-orange">{item.icon}</span>
+                <span className="text-sm font-medium text-foreground/80">{item.text}</span>
+              </div>
+            ))}
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-6">
+
             {/* Yhteystiedot */}
             <div className="bg-white border border-border rounded-xl p-8">
-              <h2 className="text-foreground font-bold text-lg mb-6">Yhteystiedot</h2>
+              <div className="flex items-center gap-2 mb-6">
+                <User className="w-5 h-5 thunder-orange" />
+                <h2 className="text-foreground font-bold text-lg">Yhteystiedot</h2>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className={labelCls}>Nimi *</label>
-                  <input type="text" name="name" required value={form.name} onChange={handleChange} className={inputCls} placeholder="Etunimi Sukunimi" />
+                  <label className={labelCls}>Nimi {requiredStar}</label>
+                  <input
+                    type="text" name="name" required
+                    value={form.name} onChange={handleChange}
+                    className={inputCls} placeholder="Etunimi Sukunimi"
+                  />
                 </div>
                 <div>
-                  <label className={labelCls}>Sähköposti *</label>
-                  <input type="email" name="email" required value={form.email} onChange={handleChange} className={inputCls} placeholder="sinä@esimerkki.fi" />
+                  <label className={labelCls}>Sähköposti {requiredStar}</label>
+                  <input
+                    type="email" name="email" required
+                    value={form.email} onChange={handleChange}
+                    className={inputCls} placeholder="sinä@esimerkki.fi"
+                  />
                 </div>
                 <div>
-                  <label className={labelCls}>Puhelinnumero</label>
-                  <input type="tel" name="phone" value={form.phone} onChange={handleChange} className={inputCls} placeholder="+358 40 123 4567" />
+                  <label className={labelCls}>
+                    Puhelinnumero {requiredStar}
+                    <span className="text-muted-foreground font-normal ml-1">(soitamme sinulle)</span>
+                  </label>
+                  <input
+                    type="tel" name="phone" required
+                    value={form.phone} onChange={handleChange}
+                    className={inputCls} placeholder="+358 40 123 4567"
+                  />
                 </div>
                 <div>
                   <label className={labelCls}>Kiinnostava paketti</label>
@@ -128,6 +170,7 @@ export default function Tarjouspyynto() {
                       <option key={p.id} value={p.id}>{p.name} — {p.price} €</option>
                     ))}
                     <option value="custom">Räätälöity paketti</option>
+                    <option value="unknown">En ole vielä varma</option>
                   </select>
                 </div>
               </div>
@@ -135,11 +178,18 @@ export default function Tarjouspyynto() {
 
             {/* Kirjan tiedot */}
             <div className="bg-white border border-border rounded-xl p-8">
-              <h2 className="text-foreground font-bold text-lg mb-6">Kirjan tiedot</h2>
+              <div className="flex items-center gap-2 mb-6">
+                <BookOpen className="w-5 h-5 thunder-orange" />
+                <h2 className="text-foreground font-bold text-lg">Kirjan tiedot</h2>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="md:col-span-2">
-                  <label className={labelCls}>Kirjan (työ)nimi</label>
-                  <input type="text" name="bookTitle" value={form.bookTitle} onChange={handleChange} className={inputCls} placeholder="Kirjan nimi tai aihe" />
+                  <label className={labelCls}>Kirjan (työ)nimi tai aihe {requiredStar}</label>
+                  <input
+                    type="text" name="bookTitle" required
+                    value={form.bookTitle} onChange={handleChange}
+                    className={inputCls} placeholder="Esim. Yrittäjän selviytymisopas tai Muistelmani"
+                  />
                 </div>
                 <div>
                   <label className={labelCls}>Genre / aihe</label>
@@ -163,25 +213,37 @@ export default function Tarjouspyynto() {
                     <option value="100-200">100–200 sivua</option>
                     <option value="200-300">200–300 sivua</option>
                     <option value="yli300">Yli 300 sivua</option>
+                    <option value="ei-tiedä">En tiedä vielä</option>
                   </select>
                 </div>
                 <div>
                   <label className={labelCls}>Käsikirjoituksen tila</label>
                   <select name="manuscript" value={form.manuscript} onChange={handleChange} className={inputCls}>
                     <option value="">Valitse</option>
-                    <option value="valmis">Valmis</option>
-                    <option value="lähes">Lähes valmis</option>
-                    <option value="kesken">Työn alla</option>
-                    <option value="idea">Vasta idea</option>
+                    <option value="valmis">Valmis — voidaan aloittaa heti</option>
+                    <option value="lähes">Lähes valmis (1–4 viikkoa)</option>
+                    <option value="kesken">Työn alla (1–3 kuukautta)</option>
+                    <option value="idea">Vasta idea — haluaisin neuvoja</option>
                   </select>
                 </div>
                 <div>
                   <label className={labelCls}>Haluatko äänikirjan?</label>
                   <select name="audiobook" value={form.audiobook} onChange={handleChange} className={inputCls}>
                     <option value="">Valitse</option>
-                    <option value="kylla">Kyllä</option>
-                    <option value="ei">Ei</option>
-                    <option value="ehka">Ehkä, haluaisin lisätietoa</option>
+                    <option value="kylla">Kyllä, ehdottomasti</option>
+                    <option value="ei">Ei tällä kertaa</option>
+                    <option value="ehka">Ehkä — haluaisin lisätietoa</option>
+                  </select>
+                </div>
+                <div>
+                  <label className={labelCls}>Toivottu julkaisuaikataulu</label>
+                  <select name="timeline" value={form.timeline} onChange={handleChange} className={inputCls}>
+                    <option value="">Valitse</option>
+                    <option value="1kk">1 kuukauden sisällä</option>
+                    <option value="1-3kk">1–3 kuukauden sisällä</option>
+                    <option value="3-6kk">3–6 kuukauden sisällä</option>
+                    <option value="yli6kk">Yli 6 kuukautta</option>
+                    <option value="ei-kiire">Ei kiirettä — haluan ensin tietää lisää</option>
                   </select>
                 </div>
               </div>
@@ -189,21 +251,27 @@ export default function Tarjouspyynto() {
 
             {/* Viesti */}
             <div className="bg-white border border-border rounded-xl p-8">
-              <h2 className="text-foreground font-bold text-lg mb-4">Lisätietoja</h2>
+              <h2 className="text-foreground font-bold text-lg mb-2">Lisätietoja</h2>
+              <p className="text-muted-foreground text-sm mb-4">Kerro vapaasti kirjastasi, tavoitteistasi tai kysymyksistäsi. Mitä enemmän kerrot, sitä paremmin voimme auttaa.</p>
               <textarea
-                name="message" value={form.message} onChange={handleChange} rows={4}
+                name="message" value={form.message} onChange={handleChange} rows={5}
                 className={inputCls + " resize-none"}
-                placeholder="Kerro vapaasti kirjastasi, aikataulustasi tai muista toiveistasi..."
+                placeholder="Esim. Kirjani käsittelee... Tavoitteeni on... Minulla on kysymys..."
               />
             </div>
 
             {/* Suostumus */}
             <div className="flex items-start gap-3">
-              <input type="checkbox" name="agree" id="agree" required checked={form.agree} onChange={handleChange} className="mt-1 w-4 h-4 accent-orange-500" />
+              <input
+                type="checkbox" name="agree" id="agree" required
+                checked={form.agree} onChange={handleChange}
+                className="mt-1 w-4 h-4 accent-orange-500"
+              />
               <label htmlFor="agree" className="text-muted-foreground text-sm leading-relaxed">
                 Olen lukenut{" "}
                 <a href="/sopimusehdot" className="thunder-orange underline hover:no-underline">sopimusehdot</a>
                 {" "}ja hyväksyn, että Thunder Kustannus käsittelee tietojani tarjouspyynnön käsittelyä varten.
+                Voin ottaa yhteyttä myös puhelimitse antamaani numeroon.
               </label>
             </div>
 
@@ -218,7 +286,9 @@ export default function Tarjouspyynto() {
               )}
             </button>
 
-            <p className="text-muted-foreground text-xs text-center">Vastaamme 24 tunnin sisällä. Ei sitoumuksia.</p>
+            <p className="text-muted-foreground text-xs text-center">
+              Vastaamme 24 tunnin sisällä. Ei sitoumuksia. Tietojasi ei luovuteta kolmansille osapuolille.
+            </p>
           </form>
         </div>
       </div>
