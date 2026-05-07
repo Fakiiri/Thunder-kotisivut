@@ -13,6 +13,7 @@ import Meista from "./pages/Meista";
 import Sopimusehdot from "./pages/Sopimusehdot";
 import Yhteystiedot from "./pages/Yhteystiedot";
 import CookieBanner from "./components/CookieBanner";
+import ScrollToTop from "./components/ScrollToTop";
 import LataaSivu from "./pages/LataaSivu";
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -40,6 +41,7 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
+          <ScrollToTop />
           <Router />
           <CookieBanner />
         </TooltipProvider>
