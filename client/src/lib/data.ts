@@ -37,8 +37,8 @@ export const PACKAGES = [
     features: [
       "Kaikki Digi-paketin sisältö",
       "50 kpl painettuja kirjoja",
-      "Jakelu: Suomalainen Kirjakauppa, Adlibris, Kirjastot, Storytel, BookBeat, Nextory, Spotify, Amazon, Elisa Kirja, Kobo, Google Play Books",
-      "Kirjavälitys-sopimus",
+      "Jakelu: Suomalainen Kirjakauppa, Adlibris, Kirjastot, Storytel, BookBeat, Nextory, Spotify, Amazon, Kobo, Google Play Books",
+      "Storia-sopimus (kirjakauppajakeluun)",
       "1 vuoden varastointi",
     ],
     notIncluded: ["Markkinointipaketti", "Lehdistötiedote"],
@@ -114,13 +114,13 @@ Muista: jokaisella julkaisumuodolla on oma ISBN:nsä. Painettu kirja, e-kirja ja
 
 Kirjasi pitää saada lukijoiden käsiin. Jakelu kattaa useita kanavia:
 
-**Fyysiset kirjakaupat:** Suomalainen Kirjakauppa ja Adlibris ovat Suomen suurimmat. Kirjavälitys Oy toimii välikätenä fyysisten kirjakauppojen ja kustantamoiden välillä.
+**Fyysiset kirjakaupat:** Suomalainen Kirjakauppa ja Adlibris ovat Suomen suurimmat. Storia (entinen Kirjavälitys) toimii välikätenä fyysisten kirjakauppojen ja kustantamoiden välillä.
 
 **Verkkokaupat:** Amazon, Adlibris verkkokauppa, Suomalainen Kirjakauppa verkkokauppa.
 
-**Kirjastot:** Kirjastot tilaavat kirjoja Kirjavälityksen kautta. Kirjastojakelu on tärkeää näkyvyyden kannalta.
+**Kirjastot:** Kirjastot tilaavat kirjoja Storian kautta. Kirjastojakelu on tärkeää näkyvyyden kannalta.
 
-**Digitaaliset suoratoistopalvelut:** Storytel, BookBeat, Nextory, Spotify, Elisa Kirja, Kobo ja Google Play Books. Nämä palvelut maksavat tekijänoikeuskorvauksia kuunteltujen minuuttien perusteella.
+**Digitaaliset suoratoistopalvelut:** Storytel, BookBeat, Nextory, Spotify, Kobo ja Google Play Books. Nämä palvelut maksavat tekijänoikeuskorvauksia kuunteltujen minuuttien perusteella.
 
 ## Vaihe 5: Markkinointi — kirja löytyy vain, jos se löydetään
 
@@ -252,11 +252,10 @@ Editoinnissa poistetaan virheet, tauot ja häiriöäänet. Äänentaso tasataan 
 
 Valmis äänikirja jaellaan aggregaattorin kautta kaikkiin palveluihin yhdellä kertaa:
 
-- **Storytel** — Suomen suurin äänikirjapalvelu
+- **Storytel** — Suomen suurin äänikirjapalvelu, saatavilla myös e-kirjoja
 - **BookBeat** — kasvava kilpailija, erityisesti nuoret aikuiset
 - **Nextory** — pohjoismainen palvelu
 - **Spotify** — 600 miljoonaa käyttäjää maailmanlaajuisesti
-- **Elisa Kirja** — suomalainen palvelu
 - **Suomen kirjastot** — Celia-kirjasto ja yleisten kirjastojen kokoelmat
 
 ## Äänikirjan kustannukset ja tulot
@@ -632,7 +631,7 @@ Myyntimääriin vaikuttavat:
 
 Monille kirjailijoille, erityisesti asiantuntijoille ja yrittäjille, kirjan suorat myyntitulot ovat vain osa kokonaisuudesta. Kirja tuo epäsuoria tuloja:
 
-**Puhujapalkkiot:** Kirjailija, jolla on kirja, saa helpommin puhujakutsuja. Puhujapalkkiot ovat tyypillisesti 500–5 000 € per esiintyminen.
+**Puhujapalkkiot:** Kirjailija, jolla on kirja, saa helpommin puhujakutsuja ja korkeampia palkkioita. Ammattipuhujat saavat tyypillisesti 1 500–3 000 € per esiintyminen — kirja tuo auktoriteettia, joka mahdollistaa korkeamman hinnoittelun.
 
 **Konsultointi ja valmennus:** Kirja rakentaa asiantuntijastatusta, joka mahdollistaa korkeammat konsultointihinnat.
 
@@ -702,7 +701,6 @@ E-kirjan jakelu tapahtuu aggregaattorin kautta. Aggregaattori toimittaa e-kirjan
 **Suomalaiset kirjakaupat:**
 - Suomalainen Kirjakauppa
 - Adlibris
-- Elisa Kirja
 
 **Kansainväliset alustat:**
 - Amazon Kindle
