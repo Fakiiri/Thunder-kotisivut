@@ -832,6 +832,64 @@ Kirjan kirjoittaminen ei vaadi erityistä lahjakkuutta — se vaatii päätökse
 Aloita tänään. Kirjoita ensimmäinen luku. Kirjasi odottaa.
     `,
   },
+  {
+    id: "kirjan-myynti-rohkeus",
+    title: "Kirjan myynti alkaa rohkeudesta — ei täydellisyydestä",
+    slug: "kirjan-myynti-rohkeus",
+    excerpt: "Kirjallisuusala kärsii yhdestä yhteisestä ongelmasta: liiasta odottamisesta. Kirja, jota ei ole julkaistu, ei myy. Tässä oppaassa käymme läpi, miksi tekeminen on täydellisyyttä tärkeämpää — ja miten se käytännössä näkyy kirjan myynnissä.",
+    category: "Strategia",
+    readTime: "8 min",
+    date: "2026-05-08",
+    content: `
+Kirjallisuusalalla on pitkä perinne täydellisyyden tavoittelusta. Se on ymmärrettävää — kirja on tekijänsä näköinen, ja sen päästäminen maailmalle tuntuu henkilökohtaiselta. Mutta tämä sama perinne on myös yksi suurimmista syistä siihen, miksi niin moni kirja jää kirjoittamatta, julkaisematta ja myymättä.
+
+## Odottamisen hinta
+
+Kirja, jota ei ole julkaistu, ei myy. Tämä on yksinkertainen tosiasia, mutta sen seuraukset ovat laajat. Jokainen kuukausi, jonka käytät hiomiseen, on kuukausi ilman lukijoita, ilman palautetta ja ilman myyntiä. Täydellisyyttä tavoitteleva kirjailija ei suojele teostaan — hän suojelee itseään epäonnistumisen pelolta.
+
+Todellisuus on tämä: lukija ei odota täydellisyyttä. Hän odottaa rehellisyyttä, hyödyllisyyttä ja aitoa ääntä. Nämä eivät synny loputtomasta hiomisesta — ne ovat joko tekstissä tai eivät ole.
+
+## Ensimmäinen versio on lähtölaukaus, ei maaliviiva
+
+Ammattikirjailijat tietävät asian, jota aloittelijat pelkäävät myöntää: ensimmäinen julkaistu kirja on harvoin paras kirja. Se on kuitenkin tärkein kirja — koska se on se, josta kaikki alkaa.
+
+Julkaiseminen opettaa asioita, joita ei voi oppia kirjoittamalla. Se opettaa, miten lukijat reagoivat, mitkä aiheet resonoivat, miten markkinointi toimii ja miten myynti rakentuu. Nämä opit tekevät seuraavasta kirjasta paremman.
+
+Kirjailija, joka on julkaissut yhden epätäydellisen kirjan, on pidemmällä kuin kirjailija, joka on kirjoittanut kymmenen täydellistä käsikirjoitusta, jotka odottavat pöytälaatikossa.
+
+## Myynti ei löydä sinua — sinä löydät myynnin
+
+Toinen yleinen harhaluulo on, että hyvä kirja myy itsensä. Se ei myy. Lukijat eivät taikaisukusta löydä sinua — sinun täytyy mennä heidän luokseen.
+
+Tämä tarkoittaa käytännössä kolmea asiaa:
+
+**Näkyvyys ennen julkaisua.** Kirjan myynti alkaa ennen kuin kirja on valmis. Kerro kirjastasi somessa, puhu siitä ääneen, rakenna odotusta. Lukija, joka on kuullut kirjastasi ennen julkaisua, on todennäköisempi ostaja kuin lukija, joka törmää siihen sattumalta.
+
+**Aktiivinen myynti julkaisun jälkeen.** Julkaisupäivä ei ole maaliviiva — se on lähtölaukaus. Ensimmäiset viikot ratkaisevat, saako kirja näkyvyyttä vai jääkö se hyllyyn. Tee julkaisuviikolla enemmän kuin koskaan muulloin: postaa, lähetä sähköposteja, pyydä arvosteluja, esiinny podcasteissa.
+
+**Pitkäjänteisyys.** Useimmat kirjat myyvät parhaiten kuukausien tai vuosien kuluttua julkaisusta — ei julkaisuviikolla. Kirja, josta puhutaan aktiivisesti vielä vuoden päästä, myy enemmän kuin kirja, joka räjähtää hetkeksi ja unohtuu.
+
+## Täydellisyys on kilpailijasi etu
+
+Jos sinä odotat täydellisyyttä, joku muu julkaisee. Hän saa lukijat, palautteet ja kokemuksen. Sinä saat lisää aikaa hioa — mutta et lukijoita.
+
+Tämä ei tarkoita, että laatu ei merkitse. Se merkitsee. Mutta laatu ei synny odottamalla — se syntyy tekemisestä, palautteesta ja kehittymisestä. Ensimmäinen kirja ei ole viimeinen kirja. Se on ensimmäinen askel.
+
+## Käytännön ohjeet: miten aloitat myynnin tänään
+
+Jos kirjasi on jo valmis tai lähes valmis, tässä on kolme asiaa joita voit tehdä heti:
+
+**Aseta julkaisupäivä.** Ei "joskus keväällä" — vaan tarkka päivämäärä. Päivämäärä luo paineen, joka saa asiat tapahtumaan.
+
+**Kerro kirjastasi yhdelle ihmiselle tänään.** Ei somessa — henkilökohtaisesti. Lähetä viesti yhdelle ihmiselle, jota kirjasi aihe koskettaa. Pyydä häntä lukemaan se. Ensimmäinen lukija on tärkeämpi kuin tuhat seuraajaa.
+
+**Lopeta editoiminen ja aloita julkaisuprosessi.** Jos olet editoinut kirjaasi yli kolme kertaa, se on todennäköisesti jo tarpeeksi hyvä. Seuraava askel ei ole neljäs editointikierros — se on taitto, kansi ja jakelu.
+
+Kirja ei tule koskaan täydelliseksi. Mutta se voi tulla julkaistuksi — ja se on ainoa versio, joka voi muuttaa jonkun elämän.
+
+[Pyydä ilmainen tarjous](/tarjouspyynto) ja aloita julkaisuprosessi tänään.
+    `,
+  },
 ];
 
 export const COMPANY = {
