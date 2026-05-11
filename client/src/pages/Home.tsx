@@ -20,7 +20,7 @@ const fadeUp = {
 export default function Home() {
   useSEO({
     title: "Julkaise kirjasi ammattimaisesti",
-    description: "Thunder Kustannus on suomalainen hybridikustantamo. Julkaisemme kirjasi painettuna, e-kirjana ja äänikirjana — jakelu Storyteliin, BookBeatiin, Spotifyhin, Suomalaiseen Kirjakauppaan ja kaikkiin kirjakauppoihin.",
+    description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin — painettu kirja, e-kirja ja äänikirja. Sinulla pysyvät oikeudet ja 70–80 % myyntituloista.",
     canonical: "/",
     keywords: "omakustanne, kirjan julkaiseminen, äänikirja, e-kirja, kustantamo, hybridikustantamo, omakustannekirja",
   });
@@ -40,7 +40,7 @@ export default function Home() {
             <motion.div initial="hidden" animate="visible" variants={fadeUp}>
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-orange-400 mb-5">
                 <span className="w-6 h-px bg-orange-400 inline-block" />
-                Suomen modernein kustantamo
+                Kirjailijoiden julkaisualusta
               </span>
             </motion.div>
 
@@ -48,14 +48,14 @@ export default function Home() {
               initial="hidden" animate="visible" variants={fadeUp}
               className="thunder-heading text-5xl md:text-6xl lg:text-7xl text-white mb-5"
             >
-              Sinun tarinasi ansaitsee tulla kuulluksi.
+              Sinä kirjoitat. Me julkaisemme. Lukijat löytävät.
             </motion.h1>
 
             <motion.p
               initial="hidden" animate="visible" variants={fadeUp}
               className="text-white/75 text-lg leading-relaxed mb-8 max-w-md"
             >
-              Thunder Kustannus julkaisee kirjasi ammattimaisesti — painettu kirja, e-kirja ja äänikirja. Jakelu kaikkiin suomalaisiin kirjakauppoihin ja suoratoistopalveluihin.
+              Thunder Kustannus on suomalainen julkaisualusta, joka yhdistää ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin. Sinä omistat kirjasi — me hoidamme kaiken muun.
             </motion.p>
 
             <motion.div initial="hidden" animate="visible" variants={fadeUp} className="flex flex-wrap gap-3">
@@ -82,10 +82,10 @@ export default function Home() {
           <div className="text-center mb-14">
             <span className="orange-line mx-auto" />
             <h2 className="thunder-heading text-4xl md:text-5xl text-foreground mb-3">
-              Kaikki yhdeltä kustantamolta
+              Kaikki yhdeltä alustalta
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Hoidamme kaiken käsikirjoituksesta valmiiseen kirjaan — ja siitä eteenpäin jakeluun.
+              Ammattimainen julkaisuprosessi, täysi läpinäkyvyys ja kirjailijan oikeudet pysyvät sinulla. Aina.
             </p>
           </div>
 
@@ -147,10 +147,10 @@ export default function Home() {
           <div className="text-center mb-14">
             <span className="orange-line mx-auto" />
             <h2 className="thunder-heading text-4xl md:text-5xl text-foreground mb-3">
-              Selkeä hinnoittelu
+              Läpinäkyvä hinnoittelu
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Ei piilokuluja. Ei yllätyksiä. Valitse paketti, joka sopii sinulle.
+              Tiedät tarkalleen mitä maksat ja mitä saat. Ei yllätyksiä, ei sitoumuksia oikeuksistasi.
             </p>
           </div>
 

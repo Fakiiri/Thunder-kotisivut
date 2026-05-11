@@ -9,7 +9,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function Meista() {
   useSEO({
     title: "Meistä — Thunder Kustannus",
-    description: "Thunder Kustannus on suomalainen hybridikustantamo. Autamme kirjailijoita julkaisemaan kirjansa ammattimaisesti. Kirjailija säilyttää oikeudet, me hoidamme loput.",
+    description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin. Oikeudet pysyvät sinulla — me hoidamme loput.",
     canonical: "/meista",
     keywords: "Thunder Kustannus, suomalainen kustantamo, hybridikustantamo, omakustanne",
   });
@@ -22,7 +22,7 @@ export default function Meista() {
             <span className="orange-line" />
             <h1 className="thunder-heading text-5xl md:text-6xl text-foreground mb-6">Meistä</h1>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl">
-              Thunder Kustannus syntyi yhdestä yksinkertaisesta havainnosta: kirjailijoilla on tarinoita, mutta heillä ei ole välineitä tai tietoa niiden julkaisemiseen ammattimaisesti.
+              Thunder Kustannus syntyi yhdestä yksinkertaisesta havainnosta: kirjailijoilla on tarinoita, mutta heillä ei ole välineitä tai tietoa niiden julkaisemiseen ammattimaisesti. Rakensimme alustan, joka muuttaa tämän.
             </p>
           </div>
 
@@ -32,7 +32,7 @@ export default function Meista() {
               <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
                 <p>Perinteiset kustantamot hylkäävät yli 99 % käsikirjoituksista. Prosessi kestää vuosia. Kirjailija saa vain murto-osan myyntituloista.</p>
                 <p>Toisessa ääripäässä on täysin omatoiminen julkaiseminen — mutta se vaatii osaamista taitosta jakelusopimusten neuvotteluun ja markkinointiin.</p>
-                <p>Thunder Kustannus on kolmas tie: ammattimainen hybridikustantamo, jossa kirjailija säilyttää kontrollin ja oikeudet, mutta saa kaiken tarvitsemansa avun.</p>
+                <p>Thunder Kustannus on kolmas tie: kirjailijoiden julkaisualusta, jossa yhdistyvät ammattimainen kustannustoiminta ja kirjailijan täysi kontrolli. Sinä omistat kirjasi ja saat suurimman osan tuloista — me hoidamme taiton, kannen, ISBN:n ja jakelun.</p>
               </div>
             </div>
             <div className="space-y-4">

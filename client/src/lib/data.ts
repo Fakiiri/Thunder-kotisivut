@@ -895,8 +895,8 @@ Kirja ei tule koskaan täydelliseksi. Mutta se voi tulla julkaistuksi — ja se 
 export const COMPANY = {
   name: "Thunder Kustannus",
   legalName: "Thunder Media Oy",
-  tagline: "Julkaise kirjasi ammattilaisena",
-  description: "Thunder Kustannus on moderni suomalainen hybridikustantamo. Autamme kirjailijoita julkaisemaan kirjansa ammattimaisesti — painettu kirja, e-kirja ja äänikirja. Jakelu kaikkiin suomalaisiin kirjakauppoihin ja suoratoistopalveluihin.",
+  tagline: "Sinun kirjasi. Sinun oikeutesi. Ammattimainen julkaisu.",
+  description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta — hybridimalli, jossa yhdistyvät ammattimainen kustannustoiminta ja kirjailijan täysi kontrolli. Painettu kirja, e-kirja ja äänikirja. Jakelu kaikkiin suomalaisiin kirjakauppoihin ja suoratoistopalveluihin. Oikeudet pysyvät sinulla.",
   email: "info@thunderkustannus.fi",
   phone: "",
   address: "",
