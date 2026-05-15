@@ -55,11 +55,11 @@ export default function Home() {
               initial="hidden" animate="visible" variants={fadeUp}
               className="text-white/75 text-lg leading-relaxed mb-8 max-w-md"
             >
-              Thunder Kustannus on suomalainen julkaisualusta, joka yhdistää ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin. Sinä omistat kirjasi — me hoidamme kaiken muun.
+              Thunder Kustannus on suomalainen alusta, joka yhdistää modernin tavan julkaista kirja ja kirjailijan täyden kontrollin. Sinä omistat kirjasi — me hoidamme kaiken muun.
             </motion.p>
 
             <motion.div initial="hidden" animate="visible" variants={fadeUp} className="flex flex-wrap gap-3">
-              <Link href="/tarjouspyynto" className="thunder-btn-primary px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2">
+              <Link href="/arvio" className="thunder-btn-primary px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2">
                 Pyydä ilmainen arvio <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/hinnat" className="px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2 border-2 border-white/30 text-white hover:border-white/60 transition-colors">
@@ -137,6 +137,50 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── MITEN SE TOIMII ── */}
+      <section className="thunder-section bg-background">
+        <div className="container">
+          <div className="text-center mb-14">
+            <span className="orange-line mx-auto" />
+            <h2 className="thunder-heading text-4xl md:text-5xl text-foreground mb-3">
+              Miten se toimii?
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+              Kolme vaihetta käsikirjoituksesta valmiiseen kirjaan.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+            {[
+              { step: "01", title: "Kerro kirjastasi", desc: "Täytä lyhyt lomake — kerro kirjasi aihe, laajuus ja toiveet. Se vie alle 3 minuuttia." },
+              { step: "02", title: "Saat arvion", desc: "Otamme yhteyttä 24 tunnin sisällä. Käymme läpi kirjaprojektisi ja kerromme mitä se maksaa." },
+              { step: "03", title: "Etsitään ratkaisu ja aloitetaan", desc: "Valitaan sinulle sopiva paketti tai räätälöidään oma. Sitten aloitetaan — aikataululla joka sopii sinulle." },
+            ].map((item) => (
+              <motion.div
+                key={item.step}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                className="text-center"
+              >
+                <div className="w-14 h-14 rounded-full thunder-orange-bg flex items-center justify-center mx-auto mb-5">
+                  <span className="text-white font-bold text-lg">{item.step}</span>
+                </div>
+                <h3 className="text-foreground font-bold text-lg mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link href="/arvio" className="thunder-btn-primary px-10 py-4 rounded-lg text-base font-bold inline-flex items-center gap-2">
+              Pyydä ilmainen arvio <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
