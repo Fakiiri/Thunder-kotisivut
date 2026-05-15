@@ -217,10 +217,10 @@ export default function Opas() {
               Valmis julkaisemaan kirjasi?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-              Thunder Kustannus hoitaa kaiken — taitosta jakeluun. Pyydä ilmainen tarjous tänään.
+              Thunder Kustannus hoitaa kaiken — taitosta jakeluun. Pyydä ilmainen arvio kirjaprojektistasi.
             </p>
             <Link href="/tarjouspyynto" className="thunder-btn-primary px-8 py-3 rounded-lg font-bold inline-flex items-center gap-2">
-              Pyydä tarjous <ArrowRight className="w-4 h-4" />
+              Pyydä ilmainen arvio <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 

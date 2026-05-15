@@ -106,7 +106,7 @@ export default function Meista() {
 
           <div className="text-center">
             <Link href="/tarjouspyynto" className="thunder-btn-primary px-10 py-4 rounded-lg font-bold inline-flex items-center gap-2 text-base">
-              Aloita kirjaprojektisi <ArrowRight className="w-4 h-4" />
+              Pyydä ilmainen arvio <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

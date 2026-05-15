@@ -60,7 +60,7 @@ export default function Home() {
 
             <motion.div initial="hidden" animate="visible" variants={fadeUp} className="flex flex-wrap gap-3">
               <Link href="/tarjouspyynto" className="thunder-btn-primary px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2">
-                Pyydä ilmainen tarjous <ArrowRight className="w-4 h-4" />
+                Pyydä ilmainen arvio <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/hinnat" className="px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2 border-2 border-white/30 text-white hover:border-white/60 transition-colors">
                 Katso hinnat
@@ -287,10 +287,10 @@ export default function Home() {
             Valmis julkaisemaan?
           </h2>
           <p className="text-white/65 text-xl mb-10 max-w-lg mx-auto">
-            Pyydä ilmainen tarjous — vastaamme 24 tunnin sisällä.
+            Pyydä ilmainen arvio kirjaprojektistasi — vastaamme 24 tunnin sisällä.
           </p>
           <Link href="/tarjouspyynto" className="thunder-btn-primary px-10 py-4 rounded-lg text-base font-bold inline-flex items-center gap-2">
-            Pyydä tarjous nyt <ArrowRight className="w-5 h-5" />
+            Pyydä ilmainen arvio <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
       </section>

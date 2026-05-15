@@ -9,9 +9,9 @@ import { useSEO } from "@/hooks/useSEO";
 export default function Yhteystiedot() {
   useSEO({
     title: "Thunder Kustannus — Yhteystiedot",
-    description: "Ota yhteyttä Thunder Kustannukseen. Vastaamme kaikkiin viesteihin 24 tunnin sisään. Pyydä tarjous kirjasi julkaisemisesta — info@thunderkustannus.fi",
+    description: "Ota yhteyttä Thunder Kustannukseen. Vastaamme kaikkiin viesteihin 24 tunnin sisään. Pyydä ilmainen arvio kirjaprojektistasi — info@thunderkustannus.fi",
     canonical: "/yhteystiedot",
-    keywords: "Thunder Kustannus yhteystiedot, ota yhteyttä, kirjan julkaiseminen, tarjous",
+    keywords: "Thunder Kustannus yhteystiedot, ota yhteyttä, kirjan julkaiseminen, ilmainen arvio",
   });
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -41,9 +41,9 @@ export default function Yhteystiedot() {
                 <ArrowRight className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-foreground font-bold text-lg mb-2">Nopein tapa</h3>
-              <p className="text-muted-foreground text-sm mb-4">Täytä tarjouspyyntölomake — saat henkilökohtaisen vastauksen nopeimmin.</p>
+              <p className="text-muted-foreground text-sm mb-4">Pyydä ilmainen arvio kirjaprojektistasi — saat henkilökohtaisen vastauksen nopeimmin.</p>
               <Link href="/tarjouspyynto" className="thunder-btn-primary px-5 py-2.5 rounded-lg text-sm font-bold inline-block">
-                Pyydä tarjous
+                Pyydä ilmainen arvio
               </Link>
             </div>
           </div>

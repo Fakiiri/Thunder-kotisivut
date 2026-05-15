@@ -85,7 +85,7 @@ export default function Navbar() {
             href="/tarjouspyynto"
             className="thunder-btn-primary px-5 py-2.5 rounded-lg text-sm font-bold inline-block"
           >
-            Pyydä tarjous
+            Pyydä ilmainen arvio
           </Link>
         </div>
 
@@ -126,7 +126,7 @@ export default function Navbar() {
               href="/tarjouspyynto"
               className="thunder-btn-primary px-5 py-3 rounded-lg text-sm font-bold text-center mt-2 block"
             >
-              Pyydä tarjous
+              Pyydä ilmainen arvio
             </Link>
           </nav>
         </div>

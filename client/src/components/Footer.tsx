@@ -50,7 +50,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { href: "/hinnat", label: "Hinnoittelu" },
-                { href: "/tarjouspyynto", label: "Pyydä tarjous" },
+                { href: "/tarjouspyynto", label: "Pyydä ilmainen arvio" },
                 { href: "/oppaat", label: "Oppaat kirjailijoille" },
                 { href: "/meista", label: "Meistä" },
               ].map((l) => (

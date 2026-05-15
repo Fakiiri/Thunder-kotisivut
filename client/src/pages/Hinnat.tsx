@@ -161,9 +161,9 @@ export default function Hinnat() {
 
           {/* CTA */}
           <div className="text-center mt-20">
-            <p className="text-muted-foreground mb-6">Etkö löydä sopivaa pakettia? Tehdään sinulle räätälöity tarjous.</p>
+            <p className="text-muted-foreground mb-6">Etkö löydä sopivaa pakettia? Arvioimme kirjaprojektisi ja teemme räätälöidyn ehdotuksen.</p>
             <Link href="/tarjouspyynto" className="thunder-btn-primary px-10 py-4 rounded-lg text-base font-bold inline-flex items-center gap-2">
-              Pyydä räätälöity tarjous <ArrowRight className="w-4 h-4" />
+              Pyydä räätälöity arvio <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

@@ -24,7 +24,7 @@ export const PACKAGES = [
       "Myyntiraportit",
     ],
     notIncluded: ["Painettu kirja", "Jakelu fyysisiin kirjakauppoihin", "Markkinointipaketti"],
-    cta: "Pyydä tarjous",
+    cta: "Pyydä ilmainen arvio",
   },
   {
     id: "printti",
@@ -42,7 +42,7 @@ export const PACKAGES = [
       "1 vuoden varastointi",
     ],
     notIncluded: ["Markkinointipaketti", "Lehdistötiedote"],
-    cta: "Pyydä tarjous",
+    cta: "Pyydä ilmainen arvio",
   },
   {
     id: "premium",
@@ -62,7 +62,7 @@ export const PACKAGES = [
       "Prioriteettituki 12 kk",
     ],
     notIncluded: [],
-    cta: "Pyydä tarjous",
+    cta: "Pyydä ilmainen arvio",
   },
 ];
 
@@ -132,7 +132,7 @@ Aloita markkinointi jo ennen julkaisua. Jaa kirjoitusprosessia, kerro miksi kirj
 
 Thunder Kustannus hoitaa puolestasi taiton, kansisuunnittelun, ISBN-tunnuksen, jakelun kaikkiin kanaviin ja äänikirjatuotannon. Sinulle jää se tärkein: kirjoittaminen ja oman tarinasi kertominen.
 
-[Pyydä ilmainen tarjous](/tarjouspyynto) ja kerro meille kirjastasi — vastaamme 24 tunnin sisällä.
+[Pyydä ilmainen arvio](/tarjouspyynto) ja kerro meille kirjastasi — vastaamme 24 tunnin sisällä.
     `,
   },
   {
@@ -197,7 +197,7 @@ Asiantuntijakirja on yksi tehokkaimmista markkinointivälineistä. Se rakentaa u
 
 Perinteinen kustantamo on oikea valinta harvoille. Omakustantaminen hybridikustantamon avulla on oikea valinta suurimmalle osalle kirjailijoista — erityisesti asiantuntijoille ja yrittäjille, jotka haluavat kirjan osaksi omaa brändiään.
 
-[Katso Thunder Kustannuksen paketit](/hinnat) ja pyydä ilmainen tarjous.
+[Katso Thunder Kustannuksen paketit](/hinnat) ja pyydä ilmainen arvio.
     `,
   },
   {
@@ -268,7 +268,7 @@ Tulot kertyvät kuunteltujen minuuttien perusteella. Tyypillinen korvaus on 0,00
 
 Thunder Kustannus hoitaa koko äänikirjaprosessin puolestasi: käsikirjoituksen valmistelun, lukijan valinnan, äänityksen, editoinnin ja jakelun kaikkiin palveluihin. Sinulle jää se tärkein: kirjasi sisältö.
 
-[Pyydä tarjous äänikirjatuotannosta](/tarjouspyynto) — kerro meille kirjastasi ja saat tarjouksen 24 tunnin sisällä.
+[Pyydä ilmainen arvio äänikirjatuotannosta](/tarjouspyynto) — kerro meille kirjastasi ja saat arvion 24 tunnin sisällä.
     `,
   },
   {
@@ -357,7 +357,7 @@ Hyvä sisältö houkuttelee lukijoita, jotka etsivät tietoa kirjasi aiheesta �
 
 Kirjan markkinointi ei lopu julkaisupäivään. Menestyneet kirjailijat markkinoivat kirjaansa jatkuvasti — kuukausia ja vuosia julkaisun jälkeen. Pitkäjänteisyys palkitaan.
 
-Thunder Kustannuksen Premium-paketti sisältää markkinointipaketin, lehdistötiedotteen ja sosiaalisen median lanseerauspaketin. [Katso paketit](/hinnat) tai [pyydä tarjous](/tarjouspyynto).
+Thunder Kustannuksen Premium-paketti sisältää markkinointipaketin, lehdistötiedotteen ja sosiaalisen median lanseerauspaketin. [Katso paketit](/hinnat) tai [pyydä ilmainen arvio](/tarjouspyynto).
     `,
   },
   {
@@ -427,7 +427,7 @@ Kaikki Thunder Kustannuksen paketit sisältävät ISBN-tunnuksen hakemisen. Me h
 
 Sinun ei tarvitse huolehtia teknisistä yksityiskohdista — me hoidamme sen, jotta voit keskittyä kirjoittamiseen.
 
-[Katso paketit ja hinnat](/hinnat) tai [pyydä ilmainen tarjous](/tarjouspyynto).
+[Katso paketit ja hinnat](/hinnat) tai [pyydä ilmainen arvio](/tarjouspyynto).
     `,
   },
   {
@@ -495,7 +495,7 @@ Canva ja muut suunnittelutyökalut houkuttelevat tekemään kannen itse. Tulos n
 
 Kaikki Thunder Kustannuksen paketit sisältävät ammattimaisen taiton ja kansisuunnittelun. Yhteistyössä sinun kanssasi luomme kirjallesi ulkoasun, joka erottuu joukosta ja houkuttelee oikean lukijakunnan.
 
-[Pyydä tarjous](/tarjouspyynto) ja kerro meille kirjastasi — vastaamme 24 tunnin sisällä.
+[Pyydä ilmainen arvio](/tarjouspyynto) ja kerro meille kirjastasi — vastaamme 24 tunnin sisällä.
     `,
   },
   {
@@ -565,7 +565,7 @@ Thunder Kustannuksen paketit alkavat 890 eurosta (Digi-paketti, sis. ALV 25,5 %)
 
 Kirjan julkaiseminen maksaa 0–5 000 euroa riippuen valituista palveluista ja laadusta. Hybridikustantamo tarjoaa selkeimmän ja usein kustannustehokkaimman tavan julkaista kirja ammattimaisesti.
 
-[Katso Thunder Kustannuksen paketit ja hinnat](/hinnat) tai [pyydä ilmainen tarjous](/tarjouspyynto).
+[Katso Thunder Kustannuksen paketit ja hinnat](/hinnat) tai [pyydä ilmainen arvio](/tarjouspyynto).
     `,
   },
   {
@@ -657,7 +657,7 @@ Asiantuntijakirja voi tuoda kymmeniä tai satoja tuhansia euroja epäsuoria tulo
 
 Omakustannekirjailija voi tienata merkittävästi enemmän kuin perinteisen kustantamon kirjailija — jos markkinoi aktiivisesti ja julkaisee kaikissa formaateissa. Realistiset odotukset ja pitkäjänteinen työ ovat avain menestykseen.
 
-[Pyydä tarjous](/tarjouspyynto) ja aloita kirjasi julkaisuprosessi tänään.
+[Pyydä ilmainen arvio](/tarjouspyynto) ja aloita kirjasi julkaisuprosessi tänään.
     `,
   },
   {
@@ -737,7 +737,7 @@ Useimmille kirjailijoille e-kirja on osa laajempaa julkaisupakettia — ei ainoa
 
 Thunder Kustannuksen Digi-paketti sisältää e-kirjan ja äänikirjan tuotannon sekä jakelun kaikkiin suomalaisiin suoratoistopalveluihin. Printti-paketti lisää painetun kirjan ja laajemman jakeluverkoston.
 
-[Katso paketit ja hinnat](/hinnat) tai [pyydä ilmainen tarjous](/tarjouspyynto).
+[Katso paketit ja hinnat](/hinnat) tai [pyydä ilmainen arvio](/tarjouspyynto).
     `,
   },
   {
@@ -823,7 +823,7 @@ Editointi on kirjoittamisen tärkein vaihe. Ensimmäinen versio on raaka-aine �
 
 Kun käsikirjoitus on valmis, alkaa julkaisuprosessi: taitto, kansisuunnittelu, ISBN-tunnus ja jakelu. Thunder Kustannus hoitaa nämä kaikki puolestasi.
 
-[Lue lisää julkaisuprosessista](/oppaat/miten-julkaisen-oman-kirjan) tai [pyydä ilmainen tarjous](/tarjouspyynto).
+[Lue lisää julkaisuprosessista](/oppaat/miten-julkaisen-oman-kirjan) tai [pyydä ilmainen arvio](/tarjouspyynto).
 
 ## Yhteenveto: Kirja syntyy kirjoittamalla
 
@@ -887,7 +887,7 @@ Jos kirjasi on jo valmis tai lähes valmis, tässä on kolme asiaa joita voit te
 
 Kirja ei tule koskaan täydelliseksi. Mutta se voi tulla julkaistuksi — ja se on ainoa versio, joka voi muuttaa jonkun elämän.
 
-[Pyydä ilmainen tarjous](/tarjouspyynto) ja aloita julkaisuprosessi tänään.
+[Pyydä ilmainen arvio](/tarjouspyynto) ja aloita julkaisuprosessi tänään.
     `,
   },
 ];

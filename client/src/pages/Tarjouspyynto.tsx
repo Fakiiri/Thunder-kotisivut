@@ -24,10 +24,10 @@ const requiredStar = <span className="text-orange-500 ml-0.5">*</span>;
 export default function Tarjouspyynto() {
   const [form, setForm] = useState<FormData>(INITIAL);
   useSEO({
-    title: "Pyydä tarjous — Kirjan julkaiseminen | Thunder Kustannus",
-    description: "Pyydä ilmainen tarjous kirjasi julkaisemisesta. Vastaamme 24 tunnin sisällä. Ei sitoumuksia. Thunder Kustannus — suomalainen hybridikustantamo.",
+    title: "Ilmainen arvio kirjaprojektistasi | Thunder Kustannus",
+    description: "Pyydä ilmainen arvio kirjasi julkaisemisesta. Arvioimme kirjaprojektisi ja kerromme mitä se maksaa. Vastaamme 24 tunnin sisällä. Ei sitoumuksia.",
     canonical: "/tarjouspyynto",
-    keywords: "tarjouspyyntö, kirjan julkaiseminen tarjous, omakustanne tarjous",
+    keywords: "ilmainen arvio kirja, kirjan julkaiseminen arvio, omakustanne arvio, Thunder Kustannus",
   });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -81,7 +81,7 @@ export default function Tarjouspyynto() {
           <div className="w-20 h-20 rounded-full thunder-orange-bg flex items-center justify-center mb-6">
             <CheckCircle2 className="w-10 h-10 text-white" />
           </div>
-          <h1 className="thunder-heading text-4xl text-foreground mb-4">Tarjouspyyntö vastaanotettu!</h1>
+          <h1 className="thunder-heading text-4xl text-foreground mb-4">Arvio vastaanotettu!</h1>
           <p className="text-muted-foreground text-lg max-w-lg mb-2">
             Kiitos yhteydenotostasi, <strong className="text-foreground">{form.name}</strong>.
           </p>
@@ -105,9 +105,9 @@ export default function Tarjouspyynto() {
           {/* Otsikko */}
           <div className="mb-10">
             <span className="orange-line" />
-            <h1 className="thunder-heading text-5xl text-foreground mb-4">Pyydä tarjous</h1>
+            <h1 className="thunder-heading text-5xl text-foreground mb-4">Pyydä ilmainen arvio</h1>
             <p className="text-muted-foreground text-lg">
-              Täytä lomake huolellisesti — mitä enemmän kerrot kirjastasi, sitä tarkemman tarjouksen voimme antaa.
+              Täytä lomake huolellisesti — mitä enemmän kerrot kirjastasi, sitä tarkemman arvion voimme antaa.
               Vastaamme <strong className="text-foreground">24 tunnin sisällä</strong>. Ei sitoumuksia.
             </p>
           </div>
@@ -270,7 +270,7 @@ export default function Tarjouspyynto() {
               <label htmlFor="agree" className="text-muted-foreground text-sm leading-relaxed">
                 Olen lukenut{" "}
                 <a href="/sopimusehdot" className="thunder-orange underline hover:no-underline">sopimusehdot</a>
-                {" "}ja hyväksyn, että Thunder Kustannus käsittelee tietojani tarjouspyynnön käsittelyä varten.
+                {" "}ja hyväksy, että Thunder Kustannus käsittelee tietojani arviopyyntöä varten.
                 Voin ottaa yhteyttä myös puhelimitse antamaani numeroon.
               </label>
             </div>
@@ -282,7 +282,7 @@ export default function Tarjouspyynto() {
               {loading ? (
                 <span className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
               ) : (
-                <><Send className="w-4 h-4" /> Lähetä tarjouspyyntö</>
+                <><Send className="w-4 h-4" /> Lähetä arviopyynto →</>
               )}
             </button>
 
