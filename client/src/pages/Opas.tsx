@@ -96,7 +96,7 @@ export default function Opas() {
     title: guide ? guide.title : "Opas",
     description: guide ? guide.excerpt : "Thunder Kustannuksen oppaat kirjailijoille.",
     canonical: guide ? `/oppaat/${guide.slug}` : "/oppaat",
-    keywords: guide ? `${guide.category}, kirjan julkaiseminen, omakustanne, ${guide.title}` : "kirjan julkaiseminen",
+    keywords: guide ? `Thunder Kustannus, ${guide.category}, kirjan julkaiseminen, omakustanne, hybridikustantamo, ${guide.title}` : "Thunder Kustannus, kirjan julkaiseminen",
     ogType: "article",
   });
 

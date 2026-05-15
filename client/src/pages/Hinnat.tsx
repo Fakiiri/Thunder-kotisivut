@@ -9,10 +9,10 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function Hinnat() {
   useSEO({
-    title: "Hinnat ja paketit — Kirjan julkaiseminen",
-    description: "Thunder Kustannuksen julkaisupaketit: Digi 890 €, Printti 1 690 €, Premium 2 990 €. Kaikki sisältävät taiton, kansisuunnittelun, ISBN-tunnuksen ja jakelun. Hinnat sis. ALV 25,5 %.",
+    title: "Thunder Kustannus — Hinnat ja julkaisupaketit",
+    description: "Thunder Kustannuksen julkaisupaketit: Digi 890 €, Printti 1 690 €, Premium 2 990 €. Kaikki sisältävät taiton, kansisuunnittelun, ISBN-tunnuksen ja jakelun. Hinnat sis. ALV 25,5 %.",
     canonical: "/hinnat",
-    keywords: "omakustanne hinta, kirjan julkaiseminen hinta, kustantamo paketti, äänikirja hinta",
+    keywords: "Thunder Kustannus hinnat, omakustanne hinta, kirjan julkaiseminen hinta, hybridikustantamo paketti, äänikirja hinta",
   });
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 // Thunder Kustannus — Footer v2 (vaalea)
 import { Link } from "wouter";
-import { Zap } from "lucide-react";
+import { Zap, Instagram, Linkedin } from "lucide-react";
 import { COMPANY } from "@/lib/data";
 
 export default function Footer() {
@@ -22,6 +22,26 @@ export default function Footer() {
               Moderni suomalainen hybridikustantamo. Julkaise kirjasi ammattimaisesti — painettu kirja, e-kirja ja äänikirja.
             </p>
             <p className="text-white/25 text-xs mt-4">{COMPANY.legalName}</p>
+            <div className="flex gap-4 mt-5">
+              <a
+                href="https://www.instagram.com/thunderkustannus/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Thunder Kustannus Instagramissa"
+                className="text-white/35 hover:text-orange-400 transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/thunder-kustannus"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Thunder Kustannus LinkedInissä"
+                className="text-white/35 hover:text-orange-400 transition-colors"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
           </div>
 
           {/* Palvelut */}

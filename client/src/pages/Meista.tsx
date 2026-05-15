@@ -1,5 +1,6 @@
 // Thunder Kustannus — Meistä v2 (vaalea)
 import { Link } from "wouter";
+import { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -8,11 +9,36 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function Meista() {
   useSEO({
-    title: "Meistä — Thunder Kustannus",
-    description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin. Oikeudet pysyvät sinulla — me hoidamme loput.",
+    title: "Thunder Kustannus — Meistä",
+    description: "Thunder Kustannus on suomalainen hybridijulkaisualusta kirjailijoille. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin. Oikeudet pysyvät sinulla — me hoidamme loput.",
     canonical: "/meista",
-    keywords: "Thunder Kustannus, suomalainen kustantamo, hybridikustantamo, omakustanne",
+    keywords: "Thunder Kustannus, suomalainen kustantamo, hybridikustantamo, hybridijulkaisualusta, omakustanne, Iron Mom Finland",
   });
+
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "Thunder Kustannus — Meistä",
+      "url": "https://thunderkustannus.fi/meista",
+      "description": "Thunder Kustannus on suomalainen hybridijulkaisualusta kirjailijoille — omakustannekirjat, e-kirjat ja äänikirjat ammattimaisesti.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Thunder Kustannus",
+        "legalName": "Iron Mom Finland OY",
+        "url": "https://thunderkustannus.fi"
+      }
+    };
+    let el = document.getElementById('meista-schema');
+    if (!el) {
+      el = document.createElement('script');
+      el.id = 'meista-schema';
+      (el as HTMLScriptElement).type = 'application/ld+json';
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(schema);
+    return () => { el?.remove(); };
+  }, []);
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -20,7 +46,7 @@ export default function Meista() {
         <div className="container max-w-4xl">
           <div className="mb-16">
             <span className="orange-line" />
-            <h1 className="thunder-heading text-5xl md:text-6xl text-foreground mb-6">Meistä</h1>
+            <h1 className="thunder-heading text-5xl md:text-6xl text-foreground mb-6">Thunder Kustannus — Meistä</h1>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl">
               Thunder Kustannus syntyi yhdestä yksinkertaisesta havainnosta: kirjailijoilla on tarinoita, mutta heillä ei ole välineitä tai tietoa niiden julkaisemiseen ammattimaisesti. Rakensimme alustan, joka muuttaa tämän.
             </p>

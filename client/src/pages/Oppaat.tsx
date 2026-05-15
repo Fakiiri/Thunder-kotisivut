@@ -8,10 +8,10 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function Oppaat() {
   useSEO({
-    title: "Oppaat kirjailijoille — Kirjan julkaiseminen",
-    description: "Kaikki mitä tarvitset oman kirjan julkaisemiseen. Oppaat käsikirjoituksesta valmiiseen kirjaan, markkinointiin, äänikirjaan ja jakeluun.",
+    title: "Thunder Kustannus — Oppaat kirjailijoille",
+    description: "Thunder Kustannuksen ilmaiset oppaat kirjailijoille: kirjan julkaiseminen, omakustanne, äänikirja, e-kirja, markkinointi ja jakelu. Käsikirjoituksesta valmiiseen kirjaan.",
     canonical: "/oppaat",
-    keywords: "kirjan julkaiseminen opas, omakustanne opas, äänikirja opas, kirjan markkinointi",
+    keywords: "Thunder Kustannus oppaat, kirjan julkaiseminen opas, omakustanne opas, äänikirja opas, kirjan markkinointi, hybridikustantamo",
   });
   return (
     <div className="min-h-screen bg-background text-foreground">

@@ -8,9 +8,10 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function Yhteystiedot() {
   useSEO({
-    title: "Yhteystiedot",
-    description: "Ota yhteyttä Thunder Kustannukseen. Vastaamme kaikkiin viesteihin 24 tunnin sisään. Pyydä tarjous kirjasi julkaisemisesta.",
+    title: "Thunder Kustannus — Yhteystiedot",
+    description: "Ota yhteyttä Thunder Kustannukseen. Vastaamme kaikkiin viesteihin 24 tunnin sisään. Pyydä tarjous kirjasi julkaisemisesta — info@thunderkustannus.fi",
     canonical: "/yhteystiedot",
+    keywords: "Thunder Kustannus yhteystiedot, ota yhteyttä, kirjan julkaiseminen, tarjous",
   });
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -19,7 +20,7 @@ export default function Yhteystiedot() {
         <div className="container max-w-3xl">
           <div className="mb-12">
             <span className="orange-line" />
-            <h1 className="thunder-heading text-5xl text-foreground mb-4">Yhteystiedot</h1>
+            <h1 className="thunder-heading text-5xl text-foreground mb-4">Thunder Kustannus — Yhteystiedot</h1>
             <p className="text-muted-foreground text-xl">Vastaamme kaikkiin viesteihin 24 tunnin sisällä.</p>
           </div>
 
