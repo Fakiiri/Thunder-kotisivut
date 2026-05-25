@@ -65,7 +65,7 @@ export default function Meista() {
               {[
                 { label: "Jakelu", value: "7+ kanavaa" },
                 { label: "Julkaisuaika", value: "4–8 viikkoa" },
-                { label: "Tekijänpalkkio", value: "70–80 %" },
+                { label: "Tekijänpalkkio", value: "60–70 %" },
                 { label: "Oikeudet", value: "Kirjailijalla" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center justify-between border-b border-border pb-4">

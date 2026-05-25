@@ -80,7 +80,7 @@ Oman kirjan julkaiseminen on helpompaa kuin koskaan ennen. Omakustantaminen on k
 
 ## Mitä omakustantaminen tarkoittaa?
 
-Omakustantaminen (self-publishing) tarkoittaa, että kirjailija itse vastaa kirjan julkaisemisesta — tai käyttää hybridikustantamoa apunaan. Toisin kuin perinteisessä kustantamisessa, kirjailija säilyttää täyden kontrollin sisältöön, hintaan ja tekijänoikeuksiin. Tämä tarkoittaa myös, että suurempi osa myyntituloista jää kirjailijalle itselleen: tyypillisesti 70–80 % verrattuna perinteisen kustantamon 8–15 prosenttiin.
+Omakustantaminen (self-publishing) tarkoittaa, että kirjailija itse vastaa kirjan julkaisemisesta — tai käyttää hybridikustantamoa apunaan. Toisin kuin perinteisessä kustantamisessa, kirjailija säilyttää täyden kontrollin sisältöön, hintaan ja tekijänoikeuksiin. Tämä tarkoittaa myös, että suurempi osa myyntituloista jää kirjailijalle itselleen: tyypillisesti 60–70 % verrattuna perinteisen kustantamon 8–15 prosenttiin.
 
 Hybridikustantamo, kuten Thunder Kustannus, toimii välimaastossa: kirjailija maksaa julkaisuprosessista, mutta saa ammattilaisten avun taittoon, kansisuunnitteluun, ISBN-tunnukseen ja jakeluun — ilman, että luovuttaa oikeuksiaan tai kontrolliaan.
 
@@ -166,7 +166,7 @@ Hybridikustantamo (kuten Thunder Kustannus) tarjoaa parhaan yhdistelmän: kirjai
 
 **Julkaisu 4–8 viikossa.** Kun käsikirjoitus on valmis, prosessi etenee nopeasti. Ei odottelua, ei hylkäyskirjeitä.
 
-**Kirjailija saa 70–80 % myyntituloista.** Hybridikustantamon mallissa kirjailija maksaa julkaisuprosessista kerran ja saa sen jälkeen suurimman osan myyntituloista itselleen.
+**Kirjailija saa 60–70 % myyntituloista.** Hybridikustantamon mallissa kirjailija maksaa julkaisuprosessista kerran ja saa sen jälkeen suurimman osan myyntituloista itselleen.
 
 **Täysi kontrolli sisältöön ja hintaan.** Sinä päätät, mitä kirjassasi sanotaan, miltä se näyttää ja mihin hintaan sitä myydään. Kustantamo ei voi vaatia muutoksia sisältöön.
 
@@ -188,7 +188,7 @@ Asiantuntijakirja on yksi tehokkaimmista markkinointivälineistä. Se rakentaa u
 |---|---|---|
 | Hyväksymisprosentti | alle 1 % | 100 % |
 | Aika julkaisuun | 1–3 vuotta | 4–8 viikkoa |
-| Kirjailijan rojaltit | 8–15 % | 70–80 % |
+| Kirjailijan rojaltit | 8–15 % | 60–70 % |
 | Oikeudet | Kustantamolla | Kirjailijalla |
 | Kontrolli sisältöön | Rajattu | Täysi |
 | Kustannus kirjailijalle | 0 € (ennakko) | Palvelupaketti |
@@ -587,7 +587,7 @@ Julkaisumalli vaikuttaa suoraan siihen, kuinka suuren osan myyntituloista kirjai
 |---|---|
 | Perinteinen kustantamo | 8–15 % |
 | Hybridikustantamo (painettu) | 50–70 % |
-| Hybridikustantamo (e-kirja) | 70–80 % |
+| Hybridikustantamo (e-kirja) | 60–70 % |
 | Amazon KDP (e-kirja, hinta 2,99–9,99 €) | 70 % |
 | Suoratoistopalvelut (äänikirja) | 25–40 % |
 
@@ -727,7 +727,7 @@ Amazon KDP:ssä e-kirjan hinta 2,99–9,99 € tuo 70 % rojaltit; alle 2,99 € 
 | Tuotantokustannus | Matala | Korkea |
 | Varastointi | Ei tarvita | Tarvitaan |
 | Jakelu | Välitön | 2–4 viikkoa |
-| Rojaltit kirjailijalle | 70–80 % | 50–70 % |
+| Rojaltit kirjailijalle | 60–70 % | 50–60 % |
 | Lukijakokemus | Skaalautuva | Fyysinen |
 | Kirjastojakelu | Mahdollinen | Mahdollinen |
 
