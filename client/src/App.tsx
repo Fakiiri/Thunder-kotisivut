@@ -15,6 +15,8 @@ import Yhteystiedot from "./pages/Yhteystiedot";
 import CookieBanner from "./components/CookieBanner";
 import ScrollToTop from "./components/ScrollToTop";
 import LataaSivu from "./pages/LataaSivu";
+import ArvioRedirect from "./pages/ArvioRedirect";
+import TietosuojaRedirect from "./pages/TietosuojaRedirect";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -22,12 +24,12 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/hinnat" component={Hinnat} />
       <Route path="/tarjouspyynto" component={Tarjouspyynto} />
-      <Route path="/arvio" component={Tarjouspyynto} />
+      <Route path="/arvio" component={ArvioRedirect} />
       <Route path="/oppaat" component={Oppaat} />
       <Route path="/oppaat/:slug" component={Opas} />
       <Route path="/meista" component={Meista} />
       <Route path="/sopimusehdot" component={Sopimusehdot} />
-      <Route path="/tietosuoja" component={Sopimusehdot} />
+      <Route path="/tietosuoja" component={TietosuojaRedirect} />
       <Route path="/yhteystiedot" component={Yhteystiedot} />
       <Route path="/lataa-opas" component={LataaSivu} />
       <Route path="/404" component={NotFound} />
