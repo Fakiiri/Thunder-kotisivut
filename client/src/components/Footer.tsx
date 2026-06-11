@@ -79,6 +79,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/25 text-xs">
             © {new Date().getFullYear()} {COMPANY.legalName}. Kaikki oikeudet pidätetään.
+            {" "}·{" "}Thunder Media Oy, Y-tunnus: 3575834-8
           </p>
           <div className="flex gap-6">
             <Link href="/sopimusehdot" className="text-white/25 hover:text-white/50 text-xs transition-colors">

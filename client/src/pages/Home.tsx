@@ -6,6 +6,7 @@ import { ArrowRight, BookOpen, Headphones, Store, CheckCircle2, ChevronRight } f
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PACKAGES, GUIDES, COMPANY } from "@/lib/data";
+import PrintCalculator from "@/components/PrintCalculator";
 import { motion } from "framer-motion";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663402214228/kjokCxRA3tYow9xSz5Mijk/thunder_hero-AGE9LdUsmSYMTtiyt2bza6.webp";
@@ -140,6 +141,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── KIRJAPAINOLASKURI ── */}
+      <PrintCalculator />
 
       {/* ── HINNAT — alt-tausta ── */}
       <section className="thunder-section thunder-section-alt">
