@@ -119,7 +119,7 @@ export default function PrintCalculator() {
   };
 
   return (
-    <section className="thunder-section bg-background">
+    <section className="py-12 md:py-16 bg-background">
       <div className="container max-w-3xl">
         {/* Otsikko */}
         <div className="text-center mb-10">
@@ -354,9 +354,14 @@ export default function PrintCalculator() {
           )}
         </div>
 
+        {/* Asteriski-huomio 32-sivuisesta */}
+        <p className="text-xs text-muted-foreground mt-3 text-center">
+          * 32-sivuinen teos on saatavilla vain paksulla 120g-paperilla (niittisidottu vihko).
+        </p>
+
         {/* Nollaa */}
         {calculated && (
-          <div className="text-center mt-4">
+          <div className="text-center mt-3">
             <button
               onClick={handleReset}
               className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-2"
