@@ -1,17 +1,18 @@
 // Thunder Kustannus — Kirjapainolaskuri
-// Hinnat: Druktava-hinnasto × 2.1 (kate) × 1.135 (ALV 13.5%)
+// Hinnat: Druktava-hinnasto, porrastettu kate (x3.0 / x2.5 / x2.1) + ALV 13.5%
 // Kannen materiaali: Metsä Board
+// Vain yhdistelmät joille on hinta Excelissä näytetään
 
 import { useState, useMemo } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Calculator, AlertCircle, BookOpen } from "lucide-react";
-import { SOFTCOVER_PRICING, QUANTITIES, PAGE_COUNTS } from "@/lib/pricingData";
+import { SOFTCOVER_PRICING, QUANTITIES } from "@/lib/pricingData";
 
 // Paperin nimet suomeksi
 const PAPER_LABELS: Record<string, string> = {
   "80g Standard": "80g — kevyt (romaanit, runot)",
   "100g Standard": "100g — standardi (tietokirjat)",
-  "120g Standard": "120g — paksu (kuvakirjat, oppaat)",
+  "120g Standard": "120g — paksu (kuvakirjat, oppaat, vihot)",
 };
 
 // Koon nimet
@@ -23,9 +24,8 @@ const FORMAT_LABELS: Record<string, string> = {
   "210x297": "210 × 297 mm",
 };
 
-// Haetaan uniikkit formaatit ja paperit datasta
-const FORMATS = Array.from(new Set(SOFTCOVER_PRICING.map((d) => d.format)));
-const PAPERS = Array.from(new Set(SOFTCOVER_PRICING.map((d) => d.paper)));
+// Kaikki uniikkit formaatit
+const ALL_FORMATS = Array.from(new Set(SOFTCOVER_PRICING.map((d) => d.format)));
 
 function fmt(n: number) {
   return n.toLocaleString("fi-FI", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -38,6 +38,33 @@ export default function PrintCalculator() {
   const [qty, setQty] = useState<number | "">("");
   const [calculated, setCalculated] = useState(false);
 
+  // Dynaaminen filtteröinti: mitä papereita on saatavilla valitulle koolle?
+  const availablePapers = useMemo(() => {
+    if (!format) return [];
+    return Array.from(
+      new Set(SOFTCOVER_PRICING.filter((d) => d.format === format).map((d) => d.paper))
+    );
+  }, [format]);
+
+  // Mitä sivumääriä on saatavilla valitulle koolle + paperille?
+  const availablePages = useMemo(() => {
+    if (!format || !paper) return [];
+    return SOFTCOVER_PRICING
+      .filter((d) => d.format === format && d.paper === paper)
+      .map((d) => d.pages)
+      .sort((a, b) => a - b);
+  }, [format, paper]);
+
+  // Mitä painosmääriä on saatavilla valitulle yhdistelmälle?
+  const availableQtys = useMemo(() => {
+    if (!format || !paper || pages === "") return [];
+    const entry = SOFTCOVER_PRICING.find(
+      (d) => d.format === format && d.paper === paper && d.pages === Number(pages)
+    );
+    if (!entry) return [];
+    return QUANTITIES.filter((q) => (entry.prices as Record<string, number>)[String(q)] != null);
+  }, [format, paper, pages]);
+
   // Validointi
   const allFilled = format && paper && pages !== "" && qty !== "";
 
@@ -48,7 +75,7 @@ export default function PrintCalculator() {
       (d) => d.format === format && d.paper === paper && d.pages === Number(pages)
     );
     if (!entry) return null;
-    const unitPrice = (entry.prices as Record<string, number | null>)[String(qty)];
+    const unitPrice = (entry.prices as Record<string, number>)[String(qty)];
     if (!unitPrice) return null;
     const totalPrice = unitPrice * Number(qty);
     const spine = entry.spine_mm;
@@ -69,6 +96,28 @@ export default function PrintCalculator() {
     setCalculated(false);
   };
 
+  // Resetoi alavalintoja kun ylävalinta muuttuu
+  const handleFormatChange = (v: string) => {
+    setFormat(v);
+    setPaper("");
+    setPages("");
+    setQty("");
+    setCalculated(false);
+  };
+
+  const handlePaperChange = (v: string) => {
+    setPaper(v);
+    setPages("");
+    setQty("");
+    setCalculated(false);
+  };
+
+  const handlePagesChange = (v: number | "") => {
+    setPages(v);
+    setQty("");
+    setCalculated(false);
+  };
+
   return (
     <section className="thunder-section bg-background">
       <div className="container max-w-3xl">
@@ -81,7 +130,7 @@ export default function PrintCalculator() {
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             Pehmeäkantinen kirja. Kannen materiaali:{" "}
             <span className="text-foreground font-semibold">Metsä Board</span>.
-            Hinnat sisältävät ALV 13,5&nbsp;%.
+            Hinnat sisältävät ALV&nbsp;13,5&nbsp;%.
           </p>
         </div>
 
@@ -96,11 +145,11 @@ export default function PrintCalculator() {
               </label>
               <select
                 value={format}
-                onChange={(e) => { setFormat(e.target.value); setCalculated(false); }}
+                onChange={(e) => handleFormatChange(e.target.value)}
                 className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
               >
                 <option value="">Valitse koko…</option>
-                {FORMATS.map((f) => (
+                {ALL_FORMATS.map((f) => (
                   <option key={f} value={f}>
                     {FORMAT_LABELS[f] ?? f}
                   </option>
@@ -108,18 +157,19 @@ export default function PrintCalculator() {
               </select>
             </div>
 
-            {/* Paperin tyyppi */}
+            {/* Paperin tyyppi — näyttää vain saatavilla olevat */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
                 Paperin tyyppi
               </label>
               <select
                 value={paper}
-                onChange={(e) => { setPaper(e.target.value); setCalculated(false); }}
-                className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                onChange={(e) => handlePaperChange(e.target.value)}
+                disabled={!format}
+                className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-40"
               >
-                <option value="">Valitse paperi…</option>
-                {PAPERS.map((p) => (
+                <option value="">{format ? "Valitse paperi…" : "Valitse ensin koko"}</option>
+                {availablePapers.map((p) => (
                   <option key={p} value={p}>
                     {PAPER_LABELS[p] ?? p}
                   </option>
@@ -130,18 +180,19 @@ export default function PrintCalculator() {
 
           {/* Rivi 2: Sivumäärä + Painosmäärä */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {/* Sivumäärä */}
+            {/* Sivumäärä — näyttää vain saatavilla olevat */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
                 Sivumäärä
               </label>
               <select
                 value={pages}
-                onChange={(e) => { setPages(e.target.value === "" ? "" : Number(e.target.value)); setCalculated(false); }}
-                className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                onChange={(e) => handlePagesChange(e.target.value === "" ? "" : Number(e.target.value))}
+                disabled={!paper}
+                className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-40"
               >
-                <option value="">Valitse sivumäärä…</option>
-                {PAGE_COUNTS.map((p) => (
+                <option value="">{paper ? "Valitse sivumäärä…" : "Valitse ensin paperi"}</option>
+                {availablePages.map((p) => (
                   <option key={p} value={p}>
                     {p} sivua{p === 32 ? " (vihko)" : ""}
                   </option>
@@ -149,7 +200,7 @@ export default function PrintCalculator() {
               </select>
             </div>
 
-            {/* Painosmäärä */}
+            {/* Painosmäärä — näyttää vain saatavilla olevat */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
                 Painosmäärä (kpl)
@@ -157,10 +208,11 @@ export default function PrintCalculator() {
               <select
                 value={qty}
                 onChange={(e) => { setQty(e.target.value === "" ? "" : Number(e.target.value)); setCalculated(false); }}
-                className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                disabled={pages === ""}
+                className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-40"
               >
-                <option value="">Valitse määrä…</option>
-                {QUANTITIES.map((q) => (
+                <option value="">{pages !== "" ? "Valitse määrä…" : "Valitse ensin sivumäärä"}</option>
+                {availableQtys.map((q) => (
                   <option key={q} value={q}>
                     {q} kpl
                   </option>
