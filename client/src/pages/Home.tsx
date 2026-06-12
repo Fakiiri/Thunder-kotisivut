@@ -20,7 +20,8 @@ const fadeUp = {
 };
 
 export default function Home() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const pkgTranslations = lang === "en" && t.pricing?.packages ? t.pricing.packages : undefined;
   useSEO({
     title: "Julkaise kirjasi ammattimaisesti",
     description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin — painettu kirja, e-kirja ja äänikirja. Sinulla pysyvät oikeudet ja 70–80 % myyntituloista.",
@@ -182,7 +183,9 @@ export default function Home() {
                   </div>
                 )}
                 <div className="mb-6">
-                  <p className="text-muted-foreground text-xs uppercase tracking-widest mb-1">{pkg.tagline}</p>
+                  <p className="text-muted-foreground text-xs uppercase tracking-widest mb-1">
+                    {pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.tagline : pkg.tagline}
+                  </p>
                   <h3 className="text-foreground text-2xl font-bold mb-3">{pkg.name}</h3>
                   <div className="flex items-baseline gap-1">
                     <span className="thunder-orange text-4xl font-extrabold">{pkg.price} €</span>
@@ -190,14 +193,14 @@ export default function Home() {
                   </div>
                 </div>
                 <ul className="space-y-2 mb-7 flex-1">
-                  {pkg.features.slice(0, 5).map((f) => (
+                  {(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features).slice(0, 5).map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-foreground/80">
                       <CheckCircle2 className="w-4 h-4 thunder-orange mt-0.5 flex-shrink-0" />
                       {f}
                     </li>
                   ))}
-                  {pkg.features.length > 5 && (
-                    <li className="text-muted-foreground text-xs pl-6">+ {pkg.features.length - 5} {t.home.pricingMore2}</li>
+                  {(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features).length > 5 && (
+                    <li className="text-muted-foreground text-xs pl-6">+ {(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features).length - 5} {t.home.pricingMore2}</li>
                   )}
                 </ul>
                 <Link
@@ -206,7 +209,7 @@ export default function Home() {
                     pkg.highlight ? "thunder-btn-primary" : "thunder-btn-outline"
                   }`}
                 >
-                  {pkg.cta}
+                  {lang === "en" ? "Get a free estimate" : pkg.cta}
                 </Link>
               </motion.div>
             ))}

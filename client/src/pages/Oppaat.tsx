@@ -1,18 +1,23 @@
-// Thunder Kustannus — Oppaat-listaussivu v2 (vaalea)
+// Thunder Kustannus — Oppaat-listaussivu v3 (FI/EN)
 import { Link } from "wouter";
 import { ArrowRight, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { GUIDES } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function Oppaat() {
+  const { t, lang } = useLang();
   useSEO({
     title: "Thunder Kustannus — Oppaat kirjailijoille",
     description: "Thunder Kustannuksen ilmaiset oppaat kirjailijoille: kirjan julkaiseminen, omakustanne, äänikirja, e-kirja, markkinointi ja jakelu. Käsikirjoituksesta valmiiseen kirjaan.",
     canonical: "/oppaat",
     keywords: "Thunder Kustannus oppaat, kirjan julkaiseminen opas, omakustanne opas, äänikirja opas, kirjan markkinointi, julkaisualusta",
   });
+
+  const g = t.guides;
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -21,11 +26,16 @@ export default function Oppaat() {
           <div className="max-w-2xl mb-14">
             <span className="orange-line" />
             <h1 className="thunder-heading text-5xl md:text-6xl text-foreground mb-4">
-              Oppaat kirjailijoille
+              {g?.h1 ?? "Oppaat kirjailijoille"}
             </h1>
             <p className="text-muted-foreground text-xl leading-relaxed">
-              Kaikki mitä tarvitset oman kirjan julkaisemiseen — käsikirjoituksesta valmiiseen kirjaan, markkinointiin ja jakeluun.
+              {g?.lead ?? "Kaikki mitä tarvitset oman kirjan julkaisemiseen — käsikirjoituksesta valmiiseen kirjaan, markkinointiin ja jakeluun."}
             </p>
+            {lang === "en" && g?.guidesOnlyFi && (
+              <p className="mt-4 text-sm text-muted-foreground italic border border-border rounded-lg px-4 py-3 bg-white">
+                {g.guidesOnlyFi}
+              </p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -48,7 +58,7 @@ export default function Oppaat() {
                         {guide.readTime}
                       </div>
                       <span className="thunder-orange text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Lue <ArrowRight className="w-3.5 h-3.5" />
+                        {g?.readLabel ?? "Lue"} <ArrowRight className="w-3.5 h-3.5" />
                       </span>
                     </div>
                   </div>
@@ -59,13 +69,13 @@ export default function Oppaat() {
 
           <div className="mt-20 text-center bg-white border border-border rounded-xl p-12 shadow-sm">
             <h2 className="thunder-heading text-3xl text-foreground mb-4">
-              Valmis julkaisemaan kirjasi?
+              {g?.ctaTitle ?? "Valmis julkaisemaan kirjasi?"}
             </h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              Oppaat antavat tietoa — me hoidamme käytännön työn. Pyydä ilmainen arvio kirjaprojektistasi.
+              {g?.ctaLead ?? "Oppaat antavat tietoa — me hoidamme käytännön työn. Pyydä ilmainen arvio kirjaprojektistasi."}
             </p>
             <Link href="/tarjouspyynto" className="thunder-btn-primary px-8 py-4 rounded-lg font-bold inline-flex items-center gap-2">
-              Pyydä ilmainen arvio <ArrowRight className="w-4 h-4" />
+              {g?.ctaBtn ?? "Pyydä ilmainen arvio"} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

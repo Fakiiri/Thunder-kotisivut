@@ -29,7 +29,7 @@ export default function Footer() {
                 href="https://www.instagram.com/thunderkustannus/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Thunder Kustannus Instagramissa"
+                aria-label="Thunder Kustannus on Instagram"
                 className="text-white/35 hover:text-orange-400 transition-colors"
               >
                 <Instagram className="w-5 h-5" />
@@ -38,7 +38,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/thunder-kustannus"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Thunder Kustannus LinkedInissä"
+                aria-label="Thunder Kustannus on LinkedIn"
                 className="text-white/35 hover:text-orange-400 transition-colors"
               >
                 <Linkedin className="w-5 h-5" />

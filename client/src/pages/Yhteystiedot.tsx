@@ -1,4 +1,4 @@
-// Thunder Kustannus — Yhteystiedot v2 (vaalea)
+// Thunder Kustannus — Yhteystiedot v3 (FI/EN)
 import { Link } from "wouter";
 import { Mail, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -8,13 +8,16 @@ import { useSEO } from "@/hooks/useSEO";
 import { useLang } from "@/contexts/LanguageContext";
 
 export default function Yhteystiedot() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const ce = t.contactExtended;
+
   useSEO({
     title: "Thunder Kustannus — Yhteystiedot",
     description: "Ota yhteyttä Thunder Kustannukseen. Vastaamme kaikkiin viesteihin 24 tunnin sisään. Pyydä ilmainen arvio kirjaprojektistasi — info@thunderkustannus.fi",
     canonical: "/yhteystiedot",
     keywords: "Thunder Kustannus yhteystiedot, ota yhteyttä, kirjan julkaiseminen, ilmainen arvio",
   });
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -23,7 +26,9 @@ export default function Yhteystiedot() {
           <div className="mb-12">
             <span className="orange-line" />
             <h1 className="thunder-heading text-5xl text-foreground mb-4">{t.contact.h1}</h1>
-            <p className="text-muted-foreground text-xl">Vastaamme kaikkiin viesteihin 24 tunnin sisällä.</p>
+            <p className="text-muted-foreground text-xl">
+              {ce?.lead ?? "Vastaamme kaikkiin viesteihin 24 tunnin sisällä."}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
@@ -31,19 +36,27 @@ export default function Yhteystiedot() {
               <div className="w-10 h-10 rounded-lg thunder-orange-bg flex items-center justify-center mb-4">
                 <Mail className="w-5 h-5 text-white" />
               </div>
-              <h3 className="text-foreground font-bold text-lg mb-2">Sähköposti</h3>
+              <h3 className="text-foreground font-bold text-lg mb-2">
+                {ce?.emailLabel ?? "Sähköposti"}
+              </h3>
               <a href={`mailto:${COMPANY.email}`} className="thunder-orange hover:underline text-sm">
                 {COMPANY.email}
               </a>
-              <p className="text-muted-foreground text-xs mt-2">Vastaamme 24h sisällä</p>
+              <p className="text-muted-foreground text-xs mt-2">
+                {ce?.emailNote ?? "Vastaamme 24h sisällä"}
+              </p>
             </div>
 
             <div className="thunder-card p-8">
               <div className="w-10 h-10 rounded-lg thunder-orange-bg flex items-center justify-center mb-4">
                 <ArrowRight className="w-5 h-5 text-white" />
               </div>
-              <h3 className="text-foreground font-bold text-lg mb-2">Nopein tapa</h3>
-              <p className="text-muted-foreground text-sm mb-4">Pyydä ilmainen arvio kirjaprojektistasi — saat henkilökohtaisen vastauksen nopeimmin.</p>
+              <h3 className="text-foreground font-bold text-lg mb-2">
+                {ce?.fastestLabel ?? "Nopein tapa"}
+              </h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                {ce?.fastestDesc ?? "Pyydä ilmainen arvio kirjaprojektistasi — saat henkilökohtaisen vastauksen nopeimmin."}
+              </p>
               <Link href="/tarjouspyynto" className="thunder-btn-primary px-5 py-2.5 rounded-lg text-sm font-bold inline-block">
                 {t.contact.ctaBtn}
               </Link>
@@ -52,7 +65,9 @@ export default function Yhteystiedot() {
 
           <div className="thunder-card p-6">
             <h3 className="text-foreground font-bold mb-1">{COMPANY.legalName}</h3>
-            <p className="text-muted-foreground text-sm">Suomalainen julkaisualusta</p>
+            <p className="text-muted-foreground text-sm">
+              {ce?.companyDesc ?? "Suomalainen julkaisualusta"}
+            </p>
           </div>
         </div>
       </div>

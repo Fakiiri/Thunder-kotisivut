@@ -7,12 +7,21 @@ import Footer from "@/components/Footer";
 import { PACKAGES } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
 import { useLang } from "@/contexts/LanguageContext";
-import type { PackageTranslation } from "@/lib/i18n";
+import type { PackageTranslation, FaqItem } from "@/lib/i18n";
 
 export default function Hinnat() {
   const { t, lang } = useLang();
   const pkgTranslations: readonly PackageTranslation[] | undefined =
     lang === "en" && t.pricing.packages ? t.pricing.packages : undefined;
+
+  const FI_FAQ = [
+    { q: "Kuinka kauan julkaisuprosessi kestää?", a: "Tyypillisesti 4–8 viikkoa käsikirjoituksen vastaanottamisesta valmiiseen kirjaan. Äänikirjan tuotanto voi lisätä 2–4 viikkoa." },
+    { q: "Säilytänkö oikeudet kirjaani?", a: "Kyllä, täysin. Kirjailija omistaa aina tekijänoikeudet kirjaansa. Me hoidamme julkaisuprosessin, mutta oikeudet pysyvät sinulla." },
+    { q: "Miten tekijänpalkkiot maksetaan?", a: "Maksamme tekijänpalkkiot neljännesvuosittain. Saat yksityiskohtaiset myyntiraportit kaikista jakelukanavista." },
+    { q: "Voinko muuttaa kirjan hintaa myöhemmin?", a: "Kyllä. Voit muuttaa kirjan myyntihintaa milloin tahansa — me päivitämme hinnan kaikkiin jakelukanaviin." },
+    { q: "Mitä tapahtuu jos haluan lopettaa sopimuksen?", a: "Sopimus on irtisanottavissa 3 kuukauden varoitusajalla. Kirjasi poistetaan jakelusta ja oikeudet pysyvät sinulla." },
+  ];
+  const faqItems: readonly FaqItem[] = lang === "en" && t.pricingFaq ? t.pricingFaq : FI_FAQ;
   useSEO({
     title: "Thunder Kustannus — Hinnat ja julkaisupaketit",
     description: "Thunder Kustannuksen julkaisupaketit: Digi 890 €, Printti 1 690 €, Premium 2 990 €. Kaikki sisältävät taiton, kansisuunnittelun, ISBN-tunnuksen ja jakelun. Hinnat sis. ALV 25,5 %.",
@@ -147,15 +156,11 @@ export default function Hinnat() {
 
           {/* FAQ */}
           <div className="max-w-3xl mx-auto">
-            <h2 className="thunder-heading text-3xl text-foreground mb-8 text-center">Usein kysytyt kysymykset</h2>
+            <h2 className="thunder-heading text-3xl text-foreground mb-8 text-center">
+              {lang === "en" ? "Frequently asked questions" : "Usein kysytyt kysymykset"}
+            </h2>
             <div className="space-y-3">
-              {[
-                { q: "Kuinka kauan julkaisuprosessi kestää?", a: "Tyypillisesti 4–8 viikkoa käsikirjoituksen vastaanottamisesta valmiiseen kirjaan. Äänikirjan tuotanto voi lisätä 2–4 viikkoa." },
-                { q: "Säilytänkö oikeudet kirjaani?", a: "Kyllä, täysin. Kirjailija omistaa aina tekijänoikeudet kirjaansa. Me hoidamme julkaisuprosessin, mutta oikeudet pysyvät sinulla." },
-                { q: "Miten tekijänpalkkiot maksetaan?", a: "Maksamme tekijänpalkkiot neljännesvuosittain. Saat yksityiskohtaiset myyntiraportit kaikista jakelukanavista." },
-                { q: "Voinko muuttaa kirjan hintaa myöhemmin?", a: "Kyllä. Voit muuttaa kirjan myyntihintaa milloin tahansa — me päivitämme hinnan kaikkiin jakelukanaviin." },
-                { q: "Mitä tapahtuu jos haluan lopettaa sopimuksen?", a: "Sopimus on irtisanottavissa 3 kuukauden varoitusajalla. Kirjasi poistetaan jakelusta ja oikeudet pysyvät sinulla." },
-              ].map((item) => (
+              {faqItems.map((item) => (
                 <details
                   key={item.q}
                   className="group border border-border rounded-xl bg-white overflow-hidden"

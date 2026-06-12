@@ -137,6 +137,12 @@ export const translations = {
       terms: "Sopimusehdot",
       privacy: "Tietosuojaseloste",
       rights: "Kaikki oikeudet pidätetään.",
+      services: "Palvelut",
+      pricing: "Hinnat",
+      estimate: "Pyydä ilmainen arvio",
+      guides: "Oppaat",
+      about: "Meistä",
+      distribution: "Jakelu",
     },
   },
 
@@ -317,7 +323,181 @@ export const translations = {
       terms: "Terms of service",
       privacy: "Privacy policy",
       rights: "All rights reserved.",
+      services: "Services",
+      pricing: "Pricing",
+      estimate: "Get a free estimate",
+      guides: "Guides",
+      about: "About",
+      distribution: "Distribution",
     },
+
+    // Guides page
+    guides: {
+      h1: "Guides for authors",
+      lead: "Everything you need to publish your own book — from manuscript to finished book, marketing and distribution.",
+      readLabel: "Read",
+      ctaTitle: "Ready to publish your book?",
+      ctaLead: "Guides give you knowledge — we handle the practical work. Request a free estimate for your book project.",
+      ctaBtn: "Get a free estimate",
+      guidesOnlyFi: "Guides are currently available in Finnish only.",
+    },
+
+    // About page (extended)
+    aboutExtended: {
+      origin: "Thunder Kustannus was born from one simple observation: authors have stories, but they lack the tools or knowledge to publish them professionally. We built the platform to change that.",
+      whyTitle: "Why Thunder Kustannus?",
+      why1: "Traditional publishers reject over 99% of manuscripts. The process takes years. The author receives only a fraction of sales revenue.",
+      why2: "At the other extreme is fully self-publishing — but that requires expertise from typesetting to negotiating distribution agreements and marketing.",
+      why3: "Thunder Kustannus is the third way: a publishing platform for authors that combines professional publishing services with full author control. You own your book and receive the largest share of revenue — we handle typesetting, cover design, ISBN and distribution.",
+      statsDistribution: "Distribution",
+      statsDistributionValue: "7+ channels",
+      statsTime: "Publishing time",
+      statsTimeValue: "4–8 weeks",
+      statsRoyalty: "Author royalty",
+      statsRoyaltyValue: "60–70 %",
+      statsRights: "Rights",
+      statsRightsValue: "Author's",
+      valuesTitle: "Our values",
+      value1Title: "Transparency",
+      value1Desc: "Clear prices, clear contracts. You always know exactly what you get and what it costs.",
+      value2Title: "Author rights",
+      value2Desc: "You own your book. Always. We are a service provider, not a rights holder.",
+      value3Title: "Quality",
+      value3Desc: "Professional typesetting, cover design and audiobook production. Your book deserves the best.",
+      distributionTitle: "Our distribution network",
+      companyDesc: "Finnish publishing platform",
+    },
+
+    // Contact page (extended)
+    contactExtended: {
+      lead: "We respond to all messages within 24 hours.",
+      emailLabel: "Email",
+      emailNote: "We respond within 24h",
+      fastestLabel: "Fastest way",
+      fastestDesc: "Request a free estimate for your book project — you'll receive a personal response fastest.",
+      companyDesc: "Finnish publishing platform",
+    },
+
+    // Estimate form (extended)
+    estimateForm: {
+      lead: "Fill in the form carefully — the more you tell us about your book, the more accurate estimate we can provide. We respond within 24 hours. No commitments.",
+      trust1: "We call you",
+      trust2: "Response within 24h",
+      trust3: "No commitments",
+      contactSection: "Contact information",
+      nameLabel: "Name",
+      namePlaceholder: "First Last",
+      emailLabel: "Email",
+      emailPlaceholder: "you@example.com",
+      phoneLabel: "Phone number",
+      phoneNote: "(we will call you)",
+      packageLabel: "Package of interest",
+      packagePlaceholder: "Select package",
+      packageCustom: "Custom package",
+      packageUnknown: "Not sure yet",
+      bookSection: "Book details",
+      bookTitleLabel: "Book (working) title or topic",
+      bookTitlePlaceholder: "E.g. Entrepreneur's survival guide or My memoirs",
+      genreLabel: "Genre / topic",
+      genrePlaceholder: "Select genre",
+      genreNonFiction: "Non-fiction",
+      genreNovel: "Novel",
+      genreMemo: "Autobiography / memoirs",
+      genreBusiness: "Business / entrepreneurship",
+      genreChildren: "Children's book",
+      genrePoetry: "Poetry",
+      genreTextbook: "Textbook / guide",
+      genreOther: "Other",
+      pagesLabel: "Estimated page count",
+      pagesPlaceholder: "Select",
+      pagesUnder100: "Under 100 pages",
+      pages100200: "100–200 pages",
+      pages200300: "200–300 pages",
+      pagesOver300: "Over 300 pages",
+      pagesDontKnow: "Don't know yet",
+      manuscriptLabel: "Manuscript status",
+      manuscriptPlaceholder: "Select",
+      manuscriptReady: "Ready — can start immediately",
+      manuscriptAlmost: "Almost ready (1–4 weeks)",
+      manuscriptInProgress: "In progress (1–3 months)",
+      manuscriptIdea: "Just an idea — I'd like advice",
+      audiobookLabel: "Do you want an audiobook?",
+      audiobookPlaceholder: "Select",
+      audiobookYes: "Yes, definitely",
+      audiobookNo: "Not this time",
+      audiobookMaybe: "Maybe — I'd like more information",
+      timelineLabel: "Desired publishing timeline",
+      timelinePlaceholder: "Select",
+      timeline1m: "Within 1 month",
+      timeline13m: "Within 1–3 months",
+      timeline36m: "Within 3–6 months",
+      timelineOver6m: "Over 6 months",
+      timelineNoRush: "No rush — I want to learn more first",
+      additionalSection: "Additional information",
+      additionalDesc: "Tell us freely about your book, goals or questions. The more you share, the better we can help.",
+      additionalPlaceholder: "E.g. My book is about... My goal is... I have a question...",
+      consentText: "I have read the",
+      consentTerms: "terms of service",
+      consentAnd: "and agree that Thunder Kustannus may process my information for the purpose of the estimate request. I can also be contacted by phone at the number I provided.",
+      submitNote: "We respond within 24 hours. No commitments. Your information will not be shared with third parties.",
+      errorGeneral: "Form submission failed. Please try again or contact us: info@thunderkustannus.fi",
+      errorNetwork: "Network error. Check your connection and try again.",
+      successTitle: "Estimate received!",
+      successThank: "Thank you for reaching out,",
+      successContact: "We will contact you within 24 hours — by phone at",
+      successOr: "or by email at",
+    },
+
+    // Guide download page
+    download: {
+      badge: "Free guide",
+      h1Part1: "Book publishing",
+      h1Highlight: "10-step",
+      h1Part2: "checklist",
+      lead: "Everything you need from manuscript to a finished, sellable book — step by step. Download the PDF and start the publishing process today.",
+      check1: "Applying for an ISBN number and barcode",
+      check2: "Choosing the publishing format (print, e-book, audiobook)",
+      check3: "Cover design and typesetting",
+      check4: "Distribution channels: Storytel, Suomalainen Kirjakauppa and more",
+      check5: "Marketing before and after publication",
+      pdfNote: "PDF guide · 10 steps · Free",
+      formTitle: "Download guide for free",
+      formLead: "Enter your email address and we'll send the guide straight to your inbox.",
+      nameLabel: "First name",
+      namePlaceholder: "John",
+      emailLabel: "Email",
+      submitBtn: "Download free guide",
+      submitting: "Sending...",
+      noSpam: "No spam. You can unsubscribe at any time.",
+      successTitle: "Thank you!",
+      successText: "The guide is available below. We also sent it to your email.",
+      downloadBtn: "Download PDF",
+      errorDefault: "Something went wrong. Please try again.",
+    },
+
+    // Pricing FAQ
+    pricingFaq: [
+      {
+        q: "How long does the publishing process take?",
+        a: "Typically 4–8 weeks from receiving the manuscript to a finished book. Audiobook production may add 2–4 weeks.",
+      },
+      {
+        q: "Do I retain the rights to my book?",
+        a: "Yes, fully. The author always owns the copyright to their book. We handle the publishing process, but the rights remain with you.",
+      },
+      {
+        q: "How are royalties paid?",
+        a: "We pay royalties quarterly. You receive detailed sales reports from all distribution channels.",
+      },
+      {
+        q: "Can I change the book price later?",
+        a: "Yes. You can change the retail price of your book at any time — we update the price across all distribution channels.",
+      },
+      {
+        q: "What happens if I want to terminate the contract?",
+        a: "The contract can be terminated with 3 months' notice. Your book will be removed from distribution and the rights remain with you.",
+      },
+    ],
   },
 } as const;
 
@@ -328,6 +508,8 @@ export type PackageTranslation = {
   features: readonly string[];
   notIncluded: readonly string[];
 };
+
+export type FaqItem = { q: string; a: string };
 
 // Use a structural type so both fi and en are assignable
 export type Translations = {
@@ -350,4 +532,11 @@ export type Translations = {
   estimate: Record<string, string>;
   calc: Record<string, string>;
   footer: Record<string, string>;
+  // Optional extended sections (EN only)
+  guides?: Record<string, string>;
+  aboutExtended?: Record<string, string>;
+  contactExtended?: Record<string, string>;
+  estimateForm?: Record<string, string>;
+  download?: Record<string, string>;
+  pricingFaq?: readonly FaqItem[];
 };
