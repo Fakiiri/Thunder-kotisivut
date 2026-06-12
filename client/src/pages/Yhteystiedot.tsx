@@ -42,8 +42,10 @@ export default function Yhteystiedot() {
               <a href={`mailto:${COMPANY.email}`} className="thunder-orange hover:underline text-sm">
                 {COMPANY.email}
               </a>
-              <p className="text-muted-foreground text-xs mt-2">
-                {ce?.emailNote ?? "Vastaamme 24h sisällä"}
+              <p className="text-muted-foreground text-xs mt-3 leading-relaxed">
+                {lang === "en"
+                  ? ce?.emailNote
+                  : "Tästä sähköpostista voit myös varata soittoajan. Vastaamme sinulle 24h sisällä."}
               </p>
             </div>
 

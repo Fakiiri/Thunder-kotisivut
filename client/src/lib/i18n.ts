@@ -79,7 +79,7 @@ export const translations = {
     // Contact page
     contact: {
       title: "Yhteystiedot — Thunder Kustannus",
-      h1: "Otetaan yhteyttä",
+      h1: "Ota meihin yhteyttä",
       lead: "Haluatko tietää lisää kirjaprojektistasi? Lähetä meille viesti tai pyydä ilmainen arvio.",
       ctaBtn: "Pyydä ilmainen arvio",
     },
@@ -372,7 +372,7 @@ export const translations = {
     contactExtended: {
       lead: "We respond to all messages within 24 hours.",
       emailLabel: "Email",
-      emailNote: "We respond within 24h",
+      emailNote: "You can also book a call through this email. We respond within 24 hours.",
       fastestLabel: "Fastest way",
       fastestDesc: "Request a free estimate for your book project — you'll receive a personal response fastest.",
       companyDesc: "Finnish publishing platform",
