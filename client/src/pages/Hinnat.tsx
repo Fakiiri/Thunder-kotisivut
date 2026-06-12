@@ -7,9 +7,12 @@ import Footer from "@/components/Footer";
 import { PACKAGES } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
 import { useLang } from "@/contexts/LanguageContext";
+import type { PackageTranslation } from "@/lib/i18n";
 
 export default function Hinnat() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const pkgTranslations: readonly PackageTranslation[] | undefined =
+    lang === "en" && t.pricing.packages ? t.pricing.packages : undefined;
   useSEO({
     title: "Thunder Kustannus — Hinnat ja julkaisupaketit",
     description: "Thunder Kustannuksen julkaisupaketit: Digi 890 €, Printti 1 690 €, Premium 2 990 €. Kaikki sisältävät taiton, kansisuunnittelun, ISBN-tunnuksen ja jakelun. Hinnat sis. ALV 25,5 %.",
@@ -87,19 +90,25 @@ export default function Hinnat() {
                 )}
 
                 <div className="mb-8">
-                  <p className="text-muted-foreground text-xs uppercase tracking-widest mb-2">{pkg.tagline}</p>
+                  <p className="text-muted-foreground text-xs uppercase tracking-widest mb-2">
+                    {pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.tagline : pkg.tagline}
+                  </p>
                   <h2 className="text-foreground text-3xl font-extrabold mb-4">{pkg.name}</h2>
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="thunder-orange text-5xl font-extrabold">{pkg.price} €</span>
                     <span className="text-muted-foreground text-sm">{pkg.priceNote}</span>
                   </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{pkg.description}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.description : pkg.description}
+                  </p>
                 </div>
 
                 <div className="flex-1 mb-8">
-                  <p className="text-foreground/40 text-xs uppercase tracking-widest mb-4">Sisältyy</p>
+                  <p className="text-foreground/40 text-xs uppercase tracking-widest mb-4">
+                    {lang === "en" ? "Included" : "Sisältyy"}
+                  </p>
                   <ul className="space-y-3">
-                    {pkg.features.map((f) => (
+                    {(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features).map((f) => (
                       <li key={f} className="flex items-start gap-3 text-sm text-foreground/80">
                         <CheckCircle2 className="w-4 h-4 thunder-orange mt-0.5 flex-shrink-0" />
                         {f}
@@ -107,11 +116,13 @@ export default function Hinnat() {
                     ))}
                   </ul>
 
-                  {pkg.notIncluded.length > 0 && (
+                  {((pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.notIncluded ?? pkg.notIncluded : pkg.notIncluded).length > 0) && (
                     <>
-                      <p className="text-foreground/30 text-xs uppercase tracking-widest mt-6 mb-3">Ei sisälly</p>
+                      <p className="text-foreground/30 text-xs uppercase tracking-widest mt-6 mb-3">
+                        {lang === "en" ? "Not included" : "Ei sisälly"}
+                      </p>
                       <ul className="space-y-2">
-                        {pkg.notIncluded.map((f) => (
+                        {(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.notIncluded ?? pkg.notIncluded : pkg.notIncluded).map((f) => (
                           <li key={f} className="flex items-start gap-3 text-sm text-foreground/35">
                             <XCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
                             {f}

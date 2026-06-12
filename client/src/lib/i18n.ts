@@ -196,6 +196,50 @@ export const translations = {
       customTitle: "Need a custom solution?",
       customLead: "Contact us — we'll tailor a package for your specific book project.",
       customBtn: "Request a custom estimate",
+      packages: [
+        {
+          tagline: "Digital publishing",
+          description: "The complete digital publishing package for your book — e-book, audiobook and distribution to all Finnish streaming services.",
+          features: [
+            "Professional typesetting",
+            "Cover design",
+            "E-book (EPUB3)",
+            "Audiobook production",
+            "Distribution: Storytel, BookBeat, Nextory",
+            "Distribution: Spotify audiobooks",
+            "Distribution: Finnish libraries",
+            "ISBN number",
+            "Sales reports",
+          ],
+          notIncluded: ["Printed book", "Distribution to physical bookstores", "Marketing package"],
+        },
+        {
+          tagline: "Most popular choice",
+          description: "All digital services plus a printed book. Your book available in bookstores across Finland.",
+          features: [
+            "Everything in Digi package",
+            "50 printed copies",
+            "Distribution: Finnish Bookstore, Adlibris, Libraries, Storytel, BookBeat, Nextory, Spotify, Amazon, Kobo, Google Play Books",
+            "Storia agreement (bookstore distribution)",
+            "1 year warehousing",
+          ],
+          notIncluded: ["Marketing package", "Press release"],
+        },
+        {
+          tagline: "Market leader choice",
+          description: "Full-service package for the author who wants maximum visibility and a professional launch.",
+          features: [
+            "Everything in Printti package",
+            "100 printed copies",
+            "Marketing package",
+            "Press release (media)",
+            "Social media launch package",
+            "Author media training",
+            "Priority support 12 months",
+          ],
+          notIncluded: [],
+        },
+      ],
     },
 
     // About page
@@ -277,11 +321,30 @@ export const translations = {
   },
 } as const;
 
+// Package translation type
+export type PackageTranslation = {
+  tagline: string;
+  description: string;
+  features: readonly string[];
+  notIncluded: readonly string[];
+};
+
 // Use a structural type so both fi and en are assignable
 export type Translations = {
   nav: Record<string, string>;
   home: Record<string, string>;
-  pricing: Record<string, string>;
+  pricing: {
+    title: string;
+    h1: string;
+    lead: string;
+    popular: string;
+    more: string;
+    ctaBtn: string;
+    customTitle: string;
+    customLead: string;
+    customBtn: string;
+    packages?: readonly PackageTranslation[];
+  };
   about: Record<string, string>;
   contact: Record<string, string>;
   estimate: Record<string, string>;
