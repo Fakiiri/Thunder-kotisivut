@@ -159,6 +159,11 @@ export default function Home() {
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
               {t.home.pricingLead}
             </p>
+            <p className="mt-5 text-foreground/75 text-base max-w-2xl mx-auto leading-relaxed">
+              {lang === "en"
+                ? "You can order just the book printing at the price you calculated — only shipping costs are added. Or choose the package that suits your situation from the options below:"
+                : "Voit tilata meiltä pelkän kirjan painatuksen laskurista saamallasi hinnalla, vain toimituskulut lisätään. Voit myös valita tilanteeseesi sopivan paketin alla olevista vaihtoehdoista:"}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
