@@ -40,7 +40,13 @@ Päivitä DNS-asetukset domainrekisterissä Railway:n ohjeiden mukaan.
 
 ## Huomioita
 
-- PDF-opas on tallennettu Manuksen storageen (`/manus-storage/...`). 
-  Railwayssä tämä URL ei toimi. Lataa PDF uudelleen ja host se esim. Google Drivessä tai S3:ssa,
-  ja päivitä `PDF_DOWNLOAD_URL` muuttuja `server/routers.ts`-tiedostossa.
-- Manus OAuth (kirjautuminen) on poistettu käytöstä — sivusto toimii ilman sitä.
+- **PDF-opas** on nyt staattinen tiedosto: `client/public/downloads/opas.pdf` — toimii suoraan Railwayssa osoitteessa `/downloads/opas.pdf`.
+- **Manus OAuth** on poistettu — sivusto toimii ilman kirjautumista.
+- **Manus Storage** on poistettu — ei tarvita.
+- **Seuraavat muuttujat EI tarvita Railwayssa:** `VITE_APP_ID`, `OAUTH_SERVER_URL`, `VITE_OAUTH_PORTAL_URL`, `BUILT_IN_FORGE_API_URL`, `BUILT_IN_FORGE_API_KEY`, `VITE_FRONTEND_FORGE_API_KEY`, `VITE_FRONTEND_FORGE_API_URL`, `OWNER_OPEN_ID`, `OWNER_NAME`
+
+## Arvioitu hinta Railwayssa
+
+- Hobby-plan: ~5 USD/kk
+- MySQL: ~5 USD/kk
+- **Yhteensä: ~10 USD/kk (~9 €/kk)**

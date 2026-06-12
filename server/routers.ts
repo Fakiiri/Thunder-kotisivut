@@ -24,7 +24,7 @@ async function notifyOwnerByEmail(title: string, content: string): Promise<void>
   }
 }
 const BREVO_LIST_ID = parseInt(process.env.BREVO_LIST_ID || "2");
-const PDF_DOWNLOAD_URL = "https://thunderkustannus.fi/manus-storage/kirjan-julkaiseminen-tarkistuslista_f7baa0a3.pdf";
+const PDF_DOWNLOAD_URL = "https://thunderkustannus.fi/downloads/opas.pdf";
 
 async function addContactToBrevo(email: string, name?: string): Promise<void> {
   const body: Record<string, unknown> = {

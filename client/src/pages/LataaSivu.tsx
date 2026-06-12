@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { trpc } from "@/lib/trpc";
 import { useLang } from "@/contexts/LanguageContext";
 
-const PDF_URL = "/manus-storage/kirjan-julkaiseminen-tarkistuslista_f7baa0a3.pdf";
+const PDF_URL = "/downloads/opas.pdf";
 
 export default function LataaSivu() {
   const { t } = useLang();
