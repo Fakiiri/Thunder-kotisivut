@@ -3,9 +3,26 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
-import { notifyOwner } from "./_core/notification";
-
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
+
+// notifyOwner replaced with Brevo email for Railway compatibility
+async function notifyOwnerByEmail(title: string, content: string): Promise<void> {
+  if (!BREVO_API_KEY) return;
+  try {
+    await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "api-key": BREVO_API_KEY },
+      body: JSON.stringify({
+        sender: { name: "Thunder Kustannus", email: "info@thunderkustannus.fi" },
+        to: [{ email: "info@thunderkustannus.fi", name: "Thunder Kustannus" }],
+        subject: title,
+        textContent: content,
+      }),
+    });
+  } catch (e) {
+    console.error("Owner notification failed:", e);
+  }
+}
 const BREVO_LIST_ID = parseInt(process.env.BREVO_LIST_ID || "2");
 const PDF_DOWNLOAD_URL = "https://thunderkustannus.fi/manus-storage/kirjan-julkaiseminen-tarkistuslista_f7baa0a3.pdf";
 
@@ -125,10 +142,10 @@ export const appRouter = router({
         await sendPDFEmail(email, name);
 
         // 3. Ilmoita omistajalle uudesta liidistä
-        await notifyOwner({
-          title: "Uusi liidi: Opas ladattu",
-          content: `${name ? name + " (" + email + ")" : email} latasi kirjan julkaisemisen oppaan.`,
-        });
+        await notifyOwnerByEmail(
+          "Uusi liidi: Opas ladattu",
+          `${name ? name + " (" + email + ")" : email} latasi kirjan julkaisemisen oppaan.`
+        );
 
         return { success: true };
       }),
