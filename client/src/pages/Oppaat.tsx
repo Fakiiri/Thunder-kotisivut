@@ -11,7 +11,7 @@ export default function Oppaat() {
     title: "Thunder Kustannus — Oppaat kirjailijoille",
     description: "Thunder Kustannuksen ilmaiset oppaat kirjailijoille: kirjan julkaiseminen, omakustanne, äänikirja, e-kirja, markkinointi ja jakelu. Käsikirjoituksesta valmiiseen kirjaan.",
     canonical: "/oppaat",
-    keywords: "Thunder Kustannus oppaat, kirjan julkaiseminen opas, omakustanne opas, äänikirja opas, kirjan markkinointi, hybridikustantamo",
+    keywords: "Thunder Kustannus oppaat, kirjan julkaiseminen opas, omakustanne opas, äänikirja opas, kirjan markkinointi, julkaisualusta",
   });
   return (
     <div className="min-h-screen bg-background text-foreground">

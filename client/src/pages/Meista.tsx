@@ -14,7 +14,7 @@ export default function Meista() {
     title: "Thunder Kustannus — Meistä",
     description: "Thunder Kustannus on suomalainen hybridijulkaisualusta kirjailijoille. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin. Oikeudet pysyvät sinulla — me hoidamme loput.",
     canonical: "/meista",
-    keywords: "Thunder Kustannus, suomalainen kustantamo, hybridikustantamo, hybridijulkaisualusta, omakustanne, Iron Mom Finland",
+    keywords: "Thunder Kustannus, suomalainen julkaisualusta, julkaisualusta, hybridijulkaisualusta, omakustanne, Iron Mom Finland",
   });
 
   useEffect(() => {

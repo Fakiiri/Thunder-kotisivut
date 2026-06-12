@@ -25,7 +25,7 @@ export default function Home() {
     title: "Julkaise kirjasi ammattimaisesti",
     description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin — painettu kirja, e-kirja ja äänikirja. Sinulla pysyvät oikeudet ja 70–80 % myyntituloista.",
     canonical: "/",
-    keywords: "omakustanne, kirjan julkaiseminen, äänikirja, e-kirja, kustantamo, hybridikustantamo, omakustannekirja",
+    keywords: "omakustanne, kirjan julkaiseminen, äänikirja, e-kirja, kustantamo, julkaisualusta, omakustannekirja",
   });
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -38,7 +38,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/65 to-black/20" />
         </div>
 
-        <div className="container relative z-10 pt-24 pb-16">
+        <div className="container relative z-10 pt-32 pb-16">
           <div className="max-w-xl">
             <motion.div initial="hidden" animate="visible" variants={fadeUp}>
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-orange-400 mb-5">

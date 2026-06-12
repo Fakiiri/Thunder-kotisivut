@@ -52,7 +52,7 @@ export default function Yhteystiedot() {
 
           <div className="thunder-card p-6">
             <h3 className="text-foreground font-bold mb-1">{COMPANY.legalName}</h3>
-            <p className="text-muted-foreground text-sm">Suomalainen hybridikustantamo</p>
+            <p className="text-muted-foreground text-sm">Suomalainen julkaisualusta</p>
           </div>
         </div>
       </div>

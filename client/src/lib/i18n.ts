@@ -66,7 +66,7 @@ export const translations = {
     about: {
       title: "Meistä — Thunder Kustannus",
       h1: "Thunder Kustannus — Suomalainen kirjailijoiden alusta",
-      lead: "Uskomme, että jokaisella kirjailijalla on oikeus julkaista ammattilaistasoisesti ilman perinteisen kustantamon portinvartijoita.",
+      lead: "Uskomme, että jokaisella kirjailijalla on oikeus julkaista ammattilaistasoisesti ilman perinteisten kustantamoiden portinvartijoita.",
       missionTitle: "Missio",
       missionText: "Teemme kirjan julkaisemisesta helppoa, läpinäkyvää ja kannattavaa kirjailijalle.",
       royaltyLabel: "Tekijänpalkkio",
