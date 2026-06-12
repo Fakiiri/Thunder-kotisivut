@@ -4,7 +4,6 @@ import { type Server } from "http";
 import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
-import viteConfig from "../../vite.config";
 
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
@@ -14,8 +13,9 @@ export async function setupVite(app: Express, server: Server) {
   };
 
   const vite = await createViteServer({
-    ...viteConfig,
-    configFile: false,
+    // Let Vite find its own config file (vite.config.ts) — do NOT import it here
+    // because vite.config.ts uses import.meta.dirname which breaks in esbuild bundles
+    configFile: path.resolve(process.cwd(), "vite.config.ts"),
     server: serverOptions,
     appType: "custom",
   });
