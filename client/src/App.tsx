@@ -14,6 +14,7 @@ import Sopimusehdot from "./pages/Sopimusehdot";
 import Yhteystiedot from "./pages/Yhteystiedot";
 import CookieBanner from "./components/CookieBanner";
 import ScrollToTop from "./components/ScrollToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
 import LataaSivu from "./pages/LataaSivu";
 import ArvioRedirect from "./pages/ArvioRedirect";
 import TietosuojaRedirect from "./pages/TietosuojaRedirect";
@@ -47,6 +48,7 @@ function App() {
           <ScrollToTop />
           <Router />
           <CookieBanner />
+          <WhatsAppButton />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
