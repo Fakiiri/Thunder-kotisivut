@@ -1,23 +1,15 @@
-// Thunder Kustannus — Navbar v2
-// Design: White/light bg when scrolled, transparent on hero, orange CTA
+// Thunder Kustannus — Navbar v3 — FI/EN language switcher
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Zap } from "lucide-react";
-
-const navLinks = [
-  { href: "/", label: "Etusivu" },
-  { href: "/hinnat", label: "Hinnat" },
-  { href: "/oppaat", label: "Oppaat" },
-  { href: "/meista", label: "Meistä" },
-  { href: "/yhteystiedot", label: "Yhteystiedot" },
-];
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
+  const { lang, setLang, t } = useLang();
 
-  // Hero pages have dark bg — nav text should be white until scrolled
   const isHeroPage = location === "/";
 
   useEffect(() => {
@@ -29,6 +21,14 @@ export default function Navbar() {
   useEffect(() => setOpen(false), [location]);
 
   const onDark = isHeroPage && !scrolled;
+
+  const navLinks = [
+    { href: "/", label: t.nav.home },
+    { href: "/hinnat", label: t.nav.pricing },
+    { href: "/oppaat", label: t.nav.guides },
+    { href: "/meista", label: t.nav.about },
+    { href: "/yhteystiedot", label: t.nav.contact },
+  ];
 
   return (
     <header
@@ -73,19 +73,32 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* CTA */}
+        {/* CTA + language switcher */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Language toggle */}
+          <button
+            onClick={() => setLang(lang === "fi" ? "en" : "fi")}
+            className={`text-xs font-bold px-2.5 py-1 rounded border transition-colors ${
+              onDark
+                ? "border-white/30 text-white/70 hover:border-white/60 hover:text-white"
+                : "border-gray-200 text-foreground/50 hover:border-gray-400 hover:text-foreground"
+            }`}
+            aria-label="Switch language"
+          >
+            {lang === "fi" ? "EN" : "FI"}
+          </button>
+
           <Link
             href="/lataa-opas"
             className={`text-sm font-semibold transition-colors duration-200 flex items-center gap-1.5 ${onDark ? "text-white/80 hover:text-white" : "text-foreground/70 hover:text-foreground"}`}
           >
-            <span className="text-orange-500">↓</span> Ilmainen opas
+            <span className="text-orange-500">↓</span> {t.nav.freeGuide}
           </Link>
           <Link
             href="/tarjouspyynto"
             className="thunder-btn-primary px-5 py-2.5 rounded-lg text-sm font-bold inline-block"
           >
-            Pyydä ilmainen arvio
+            {t.nav.cta}
           </Link>
         </div>
 
@@ -116,17 +129,24 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            {/* Language toggle mobile */}
+            <button
+              onClick={() => setLang(lang === "fi" ? "en" : "fi")}
+              className="text-sm font-bold py-2.5 px-2 text-left text-foreground/60 hover:text-foreground"
+            >
+              {lang === "fi" ? "🌐 Switch to English" : "🌐 Vaihda suomeksi"}
+            </button>
             <Link
               href="/lataa-opas"
               className="border-2 border-orange-400 text-orange-500 px-5 py-3 rounded-lg text-sm font-bold text-center mt-2 block"
             >
-              ↓ Lataa ilmainen opas
+              ↓ {t.nav.freeGuide}
             </Link>
             <Link
               href="/tarjouspyynto"
               className="thunder-btn-primary px-5 py-3 rounded-lg text-sm font-bold text-center mt-2 block"
             >
-              Pyydä ilmainen arvio
+              {t.nav.cta}
             </Link>
           </nav>
         </div>

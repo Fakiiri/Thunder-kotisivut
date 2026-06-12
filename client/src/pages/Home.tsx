@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import { PACKAGES, GUIDES, COMPANY } from "@/lib/data";
 import PrintCalculator from "@/components/PrintCalculator";
 import { motion } from "framer-motion";
+import { useLang } from "@/contexts/LanguageContext";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663402214228/kjokCxRA3tYow9xSz5Mijk/thunder_hero-AGE9LdUsmSYMTtiyt2bza6.webp";
 const AUDIOBOOK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663402214228/kjokCxRA3tYow9xSz5Mijk/thunder_audiobook-5KzGxqteP6emS5MsYQ9Skm.webp";
@@ -19,6 +20,7 @@ const fadeUp = {
 };
 
 export default function Home() {
+  const { t } = useLang();
   useSEO({
     title: "Julkaise kirjasi ammattimaisesti",
     description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin — painettu kirja, e-kirja ja äänikirja. Sinulla pysyvät oikeudet ja 70–80 % myyntituloista.",
@@ -41,7 +43,7 @@ export default function Home() {
             <motion.div initial="hidden" animate="visible" variants={fadeUp}>
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-orange-400 mb-5">
                 <span className="w-6 h-px bg-orange-400 inline-block" />
-                Kirjailijoiden julkaisualusta
+                {t.home.badge}
               </span>
             </motion.div>
 
@@ -49,22 +51,22 @@ export default function Home() {
               initial="hidden" animate="visible" variants={fadeUp}
               className="thunder-heading text-5xl md:text-6xl lg:text-7xl text-white mb-5"
             >
-              Sinä kirjoitat. Me julkaisemme. Lukijat löytävät.
+              {t.home.h1}
             </motion.h1>
 
             <motion.p
               initial="hidden" animate="visible" variants={fadeUp}
               className="text-white/75 text-lg leading-relaxed mb-8 max-w-md"
             >
-              Thunder Kustannus on suomalainen alusta, joka yhdistää modernin tavan julkaista kirja ja kirjailijan täyden kontrollin. Sinä omistat kirjasi — me hoidamme kaiken muun.
+              {t.home.lead}
             </motion.p>
 
             <motion.div initial="hidden" animate="visible" variants={fadeUp} className="flex flex-wrap gap-3">
               <Link href="/arvio" className="thunder-btn-primary px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2">
-                Pyydä ilmainen arvio <ArrowRight className="w-4 h-4" />
+                {t.home.ctaPrimary} <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/hinnat" className="px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2 border-2 border-white/30 text-white hover:border-white/60 transition-colors">
-                Katso hinnat
+                {t.home.ctaSecondary}
               </Link>
             </motion.div>
 
@@ -83,10 +85,10 @@ export default function Home() {
           <div className="text-center mb-14">
             <span className="orange-line mx-auto" />
             <h2 className="thunder-heading text-4xl md:text-5xl text-foreground mb-3">
-              Kaikki yhdeltä alustalta
+              {t.home.servicesTitle}
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Ammattimainen julkaisuprosessi, täysi läpinäkyvyys ja kirjailijan oikeudet pysyvät sinulla. Aina.
+              {t.home.servicesLead}
             </p>
           </div>
 
@@ -94,20 +96,20 @@ export default function Home() {
             {[
               {
                 icon: BookOpen,
-                title: "Painettu kirja",
-                desc: "Ammattimainen taitto, kansisuunnittelu ja painatus. Jakelu Suomalaiseen Kirjakauppaan, Adlibrikseen ja kirjastoihin.",
+                title: t.home.service1Title,
+                desc: t.home.service1Desc,
                 img: BOOKS_IMG,
               },
               {
                 icon: Headphones,
-                title: "Äänikirja",
-                desc: "Ammattilukija, studioäänitys ja jakelu Storyteliin, BookBeatiin, Nextoryyn ja Spotifyhin.",
+                title: t.home.service2Title,
+                desc: t.home.service2Desc,
                 img: AUDIOBOOK_IMG,
               },
               {
                 icon: Store,
-                title: "E-kirja",
-                desc: "EPUB3-formaatti, jakelu kaikkiin digitaalisiin kanaviin ja suoratoistopalveluihin.",
+                title: t.home.service3Title,
+                desc: t.home.service3Desc,
                 img: HERO_IMG,
               },
             ].map((item) => (
@@ -151,10 +153,10 @@ export default function Home() {
           <div className="text-center mb-14">
             <span className="orange-line mx-auto" />
             <h2 className="thunder-heading text-4xl md:text-5xl text-foreground mb-3">
-              Läpinäkyvä hinnoittelu
+              {t.home.pricingTitle}
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Tiedät tarkalleen mitä maksat ja mitä saat. Ei yllätyksiä, ei sitoumuksia oikeuksistasi.
+              {t.home.pricingLead}
             </p>
           </div>
 
@@ -175,7 +177,7 @@ export default function Home() {
                 {pkg.highlight && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                     <span className="thunder-orange-bg text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
-                      Suosituin
+                      {t.home.pricingPopular}
                     </span>
                   </div>
                 )}
@@ -195,7 +197,7 @@ export default function Home() {
                     </li>
                   ))}
                   {pkg.features.length > 5 && (
-                    <li className="text-muted-foreground text-xs pl-6">+ {pkg.features.length - 5} muuta</li>
+                    <li className="text-muted-foreground text-xs pl-6">+ {pkg.features.length - 5} {t.home.pricingMore2}</li>
                   )}
                 </ul>
                 <Link
@@ -212,7 +214,7 @@ export default function Home() {
 
           <div className="text-center mt-8">
             <Link href="/hinnat" className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground text-sm transition-colors">
-              Katso kaikki paketin sisällöt <ChevronRight className="w-4 h-4" />
+              {t.home.pricingMore} <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -225,12 +227,12 @@ export default function Home() {
             <div>
               <span className="orange-line" />
               <h2 className="thunder-heading text-4xl md:text-5xl text-foreground mb-2">
-                Oppaat kirjailijoille
-              </h2>
-              <p className="text-muted-foreground text-lg">Kaikki mitä tarvitset kirjan julkaisemiseen.</p>
+              {t.home.guidesTitle}
+            </h2>
+            <p className="text-muted-foreground text-lg">{t.home.guidesLead}</p>
             </div>
             <Link href="/oppaat" className="inline-flex items-center gap-2 thunder-orange hover:opacity-80 font-semibold text-sm transition-opacity whitespace-nowrap">
-              Kaikki oppaat <ArrowRight className="w-4 h-4" />
+              {t.home.guidesAll} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -252,7 +254,7 @@ export default function Home() {
                       {guide.title}
                     </h3>
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4">{guide.excerpt}</p>
-                    <div className="text-muted-foreground text-xs">{guide.readTime} lukuaika</div>
+                    <div className="text-muted-foreground text-xs">{guide.readTime} {t.home.guideReadTime}</div>
                   </div>
                 </Link>
               </motion.article>
@@ -267,15 +269,15 @@ export default function Home() {
           <div className="max-w-2xl mx-auto text-center">
             <span className="orange-line mx-auto" />
             <h2 className="thunder-heading text-3xl md:text-4xl text-foreground mb-3">
-              Ilmainen opas: Kirjan julkaisemisen tarkistuslista
+              {t.home.downloadTitle}
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Lataa 10 askeleen tarkistuslista — kaikki mitä tarvitset käsikirjoituksesta valmiiseen kirjaan.
+              {t.home.downloadLead}
             </p>
             <Link href="/lataa-opas" className="thunder-btn-primary px-8 py-4 rounded-lg text-base font-bold inline-flex items-center gap-2">
-              Lataa ilmainen opas <ArrowRight className="w-5 h-5" />
+              {t.home.downloadCta} <ArrowRight className="w-5 h-5" />
             </Link>
-            <p className="text-muted-foreground text-xs mt-3">Ei roskapostia. Voit peruuttaa milloin tahansa.</p>
+            <p className="text-muted-foreground text-xs mt-3">{t.home.downloadNote}</p>
           </div>
         </div>
       </section>
@@ -288,13 +290,13 @@ export default function Home() {
         <div className="container relative z-10 text-center">
           <span className="orange-line mx-auto" />
           <h2 className="thunder-heading text-4xl md:text-6xl text-white mb-5">
-            Valmis julkaisemaan?
+            {t.home.ctaTitle}
           </h2>
           <p className="text-white/65 text-xl mb-10 max-w-lg mx-auto">
-            Pyydä ilmainen arvio kirjaprojektistasi — vastaamme 24 tunnin sisällä.
+            {t.home.ctaLead}
           </p>
           <Link href="/tarjouspyynto" className="thunder-btn-primary px-10 py-4 rounded-lg text-base font-bold inline-flex items-center gap-2">
-            Pyydä ilmainen arvio <ArrowRight className="w-5 h-5" />
+            {t.home.ctaBtn} <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
       </section>

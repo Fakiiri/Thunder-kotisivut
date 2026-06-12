@@ -1,0 +1,274 @@
+// Thunder Kustannus — FI/EN translations
+// Oppaat (guides) remain Finnish-only
+
+export type Lang = "fi" | "en";
+
+export const translations = {
+  fi: {
+    // Navbar
+    nav: {
+      home: "Etusivu",
+      pricing: "Hinnat",
+      guides: "Oppaat",
+      about: "Meistä",
+      contact: "Yhteystiedot",
+      cta: "Pyydä ilmainen arvio",
+      freeGuide: "Ilmainen opas",
+    },
+
+    // Home
+    home: {
+      badge: "Kirjailijoiden julkaisualusta",
+      h1: "Sinä kirjoitat. Me julkaisemme. Lukijat löytävät.",
+      lead: "Thunder Kustannus on suomalainen alusta, joka yhdistää modernin tavan julkaista kirja ja kirjailijan täyden kontrollin. Sinä omistat kirjasi — me hoidamme kaiken muun.",
+      ctaPrimary: "Pyydä ilmainen arvio",
+      ctaSecondary: "Katso hinnat",
+      servicesTitle: "Kaikki yhdeltä alustalta",
+      servicesLead: "Ammattimainen julkaisuprosessi, täysi läpinäkyvyys ja kirjailijan oikeudet pysyvät sinulla. Aina.",
+      service1Title: "Painettu kirja",
+      service1Desc: "Ammattimainen taitto, kansisuunnittelu ja painatus. Jakelu Suomalaiseen Kirjakauppaan, Adlibrikseen ja kirjastoihin.",
+      service2Title: "Äänikirja",
+      service2Desc: "Ammattilukija, studioäänitys ja jakelu Storyteliin, BookBeatiin, Nextoryyn ja Spotifyhin.",
+      service3Title: "E-kirja",
+      service3Desc: "EPUB3-formaatti, jakelu kaikkiin digitaalisiin kanaviin ja suoratoistopalveluihin.",
+      pricingTitle: "Läpinäkyvä hinnoittelu",
+      pricingLead: "Tiedät tarkalleen mitä maksat ja mitä saat. Ei yllätyksiä, ei sitoumuksia oikeuksistasi.",
+      pricingMore: "Katso kaikki paketin sisällöt",
+      pricingPopular: "Suosituin",
+      pricingMore2: "muuta",
+      guidesTitle: "Oppaat kirjailijoille",
+      guidesLead: "Kaikki mitä tarvitset kirjan julkaisemiseen.",
+      guidesAll: "Kaikki oppaat",
+      guideReadTime: "lukuaika",
+      downloadTitle: "Ilmainen opas: Kirjan julkaisemisen tarkistuslista",
+      downloadLead: "Lataa 10 askeleen tarkistuslista — kaikki mitä tarvitset käsikirjoituksesta valmiiseen kirjaan.",
+      downloadCta: "Lataa ilmainen opas",
+      downloadNote: "Ei roskapostia. Voit peruuttaa milloin tahansa.",
+      ctaTitle: "Valmis julkaisemaan?",
+      ctaLead: "Pyydä ilmainen arvio kirjaprojektistasi — vastaamme 24 tunnin sisällä.",
+      ctaBtn: "Pyydä ilmainen arvio",
+    },
+
+    // Pricing page
+    pricing: {
+      title: "Hinnat",
+      h1: "Selkeät hinnat, ei piilokuluja",
+      lead: "Valitse paketti joka sopii kirjaprojektiisi. Kaikki hinnat sisältävät ALV.",
+      popular: "Suosituin",
+      more: "muuta",
+      ctaBtn: "Pyydä ilmainen arvio",
+      customTitle: "Tarvitsetko räätälöidyn ratkaisun?",
+      customLead: "Ota yhteyttä — räätälöimme paketin juuri sinun kirjaprojektillesi.",
+      customBtn: "Pyydä räätälöity arvio",
+    },
+
+    // About page
+    about: {
+      title: "Meistä — Thunder Kustannus",
+      h1: "Thunder Kustannus — Suomalainen kirjailijoiden alusta",
+      lead: "Uskomme, että jokaisella kirjailijalla on oikeus julkaista ammattilaistasoisesti ilman perinteisen kustantamon portinvartijoita.",
+      missionTitle: "Missio",
+      missionText: "Teemme kirjan julkaisemisesta helppoa, läpinäkyvää ja kannattavaa kirjailijalle.",
+      royaltyLabel: "Tekijänpalkkio",
+      royaltyValue: "60–70 %",
+      royaltyNote: "myyntituloista (kanavan mukaan)",
+      ctaTitle: "Haluatko julkaista kirjasi?",
+      ctaBtn: "Pyydä ilmainen arvio",
+    },
+
+    // Contact page
+    contact: {
+      title: "Yhteystiedot — Thunder Kustannus",
+      h1: "Otetaan yhteyttä",
+      lead: "Haluatko tietää lisää kirjaprojektistasi? Lähetä meille viesti tai pyydä ilmainen arvio.",
+      ctaBtn: "Pyydä ilmainen arvio",
+    },
+
+    // Estimate form
+    estimate: {
+      title: "Ilmainen arvio kirjaprojektistasi",
+      h1: "Ilmainen arvio kirjaprojektistasi",
+      lead: "Kerro kirjastasi ja saat henkilökohtaisen arvion 24 tunnin sisällä.",
+      submit: "Lähetä arviopyyntö",
+      successTitle: "Kiitos! Olemme yhteydessä pian.",
+      successText: "Olemme vastaanottaneet arviopyyntösi ja palaamme asiaan 24 tunnin sisällä.",
+    },
+
+    // Calculator
+    calc: {
+      title: "Laske kirjasi hinta",
+      lead: "Pehmeäkantinen kirja. Kannen materiaali:",
+      material: "Metsä Board",
+      vatNote: "Hinnat sisältävät ALV 13,5 %.",
+      sizeLabel: "Kirjan koko",
+      paperLabel: "Paperin tyyppi",
+      pagesLabel: "Sivumäärä",
+      qtyLabel: "Painosmäärä",
+      calcBtn: "Laske hinta",
+      resetBtn: "Laske uudelleen",
+      fillAll: "Täytä kaikki kentät laskeaksesi hinnan.",
+      totalLabel: "Kokonaishinta",
+      unitLabel: "Kappalehinta",
+      spineLabel: "Kirjan selkä",
+      bindingLabel: "Sidonta",
+      binding: "Pehmeäkantinen, liimasidottu",
+      bindingVihko: "Niittisidottu vihko",
+      coverLabel: "Kannen materiaali",
+      noResult: "Tälle yhdistelmälle ei löydy hintaa",
+      noResultLead: "Pyydä meiltä räätälöity arvio — löydämme sinulle sopivan ratkaisun.",
+      noResultBtn: "Pyydä ilmainen arvio",
+      asterisk: "* 32-sivuinen teos on saatavilla vain paksulla 120g-paperilla (niittisidottu vihko).",
+    },
+
+    // Footer
+    footer: {
+      tagline: "Suomalainen kirjailijoiden julkaisualusta.",
+      links: "Pikavalinnat",
+      contact: "Yhteystiedot",
+      legal: "Oikeudelliset",
+      terms: "Sopimusehdot",
+      privacy: "Tietosuojaseloste",
+      rights: "Kaikki oikeudet pidätetään.",
+    },
+  },
+
+  en: {
+    // Navbar
+    nav: {
+      home: "Home",
+      pricing: "Pricing",
+      guides: "Guides",
+      about: "About",
+      contact: "Contact",
+      cta: "Get a free estimate",
+      freeGuide: "Free guide",
+    },
+
+    // Home
+    home: {
+      badge: "Publishing platform for authors",
+      h1: "You write. We publish. Readers find you.",
+      lead: "Thunder Kustannus is a Finnish platform that combines modern publishing with full author control. You own your book — we handle everything else.",
+      ctaPrimary: "Get a free estimate",
+      ctaSecondary: "See pricing",
+      servicesTitle: "Everything from one platform",
+      servicesLead: "Professional publishing process, full transparency, and your rights stay with you. Always.",
+      service1Title: "Printed book",
+      service1Desc: "Professional layout, cover design and printing. Distribution to Suomalainen Kirjakauppa, Adlibris and libraries.",
+      service2Title: "Audiobook",
+      service2Desc: "Professional narrator, studio recording and distribution to Storytel, BookBeat, Nextory and Spotify.",
+      service3Title: "E-book",
+      service3Desc: "EPUB3 format, distribution to all digital channels and streaming services.",
+      pricingTitle: "Transparent pricing",
+      pricingLead: "You know exactly what you pay and what you get. No surprises, no rights commitments.",
+      pricingMore: "See all package contents",
+      pricingPopular: "Most popular",
+      pricingMore2: "more",
+      guidesTitle: "Guides for authors",
+      guidesLead: "Everything you need to publish your book.",
+      guidesAll: "All guides",
+      guideReadTime: "read time",
+      downloadTitle: "Free guide: Book publishing checklist",
+      downloadLead: "Download the 10-step checklist — everything you need from manuscript to finished book.",
+      downloadCta: "Download free guide",
+      downloadNote: "No spam. You can unsubscribe at any time.",
+      ctaTitle: "Ready to publish?",
+      ctaLead: "Request a free estimate for your book project — we respond within 24 hours.",
+      ctaBtn: "Get a free estimate",
+    },
+
+    // Pricing page
+    pricing: {
+      title: "Pricing — Thunder Kustannus",
+      h1: "Clear pricing, no hidden fees",
+      lead: "Choose the package that fits your book project. All prices include VAT.",
+      popular: "Most popular",
+      more: "more",
+      ctaBtn: "Get a free estimate",
+      customTitle: "Need a custom solution?",
+      customLead: "Contact us — we'll tailor a package for your specific book project.",
+      customBtn: "Request a custom estimate",
+    },
+
+    // About page
+    about: {
+      title: "About — Thunder Kustannus",
+      h1: "Thunder Kustannus — Finnish publishing platform for authors",
+      lead: "We believe every author has the right to publish professionally without the gatekeepers of traditional publishing.",
+      missionTitle: "Mission",
+      missionText: "We make publishing easy, transparent and profitable for the author.",
+      royaltyLabel: "Author royalty",
+      royaltyValue: "60–70 %",
+      royaltyNote: "of sales revenue (depending on channel)",
+      ctaTitle: "Want to publish your book?",
+      ctaBtn: "Get a free estimate",
+    },
+
+    // Contact page
+    contact: {
+      title: "Contact — Thunder Kustannus",
+      h1: "Get in touch",
+      lead: "Want to know more about your book project? Send us a message or request a free estimate.",
+      ctaBtn: "Get a free estimate",
+    },
+
+    // Estimate form
+    estimate: {
+      title: "Free estimate for your book project",
+      h1: "Free estimate for your book project",
+      lead: "Tell us about your book and receive a personal estimate within 24 hours.",
+      submit: "Send estimate request",
+      successTitle: "Thank you! We'll be in touch soon.",
+      successText: "We have received your estimate request and will get back to you within 24 hours.",
+    },
+
+    // Calculator
+    calc: {
+      title: "Calculate your book price",
+      lead: "Softcover book. Cover material:",
+      material: "Metsä Board",
+      vatNote: "Prices include VAT 13.5%.",
+      sizeLabel: "Book size",
+      paperLabel: "Paper type",
+      pagesLabel: "Page count",
+      qtyLabel: "Print run",
+      calcBtn: "Calculate price",
+      resetBtn: "Calculate again",
+      fillAll: "Fill in all fields to calculate the price.",
+      totalLabel: "Total price",
+      unitLabel: "Unit price",
+      spineLabel: "Spine width",
+      bindingLabel: "Binding",
+      binding: "Softcover, perfect bound",
+      bindingVihko: "Staple-bound booklet",
+      coverLabel: "Cover material",
+      noResult: "No price found for this combination",
+      noResultLead: "Request a custom estimate from us — we'll find the right solution for you.",
+      noResultBtn: "Get a free estimate",
+      asterisk: "* 32-page works are only available on thick 120g paper (staple-bound booklet).",
+    },
+
+    // Footer
+    footer: {
+      tagline: "Finnish publishing platform for authors.",
+      links: "Quick links",
+      contact: "Contact",
+      legal: "Legal",
+      terms: "Terms of service",
+      privacy: "Privacy policy",
+      rights: "All rights reserved.",
+    },
+  },
+} as const;
+
+// Use a structural type so both fi and en are assignable
+export type Translations = {
+  nav: Record<string, string>;
+  home: Record<string, string>;
+  pricing: Record<string, string>;
+  about: Record<string, string>;
+  contact: Record<string, string>;
+  estimate: Record<string, string>;
+  calc: Record<string, string>;
+  footer: Record<string, string>;
+};

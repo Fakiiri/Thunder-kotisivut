@@ -2,8 +2,10 @@
 import { Link } from "wouter";
 import { Zap, Instagram, Linkedin } from "lucide-react";
 import { COMPANY } from "@/lib/data";
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLang();
   return (
     <footer className="bg-[oklch(0.12_0.005_240)] pt-16 pb-8">
       <div className="container">
@@ -19,7 +21,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-white/45 text-sm leading-relaxed max-w-xs">
-              Moderni suomalainen hybridikustantamo. Julkaise kirjasi ammattimaisesti — painettu kirja, e-kirja ja äänikirja.
+              {t.footer.tagline}
             </p>
             <p className="text-white/25 text-xs mt-4">{COMPANY.legalName}</p>
             <div className="flex gap-4 mt-5">
@@ -46,13 +48,13 @@ export default function Footer() {
 
           {/* Palvelut */}
           <div>
-            <h4 className="text-white font-semibold text-xs mb-4 uppercase tracking-widest">Palvelut</h4>
+            <h4 className="text-white font-semibold text-xs mb-4 uppercase tracking-widest">{t.footer.services}</h4>
             <ul className="space-y-2.5">
               {[
-                { href: "/hinnat", label: "Hinnoittelu" },
-                { href: "/tarjouspyynto", label: "Pyydä ilmainen arvio" },
-                { href: "/oppaat", label: "Oppaat kirjailijoille" },
-                { href: "/meista", label: "Meistä" },
+                { href: "/hinnat", label: t.footer.pricing },
+                { href: "/tarjouspyynto", label: t.footer.estimate },
+                { href: "/oppaat", label: t.footer.guides },
+                { href: "/meista", label: t.footer.about },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-white/45 hover:text-white/80 text-sm transition-colors">
@@ -65,7 +67,7 @@ export default function Footer() {
 
           {/* Jakelu */}
           <div>
-            <h4 className="text-white font-semibold text-xs mb-4 uppercase tracking-widest">Jakelu</h4>
+            <h4 className="text-white font-semibold text-xs mb-4 uppercase tracking-widest">{t.footer.distribution}</h4>
             <ul className="space-y-2.5">
               {COMPANY.distribution.map((d) => (
                 <li key={d}>
@@ -78,15 +80,15 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/25 text-xs">
-            © {new Date().getFullYear()} {COMPANY.legalName}. Kaikki oikeudet pidätetään.
+            © {new Date().getFullYear()} {COMPANY.legalName}. {t.footer.rights}
             {" "}·{" "}Thunder Media Oy, Y-tunnus: 3575834-8
           </p>
           <div className="flex gap-6">
             <Link href="/sopimusehdot" className="text-white/25 hover:text-white/50 text-xs transition-colors">
-              Sopimusehdot
+              {t.footer.terms}
             </Link>
             <Link href="/tietosuoja" className="text-white/25 hover:text-white/50 text-xs transition-colors">
-              Tietosuoja
+              {t.footer.privacy}
             </Link>
           </div>
         </div>

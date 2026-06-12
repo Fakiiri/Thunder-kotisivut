@@ -4,6 +4,7 @@
 // Vain yhdistelmät joille on hinta Excelissä näytetään
 
 import { useState, useMemo } from "react";
+import { useLang } from "@/contexts/LanguageContext";
 import { Link } from "wouter";
 import { ArrowRight, Calculator, AlertCircle, BookOpen } from "lucide-react";
 import { SOFTCOVER_PRICING, QUANTITIES } from "@/lib/pricingData";
@@ -32,6 +33,7 @@ function fmt(n: number) {
 }
 
 export default function PrintCalculator() {
+  const { t } = useLang();
   const [format, setFormat] = useState<string>("");
   const [paper, setPaper] = useState<string>("");
   const [pages, setPages] = useState<number | "">("");
@@ -125,12 +127,10 @@ export default function PrintCalculator() {
         <div className="text-center mb-10">
           <span className="orange-line mx-auto" />
           <h2 className="thunder-heading text-4xl md:text-5xl text-foreground mb-3">
-            Laske kirjasi hinta
+            {t.calc.h2}
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Pehmeäkantinen kirja. Kannen materiaali:{" "}
-            <span className="text-foreground font-semibold">Metsä Board</span>.
-            Hinnat sisältävät ALV&nbsp;13,5&nbsp;%.
+            {t.calc.lead}
           </p>
         </div>
 
@@ -141,14 +141,14 @@ export default function PrintCalculator() {
             {/* Kirjan koko */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Kirjan koko
+                {t.calc.size}
               </label>
               <select
                 value={format}
                 onChange={(e) => handleFormatChange(e.target.value)}
                 className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
               >
-                <option value="">Valitse koko…</option>
+                <option value="">{t.calc.selectSize}</option>
                 {ALL_FORMATS.map((f) => (
                   <option key={f} value={f}>
                     {FORMAT_LABELS[f] ?? f}
@@ -160,7 +160,7 @@ export default function PrintCalculator() {
             {/* Paperin tyyppi — näyttää vain saatavilla olevat */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Paperin tyyppi
+                {t.calc.paper}
               </label>
               <select
                 value={paper}
@@ -168,7 +168,7 @@ export default function PrintCalculator() {
                 disabled={!format}
                 className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-40"
               >
-                <option value="">{format ? "Valitse paperi…" : "Valitse ensin koko"}</option>
+                <option value="">{format ? t.calc.selectPaper : t.calc.selectSizeFirst}</option>
                 {availablePapers.map((p) => (
                   <option key={p} value={p}>
                     {PAPER_LABELS[p] ?? p}
@@ -183,7 +183,7 @@ export default function PrintCalculator() {
             {/* Sivumäärä — näyttää vain saatavilla olevat */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Sivumäärä
+                {t.calc.pages}
               </label>
               <select
                 value={pages}
@@ -191,7 +191,7 @@ export default function PrintCalculator() {
                 disabled={!paper}
                 className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-40"
               >
-                <option value="">{paper ? "Valitse sivumäärä…" : "Valitse ensin paperi"}</option>
+                <option value="">{paper ? t.calc.selectPages : t.calc.selectPaperFirst}</option>
                 {availablePages.map((p) => (
                   <option key={p} value={p}>
                     {p} sivua{p === 32 ? " (vihko)" : ""}
@@ -203,7 +203,7 @@ export default function PrintCalculator() {
             {/* Painosmäärä — näyttää vain saatavilla olevat */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Painosmäärä (kpl)
+                {t.calc.qty}
               </label>
               <select
                 value={qty}
@@ -211,7 +211,7 @@ export default function PrintCalculator() {
                 disabled={pages === ""}
                 className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-40"
               >
-                <option value="">{pages !== "" ? "Valitse määrä…" : "Valitse ensin sivumäärä"}</option>
+                <option value="">{pages !== "" ? t.calc.selectQty : t.calc.selectPagesFirst}</option>
                 {availableQtys.map((q) => (
                   <option key={q} value={q}>
                     {q} kpl
@@ -257,14 +257,14 @@ export default function PrintCalculator() {
             }`}
           >
             <Calculator className="w-5 h-5" />
-            Laske hinta
+            {t.calc.calcBtn}
           </button>
 
           {/* Varoitus jos ei täytetty */}
           {!allFilled && (
             <p className="text-center text-sm text-muted-foreground flex items-center justify-center gap-1.5">
               <AlertCircle className="w-4 h-4 text-orange-400" />
-              Täytä kaikki kentät laskeaksesi hinnan.
+              {t.calc.fillAll}
             </p>
           )}
 
@@ -275,7 +275,7 @@ export default function PrintCalculator() {
               <div className="flex flex-col md:flex-row md:items-end gap-4 md:gap-8">
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-                    Kokonaishinta ({qty} kpl)
+                    {t.calc.totalPrice} ({qty} kpl)
                   </p>
                   <p className="text-4xl font-extrabold thunder-orange-text">
                     {fmt(result.totalPrice)} €
@@ -283,7 +283,7 @@ export default function PrintCalculator() {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-                    Kappalehinta
+                    {t.calc.unitPrice}
                   </p>
                   <p className="text-2xl font-bold text-foreground">
                     {fmt(result.unitPrice)} € / kpl
@@ -294,19 +294,19 @@ export default function PrintCalculator() {
               {/* Tekniset tiedot */}
               <div className="border-t border-border/50 pt-4 grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
                 <div>
-                  <p className="text-muted-foreground text-xs mb-0.5">Kirjan selän leveys</p>
+                  <p className="text-muted-foreground text-xs mb-0.5">{t.calc.spine}</p>
                   <p className="font-semibold text-foreground">
                     {result.spine !== null ? `${result.spine} mm` : "—"}
                   </p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-xs mb-0.5">Kannen materiaali</p>
+                  <p className="text-muted-foreground text-xs mb-0.5">{t.calc.cover}</p>
                   <p className="font-semibold text-foreground">Metsä Board</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-xs mb-0.5">Sidonta</p>
+                  <p className="text-muted-foreground text-xs mb-0.5">{t.calc.binding}</p>
                   <p className="font-semibold text-foreground">
-                    {result.is32 ? "Niittisidonta (vihko)" : "Liimasidottu pehmeäkantinen"}
+                    {result.is32 ? t.calc.stapled : t.calc.glued}
                   </p>
                 </div>
               </div>
@@ -315,20 +315,20 @@ export default function PrintCalculator() {
               {result.is32 && (
                 <p className="text-xs text-orange-400 flex items-start gap-1.5">
                   <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0" />
-                  32-sivuinen on niittisidottu vihko — ei liimasidottu.
+                  {t.calc.note32}
                 </p>
               )}
 
               {/* CTA */}
               <div className="border-t border-border/50 pt-4 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
                 <p className="text-sm text-muted-foreground">
-                  Haluatko edetä? Pyydä ilmainen arvio koko kirjaprojektistasi.
+                  {t.calc.ctaLead}
                 </p>
                 <Link
                   href="/arvio"
                   className="thunder-btn-primary px-6 py-3 rounded-lg text-sm font-bold inline-flex items-center gap-2 whitespace-nowrap"
                 >
-                  Pyydä ilmainen arvio <ArrowRight className="w-4 h-4" />
+                  {t.calc.ctaBtn} <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -339,16 +339,16 @@ export default function PrintCalculator() {
             <div className="mt-2 rounded-xl border border-border bg-muted/30 p-6 text-center">
               <BookOpen className="w-8 h-8 text-muted-foreground mx-auto mb-3" />
               <p className="text-foreground font-semibold mb-1">
-                Tälle yhdistelmälle ei löydy hintaa
+                {t.calc.noResult}
               </p>
               <p className="text-sm text-muted-foreground mb-4">
-                Pyydä meiltä räätälöity arvio — löydämme sinulle sopivan ratkaisun.
+                {t.calc.noResultLead}
               </p>
               <Link
                 href="/arvio"
                 className="thunder-btn-primary px-6 py-3 rounded-lg text-sm font-bold inline-flex items-center gap-2"
               >
-                Pyydä ilmainen arvio <ArrowRight className="w-4 h-4" />
+                {t.calc.ctaBtn} <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           )}
@@ -356,7 +356,7 @@ export default function PrintCalculator() {
 
         {/* Asteriski-huomio 32-sivuisesta */}
         <p className="text-xs text-muted-foreground mt-3 text-center">
-          * 32-sivuinen teos on saatavilla vain paksulla 120g-paperilla (niittisidottu vihko).
+          {t.calc.asterisk32}
         </p>
 
         {/* Nollaa */}
@@ -366,7 +366,7 @@ export default function PrintCalculator() {
               onClick={handleReset}
               className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-2"
             >
-              Laske uudelleen
+              {t.calc.reset}
             </button>
           </div>
         )}

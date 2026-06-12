@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PACKAGES } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
+import { useLang } from "@/contexts/LanguageContext";
 
 type FormData = {
   name: string; email: string; phone: string; package: string;
@@ -22,6 +23,7 @@ const labelCls = "block text-foreground/70 text-sm font-medium mb-1.5";
 const requiredStar = <span className="text-orange-500 ml-0.5">*</span>;
 
 export default function Tarjouspyynto() {
+  const { t } = useLang();
   const [form, setForm] = useState<FormData>(INITIAL);
   useSEO({
     title: "Ilmainen arvio kirjaprojektistasi | Thunder Kustannus",
@@ -105,7 +107,7 @@ export default function Tarjouspyynto() {
           {/* Otsikko */}
           <div className="mb-10">
             <span className="orange-line" />
-            <h1 className="thunder-heading text-5xl text-foreground mb-4">Pyydä ilmainen arvio</h1>
+            <h1 className="thunder-heading text-5xl text-foreground mb-4">{t.estimate.h1}</h1>
             <p className="text-muted-foreground text-lg">
               Täytä lomake huolellisesti — mitä enemmän kerrot kirjastasi, sitä tarkemman arvion voimme antaa.
               Vastaamme <strong className="text-foreground">24 tunnin sisällä</strong>. Ei sitoumuksia.
@@ -282,7 +284,7 @@ export default function Tarjouspyynto() {
               {loading ? (
                 <span className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
               ) : (
-                <><Send className="w-4 h-4" /> Lähetä arviopyynto →</>
+                <><Send className="w-4 h-4" /> {t.estimate.submit} →</>
               )}
             </button>
 

@@ -5,8 +5,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { COMPANY } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function Yhteystiedot() {
+  const { t } = useLang();
   useSEO({
     title: "Thunder Kustannus — Yhteystiedot",
     description: "Ota yhteyttä Thunder Kustannukseen. Vastaamme kaikkiin viesteihin 24 tunnin sisään. Pyydä ilmainen arvio kirjaprojektistasi — info@thunderkustannus.fi",
@@ -20,7 +22,7 @@ export default function Yhteystiedot() {
         <div className="container max-w-3xl">
           <div className="mb-12">
             <span className="orange-line" />
-            <h1 className="thunder-heading text-5xl text-foreground mb-4">Thunder Kustannus — Yhteystiedot</h1>
+            <h1 className="thunder-heading text-5xl text-foreground mb-4">{t.contact.h1}</h1>
             <p className="text-muted-foreground text-xl">Vastaamme kaikkiin viesteihin 24 tunnin sisällä.</p>
           </div>
 
@@ -43,7 +45,7 @@ export default function Yhteystiedot() {
               <h3 className="text-foreground font-bold text-lg mb-2">Nopein tapa</h3>
               <p className="text-muted-foreground text-sm mb-4">Pyydä ilmainen arvio kirjaprojektistasi — saat henkilökohtaisen vastauksen nopeimmin.</p>
               <Link href="/tarjouspyynto" className="thunder-btn-primary px-5 py-2.5 rounded-lg text-sm font-bold inline-block">
-                Pyydä ilmainen arvio
+                {t.contact.ctaBtn}
               </Link>
             </div>
           </div>

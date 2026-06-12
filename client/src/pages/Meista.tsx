@@ -6,8 +6,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { COMPANY } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function Meista() {
+  const { t } = useLang();
   useSEO({
     title: "Thunder Kustannus — Meistä",
     description: "Thunder Kustannus on suomalainen hybridijulkaisualusta kirjailijoille. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin. Oikeudet pysyvät sinulla — me hoidamme loput.",
@@ -46,7 +48,7 @@ export default function Meista() {
         <div className="container max-w-4xl">
           <div className="mb-16">
             <span className="orange-line" />
-            <h1 className="thunder-heading text-5xl md:text-6xl text-foreground mb-6">Thunder Kustannus — Meistä</h1>
+            <h1 className="thunder-heading text-5xl md:text-6xl text-foreground mb-6">{t.about.h1}</h1>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl">
               Thunder Kustannus syntyi yhdestä yksinkertaisesta havainnosta: kirjailijoilla on tarinoita, mutta heillä ei ole välineitä tai tietoa niiden julkaisemiseen ammattimaisesti. Rakensimme alustan, joka muuttaa tämän.
             </p>
@@ -106,7 +108,7 @@ export default function Meista() {
 
           <div className="text-center">
             <Link href="/tarjouspyynto" className="thunder-btn-primary px-10 py-4 rounded-lg font-bold inline-flex items-center gap-2 text-base">
-              Pyydä ilmainen arvio <ArrowRight className="w-4 h-4" />
+              {t.about.ctaBtn} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

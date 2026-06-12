@@ -6,8 +6,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PACKAGES } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function Hinnat() {
+  const { t } = useLang();
   useSEO({
     title: "Thunder Kustannus — Hinnat ja julkaisupaketit",
     description: "Thunder Kustannuksen julkaisupaketit: Digi 890 €, Printti 1 690 €, Premium 2 990 €. Kaikki sisältävät taiton, kansisuunnittelun, ISBN-tunnuksen ja jakelun. Hinnat sis. ALV 25,5 %.",
@@ -58,10 +60,10 @@ export default function Hinnat() {
           <div className="text-center mb-16">
             <span className="orange-line mx-auto" />
             <h1 className="thunder-heading text-5xl md:text-6xl text-foreground mb-4">
-              Selkeä hinnoittelu
+              {t.pricing.h1}
             </h1>
             <p className="text-muted-foreground text-xl max-w-2xl mx-auto">
-              Ei piilokuluja. Ei yllätyksiä. Kaikki hinnat sisältävät ammattimaisen palvelun alusta loppuun.
+              {t.pricing.lead}
             </p>
           </div>
 
@@ -79,7 +81,7 @@ export default function Hinnat() {
                 {pkg.highlight && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <span className="thunder-orange-bg text-white text-xs font-bold px-5 py-1.5 rounded-full uppercase tracking-wider">
-                      Suosituin
+                      {t.pricing.popular}
                     </span>
                   </div>
                 )}
@@ -161,9 +163,9 @@ export default function Hinnat() {
 
           {/* CTA */}
           <div className="text-center mt-20">
-            <p className="text-muted-foreground mb-6">Etkö löydä sopivaa pakettia? Arvioimme kirjaprojektisi ja teemme räätälöidyn ehdotuksen.</p>
+            <p className="text-muted-foreground mb-6">{t.pricing.customLead}</p>
             <Link href="/tarjouspyynto" className="thunder-btn-primary px-10 py-4 rounded-lg text-base font-bold inline-flex items-center gap-2">
-              Pyydä räätälöity arvio <ArrowRight className="w-4 h-4" />
+              {t.pricing.customBtn} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
