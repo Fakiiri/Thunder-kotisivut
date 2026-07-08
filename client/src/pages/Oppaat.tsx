@@ -72,10 +72,10 @@ export default function Oppaat() {
               {g?.ctaTitle ?? "Valmis julkaisemaan kirjasi?"}
             </h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              {g?.ctaLead ?? "Oppaat antavat tietoa — me hoidamme käytännön työn. Pyydä ilmainen arvio kirjaprojektistasi."}
+              {g?.ctaLead ?? "Oppaat antavat tietoa — me hoidamme käytännön työn. Pyydä hinta-arvio kirjaprojektistasi."}
             </p>
             <Link href="/tarjouspyynto" className="thunder-btn-primary px-8 py-4 rounded-lg font-bold inline-flex items-center gap-2">
-              {g?.ctaBtn ?? "Pyydä ilmainen arvio"} <ArrowRight className="w-4 h-4" />
+              {g?.ctaBtn ?? "Pyydä hinta-arvio"} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

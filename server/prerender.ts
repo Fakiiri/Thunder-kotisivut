@@ -52,7 +52,7 @@ const GUIDE_META: Record<string, { title: string; description: string; keywords:
   },
   "e-kirjan-julkaiseminen": {
     title: "E-kirjan julkaiseminen Suomessa — täydellinen opas 2026",
-    description: "Miten julkaistaan e-kirja Suomessa? Koko prosessi EPUB-tiedostosta jakeluun Suomalaiseen Kirjakauppaan, Adlibrikseen ja suoratoistopalveluihin.",
+    description: "Miten julkaistaan e-kirja Suomessa? Koko prosessi EPUB-tiedostosta suoratoistopalvelujakeluun saakka.",
     keywords: "e-kirja, e-kirjan julkaiseminen, EPUB, e-kirja Suomi, digitaalinen kirja",
   },
   "kirjan-kirjoittaminen-aloittelijalle": {
@@ -85,7 +85,7 @@ const PAGE_META: Record<string, { title: string; description: string; keywords: 
     keywords: "Thunder Kustannus, palvelukustantamo Suomi, kustantamo Helsinki",
   },
   "/tarjouspyynto": {
-    title: "Pyydä tarjous — Kirjan julkaiseminen | Thunder Kustannus",
+    title: "Tilaa paketti — Kirjan julkaiseminen | Thunder Kustannus",
     description: "Pyydä ilmainen tarjous kirjasi julkaisemisesta. Vastaamme 24 tunnin sisällä.",
     keywords: "kirjan julkaiseminen tarjous, omakustanne tarjous, kustantamo tarjous",
   },

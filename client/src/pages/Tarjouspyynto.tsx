@@ -28,7 +28,7 @@ export default function Tarjouspyynto() {
   const [form, setForm] = useState<FormData>(INITIAL);
   useSEO({
     title: "Ilmainen arvio kirjaprojektistasi | Thunder Kustannus",
-    description: "Pyydä ilmainen arvio kirjasi julkaisemisesta. Arvioimme kirjaprojektisi ja kerromme mitä se maksaa. Vastaamme 24 tunnin sisällä. Ei sitoumuksia.",
+    description: "Pyydä hinta-arvio kirjasi julkaisemisesta. Arvioimme kirjaprojektisi ja kerromme mitä se maksaa. Vastaamme 24 tunnin sisällä. Ei sitoumuksia.",
     canonical: "/tarjouspyynto",
     keywords: "ilmainen arvio kirja, kirjan julkaiseminen arvio, omakustanne arvio, Thunder Kustannus",
   });

@@ -24,7 +24,7 @@ export default function Hinnat() {
   const faqItems: readonly FaqItem[] = lang === "en" && t.pricingFaq ? t.pricingFaq : FI_FAQ;
   useSEO({
     title: "Thunder Kustannus — Hinnat ja julkaisupaketit",
-    description: "Thunder Kustannuksen julkaisupaketit: Digi 890 €, Printti 1 690 €, Premium 2 990 €. Kaikki sisältävät taiton, kansisuunnittelun, ISBN-tunnuksen ja jakelun. Hinnat sis. ALV 25,5 %.",
+    description: "Thunder Kustannuksen julkaisupaketit: Digi 890 €, Printti 1 690 €, Premium 2 990 €. Kaikki sisältävät taiton, kansisuunnittelun, ISBN-tunnuksen ja jakelun. Hinnat  sis. ALV 25,5 %.",
     canonical: "/hinnat",
     keywords: "Thunder Kustannus hinnat, omakustanne hinta, kirjan julkaiseminen hinta, julkaisualusta paketti, äänikirja hinta",
   });

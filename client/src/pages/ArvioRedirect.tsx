@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function ArvioRedirect() {
   useSEO({
     title: "Ilmainen arvio — Thunder Kustannus",
-    description: "Pyydä ilmainen arvio kirjaprojektistasi.",
+    description: "Pyydä hinta-arvio kirjaprojektistasi.",
     canonical: "/tarjouspyynto",
     noIndex: true,
   });

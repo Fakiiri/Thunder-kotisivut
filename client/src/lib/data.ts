@@ -8,7 +8,7 @@ export const PACKAGES = [
     id: "digi",
     name: "Digi",
     price: "890",
-    priceNote: "sis. ALV 25,5 %",
+    priceNote: " sis. ALV 25,5 %",
     tagline: "Digitaalinen julkaisu",
     highlight: false,
     description: "Täydellinen digitaalinen julkaisupaketti kirjallesi — e-kirja, äänikirja ja jakelu kaikkiin suomalaisiin suoratoistopalveluihin.",
@@ -24,13 +24,13 @@ export const PACKAGES = [
       "Myyntiraportit",
     ],
     notIncluded: ["Painettu kirja", "Jakelu fyysisiin kirjakauppoihin", "Markkinointipaketti"],
-    cta: "Pyydä ilmainen arvio",
+    cta: "Pyydä hinta-arvio",
   },
   {
     id: "printti",
     name: "Printti",
     price: "1 690",
-    priceNote: "sis. ALV 25,5 %",
+    priceNote: " sis. ALV 25,5 %",
     tagline: "Suosituin valinta",
     highlight: true,
     description: "Kaikki digitaaliset palvelut ja lisäksi painettu kirja. Kirjasi myyntiin kirjakauppoihin ympäri Suomen.",
@@ -38,18 +38,18 @@ export const PACKAGES = [
       "Kaikki Digi-paketin sisältö",
       "50 kpl painettuja kirjoja",
       "Jakelu: Suomalainen Kirjakauppa, Adlibris, Kirjastot, Storytel, BookBeat, Nextory, Spotify, Amazon, Kobo, Google Play Books",
-      "Storia-sopimus (kirjakauppajakeluun)",
+      "Jakelusopimus edellä mainittuihin kirjakauppoihin",
       "1 vuoden varastointi",
     ],
     notIncluded: ["Markkinointipaketti", "Lehdistötiedote"],
-    cta: "Pyydä ilmainen arvio",
+    cta: "Pyydä hinta-arvio",
   },
   {
     id: "premium",
     name: "Premium",
     price: "2 990",
-    priceNote: "sis. ALV 25,5 %",
-    tagline: "Markkinajohtajan valinta",
+    priceNote: " sis. ALV 25,5 %",
+    tagline: "Täyden palvelun paketti",
     highlight: false,
     description: "Täyden palvelun paketti kirjailijalle, joka haluaa maksimaalisen näkyvyyden ja ammattimaisen lanseerauksen.",
     features: [
@@ -62,7 +62,7 @@ export const PACKAGES = [
       "Prioriteettituki 12 kk",
     ],
     notIncluded: [],
-    cta: "Pyydä ilmainen arvio",
+    cta: "Pyydä hinta-arvio",
   },
 ];
 
@@ -132,7 +132,7 @@ Aloita markkinointi jo ennen julkaisua. Jaa kirjoitusprosessia, kerro miksi kirj
 
 Thunder Kustannus hoitaa puolestasi taiton, kansisuunnittelun, ISBN-tunnuksen, jakelun kaikkiin kanaviin ja äänikirjatuotannon. Sinulle jää se tärkein: kirjoittaminen ja oman tarinasi kertominen.
 
-[Pyydä ilmainen arvio](/tarjouspyynto) ja kerro meille kirjastasi — vastaamme 24 tunnin sisällä.
+[Pyydä hinta-arvio](/tarjouspyynto) ja kerro meille kirjastasi — vastaamme 24 tunnin sisällä.
     `,
   },
   {
@@ -197,7 +197,7 @@ Asiantuntijakirja on yksi tehokkaimmista markkinointivälineistä. Se rakentaa u
 
 Perinteinen kustantamo on oikea valinta harvoille. Omakustantaminen hybridikustantamon avulla on oikea valinta suurimmalle osalle kirjailijoista — erityisesti asiantuntijoille ja yrittäjille, jotka haluavat kirjan osaksi omaa brändiään.
 
-[Katso Thunder Kustannuksen paketit](/hinnat) ja pyydä ilmainen arvio.
+[Katso Thunder Kustannuksen paketit](/hinnat) ja Pyydä hinta-arvio.
     `,
   },
   {
@@ -268,7 +268,7 @@ Tulot kertyvät kuunteltujen minuuttien perusteella. Tyypillinen korvaus on 0,00
 
 Thunder Kustannus hoitaa koko äänikirjaprosessin puolestasi: käsikirjoituksen valmistelun, lukijan valinnan, äänityksen, editoinnin ja jakelun kaikkiin palveluihin. Sinulle jää se tärkein: kirjasi sisältö.
 
-[Pyydä ilmainen arvio äänikirjatuotannosta](/tarjouspyynto) — kerro meille kirjastasi ja saat arvion 24 tunnin sisällä.
+[Pyydä hinta-arvio äänikirjatuotannosta](/tarjouspyynto) — kerro meille kirjastasi ja saat arvion 24 tunnin sisällä.
     `,
   },
   {
@@ -357,7 +357,7 @@ Hyvä sisältö houkuttelee lukijoita, jotka etsivät tietoa kirjasi aiheesta �
 
 Kirjan markkinointi ei lopu julkaisupäivään. Menestyneet kirjailijat markkinoivat kirjaansa jatkuvasti — kuukausia ja vuosia julkaisun jälkeen. Pitkäjänteisyys palkitaan.
 
-Thunder Kustannuksen Premium-paketti sisältää markkinointipaketin, lehdistötiedotteen ja sosiaalisen median lanseerauspaketin. [Katso paketit](/hinnat) tai [pyydä ilmainen arvio](/tarjouspyynto).
+Thunder Kustannuksen Premium-paketti sisältää markkinointipaketin, lehdistötiedotteen ja sosiaalisen median lanseerauspaketin. [Katso paketit](/hinnat) tai [Pyydä hinta-arvio](/tarjouspyynto).
     `,
   },
   {
@@ -427,7 +427,7 @@ Kaikki Thunder Kustannuksen paketit sisältävät ISBN-tunnuksen hakemisen. Me h
 
 Sinun ei tarvitse huolehtia teknisistä yksityiskohdista — me hoidamme sen, jotta voit keskittyä kirjoittamiseen.
 
-[Katso paketit ja hinnat](/hinnat) tai [pyydä ilmainen arvio](/tarjouspyynto).
+[Katso paketit ja hinnat](/hinnat) tai [Pyydä hinta-arvio](/tarjouspyynto).
     `,
   },
   {
@@ -495,7 +495,7 @@ Canva ja muut suunnittelutyökalut houkuttelevat tekemään kannen itse. Tulos n
 
 Kaikki Thunder Kustannuksen paketit sisältävät ammattimaisen taiton ja kansisuunnittelun. Yhteistyössä sinun kanssasi luomme kirjallesi ulkoasun, joka erottuu joukosta ja houkuttelee oikean lukijakunnan.
 
-[Pyydä ilmainen arvio](/tarjouspyynto) ja kerro meille kirjastasi — vastaamme 24 tunnin sisällä.
+[Pyydä hinta-arvio](/tarjouspyynto) ja kerro meille kirjastasi — vastaamme 24 tunnin sisällä.
     `,
   },
   {
@@ -549,7 +549,7 @@ Hybridikustantamo, kuten Thunder Kustannus, tarjoaa kaikki palvelut yhtenä pake
 - Kaikki palvelut koordinoitu yhteen prosessiin
 - Selkeä kokonaishinta ilman yllätyksiä
 
-Thunder Kustannuksen paketit alkavat 890 eurosta (Digi-paketti, sis. ALV 25,5 %).
+Thunder Kustannuksen paketit alkavat 890 eurosta (Digi-paketti,  sis. ALV 25,5 %).
 
 ## Mitä kannattaa ottaa huomioon?
 
@@ -565,7 +565,7 @@ Thunder Kustannuksen paketit alkavat 890 eurosta (Digi-paketti, sis. ALV 25,5 %)
 
 Kirjan julkaiseminen maksaa 0–5 000 euroa riippuen valituista palveluista ja laadusta. Hybridikustantamo tarjoaa selkeimmän ja usein kustannustehokkaimman tavan julkaista kirja ammattimaisesti.
 
-[Katso Thunder Kustannuksen paketit ja hinnat](/hinnat) tai [pyydä ilmainen arvio](/tarjouspyynto).
+[Katso Thunder Kustannuksen paketit ja hinnat](/hinnat) tai [Pyydä hinta-arvio](/tarjouspyynto).
     `,
   },
   {
@@ -657,14 +657,14 @@ Asiantuntijakirja voi tuoda kymmeniä tai satoja tuhansia euroja epäsuoria tulo
 
 Omakustannekirjailija voi tienata merkittävästi enemmän kuin perinteisen kustantamon kirjailija — jos markkinoi aktiivisesti ja julkaisee kaikissa formaateissa. Realistiset odotukset ja pitkäjänteinen työ ovat avain menestykseen.
 
-[Pyydä ilmainen arvio](/tarjouspyynto) ja aloita kirjasi julkaisuprosessi tänään.
+[Pyydä hinta-arvio](/tarjouspyynto) ja aloita kirjasi julkaisuprosessi tänään.
     `,
   },
   {
     id: "e-kirjan-julkaiseminen",
     title: "E-kirjan julkaiseminen Suomessa — täydellinen opas 2026",
     slug: "e-kirjan-julkaiseminen",
-    excerpt: "Miten julkaistaan e-kirja Suomessa? Tässä oppaassa käymme läpi koko prosessin EPUB-tiedostosta jakeluun Suomalaiseen Kirjakauppaan, Adlibrikseen ja suoratoistopalveluihin.",
+    excerpt: "Miten julkaistaan e-kirja Suomessa? Tässä oppaassa käymme läpi koko prosessin EPUB-tiedostosta suoratoistopalvelujakeluun.",
     category: "E-kirjat",
     readTime: "10 min",
     date: "2026-05-01",
@@ -737,7 +737,7 @@ Useimmille kirjailijoille e-kirja on osa laajempaa julkaisupakettia — ei ainoa
 
 Thunder Kustannuksen Digi-paketti sisältää e-kirjan ja äänikirjan tuotannon sekä jakelun kaikkiin suomalaisiin suoratoistopalveluihin. Printti-paketti lisää painetun kirjan ja laajemman jakeluverkoston.
 
-[Katso paketit ja hinnat](/hinnat) tai [pyydä ilmainen arvio](/tarjouspyynto).
+[Katso paketit ja hinnat](/hinnat) tai [Pyydä hinta-arvio](/tarjouspyynto).
     `,
   },
   {
@@ -823,7 +823,7 @@ Editointi on kirjoittamisen tärkein vaihe. Ensimmäinen versio on raaka-aine �
 
 Kun käsikirjoitus on valmis, alkaa julkaisuprosessi: taitto, kansisuunnittelu, ISBN-tunnus ja jakelu. Thunder Kustannus hoitaa nämä kaikki puolestasi.
 
-[Lue lisää julkaisuprosessista](/oppaat/miten-julkaisen-oman-kirjan) tai [pyydä ilmainen arvio](/tarjouspyynto).
+[Lue lisää julkaisuprosessista](/oppaat/miten-julkaisen-oman-kirjan) tai [Pyydä hinta-arvio](/tarjouspyynto).
 
 ## Yhteenveto: Kirja syntyy kirjoittamalla
 
@@ -887,7 +887,7 @@ Jos kirjasi on jo valmis tai lähes valmis, tässä on kolme asiaa joita voit te
 
 Kirja ei tule koskaan täydelliseksi. Mutta se voi tulla julkaistuksi — ja se on ainoa versio, joka voi muuttaa jonkun elämän.
 
-[Pyydä ilmainen arvio](/tarjouspyynto) ja aloita julkaisuprosessi tänään.
+[Pyydä hinta-arvio](/tarjouspyynto) ja aloita julkaisuprosessi tänään.
     `,
   },
 ];

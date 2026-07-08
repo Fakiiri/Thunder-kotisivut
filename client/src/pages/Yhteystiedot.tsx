@@ -13,7 +13,7 @@ export default function Yhteystiedot() {
 
   useSEO({
     title: "Thunder Kustannus — Yhteystiedot",
-    description: "Ota yhteyttä Thunder Kustannukseen. Vastaamme kaikkiin viesteihin 24 tunnin sisään. Pyydä ilmainen arvio kirjaprojektistasi — info@thunderkustannus.fi",
+    description: "Ota yhteyttä Thunder Kustannukseen. Vastaamme kaikkiin viesteihin 24 tunnin sisään. Pyydä hinta-arvio kirjaprojektistasi — info@thunderkustannus.fi",
     canonical: "/yhteystiedot",
     keywords: "Thunder Kustannus yhteystiedot, ota yhteyttä, kirjan julkaiseminen, ilmainen arvio",
   });
@@ -57,7 +57,7 @@ export default function Yhteystiedot() {
                 {ce?.fastestLabel ?? "Nopein tapa"}
               </h3>
               <p className="text-muted-foreground text-sm mb-4">
-                {ce?.fastestDesc ?? "Pyydä ilmainen arvio kirjaprojektistasi — saat henkilökohtaisen vastauksen nopeimmin."}
+                {ce?.fastestDesc ?? "Pyydä hinta-arvio kirjaprojektistasi — saat henkilökohtaisen vastauksen nopeimmin."}
               </p>
               <Link href="/tarjouspyynto" className="thunder-btn-primary px-5 py-2.5 rounded-lg text-sm font-bold inline-block">
                 {t.contact.ctaBtn}
