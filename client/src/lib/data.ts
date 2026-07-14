@@ -69,20 +69,20 @@ export const PACKAGES = [
 export const GUIDES = [
   {
     id: "miten-julkaisen-oman-kirjan",
-    title: "Miten julkaisen oman kirjan? — Täydellinen opas 2026",
+    title: "Miten julkaisen oman kirjan? Täydellinen opas 2026",
     slug: "miten-julkaisen-oman-kirjan",
     excerpt: "Haaveiletko oman kirjan julkaisemisesta mutta et tiedä mistä aloittaa? Tässä oppaassa käymme läpi koko prosessin käsikirjoituksesta valmiiseen kirjaan — vaihe vaiheelta.",
     category: "Aloittelijalle",
-    readTime: "12 min",
+    readTime: "6 min",
     date: "2026-01-15",
     content: `
-Oman kirjan julkaiseminen on helpompaa kuin koskaan ennen. Omakustantaminen on kasvanut räjähdysmäisesti viime vuosina, ja nykyään kirjailijalla on enemmän vaihtoehtoja ja välineitä kuin missään aiemmassa vaiheessa kirjallisuuden historiaa. Tässä oppaassa käymme läpi koko prosessin — käsikirjoituksesta valmiiseen, myyvään kirjaan.
+Oman kirjan julkaiseminen on helpompaa kuin koskaan ennen. Omakustantaminen on kasvanut räjähdysmäisesti viime vuosina, ja nykyään kirjailijalla on enemmän vaihtoehtoja ja välineitä kuin missään aiemmassa vaiheessa kirjallisuuden historiaa. Tässä oppaassa käymme läpi koko prosessin, käsikirjoituksesta valmiiseen, myyvään kirjaan.
 
 ## Mitä omakustantaminen tarkoittaa?
 
-Omakustantaminen (self-publishing) tarkoittaa, että kirjailija itse vastaa kirjan julkaisemisesta — tai käyttää hybridikustantamoa apunaan. Toisin kuin perinteisessä kustantamisessa, kirjailija säilyttää täyden kontrollin sisältöön, hintaan ja tekijänoikeuksiin. Tämä tarkoittaa myös, että suurempi osa myyntituloista jää kirjailijalle itselleen: tyypillisesti 60–70 % verrattuna perinteisen kustantamon 8–15 prosenttiin.
+Omakustantaminen (self-publishing) tarkoittaa, että kirjailija itse vastaa kirjan saattamisesta jakeluun. Toisin kuin perinteisessä kustantamisessa, kirjailija säilyttää täyden kontrollin sisältöön, hintaan ja tekijänoikeuksiin. Tämä tarkoittaa myös, että suurempi osa myyntituloista jää kirjailijalle itselleen: tyypillisesti 60–70 % verrattuna perinteisen kustantamon 8–15 prosenttiin.
 
-Hybridikustantamo, kuten Thunder Kustannus, toimii välimaastossa: kirjailija maksaa julkaisuprosessista, mutta saa ammattilaisten avun taittoon, kansisuunnitteluun, ISBN-tunnukseen ja jakeluun — ilman, että luovuttaa oikeuksiaan tai kontrolliaan.
+Thunder Kustannuksella kirjailija maksaa julkaisuprosessista, mutta saa halutessaan ammattilaisten avun taittoon, kansisuunnitteluun, ISBN-tunnukseen ja jakeluun ilman, että luovuttaa oikeuksiaan tai kontrolliaan.
 
 ## Vaihe 1: Käsikirjoituksen viimeistely
 
@@ -92,15 +92,15 @@ Ennen kuin aloitat julkaisuprosessin, käsikirjoituksen tulee olla mahdollisimma
 
 **Oikoluku:** Kielioppivirheet, kirjoitusvirheet ja toistot heikentävät kirjan uskottavuutta. Suosittele käyttämään ammattimaista oikolukijaa tai vähintään luettamaan teksti useammalla henkilöllä.
 
-**Ulkopuolinen palaute:** Kirjailija sokeutuu helposti omalle tekstilleen. Betälukijat — ystävät, kirjoitusryhmät tai ammattilainen toimittaja — antavat arvokasta palautetta ennen julkaisua.
+**Ulkopuolinen palaute:** Kirjailija sokeutuu helposti omalle tekstilleen. Koelukijat, ystävät, kirjoitusryhmät tai ammattitoimittaja antavat arvokasta palautetta ennen julkaisua.
 
-Älä kiirehdi tätä vaihetta. Huonosti viimeistelty käsikirjoitus on yleisin syy siihen, miksi omakustannekirja ei menesty.
+Älä kiirehdi tätä vaihetta. Huonosti viimeistelty käsikirjoitus on yleisimpiä syitä siihen, miksi omakustannekirja ei menesty.
 
 ## Vaihe 2: Kansi ja taitto
 
-Kirjan kansi on tärkein markkinointivälineesi. Tutkimusten mukaan lukijat tekevät ostopäätöksen alle 3 sekunnissa kannen perusteella — erityisesti verkkokaupassa, jossa kansi näkyy pienenä kuvakkeena. Ammattimainen kansisuunnittelu ei ole ylellisyys, vaan investointi.
+Kirjan kansi on tärkein markkinointivälineesi. Tutkimusten mukaan lukijat tekevät ostopäätöksen alle 3 sekunnissa kannen perusteella. Erityisesti verkkokaupassa, jossa kansi näkyy pienenä kuvakkeena. Ammattimainen kansisuunnittelu ei ole ylellisyys, vaan investointi.
 
-Taitto tarkoittaa kirjan sisäsivujen visuaalista suunnittelua: fonttivalinnat, rivivälit, marginaalit, otsikoiden hierarkia ja kuvien sijoittelu. Huono taitto tekee kirjasta vaikealukuisen ja epäammattimaisen näköisen — vaikka sisältö olisi kuinka hyvä tahansa.
+Taitto tarkoittaa kirjan sisäsivujen visuaalista suunnittelua: fonttivalinnat, rivivälit, marginaalit, otsikoiden hierarkia ja kuvien sijoittelu. Huono taitto tekee kirjasta vaikealukuisen ja epäammattimaisen näköisen. Vaikka sisältö olisi kuinka hyvä tahansa.
 
 E-kirjaa varten tarvitaan erillinen EPUB3-taitto, joka skaalautuu eri laitteille ja näyttökoille. Äänikirjaa varten tarvitaan neliön muotoinen (1:1) kansi, joka toimii pienessä koossa suoratoistopalveluissa.
 
@@ -108,9 +108,9 @@ E-kirjaa varten tarvitaan erillinen EPUB3-taitto, joka skaalautuu eri laitteille
 
 Jokainen kirja tarvitsee oman ISBN-tunnuksen (International Standard Book Number). Ilman ISBN:ää kirjaasi ei voi myydä kirjakaupoissa tai tilata kirjastoihin. Suomessa ISBN-tunnukset myöntää Kansalliskirjasto maksutta.
 
-Muista: jokaisella julkaisumuodolla on oma ISBN:nsä. Painettu kirja, e-kirja ja äänikirja tarvitsevat kukin oman tunnuksensa. Kun käytät hybridikustantamoa, ISBN haetaan kustantamon nimissä — tämä tekee kirjastasi ammattimaisemman näköisen kirjakaupoissa.
+Muista: jokaisella julkaisumuodolla on oma ISBN:nsä. Painettu kirja, e-kirja ja äänikirja tarvitsevat kukin oman tunnuksensa. Kun käytät Thunder Kustannusta, ISBN haetaan kustantamon nimissä tämä tekee kirjastasi ammattimaisemman näköisen kirjakaupoissa.
 
-## Vaihe 4: Jakelu — miten kirja päätyy lukijalle
+## Vaihe 4: Jakelu, miten kirja päätyy lukijalle
 
 Kirjasi pitää saada lukijoiden käsiin. Jakelu kattaa useita kanavia:
 
@@ -122,47 +122,47 @@ Kirjasi pitää saada lukijoiden käsiin. Jakelu kattaa useita kanavia:
 
 **Digitaaliset suoratoistopalvelut:** Storytel, BookBeat, Nextory, Spotify, Kobo ja Google Play Books. Nämä palvelut maksavat tekijänoikeuskorvauksia kuunteltujen minuuttien perusteella.
 
-## Vaihe 5: Markkinointi — kirja löytyy vain, jos se löydetään
+## Vaihe 5: Markkinointi, kirja löytyy vain, jos se löydetään
 
 Kirjan julkaiseminen on vasta alku. Markkinointi ratkaisee, kuinka moni lukija löytää kirjasi. Tärkeimmät markkinointikanavat omakustannekirjailijalle ovat sosiaalinen media (erityisesti Instagram ja LinkedIn asiantuntijakirjoille), sähköpostilista, lehdistötiedotteet paikallismedialle ja podcast-vierailut.
 
-Aloita markkinointi jo ennen julkaisua. Jaa kirjoitusprosessia, kerro miksi kirjoitat tätä kirjaa ja rakenna odotusta. Julkaisupäivän jälkeen ensimmäiset viikot ovat kriittisimpiä — myyntipiikki alussa parantaa kirjan sijoitusta verkkokauppojen listoilla.
+Aloita markkinointi jo ennen julkaisua. Jaa kirjoitusprosessia, kerro miksi kirjoitat tätä kirjaa ja rakenna odotusta. Julkaisupäivän jälkeen ensimmäiset viikot ovat kriittisimpiä. Myyntipiikki alussa parantaa kirjan sijoitusta verkkokauppojen listoilla.
 
 ## Thunder Kustannus auttaa kaikissa vaiheissa
 
 Thunder Kustannus hoitaa puolestasi taiton, kansisuunnittelun, ISBN-tunnuksen, jakelun kaikkiin kanaviin ja äänikirjatuotannon. Sinulle jää se tärkein: kirjoittaminen ja oman tarinasi kertominen.
 
-[Pyydä hinta-arvio](/tarjouspyynto) ja kerro meille kirjastasi — vastaamme 24 tunnin sisällä.
+[Pyydä hinta-arvio](/tarjouspyynto) ja kerro meille kirjastasi. Vastaamme 24 tunnin sisällä.
     `,
   },
   {
     id: "omakustanne-vai-perinteinen-kustantamo",
-    title: "Omakustannekirja vai perinteinen kustantamo — kumpi sopii sinulle?",
+    title: "Omakustannekirja vai perinteinen kustantamo: Kumpi sopii sinulle?",
     slug: "omakustanne-vai-perinteinen-kustantamo",
     excerpt: "Perinteinen kustantamo vai omakustantaminen? Vertailemme molemmat vaihtoehdot rehellisesti, jotta voit tehdä parhaan päätöksen kirjallesi.",
     category: "Strategia",
-    readTime: "10 min",
+    readTime: "5 min",
     date: "2026-02-01",
     content: `
-Kirjailijan yksi tärkeimmistä päätöksistä on valita, miten kirja julkaistaan. Perinteinen kustantamo vai omakustantaminen? Tässä rehellinen, faktoihin perustuva vertailu — ilman kaunistelua.
+Kirjailijan yksi tärkeimmistä päätöksistä on valita, miten kirja julkaistaan. Perinteinen kustantamo vai omakustantaminen? Tässä rehellinen, faktoihin perustuva vertailu ilman kaunistelua.
 
-## Perinteinen kustantamo — miten se toimii?
+## Perinteinen kustantamo, miten se toimii?
 
 Perinteisessä kustantamismallissa kirjailija lähettää käsikirjoituksen kustantamolle. Jos kustantamo kiinnostuu, se ostaa oikeuden julkaista kirjan ja maksaa kirjailijalle ennakkopalkkion sekä myöhemmin rojalteja myynneistä.
 
-Kuulostaa hyvältä — mutta todellisuus on monimutkaisempi.
+Kuulostaa hyvältä. Mutta todellisuus on monimutkaisempi.
 
-**Hyväksymisprosentti on alle 1 %.** Suuret suomalaiset kustantamot, kuten WSOY, Otava ja Tammi, saavat tuhansia käsikirjoituksia vuosittain. Vain murto-osa päätyy julkaistavaksi. Useimmiten kustantamot suosivat tunnettuja nimiä tai aiheita, joille on jo valmiiksi laaja yleisö.
+**Hyväksymisprosentti on n. 2 %.** Suuret suomalaiset kustantamot, kuten WSOY, Otava ja Tammi, saavat tuhansia käsikirjoituksia vuosittain. Vain murto-osa päätyy julkaistavaksi. Useimmiten kustantamot suosivat tunnettuja nimiä tai aiheita, joille on jo valmiiksi laaja yleisö.
 
-**Prosessi kestää 1–3 vuotta.** Käsikirjoituksen lähettämisestä kirjan julkaisemiseen voi kulua useita vuosia — jos se ylipäätään hyväksytään. Tänä aikana kirjailija ei voi julkaista kirjaa muualla.
+**Prosessi kestää 1–3 vuotta.** Käsikirjoituksen lähettämisestä kirjan julkaisemiseen voi kulua useita vuosia. Jos se ylipäätään hyväksytään. Tänä aikana kirjailija ei voi julkaista kirjaa muualla.
 
-**Kirjailija saa 8–15 % myyntituloista.** Perinteinen rojaltimalli tarkoittaa, että kustantamo pitää suurimman osan tuloista. Ennakkopalkkio vähennetään rojalteista, joten kirjailija alkaa saada lisätuloja vasta kun ennakko on "ansaittu takaisin" myynneillä.
+**Kirjailija saa 8–26 % myyntituloista.** Perinteinen rojaltimalli tarkoittaa, että kustantamo pitää suurimman osan tuloista. Ennakkopalkkio vähennetään rojalteista, joten kirjailija alkaa saada lisätuloja vasta kun ennakko on "ansaittu takaisin" myynneillä.
 
-**Kustantamo omistaa oikeudet.** Sopimuksen myötä kustantamo saa laajat oikeudet kirjaan — usein kymmeniksi vuosiksi. Tämä voi rajoittaa kirjailijan mahdollisuuksia myöhemmin.
+**Kustantamo omistaa oikeudet.** Sopimuksen myötä kustantamo saa laajat oikeudet kirjaan usein kymmeniksi vuosiksi. Tämä voi rajoittaa kirjailijan mahdollisuuksia myöhemmin.
 
-## Omakustantaminen hybridikustantamon kautta
+## Omakustantamon kautta julkaiseminen
 
-Hybridikustantamo (kuten Thunder Kustannus) tarjoaa parhaan yhdistelmän: kirjailija säilyttää kontrollin ja oikeudet, mutta saa ammattilaisten avun julkaisuprosessiin.
+Thunder Kustannus tarjoaa parhaan yhdistelmän: kirjailija säilyttää kontrollin ja oikeudet, mutta saa ammattilaisten avun julkaisuprosessiin.
 
 **Julkaisu 4–8 viikossa.** Kun käsikirjoitus on valmis, prosessi etenee nopeasti. Ei odottelua, ei hylkäyskirjeitä.
 
@@ -186,38 +186,38 @@ Asiantuntijakirja on yksi tehokkaimmista markkinointivälineistä. Se rakentaa u
 
 | Kriteeri | Perinteinen kustantamo | Hybridikustantamo |
 |---|---|---|
-| Hyväksymisprosentti | alle 1 % | 100 % |
+| Hyväksymisprosentti | n. 2 % | 100 % |
 | Aika julkaisuun | 1–3 vuotta | 4–8 viikkoa |
-| Kirjailijan rojaltit | 8–15 % | 60–70 % |
+| Kirjailijan rojaltit | 8–26 % | 60–70 % |
 | Oikeudet | Kustantamolla | Kirjailijalla |
 | Kontrolli sisältöön | Rajattu | Täysi |
 | Kustannus kirjailijalle | 0 € (ennakko) | Palvelupaketti |
 
 ## Yhteenveto
 
-Perinteinen kustantamo on oikea valinta harvoille. Omakustantaminen hybridikustantamon avulla on oikea valinta suurimmalle osalle kirjailijoista — erityisesti asiantuntijoille ja yrittäjille, jotka haluavat kirjan osaksi omaa brändiään.
+Perinteinen kustantamo on oikea valinta harvoille. Omakustantaminen hybridikustantamon avulla on oikea valinta suurimmalle osalle kirjailijoista. Erityisesti asiantuntijoille ja yrittäjille, jotka haluavat kirjan osaksi omaa brändiään.
 
 [Katso Thunder Kustannuksen paketit](/hinnat) ja Pyydä hinta-arvio.
     `,
   },
   {
     id: "aanikirjan-tekeminen",
-    title: "Äänikirjan tekeminen — näin muutat kirjasi äänikirjaksi",
+    title: "Äänikirjan tekeminen: Näin muutat kirjasi äänikirjaksi",
     slug: "aanikirjan-tekeminen",
     excerpt: "Äänikirjojen suosio on räjähtänyt Suomessa. Tässä oppaassa kerromme, miten kirjastasi tehdään äänikirja ja miten se jaellaan Storyteliin, BookBeatiin ja Spotifyhin.",
     category: "Äänikirjat",
-    readTime: "10 min",
+    readTime: "5 min",
     date: "2026-02-15",
     content: `
-Äänikirjat ovat Suomen nopeimmin kasvava kirjaformaatti. Storytel, BookBeat ja Spotify ovat tuoneet äänikirjat kaikkien saataville — ja samalla avanneet kirjailijoille uuden tulonlähteen. Jos sinulla on jo kirja tai käsikirjoitus, äänikirja on luonnollinen seuraava askel.
+Äänikirjat ovat Suomen nopeimmin kasvava kirjaformaatti. Storytel, BookBeat ja Spotify ovat tuoneet äänikirjat kaikkien saataville ja samalla avanneet kirjailijoille uuden tulonlähteen. Jos sinulla on jo kirja tai käsikirjoitus, äänikirja on luonnollinen seuraava askel.
 
 ## Miksi tehdä äänikirja?
 
 Äänikirjamarkkina kasvaa Suomessa noin 20–30 % vuodessa. Spotify avasi äänikirjat Suomessa marraskuussa 2025, ja palvelulla on jo yli 300 000 äänikirjan valikoima. Tämä tarkoittaa, että äänikirjan potentiaalinen yleisö on kasvanut dramaattisesti.
 
-Äänikirja tavoittaa uuden yleisön: ihmiset, jotka kuuntelevat kirjoja työmatkalla, lenkkeillessä tai kotitöitä tehdessä. Monet kuuntelijat eivät lue painettuja kirjoja lainkaan — äänikirja on heidän ainoa tapansa kuluttaa kirjallisuutta.
+Äänikirja tavoittaa uuden yleisön: ihmiset, jotka kuuntelevat kirjoja työmatkalla, lenkkeillessä tai kotitöitä tehdessä. Monet kuuntelijat eivät lue painettuja kirjoja lainkaan. Äänikirja on heidän ainoa tapansa kuluttaa kirjallisuutta.
 
-Lisäksi äänikirja tuo lisätuloja samasta sisällöstä. Suoratoistopalvelut maksavat tekijänoikeuskorvauksia kuunteltujen minuuttien perusteella — mitä enemmän kuuntelijoita, sitä enemmän tuloja.
+Lisäksi äänikirja tuo lisätuloja samasta sisällöstä. Suoratoistopalvelut maksavat tekijänoikeuskorvauksia kuunteltujen minuuttien perusteella. Mitä enemmän kuuntelijoita, sitä enemmän tuloja.
 
 ## Äänikirjan tuotantoprosessi vaihe vaiheelta
 
@@ -238,7 +238,7 @@ Ammattilukija on äänikirjan tärkein elementti. Hyvä lukija tuo kirjan eloon,
 - Lukijan ääni ja tyyli
 - Kokemus vastaavista projekteista
 
-Jotkut kirjailijat lukevat kirjansa itse — tämä sopii erityisesti asiantuntijakirjoihin, joissa kirjailijan oma ääni ja auktoriteetti ovat tärkeitä.
+Jotkut kirjailijat lukevat kirjansa itse. Tämä sopii erityisesti asiantuntijakirjoihin, joissa kirjailijan oma ääni ja auktoriteetti ovat tärkeitä.
 
 ### Vaihe 3: Äänitys ammattistudiossa
 
@@ -260,7 +260,7 @@ Valmis äänikirja jaellaan aggregaattorin kautta kaikkiin palveluihin yhdellä 
 
 ## Äänikirjan kustannukset ja tulot
 
-Äänikirjan tuotantokustannukset vaihtelevat kirjan pituuden ja tuotantotavan mukaan. Ammattilukijan ja studion kustannukset ovat tyypillisesti 500–2 000 € kirjan pituudesta riippuen.
+Äänikirjan tuotantokustannukset vaihtelevat kirjan pituuden ja tuotantotavan mukaan. Ammattilukijan ja studion kustannukset ovat tyypillisesti 500–2 000 € kirjan pituudesta riippuen. Tekoälyn lukemana kustannukset vähenevät dramaattisesti.
 
 Tulot kertyvät kuunteltujen minuuttien perusteella. Tyypillinen korvaus on 0,003–0,008 € per kuunneltu minuutti palvelusta riippuen. Suosittu äänikirja voi tuoda satoja tai tuhansia euroja kuukaudessa.
 
@@ -268,37 +268,37 @@ Tulot kertyvät kuunteltujen minuuttien perusteella. Tyypillinen korvaus on 0,00
 
 Thunder Kustannus hoitaa koko äänikirjaprosessin puolestasi: käsikirjoituksen valmistelun, lukijan valinnan, äänityksen, editoinnin ja jakelun kaikkiin palveluihin. Sinulle jää se tärkein: kirjasi sisältö.
 
-[Pyydä hinta-arvio äänikirjatuotannosta](/tarjouspyynto) — kerro meille kirjastasi ja saat arvion 24 tunnin sisällä.
+[Pyydä hinta-arvio äänikirjatuotannosta](/tarjouspyynto) Kerro meille kirjastasi ja saat arvion 24 tunnin sisällä.
     `,
   },
   {
     id: "kirjan-markkinointi",
-    title: "Kirjan markkinointi — 10 tapaa myydä omakustannekirjaasi",
+    title: "Kirjan markkinointi: 10 tapaa myydä omakustannekirjaasi",
     slug: "kirjan-markkinointi",
     excerpt: "Kirja on julkaistu — mitä seuraavaksi? Tässä 10 konkreettista tapaa markkinoida omakustannekirjaasi ja saada se lukijoiden käsiin.",
     category: "Markkinointi",
-    readTime: "12 min",
+    readTime: "6 min",
     date: "2026-03-01",
     content: `
-Kirjan julkaiseminen on vasta puoliväli. Markkinointi ratkaisee, kuinka moni lukija löytää kirjasi — ja kuinka paljon myyt. Tässä 10 konkreettista tapaa markkinoida omakustannekirjaasi tehokkaasti.
+Kirjan julkaiseminen on vasta puoliväli. Markkinointi ratkaisee, kuinka moni lukija löytää kirjasi ja kuinka paljon myyt. Tässä 10 konkreettista tapaa markkinoida omakustannekirjaasi tehokkaasti.
 
-## 1. Sosiaalinen media — rakenna yleisö ennen julkaisua
+## 1. Sosiaalinen media: Rakenna yleisö ennen julkaisua
 
-Instagram, Facebook ja LinkedIn ovat tehokkaita kanavia kirjan markkinointiin. Avain menestykseen on aloittaa markkinointi jo ennen julkaisua — ideaalisesti 3–6 kuukautta etukäteen.
+Instagram, Facebook ja LinkedIn ovat tehokkaita kanavia kirjan markkinointiin. Avain menestykseen on aloittaa markkinointi jo ennen julkaisua. Ideaalisesti 3–6 kuukautta etukäteen.
 
-Jaa kirjoitusprosessia: kuvia kirjoituspöydältä, behind-the-scenes -sisältöä, lainauksia käsikirjoituksesta. Kerro miksi kirjoitat tätä kirjaa ja kenelle se on tarkoitettu. Rakenna odotusta julkaisupäivää kohti.
+Jaa kirjoitusprosessia: kuvia kirjoituspöydältä, behind-the-scenes -sisältöä ja lainauksia käsikirjoituksesta. Kerro miksi kirjoitat tätä kirjaa ja kenelle se on tarkoitettu. Rakenna odotusta julkaisupäivää kohti.
 
 LinkedIn on erityisen tehokas asiantuntijakirjoille. Asiantuntijasisältö leviää LinkedInissä orgaanisesti, ja kirja toimii uskottavuuden rakentajana.
 
-## 2. Sähköpostilista — sitoutuneimmat lukijasi
+## 2. Sähköpostilista: Sitoutuneimmat lukijasi
 
-Sähköpostilista on kirjailijan arvokkain markkinointityökalu. Sähköpostilistalla olevat ihmiset ovat valinneet saada viestejä sinulta — he ovat sitoutuneimpia lukijoitasi.
+Sähköpostilista on kirjailijan arvokkain markkinointityökalu. Sähköpostilistalla olevat ihmiset ovat valinneet saada viestejä sinulta. He ovat sitoutuneimpia lukijoitasi.
 
-Rakenna lista jo ennen julkaisua. Tarjoa jotain arvokasta vastineeksi sähköpostiosoitteesta: ensimmäinen luku ilmaiseksi, tiivistelmä kirjan tärkeimmistä opeista tai exklusiivia sisältöä.
+Rakenna lista jo ennen julkaisua. Tarjoa jotain arvokasta vastineeksi sähköpostiosoitteesta: ensimmäinen luku ilmaiseksi, tiivistelmä kirjan tärkeimmistä opeista tai eksklusiivista sisältöä.
 
-Julkaisupäivänä lähetä lista ensimmäisenä. Ensimmäiset myyntipiikkipäivät ovat kriittisiä verkkokauppojen algoritmien kannalta.
+Julkaisupäivänä lähetä tieto julkaisusta listalla olijoille ensimmäisenä. Ensimmäiset myyntipiikkipäivät ovat kriittisiä verkkokauppojen algoritmien kannalta.
 
-## 3. Lehdistötiedote — ilmaista medianäkyvyyttä
+## 3. Lehdistötiedote: Ilmaista medianäkyvyyttä
 
 Lehdistötiedote on ilmainen tapa saada medianäkyvyyttä. Lähetä tiedote:
 - Paikallisille sanomalehdille (erityisesti jos kirja liittyy paikalliseen aiheeseen)
@@ -314,7 +314,7 @@ Kirjamessut (Helsinki Book Fair, Turku kirjamessut), kirjastotapahtumat ja yrity
 
 Tarjoudu puhujaksi konferensseihin ja seminaareihin kirjasi aiheesta. Puhujaesiintyminen rakentaa uskottavuutta ja johtaa usein kirjamyyntiin.
 
-## 5. Podcast-vierailut — tavoita sitoutunut yleisö
+## 5. Podcast-vierailut: Tavoita sitoutunut yleisö
 
 Podcastit tavoittavat erittäin sitoutuneen yleisön. Podcast-kuuntelijat ovat aktiivisia tiedonhakijoita, jotka ovat valmiita ostamaan kirjoja.
 
@@ -324,7 +324,7 @@ Etsi podcasteja, jotka käsittelevät kirjasi aihetta. Tarjoudu vieraaksi ja val
 
 Kirja-arvostelut blogeissa ja verkkolehdissä lisäävät näkyvyyttä ja uskottavuutta. Lähetä arvostelukappale (tai e-kirja) aktiivisille kirjabloggaajille ja pyydä rehellistä arviota.
 
-Hyvä arvostelu on arvokkaampi kuin maksettu mainos — lukijat luottavat vertaisarvosteluihin.
+Hyvä arvostelu on arvokkaampi kuin maksettu mainos. Lukijat luottavat vertaisarvosteluihin.
 
 ## 7. Amazon ja verkkokauppojen optimointi
 
@@ -335,38 +335,38 @@ Verkkokaupan tuotesivun optimointi on yksi tehokkaimmista ja edullisimmista mark
 - **Kategoria:** Valitse oikea kategoria, jossa kirjasi voi nousta listojen kärkeen
 - **Arvostelut:** Pyydä ensimmäisiä lukijoita jättämään arvostelu
 
-## 8. Yritysasiakkaat — kirja henkilöstölahjaksi
+## 8. Yritysasiakkaat: Kirja henkilöstölahjaksi
 
-Jos kirjasi sopii yrityksille, tarjoa sitä henkilöstölahjaksi tai koulutusmateriaaleiksi. Yritykset ostavat kirjoja kymmenissä tai sadoissa kappaleissa — yksi kauppa voi vastata kuukausien yksittäismyyntiä.
+Jos kirjasi sopii yrityksille, tarjoa sitä henkilöstölahjaksi tai koulutusmateriaaleiksi. Yritykset ostavat kirjoja kymmenissä tai sadoissa kappaleissa. Yksi tällainen iso kauppa voi vastata kuukausien yksittäismyyntiä.
 
 Asiantuntijakirja sopii erityisesti yritysmyyntiin. Tarjoa räätälöityä versiota yrityksen logolla tai omistuskirjoituksella.
 
 ## 9. Kirjakerho ja lukupiiri
 
-Tarjoudu kirjakerhon tai lukupiirin vieraaksi — joko paikan päällä tai etänä. Kirjakerhot ovat aktiivisia kirjojen ostajia, ja henkilökohtainen kohtaaminen kirjailijan kanssa tekee kirjasta erityisen.
+Tarjoudu kirjakerhon tai lukupiirin vieraaksi, joko paikan päällä tai etänä. Kirjakerhot ovat aktiivisia kirjojen ostajia, ja henkilökohtainen kohtaaminen kirjailijan kanssa tekee kirjasta erityisen.
 
-Monet kirjastot järjestävät kirjakerhoja — ota yhteyttä paikalliseen kirjastoon.
+Monet kirjastot järjestävät kirjakerhoja. Ota yhteyttä paikalliseen kirjastoon.
 
 ## 10. Jatkuva sisällöntuotanto
 
 Kirjoita artikkeleita, pidä blogia tai tee videoita kirjasi aiheesta. Sisältömarkkinointi rakentaa pitkäaikaista näkyvyyttä hakukoneissa ja sosiaalisessa mediassa.
 
-Hyvä sisältö houkuttelee lukijoita, jotka etsivät tietoa kirjasi aiheesta — ja ohjaa heidät kirjasi pariin luonnollisesti.
+Hyvä sisältö houkuttelee lukijoita, jotka etsivät tietoa kirjasi aiheesta ja ohjaa heidät kirjasi pariin luonnollisesti.
 
 ## Yhteenveto: Markkinointi on jatkuvaa työtä
 
-Kirjan markkinointi ei lopu julkaisupäivään. Menestyneet kirjailijat markkinoivat kirjaansa jatkuvasti — kuukausia ja vuosia julkaisun jälkeen. Pitkäjänteisyys palkitaan.
+Kirjan markkinointi ei lopu julkaisupäivään. Menestyneet kirjailijat markkinoivat kirjaansa jatkuvasti, kuukausia ja vuosia vielä julkaisun jälkeenkin. Pitkäjänteisyys palkitaan.
 
 Thunder Kustannuksen Premium-paketti sisältää markkinointipaketin, lehdistötiedotteen ja sosiaalisen median lanseerauspaketin. [Katso paketit](/hinnat) tai [Pyydä hinta-arvio](/tarjouspyynto).
     `,
   },
   {
     id: "isbn-tunnus",
-    title: "ISBN-tunnus — mitä se on ja miten se haetaan?",
+    title: "ISBN-tunnus: Mikä se on ja miten se haetaan?",
     slug: "isbn-tunnus",
     excerpt: "ISBN-tunnus on kirjan kansainvälinen tunniste. Ilman sitä kirjaasi ei voi myydä kirjakaupoissa. Tässä kaikki mitä sinun täytyy tietää.",
     category: "Käytännön asiat",
-    readTime: "7 min",
+    readTime: "3 min",
     date: "2026-03-15",
     content: `
 ISBN (International Standard Book Number) on kirjan kansainvälinen tunnistenumero. Se on pakollinen, jos haluat myydä kirjaasi kirjakaupoissa, tilata kirjastoihin tai saada kirjasi mukaan kansainvälisiin tietokantoihin. Tässä oppaassa kerromme kaiken, mitä sinun täytyy tietää ISBN-tunnuksesta.
@@ -419,27 +419,27 @@ Tässä on tärkeä ero, jota monet eivät tiedä:
 
 **Oma ISBN (omissa nimissä):** Voit hakea ISBN:n omissa nimissäsi. Tällöin sinusta tulee virallisesti kustantaja. Tämä on mahdollista, mutta vaatii enemmän byrokratiaa ja kirjasi saattaa näyttää "kotikutoisemmalta" kirjakaupoissa.
 
-**Kustantamon ISBN:** Kun käytät hybridikustantamoa, ISBN haetaan kustantamon nimissä. Tämä tekee kirjastasi ammattimaisemman näköisen — kirjakaupat näkevät kustantamona Thunder Kustannus eikä yksityishenkilö.
+**Kustantamon ISBN:** Kun käytät Thunder Kustannusta, ISBN haetaan kustantamon nimissä. Tämä tekee kirjastasi ammattimaisemman näköisen. Kirjakaupat näkevät kustantamona Thunder Kustannuksen eikä yksityishenkilö.
 
 ## Thunder Kustannus hoitaa ISBN:n puolestasi
 
 Kaikki Thunder Kustannuksen paketit sisältävät ISBN-tunnuksen hakemisen. Me hoidamme byrokratian, rekisteröinnin ja varmistamme, että kirjasi tiedot ovat oikein kansainvälisissä tietokannoissa.
 
-Sinun ei tarvitse huolehtia teknisistä yksityiskohdista — me hoidamme sen, jotta voit keskittyä kirjoittamiseen.
+Sinun ei tarvitse huolehtia teknisistä yksityiskohdista. Me hoidamme ne, jotta voit keskittyä kirjoittamiseen.
 
 [Katso paketit ja hinnat](/hinnat) tai [Pyydä hinta-arvio](/tarjouspyynto).
     `,
   },
   {
     id: "kirjan-taitto-ja-kansisuunnittelu",
-    title: "Kirjan taitto ja kansisuunnittelu — mitä kannattaa tietää?",
+    title: "Kirjan taitto ja kansisuunnittelu: Mitä kannattaa tietää?",
     slug: "kirjan-taitto-ja-kansisuunnittelu",
     excerpt: "Kirjan ulkoasu ratkaisee ensivaikutelman. Ammattimainen taitto ja kansisuunnittelu ovat investointi, joka maksaa itsensä takaisin myynnissä.",
     category: "Tuotanto",
-    readTime: "9 min",
+    readTime: "4 min",
     date: "2026-04-01",
     content: `
-Kirjan ulkoasu on ensimmäinen asia, jonka lukija näkee. Tutkimusten mukaan ostopäätös tehdään alle 3 sekunnissa kannen perusteella — erityisesti verkkokaupassa, jossa kirja näkyy pienessä kuvakkeessa muiden kirjojen joukossa. Ammattimainen taitto ja kansisuunnittelu eivät ole ylellisyys, vaan välttämättömyys.
+Kirjan ulkoasu on ensimmäinen asia, jonka lukija näkee. Tutkimusten mukaan ostopäätös tehdään alle 3 sekunnissa kannen perusteella, erityisesti verkkokaupassa, jossa kirja näkyy pienessä kuvakkeessa muiden kirjojen joukossa. Ammattimainen taitto ja kansisuunnittelu eivät ole ylellisyys, vaan välttämättömyys.
 
 ## Mitä taitto tarkoittaa?
 
@@ -453,15 +453,15 @@ Taitto (layout) tarkoittaa kirjan sisäsivujen visuaalista suunnittelua. Se katt
 
 **Kuvien sijoittelu:** Jos kirjassa on kuvia, kaavioita tai taulukoita, niiden sijoittelu ja koko vaikuttavat sekä ulkoasuun että luettavuuteen.
 
-Huono taitto tekee kirjasta vaikealukuisen ja epäammattimaisen näköisen — vaikka sisältö olisi kuinka hyvä tahansa. Lukijat huomaavat huonon taiton, vaikka he eivät osaisi nimetä mikä on pielessä.
+Huono taitto tekee kirjasta vaikealukuisen ja epäammattimaisen näköisen, vaikka sisältö olisi kuinka hyvä tahansa. Lukijat huomaavat huonon taiton, vaikka he eivät osaisi nimetä mikä on pielessä.
 
-## Kansisuunnittelu — kirjasi tärkein markkinointiväline
+## Kansisuunnittelu: Kirjasi tärkein markkinointiväline
 
 Kansi myy kirjan. Hyvässä kannessa on:
 
-**Selkeä, luettava otsikko:** Otsikon täytyy olla luettavissa pienessäkin koossa — verkkokaupan kuvakkeessa tai puhelimen näytöllä.
+**Selkeä, luettava otsikko:** Otsikon täytyy olla luettavissa pienessäkin koossa, verkkokaupan kuvakkeessa tai puhelimen näytöllä.
 
-**Ammattimainen kuva tai grafiikka:** Kuvan laatu ja tyyli kertovat kirjan laadusta. Ilmaiskuvapankit näyttävät usein amatöörimäisiltä — ammattimainen kuvitus tai valokuva tekee eron.
+**Ammattimainen kuva tai grafiikka:** Kuvan laatu ja tyyli kertovat kirjan laadusta. Ilmaiskuvapankit näyttävät usein amatöörimäisiltä. Ammattimainen kuvitus tai valokuva tekee eron.
 
 **Kirjailijan nimi sopivassa koossa:** Tuntemattomalle kirjailijalle nimi on pienemmässä koossa kuin otsikko. Tunnetulle kirjailijalle nimi voi olla suurempi kuin otsikko.
 
@@ -469,7 +469,7 @@ Kansi myy kirjan. Hyvässä kannessa on:
 
 ## E-kirjan erityisvaatimukset
 
-E-kirja (EPUB3) vaatii erityisen taiton, joka skaalautuu eri laitteille ja näyttökoille. Reflowable-formaatti tarkoittaa, että teksti mukautuu lukijan fonttikoon mukaan — taitto ei voi olla yhtä tarkka kuin painetussa kirjassa.
+E-kirja (EPUB3) vaatii erityisen taiton, joka skaalautuu eri laitteille ja näyttökoille. Reflowable-formaatti tarkoittaa, että teksti mukautuu lukijan fonttikoon mukaan. Taitto ei voi olla yhtä tarkka kuin painetussa kirjassa.
 
 E-kirjan taitto vaatii:
 - EPUB3-standardin mukainen rakenne
@@ -479,11 +479,11 @@ E-kirjan taitto vaatii:
 
 ## Äänikirjan kansi
 
-Äänikirjalla on oma kansi, joka näkyy suoratoistopalveluissa (Storytel, Spotify, BookBeat). Se on neliön muotoinen (1:1) ja sen täytyy toimia pienessä koossa — jopa 50 × 50 pikseliä. Tämä tarkoittaa, että äänikirjan kansi on usein yksinkertaisempi ja selkeämpi kuin painetun kirjan kansi.
+Äänikirjalla on oma kansi, joka näkyy suoratoistopalveluissa (Storytel, Spotify, BookBeat). Se on neliön muotoinen (1:1) ja sen täytyy toimia pienessä koossa, jopa 50 × 50 pikseliä. Tämä tarkoittaa, että äänikirjan kansi on usein yksinkertaisempi ja selkeämpi kuin painetun kirjan kansi.
 
 ## Painetun kirjan erityispiirteet
 
-Painettu kirja vaatii takakannen ja selkämyksen suunnittelun lisäksi etukannen. Selkämykseen mahtuu otsikko ja kirjailijan nimi — tämä on tärkeää, koska kirjahyllyssä kirja näkyy useimmiten selkämys edellä.
+Painettu kirja vaatii takakannen ja selkämyksen suunnittelun lisäksi etukannen. Selkämykseen mahtuu otsikko ja kirjailijan nimi. Tämä on tärkeää, koska kirjahyllyssä kirja näkyy useimmiten selkämys edellä.
 
 Painolaatu vaihtelee: pehmeäkantinen (paperback) on edullisempi, kovakantinen (hardcover) arvokkaamman näköinen. Paperin laatu, kiiltävyys ja painomenetelmä vaikuttavat lopputulokseen.
 
@@ -500,20 +500,20 @@ Kaikki Thunder Kustannuksen paketit sisältävät ammattimaisen taiton ja kansis
   },
   {
     id: "kirjan-kustannukset",
-    title: "Kirjan julkaisemisen kustannukset — mitä omakustanne oikeasti maksaa?",
+    title: "Kirjan julkaisemisen kustannukset: Mitä omakustanne oikeasti maksaa?",
     slug: "kirjan-kustannukset",
     excerpt: "Paljonko kirjan julkaiseminen oikeasti maksaa? Vertailemme eri vaihtoehdot rehellisesti: itse tekeminen, hybridikustantamo ja perinteinen kustantamo.",
     category: "Käytännön asiat",
-    readTime: "10 min",
+    readTime: "5 min",
     date: "2026-04-10",
     content: `
-Yksi yleisimmistä kysymyksistä, joita kirjailijat esittävät, on: "Paljonko kirjan julkaiseminen maksaa?" Vastaus riippuu siitä, mitä valitset — ja mitä jätät tekemättä. Tässä rehellinen katsaus kustannuksiin.
+Yksi yleisimmistä kysymyksistä, joita kirjailijat esittävät, on: "Paljonko kirjan julkaiseminen maksaa?" Vastaus riippuu siitä, mitä valitset ja mitä jätät tekemättä. Tässä rehellinen katsaus kustannuksiin.
 
 ## Vaihtoehto 1: Kaikki itse
 
 Teknisesti kirjan voi julkaista lähes ilmaiseksi: kirjoita Word-tiedostoon, lataa Amazon KDP:hen, valmis. Mutta todellisuus on monimutkaisempi.
 
-**Taitto:** Voit opetella taiton itse käyttämällä Affinity Publisher- tai InDesign-ohjelmaa. Oppimiskäyrä on jyrkkä — laadukkaan taiton oppiminen vie kuukausia.
+**Taitto:** Voit opetella taiton itse käyttämällä Affinity Publisher- tai InDesign-ohjelmaa. Oppimiskäyrä on jyrkkä, laadukkaan taiton oppiminen vie kuukausia.
 
 **Kansisuunnittelu:** Canvalla voi tehdä kannen, mutta ammattimainen lopputulos vaatii graafisen suunnittelun osaamista.
 
@@ -540,11 +540,11 @@ Toinen vaihtoehto on ostaa palvelut erikseen ammattilaisilta.
 | Jakelusopimukset | 200–500 € + provisiot |
 | **Yhteensä** | **1 700–5 400 €** |
 
-Lisäksi jokainen palveluntarjoaja on eri toimija — koordinointi vie aikaa ja energiaa.
+Lisäksi jokainen palveluntarjoaja on eri toimija. Koordinointi vie aikaa ja energiaa.
 
-## Vaihtoehto 3: Hybridikustantamo
+## Vaihtoehto 3: Omakustantamo
 
-Hybridikustantamo, kuten Thunder Kustannus, tarjoaa kaikki palvelut yhtenä pakettina. Tämä tarkoittaa:
+Omakustantamot, tai julkaisualustat, kuten tykkäämme Thunder Kustannuksella sanoa, tarjoaa kaikki palvelut yhtenä pakettina. Tämä tarkoittaa:
 - Yksi sopimus, yksi yhteyshenkilö
 - Kaikki palvelut koordinoitu yhteen prosessiin
 - Selkeä kokonaishinta ilman yllätyksiä
@@ -553,7 +553,7 @@ Thunder Kustannuksen paketit alkavat 890 eurosta (Digi-paketti,  sis. ALV 25,5 %
 
 ## Mitä kannattaa ottaa huomioon?
 
-**Laatu maksaa.** Halvimmat vaihtoehdot tuottavat usein heikoimman lopputuloksen. Kirja, joka näyttää amatöörimäiseltä, ei myy — riippumatta siitä, kuinka hyvä sisältö on.
+**Laatu maksaa.** Halvimmat vaihtoehdot tuottavat usein heikoimman lopputuloksen. Kirja, joka näyttää amatöörimäiseltä tai ei myy, riippumatta siitä, kuinka hyvä sisältö on.
 
 **Aika on rahaa.** Jos käytät 200 tuntia opetteluun ja tekemiseen, se on 200 tuntia pois kirjoittamisesta, markkinoinnista tai muusta liiketoiminnasta.
 
@@ -563,14 +563,14 @@ Thunder Kustannuksen paketit alkavat 890 eurosta (Digi-paketti,  sis. ALV 25,5 %
 
 ## Yhteenveto
 
-Kirjan julkaiseminen maksaa 0–5 000 euroa riippuen valituista palveluista ja laadusta. Hybridikustantamo tarjoaa selkeimmän ja usein kustannustehokkaimman tavan julkaista kirja ammattimaisesti.
+Kirjan julkaiseminen maksaa 0–5 000 euroa riippuen valituista palveluista ja laadusta. Thunder Kustannus tarjoaa selkeimmän ja usein kustannustehokkaimman tavan julkaista kirja ammattimaisesti.
 
 [Katso Thunder Kustannuksen paketit ja hinnat](/hinnat) tai [Pyydä hinta-arvio](/tarjouspyynto).
     `,
   },
   {
     id: "kirjailijan-tulot",
-    title: "Kirjailijan tulot — paljonko kirjailija tienaa omakustanteella?",
+    title: "Kirjailijan tulot: Paljonko kirjailija tienaa omakustanteella?",
     slug: "kirjailijan-tulot",
     excerpt: "Paljonko omakustannekirjailija oikeasti tienaa? Vertailemme rojaltit, myyntimäärät ja realistiset tulot eri julkaisumalleissa.",
     category: "Strategia",
@@ -662,7 +662,7 @@ Omakustannekirjailija voi tienata merkittävästi enemmän kuin perinteisen kust
   },
   {
     id: "e-kirjan-julkaiseminen",
-    title: "E-kirjan julkaiseminen Suomessa — täydellinen opas 2026",
+    title: "E-kirjan julkaiseminen Suomessa: Täydellinen opas 2026",
     slug: "e-kirjan-julkaiseminen",
     excerpt: "Miten julkaistaan e-kirja Suomessa? Tässä oppaassa käymme läpi koko prosessin EPUB-tiedostosta suoratoistopalvelujakeluun.",
     category: "E-kirjat",
@@ -742,14 +742,14 @@ Thunder Kustannuksen Digi-paketti sisältää e-kirjan ja äänikirjan tuotannon
   },
   {
     id: "kirjan-kirjoittaminen-aloittelijalle",
-    title: "Kirjan kirjoittaminen aloittelijalle — miten aloitan?",
+    title: "Kirjan kirjoittaminen aloittelijalle: Miten aloitan?",
     slug: "kirjan-kirjoittaminen-aloittelijalle",
     excerpt: "Haaveiletko kirjan kirjoittamisesta mutta et tiedä mistä aloittaa? Tässä käytännön opas kirjan kirjoittamiseen aloittelijalle — vaihe vaiheelta.",
     category: "Aloittelijalle",
     readTime: "11 min",
     date: "2026-05-15",
     content: `
-Lähes jokaisella on kirja sisällään — idea, tarina tai asiantuntemus, joka ansaitsee tulla jaetuksi. Mutta miten aloittaa? Kirjan kirjoittaminen tuntuu usein ylivoimaiselta tehtävältä, kunnes sen pilkkoo pienempiin osiin. Tässä oppaassa käymme läpi kirjan kirjoittamisen vaihe vaiheelta.
+Lähes jokaisella on kirja sisällään. Idea, tarina tai asiantuntemus, joka ansaitsee tulla jaetuksi. Mutta miten aloittaa? Kirjan kirjoittaminen tuntuu usein ylivoimaiselta tehtävältä, kunnes sen pilkkoo pienempiin osiin. Tässä oppaassa käymme läpi kirjan kirjoittamisen vaihe vaiheelta.
 
 ## Miksi kirjoittaa kirja?
 
@@ -767,7 +767,7 @@ Ennen kuin aloitat, on tärkeää tietää miksi kirjoitat. Motivaatio vaikuttaa
 
 Hyvä kirja vastaa kysymykseen: "Kenelle tämä kirja on kirjoitettu ja mitä he saavat siitä?"
 
-Mitä tarkemmin voit määritellä kohderyhmäsi, sitä paremmin voit kirjoittaa heille. "Kaikille" ei ole kohderyhmä — "40–55-vuotiaille naisyrittäjille, jotka haluavat skaalata liiketoimintaansa" on kohderyhmä.
+Mitä tarkemmin voit määritellä kohderyhmäsi, sitä paremmin voit kirjoittaa heille. "Kaikille" ei ole kohderyhmä: "40–55-vuotiaille naisyrittäjille, jotka haluavat skaalata liiketoimintaansa" on kohderyhmä.
 
 Aihevalinnassa kannattaa ottaa huomioon:
 - Mitä osaat paremmin kuin useimmat ihmiset?
@@ -834,11 +834,11 @@ Aloita tänään. Kirjoita ensimmäinen luku. Kirjasi odottaa.
   },
   {
     id: "kirjan-myynti-rohkeus",
-    title: "Kirjan myynti alkaa rohkeudesta — ei täydellisyydestä",
+    title: "Kirjan myynti alkaa rohkeudesta, ei täydellisyydestä",
     slug: "kirjan-myynti-rohkeus",
     excerpt: "Kirjallisuusala kärsii yhdestä yhteisestä ongelmasta: liiasta odottamisesta. Kirja, jota ei ole julkaistu, ei myy. Tässä oppaassa käymme läpi, miksi tekeminen on täydellisyyttä tärkeämpää — ja miten se käytännössä näkyy kirjan myynnissä.",
     category: "Strategia",
-    readTime: "8 min",
+    readTime: "4 min",
     date: "2026-05-08",
     content: `
 Kirjallisuusalalla on pitkä perinne täydellisyyden tavoittelusta. Se on ymmärrettävää — kirja on tekijänsä näköinen, ja sen päästäminen maailmalle tuntuu henkilökohtaiselta. Mutta tämä sama perinne on myös yksi suurimmista syistä siihen, miksi niin moni kirja jää kirjoittamatta, julkaisematta ja myymättä.
@@ -881,11 +881,11 @@ Jos kirjasi on jo valmis tai lähes valmis, tässä on kolme asiaa joita voit te
 
 **Aseta julkaisupäivä.** Ei "joskus keväällä" — vaan tarkka päivämäärä. Päivämäärä luo paineen, joka saa asiat tapahtumaan.
 
-**Kerro kirjastasi yhdelle ihmiselle tänään.** Ei somessa — henkilökohtaisesti. Lähetä viesti yhdelle ihmiselle, jota kirjasi aihe koskettaa. Pyydä häntä lukemaan se. Ensimmäinen lukija on tärkeämpi kuin tuhat seuraajaa.
+**Kerro kirjastasi yhdelle ihmiselle tänään.** Ei somessa, vaan henkilökohtaisesti. Lähetä viesti yhdelle ihmiselle, jota kirjasi aihe koskettaa. Pyydä häntä lukemaan se. Ensimmäinen lukija on tärkeämpi kuin tuhat seuraajaa.
 
 **Lopeta editoiminen ja aloita julkaisuprosessi.** Jos olet editoinut kirjaasi yli kolme kertaa, se on todennäköisesti jo tarpeeksi hyvä. Seuraava askel ei ole neljäs editointikierros — se on taitto, kansi ja jakelu.
 
-Kirja ei tule koskaan täydelliseksi. Mutta se voi tulla julkaistuksi — ja se on ainoa versio, joka voi muuttaa jonkun elämän.
+Kirja ei tule koskaan täydelliseksi. Mutta se voi tulla julkaistuksi ja se on ainoa versio, joka voi muuttaa jonkun elämän.
 
 [Pyydä hinta-arvio](/tarjouspyynto) ja aloita julkaisuprosessi tänään.
     `,
@@ -896,7 +896,7 @@ export const COMPANY = {
   name: "Thunder Kustannus",
   legalName: "Thunder Media Oy",
   tagline: "Sinun kirjasi. Sinun oikeutesi. Ammattimainen julkaisu.",
-  description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta — hybridimalli, jossa yhdistyvät ammattimainen kustannustoiminta ja kirjailijan täysi kontrolli. Painettu kirja, e-kirja ja äänikirja. Jakelu kaikkiin suomalaisiin kirjakauppoihin ja suoratoistopalveluihin. Oikeudet pysyvät sinulla.",
+  description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta, jossa yhdistyvät ammattimainen kustannustoiminta ja kirjailijan täysi kontrolli. Painettu kirja, e-kirja ja äänikirja. Jakelu kaikkiin suomalaisiin kirjakauppoihin ja suoratoistopalveluihin. Oikeudet pysyvät sinulla.",
   email: "info@thunderkustannus.fi",
   phone: "",
   address: "",
