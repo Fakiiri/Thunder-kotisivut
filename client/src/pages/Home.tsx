@@ -10,9 +10,9 @@ import PrintCalculator from "@/components/PrintCalculator";
 import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663402214228/kjokCxRA3tYow9xSz5Mijk/thunder_hero-AGE9LdUsmSYMTtiyt2bza6.webp";
-const AUDIOBOOK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663402214228/kjokCxRA3tYow9xSz5Mijk/thunder_audiobook-5KzGxqteP6emS5MsYQ9Skm.webp";
-const BOOKS_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663402214228/kjokCxRA3tYow9xSz5Mijk/thunder_books_stack-4eaNEqNXq3hg3xEhNouWJe.webp";
+const HERO_IMG = "/images/painettu.png";
+const AUDIOBOOK_IMG = "/images/aani.png";
+const BOOKS_IMG = "/images/premium.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
