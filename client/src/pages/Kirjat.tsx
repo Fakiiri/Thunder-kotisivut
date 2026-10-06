@@ -4,6 +4,27 @@ import { useSEO } from "@/hooks/useSEO";
 import { useLang } from "@/contexts/LanguageContext";
 import { books, type BookCategory } from "@/lib/books";
 
+function BookDescription({ text, lang }: { text: string; lang: string }) {
+  const firstSentenceEnd = text.search(/[.!?](?:\s|$)/);
+  const intro = firstSentenceEnd < 0 ? text : text.slice(0, firstSentenceEnd + 1);
+  const remainder = firstSentenceEnd < 0 ? "" : text.slice(firstSentenceEnd + 1).trim();
+
+  return (
+    <div className="mt-4 text-sm md:text-base leading-relaxed text-foreground/70" lang="fi">
+      <p>{intro}</p>
+      {remainder && (
+        <details className="book-description mt-3">
+          <summary className="w-fit cursor-pointer rounded text-sm font-semibold text-foreground underline decoration-orange-400 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500">
+            <span className="book-read-more">{lang === "fi" ? "Lue lisää" : "Read more"}</span>
+            <span className="book-read-less">{lang === "fi" ? "Näytä vähemmän" : "Show less"}</span>
+          </summary>
+          <p className="mt-3">{remainder}</p>
+        </details>
+      )}
+    </div>
+  );
+}
+
 export default function Kirjat() {
   const { lang } = useLang();
   const title = lang === "fi" ? "Kirjat" : "Books";
@@ -37,6 +58,13 @@ export default function Kirjat() {
                   <h2 id={`books-${section.category}`} className="text-2xl md:text-3xl">
                     {section.title}
                   </h2>
+                  {section.category === "publications" && (
+                    <p className="mt-3 text-sm text-foreground/65">
+                      {lang === "fi"
+                        ? "Kaikki äänikirjat ovat saatavilla useimmista äänikirjapalveluista."
+                        : "All audiobooks are available on most audiobook services."}
+                    </p>
+                  )}
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                   {books.filter((book) => book.category === section.category).map((book) => (
@@ -55,8 +83,13 @@ export default function Kirjat() {
                       />
                       <figcaption className="mt-4">
                         <p className="text-base font-medium text-foreground/75">{book.author}</p>
+                        {(book.category === "printed" || book.language || book.formats?.length) ? <ul className="mt-3 flex flex-wrap gap-2" aria-label={lang === "fi" ? "Kirjan formaatit ja kieli" : "Book formats and language"}>
+                          {book.category === "printed" && <li className="rounded-full border border-border px-3 py-1 text-xs text-foreground/70">{lang === "fi" ? "Painettu kirja" : "Printed book"}</li>}
+                          {book.language === "en" && <li className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs text-foreground/70">{lang === "fi" ? "Englanninkielinen" : "English"}</li>}
+                          {(book.formats ?? []).map(format => <li key={format} className="rounded-full border border-border px-3 py-1 text-xs text-foreground/70">{format === "audio" ? (lang === "fi" ? "Äänikirja" : "Audiobook") : (lang === "fi" ? "E-kirja" : "E-book")}</li>)}
+                        </ul> : null}
                         {book.description && (
-                          <p className="mt-4 text-sm md:text-base leading-relaxed text-foreground/70">{book.description}</p>
+                          <BookDescription text={book.description} lang={lang} />
                         )}
                       </figcaption>
                     </figure>
