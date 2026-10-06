@@ -8,6 +8,7 @@ export const translations = {
     // Navbar
     nav: {
       home: "Etusivu",
+      books: "Kirjat",
       pricing: "Hinnat",
       guides: "Oppaat",
       about: "Meistä",
@@ -150,6 +151,7 @@ export const translations = {
     // Navbar
     nav: {
       home: "Home",
+      books: "Books",
       pricing: "Pricing",
       guides: "Guides",
       about: "About",

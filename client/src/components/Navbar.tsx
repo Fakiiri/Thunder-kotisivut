@@ -24,6 +24,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/", label: t.nav.home },
     { href: "/hinnat", label: t.nav.pricing },
+    { href: "/kirjat", label: t.nav.books },
     { href: "/oppaat", label: t.nav.guides },
     { href: "/meista", label: t.nav.about },
     { href: "/yhteystiedot", label: t.nav.contact },
@@ -76,7 +77,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden xl:flex items-center gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -95,7 +96,7 @@ export default function Navbar() {
           </nav>
 
           {/* CTA + language switcher */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             {/* Language toggle */}
             <button
               onClick={() => setLang(lang === "fi" ? "en" : "fi")}
@@ -125,9 +126,10 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <button
-            className={`md:hidden p-2 ${onDark ? "text-white" : "text-foreground"}`}
+            className={`xl:hidden p-2 ${onDark ? "text-white" : "text-foreground"}`}
             onClick={() => setOpen(!open)}
             aria-label="Avaa valikko"
+            aria-expanded={open}
           >
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -135,12 +137,13 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {open && (
-          <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
+          <div className="xl:hidden bg-white border-t border-gray-100 shadow-lg">
             <nav className="container py-5 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => setOpen(false)}
                   className={`text-sm font-medium py-2.5 px-2 rounded transition-colors ${
                     location === link.href
                       ? "thunder-orange bg-orange-50"

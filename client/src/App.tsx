@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Hinnat from "./pages/Hinnat";
+import Kirjat from "./pages/Kirjat";
 import Tarjouspyynto from "./pages/Tarjouspyynto";
 import Oppaat from "./pages/Oppaat";
 import Opas from "./pages/Opas";
@@ -24,6 +25,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/hinnat" component={Hinnat} />
+      <Route path="/kirjat" component={Kirjat} />
       <Route path="/tarjouspyynto" component={Tarjouspyynto} />
       <Route path="/arvio" component={ArvioRedirect} />
       <Route path="/oppaat" component={Oppaat} />
