@@ -53,7 +53,12 @@ export default function Kirjat() {
                         decoding="async"
                         className="block w-full h-auto rounded-xl border border-border"
                       />
-                      <figcaption className="mt-4 text-base font-medium text-foreground/75">{book.author}</figcaption>
+                      <figcaption className="mt-4">
+                        <p className="text-base font-medium text-foreground/75">{book.author}</p>
+                        {book.description && (
+                          <p className="mt-4 text-sm md:text-base leading-relaxed text-foreground/70">{book.description}</p>
+                        )}
+                      </figcaption>
                     </figure>
                   ))}
                 </div>
