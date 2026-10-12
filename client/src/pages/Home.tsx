@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { useSEO } from "@/hooks/useSEO";
 import { ArrowRight, BookOpen, Headphones, Store, CheckCircle2, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import CampaignBanner from "@/components/CampaignBanner";
 import Footer from "@/components/Footer";
 import { PACKAGES, GUIDES, COMPANY } from "@/lib/data";
 import PrintCalculator from "@/components/PrintCalculator";
@@ -79,6 +80,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <CampaignBanner />
 
       {/* ── PALVELUT — vaalea tausta ── */}
       <section className="thunder-section bg-background">
