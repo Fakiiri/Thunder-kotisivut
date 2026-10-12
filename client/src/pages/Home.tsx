@@ -14,6 +14,7 @@ import { useLang } from "@/contexts/LanguageContext";
 const HERO_IMG = "/images/painettu.png";
 const AUDIOBOOK_IMG = "/images/aani.png";
 const BOOKS_IMG = "/images/premium.png";
+const EBOOK_IMG = "/images/ebook-reader.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -102,7 +103,7 @@ export default function Home() {
                 icon: BookOpen,
                 title: t.home.service1Title,
                 desc: t.home.service1Desc,
-                img: BOOKS_IMG,
+                img: HERO_IMG,
               },
               {
                 icon: Headphones,
@@ -114,7 +115,7 @@ export default function Home() {
                 icon: Store,
                 title: t.home.service3Title,
                 desc: t.home.service3Desc,
-                img: HERO_IMG,
+                img: EBOOK_IMG,
               },
             ].map((item) => (
               <motion.div
