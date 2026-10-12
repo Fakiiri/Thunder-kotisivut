@@ -10,7 +10,7 @@ export default function CampaignBanner() {
       <div className="tk-campaign__inner">
         <div className="tk-campaign__copy">
           <p className="tk-campaign__eyebrow">SYYSKAMPANJA · VOIMASSA 15.10.2026 ASTI</p>
-          <h2 id="tk-campaign-title">Oma kirjasi.<br /><em>Joulun lahjaksi.</em></h2>
+          <h2 id="tk-campaign-title">Sinun kirjasi.<br /><em>Joulumyyntiin.</em></h2>
           <p className="tk-campaign__lead">Joulu on kirjamyynnin vilkkainta aikaa. Haluatko oman kirjasi mukaan? Ota yhteyttä nyt.</p>
           <ul className="tk-campaign__features">
             <li>100 kappaletta A5-kirjoja</li>

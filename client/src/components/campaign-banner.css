@@ -4,7 +4,7 @@
 .tk-campaign__inner{max-width:1160px;margin:auto;display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center;position:relative}
 .tk-campaign__eyebrow{font-size:11px;letter-spacing:.15em;font-weight:700;color:#f8c68c;margin:0 0 20px}
 .tk-campaign h2{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-size:clamp(38px,4.5vw,62px);line-height:1.08;letter-spacing:-.045em;margin:0 0 22px}
-.tk-campaign h2 em{font-family:Georgia,serif;font-weight:400;color:#edcf98;letter-spacing:-.035em}
+.tk-campaign h2 em{font-family:Georgia,serif;font-weight:700;color:#edcf98;letter-spacing:-.035em}
 .tk-campaign__lead{max-width:490px;line-height:1.65;color:#e4e9df;font-size:16px;margin:0 0 23px}
 .tk-campaign__features{padding:0;list-style:none;display:grid;gap:9px;font-size:14px;margin:0 0 28px}
 .tk-campaign__features li::before{content:"✓";color:#edcf98;margin-right:12px}
