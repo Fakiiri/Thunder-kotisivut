@@ -25,7 +25,7 @@ export default function CampaignBanner() {
         <div className="tk-campaign__offer">
           <div className="tk-campaign__book" aria-hidden="true"><span>OMA<br />KIRJASI</span><small>THUNDER KUSTANNUS</small></div>
           <div className="tk-campaign__price"><span>KOKO PAKETTI VAIN</span><strong>990 <small>€</small></strong><span>sis. alv</span></div>
-          <span className="tk-campaign__star" aria-hidden="true">✦</span>
+          <svg className="tk-campaign__mistletoe" aria-hidden="true" viewBox="0 0 100 110" fill="none"><path d="M50 100 C48 75 54 45 69 15 M51 74 C40 58 29 45 17 34" stroke="#b5c69b" strokeWidth="3" strokeLinecap="round"/><ellipse cx="67" cy="33" rx="8" ry="20" transform="rotate(28 67 33)" fill="#91ad7e"/><ellipse cx="46" cy="48" rx="8" ry="19" transform="rotate(-30 46 48)" fill="#769665"/><ellipse cx="74" cy="60" rx="8" ry="19" transform="rotate(52 74 60)" fill="#91ad7e"/><ellipse cx="26" cy="42" rx="7" ry="18" transform="rotate(-45 26 42)" fill="#91ad7e"/><ellipse cx="35" cy="67" rx="7" ry="17" transform="rotate(-54 35 67)" fill="#769665"/><circle cx="53" cy="65" r="5" fill="#fff8eb"/><circle cx="62" cy="71" r="5" fill="#fff8eb"/><circle cx="53" cy="77" r="5" fill="#fff8eb"/></svg>
         </div>
       </div>
     </section>
