@@ -24,7 +24,7 @@ export const translations = {
       lead: "Thunder Kustannus on suomalainen alusta, joka yhdistää modernin tavan julkaista kirja ja kirjailijan täyden kontrollin. Sinä kirjoitat, me hoidamme kaiken muun.",
       ctaPrimary: "Pyydä hinta-arvio",
       ctaSecondary: "Katso hinnat",
-      servicesTitle: "Kaikki yhdeltä alustalta",
+      servicesTitle: "Painetun kirjan, äänikirjan ja e-kirjan julkaisu",
       servicesLead: "Ammattimainen julkaisuprosessi, täysi läpinäkyvyys ja kirjan oikeudet pysyvät sinulla. Aina.",
       service1Title: "Painettu kirja",
       service1Desc: "Ammattimainen taitto, kansisuunnittelu ja painatus. Jakelu Suomalainen kirjakauppa, Adlibris ja kirjastot.",
@@ -53,7 +53,7 @@ export const translations = {
     // Pricing page
     pricing: {
       title: "Hinnat",
-      h1: "Selkeät hinnat, ei piilokuluja",
+      h1: "Kirjan julkaisemisen hinnat",
       lead: "Valitse paketti joka sopii kirjaprojektiisi. Kaikki hinnat sisältävät ALV.",
       popular: "Suosituin",
       more: "muuta",

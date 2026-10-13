@@ -28,7 +28,8 @@ export function useSEO({
 }: SEOProps) {
   useEffect(() => {
     // Title
-    document.title = `${title} | ${SITE_NAME}`;
+    const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+    document.title = fullTitle;
 
     // Helper to set or create meta tag
     const setMeta = (selector: string, attr: string, value: string) => {
@@ -83,7 +84,7 @@ export function useSEO({
     setLink("canonical", canonicalUrl);
 
     // Open Graph
-    setMetaProp("og:title", `${title} | ${SITE_NAME}`);
+    setMetaProp("og:title", fullTitle);
     setMetaProp("og:description", description);
     setMetaProp("og:type", ogType);
     setMetaProp("og:url", canonicalUrl);
@@ -93,7 +94,7 @@ export function useSEO({
 
     // Twitter Card
     setMetaName("twitter:card", "summary_large_image");
-    setMetaName("twitter:title", `${title} | ${SITE_NAME}`);
+    setMetaName("twitter:title", fullTitle);
     setMetaName("twitter:description", description);
     setMetaName("twitter:image", ogImage);
 
