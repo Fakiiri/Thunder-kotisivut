@@ -1,6 +1,6 @@
 // Thunder Kustannus — Footer v2 (vaalea)
 import { Link } from "wouter";
-import { Zap, Instagram, Linkedin } from "lucide-react";
+import { Zap, Instagram, Linkedin, Facebook } from "lucide-react";
 import { COMPANY } from "@/lib/data";
 import { useLang } from "@/contexts/LanguageContext";
 
@@ -24,7 +24,7 @@ export default function Footer() {
               {t.footer.tagline}
             </p>
             <p className="text-white/25 text-xs mt-4">{COMPANY.legalName}</p>
-            <div className="flex gap-4 mt-5">
+            <div className="flex flex-wrap gap-5 mt-5">
               <a
                 href="https://www.instagram.com/thunderkustannus/"
                 target="_blank"
@@ -32,7 +32,16 @@ export default function Footer() {
                 aria-label="Thunder Kustannus on Instagram"
                 className="text-white/35 hover:text-orange-400 transition-colors"
               >
-                <Instagram className="w-5 h-5" />
+                <span className="inline-flex items-center gap-2"><Instagram className="w-5 h-5" /> Instagram</span>
+              </a>
+              <a
+                href="https://www.facebook.com/thunderkustannus"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Thunder Kustannus on Facebook"
+                className="text-white/60 hover:text-orange-400 transition-colors"
+              >
+                <span className="inline-flex items-center gap-2"><Facebook className="w-5 h-5" /> Facebook</span>
               </a>
               <a
                 href="https://www.linkedin.com/company/thunder-kustannus"

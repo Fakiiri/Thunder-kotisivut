@@ -9,7 +9,8 @@
 .tk-campaign__features{padding:0;list-style:none;display:grid;gap:9px;font-size:14px;margin:0 0 28px}
 .tk-campaign__features li::before{content:"✓";color:#edcf98;margin-right:12px}
 .tk-campaign__cta{display:inline-flex;gap:25px;align-items:center;background:#f97316;color:#171b18;text-decoration:none;border-radius:8px;padding:15px 22px;font-size:14px;font-weight:800;transition:background .2s}
-.tk-campaign__cta:hover{background:#ff963e}.tk-campaign__cta:focus-visible{outline:3px solid #fff;outline-offset:5px}
+.tk-campaign__cta{box-shadow:0 7px 24px #f9731640;border:1px solid #ffa66c;min-height:54px;transition:background .2s,box-shadow .2s}
+.tk-campaign__cta:hover{background:#ff963e;box-shadow:0 9px 30px #f9731660}.tk-campaign__cta:focus-visible{outline:3px solid #fff;outline-offset:5px}
 .tk-campaign__note{font-size:12px;color:#c2cfc5;margin:13px 0 0}
 .tk-campaign__offer{min-height:350px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
 .tk-campaign__book{width:163px;height:221px;transform:rotate(-9deg);background:linear-gradient(125deg,#b84d25,#db7835);border-left:9px solid #9d3b1a;border-radius:2px 5px 5px 2px;box-shadow:12px 17px 0 -8px #eee6d7,20px 30px 35px #09251d80;display:flex;flex-direction:column;justify-content:space-between;padding:30px 17px 18px;color:#fff1d7;margin-bottom:28px}

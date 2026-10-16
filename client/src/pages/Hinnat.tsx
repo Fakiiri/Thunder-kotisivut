@@ -4,6 +4,7 @@ import { CheckCircle2, XCircle, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PackagePurchase, { KlarnaNote } from "@/components/PackagePurchase";
 import { PACKAGES } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
 import { useLang } from "@/contexts/LanguageContext";
@@ -103,8 +104,8 @@ export default function Hinnat() {
                     {pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.tagline : pkg.tagline}
                   </p>
                   <h2 className="text-foreground text-3xl font-extrabold mb-4">{pkg.name}</h2>
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <span className="thunder-orange text-5xl font-extrabold">{pkg.price} €</span>
+                  <div className="flex flex-col gap-1 mb-4">
+                    <span className="thunder-orange text-4xl md:text-3xl lg:text-5xl font-extrabold whitespace-nowrap">{pkg.price} €</span>
                     <span className="text-muted-foreground text-sm">{pkg.priceNote}</span>
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">
@@ -142,18 +143,20 @@ export default function Hinnat() {
                   )}
                 </div>
 
-                <Link
-                  href="/tarjouspyynto"
+                <PackagePurchase
+                  packageId={pkg.id}
+                  placement="pricing_packages"
                   className={`w-full py-3.5 rounded-lg text-sm font-bold text-center block transition-all ${
                     pkg.highlight ? "thunder-btn-primary" : "thunder-btn-outline"
                   }`}
                 >
                   {pkg.cta} <ArrowRight className="inline w-4 h-4 ml-1" />
-                </Link>
+                </PackagePurchase>
               </div>
             ))}
           </div>
 
+          <div className="mb-12"><KlarnaNote /></div>
           {/* FAQ */}
           <div className="max-w-3xl mx-auto">
             <h2 className="thunder-heading text-3xl text-foreground mb-8 text-center">

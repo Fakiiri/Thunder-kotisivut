@@ -7,6 +7,9 @@ import Navbar from "@/components/Navbar";
 import CampaignBanner from "@/components/CampaignBanner";
 import Footer from "@/components/Footer";
 import { PACKAGES, GUIDES, COMPANY } from "@/lib/data";
+import PackagePurchase, { KlarnaNote } from "@/components/PackagePurchase";
+import { paymentLinkFor } from "@/lib/payments";
+import { trackPurchaseClick } from "@/lib/purchase-analytics";
 import PrintCalculator from "@/components/PrintCalculator";
 import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
@@ -101,18 +104,24 @@ export default function Home() {
             {[
               {
                 icon: BookOpen,
+                paymentId: "printti",
+                placement: "home_printed" as const,
                 title: t.home.service1Title,
                 desc: t.home.service1Desc,
                 img: HERO_IMG,
               },
               {
                 icon: Headphones,
+                paymentId: "digi",
+                placement: "home_audio" as const,
                 title: t.home.service2Title,
                 desc: t.home.service2Desc,
                 img: AUDIOBOOK_IMG,
               },
               {
                 icon: Store,
+                paymentId: "digi",
+                placement: "home_ebook" as const,
                 title: t.home.service3Title,
                 desc: t.home.service3Desc,
                 img: EBOOK_IMG,
@@ -126,7 +135,10 @@ export default function Home() {
                 variants={fadeUp}
                 className="thunder-card overflow-hidden group"
               >
-                <div className="relative h-44 overflow-hidden">
+                <a href={paymentLinkFor(item.paymentId) ?? "/hinnat"}
+                  aria-label={`${item.title} — ${paymentLinkFor(item.paymentId) ? (lang === "en" ? "Order package" : "Tilaa paketti") : (lang === "en" ? "See packages" : "Tutustu paketteihin")}`}
+                  onClick={event => trackPurchaseClick(event, { packageId: item.paymentId, placement: item.placement, checkout: !!paymentLinkFor(item.paymentId) })}
+                  className="relative block h-44 overflow-hidden focus-visible:outline-4 focus-visible:outline-orange-500 focus-visible:outline-offset-2">
                   <img
                     src={item.img}
                     alt={item.title}
@@ -138,10 +150,13 @@ export default function Home() {
                       <item.icon className="w-4 h-4 text-white" />
                     </div>
                   </div>
-                </div>
+                </a>
                 <div className="p-6">
                   <h3 className="text-foreground font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                  <PackagePurchase packageId={item.paymentId} placement={item.placement} fallbackHref="/hinnat" className="mt-5 inline-flex items-center gap-2 thunder-btn-primary px-5 py-3 rounded-lg text-sm font-bold">
+                    {lang === "en" ? "See packages" : "Tutustu paketteihin"} <ArrowRight size={16} aria-hidden="true" />
+                  </PackagePurchase>
                 </div>
               </motion.div>
             ))}
@@ -196,8 +211,8 @@ export default function Home() {
                     {pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.tagline : pkg.tagline}
                   </p>
                   <h3 className="text-foreground text-2xl font-bold mb-3">{pkg.name}</h3>
-                  <div className="flex items-baseline gap-1">
-                    <span className="thunder-orange text-4xl font-extrabold">{pkg.price} €</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="thunder-orange text-4xl md:text-3xl lg:text-4xl font-extrabold whitespace-nowrap">{pkg.price} €</span>
                     <span className="text-muted-foreground text-sm">{pkg.priceNote}</span>
                   </div>
                 </div>
@@ -212,18 +227,20 @@ export default function Home() {
                     <li className="text-muted-foreground text-xs pl-6">+ {(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features).length - 5} {t.home.pricingMore2}</li>
                   )}
                 </ul>
-                <Link
-                  href="/tarjouspyynto"
+                <PackagePurchase
+                  packageId={pkg.id}
+                  placement="home_packages"
                   className={`w-full py-3 rounded-lg text-sm font-bold text-center block transition-all ${
                     pkg.highlight ? "thunder-btn-primary" : "thunder-btn-outline"
                   }`}
                 >
                   {lang === "en" ? "Get a free estimate" : pkg.cta}
-                </Link>
+                </PackagePurchase>
               </motion.div>
             ))}
           </div>
 
+          <KlarnaNote />
           <div className="text-center mt-8">
             <Link href="/hinnat" className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground text-sm transition-colors">
               {t.home.pricingMore} <ChevronRight className="w-4 h-4" />

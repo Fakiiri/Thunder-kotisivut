@@ -15,7 +15,7 @@ interface SEOProps {
 
 const SITE_NAME = "Thunder Kustannus";
 const BASE_URL = "https://thunderkustannus.fi";
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 export function useSEO({
   title,
@@ -89,6 +89,7 @@ export function useSEO({
     setMetaProp("og:type", ogType);
     setMetaProp("og:url", canonicalUrl);
     setMetaProp("og:image", ogImage);
+    setMetaProp("og:image:alt", `${SITE_NAME} – Sinun tarinasi kirjaksi`);
     setMetaProp("og:site_name", SITE_NAME);
     setMetaProp("og:locale", "fi_FI");
 
@@ -97,6 +98,7 @@ export function useSEO({
     setMetaName("twitter:title", fullTitle);
     setMetaName("twitter:description", description);
     setMetaName("twitter:image", ogImage);
+    setMetaName("twitter:image:alt", `${SITE_NAME} – Sinun tarinasi kirjaksi`);
 
   }, [title, description, canonical, ogImage, ogType, keywords, noIndex]);
 }

@@ -59,7 +59,7 @@ export function serveStatic(app: Express, distPath = path.resolve(process.cwd(),
 
   const pagePaths = new Set([
     "/", "/hinnat", "/kirjat", "/tarjouspyynto", "/arvio", "/oppaat",
-    "/meista", "/sopimusehdot", "/tietosuoja", "/yhteystiedot", "/lataa-opas",
+    "/meista", "/sopimusehdot", "/tietosuoja", "/yhteystiedot", "/lataa-opas", "/tilaus-kiitos", "/kiitos",
     ...GUIDES.map(guide => `/oppaat/${guide.slug}`),
   ]);
 
