@@ -25,7 +25,7 @@ import { guideInlineHTML } from "../client/src/lib/guide-markdown";
 
 const releases = [
   ["kirja-lahjaksi", "2026-10-22T00:00:00+03:00"],
-  ["muistelmakirjan-julkaiseminen", "2026-10-29T00:00:00+02:00"],
+  ["muistelmakirjan-julkaiseminen", "2026-10-22T00:00:00+03:00"],
   ["asiantuntijakirja", "2026-11-05T00:00:00+02:00"],
   ["sukukirjan-tekeminen", "2026-11-12T00:00:00+02:00"],
   ["hylatty-kasikirjoitus", "2026-11-19T00:00:00+02:00"],

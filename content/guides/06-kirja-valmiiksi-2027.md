@@ -1,56 +1,73 @@
 ---
 julkaisupaiva: 2026-12-29
 slug: kirja-valmiiksi-2027
-kategoria: KIRJOITTAMINEN
-lukuaika: 4 min
-title: "Kirja valmiiksi vuonna 2027: suunnitelma kirjoittamiseen ja julkaisuun | Thunder Kustannus"
-meta_description: "Tee kirjaunelmasta toteutettava vuoden 2027 suunnitelma. Rajaa aihe, varaa kirjoitusaika ja suunnittele käsikirjoituksen viimeistely sekä julkaisu."
+kategoria: ALOITTELIJALLE
+lukuaika: 5 min
+title: "Kirja valmiiksi vuonna 2027: näin pidät lupauksesi | Thunder Kustannus"
+meta_description: "Onko oma kirja ollut uudenvuodenlupauksesi jo vuosia? Tässä realistinen aikataulu, jolla kirjasi on julkaistu keväällä 2027."
 cta_title: "Olisiko 2027 sinun kirjasi vuosi?"
 ---
 
-# Kirja valmiiksi vuonna 2027: tee tavoitteesta suunnitelma
+# Kirja valmiiksi vuonna 2027: näin pidät lupauksesi
 
-”Tänä vuonna kirjoitan kirjan” on hyvä aloitus. Arjen keskellä se tarvitsee rinnalleen konkreettisemman kysymyksen: mitä teet ensimmäisenä kirjoituspäivänä, ja milloin se on?
+"Tänä vuonna kirjoitan sen kirjan."
 
-Valmis kirja syntyy monesta erillisestä työvaiheesta. Kun erotat kirjoittamisen, viimeistelyn ja julkaisun toisistaan, tavoitteesta tulee helpompi suunnitella.
+Moni on sanonut saman jo useana uutenavuotena. Kirja ei ole jäänyt kesken taidon puutteen takia. Se on jäänyt kesken, koska sillä ei ole ollut aikataulua.
 
-## Päätä, mitä valmis tarkoittaa sinulle
+Tässä on esimerkkiaikataulu, jota voit sovittaa omaan työmäärääsi. Tavoitteena on valmis käsikirjoitus keväällä ja julkaisu alkukesällä 2027.
 
-Haluatko vuoden aikana valmiin ensimmäisen käsikirjoituksen, tuotantoon viimeistellyn tekstin vai julkaistun kirjan? Kaikki ovat käyttökelpoisia tavoitteita. Niiden vaatima työmäärä riippuu siitä, mistä aloitat.
+## Tammikuu: päätä, mikä kirja on
 
-Kirjoita tavoite, joka kertoo lopputuloksen ja seuraavan askeleen. Esimerkiksi: ”Kokoan kevään aikana muistelmani ensimmäiseksi versioksi, jonka annan lukijalle kommentoitavaksi.” Näin sinun ei tarvitse ratkaista painatusta ennen ensimmäistä lukua.
+- **Yksi lause:** mistä kirjasi kertoo ja kenelle? Jos et saa sitä yhteen lauseeseen, kirja ei ole vielä kirkas.
+- **Sisällysluettelo:** 10–20 lukua otsikkotasolla.
+- **Kirjoitusaika kalenteriin:** esimerkiksi 30 minuuttia joka aamu tai kaksi kolmen tunnin jaksoa viikossa.
 
-## Rajaa kirjan lupaus yhdelle lukijalle
+Lue: [Kirjan kirjoittaminen aloittelijalle](/oppaat/kirjan-kirjoittaminen-aloittelijalle)
 
-Mitä lukija saa kirjastasi: tarinan, uuden näkökulman, tietoa vai tallennetun osan suvun elämästä? Kirjoita vastaus parilla lauseella. Tee sen jälkeen alustava sisällysluettelo, jota saat muuttaa työn edetessä.
+## Helmi–maaliskuu: kirjoita raakaversio
 
-Jos aihe rönsyilee, siirrä osa ideoista erilliseen tiedostoon. Ne eivät katoa, vaikka eivät mahdu tähän kirjaan. Kirjoittamisen aloittamiseen saat lisää apua [aloittelijan oppaasta](/oppaat/kirjan-kirjoittaminen-aloittelijalle).
+- Noin 40 000 sanan käsikirjoituksen lopullinen sivumäärä riippuu taitosta. Se on noin **1 000 sanaa päivässä viitenä päivänä viikossa** kahden kuukauden ajan.
+- Älä korjaa matkalla. Raakaversion tehtävä on olla olemassa.
+- Jos tahti tuntuu kovalta, puolita se ja varaa raakaversiolle neljä kuukautta. Julkaisu siirtyy silloin syksyyn.
 
-## Varaa kalenteriin tekemistä, älä vain määräpäivää
+Jos käsikirjoitus on jo olemassa, hyppää suoraan seuraavaan vaiheeseen.
 
-Pelkkä loppupäivä ei kerro, milloin työ tehdään. Varaa toistuvia kirjoitusaikoja ja määrittele niille pieni tehtävä: yhden kohtauksen luonnos, yhden luvun rakenne tai haastattelumuistiinpanojen läpikäynti.
+## Huhtikuu: muokkaus ja koelukijat
 
-1. Listaa jo olemassa oleva aineisto.
-2. Valitse ensimmäinen kokonaisuus, jonka saat kirjoitettua loppuun.
-3. Varaa sille työajat kalenterista.
-4. Tarkista eteneminen säännöllisesti ja muuta suunnitelmaa tarvittaessa.
+- Lue käsikirjoitus kerran alusta loppuun ja korjaa rakenne.
+- Anna se 2–3 koelukijalle.
+- Teetä oikoluku.
 
-Tavoite ei ole kirjoittaa joka päivä samalla vauhdilla. Tavoite on tietää, mihin palaat seuraavalla kerralla.
+## Touko–kesäkuu: julkaisu
 
-## Varaa oma vaihe viimeistelylle
+Tässä vaiheessa ammattilaiset ottavat vastuun. Thunder hoitaa taiton, kannen, ISBN:n, e-kirjan, äänikirjan ja jakelun. Tuotannon tavoiteaikataulu on **noin 4–8 viikkoa** valmiin aineiston vastaanottamisesta. Sovimme aikataulun teoskohtaisesti; painotalon aikataulu, toimitukset ja kiiresesonki voivat vaikuttaa kestoon.
 
-Ensimmäinen versio ei vielä ole valmis painoaineisto. Lukijapalaute, rakenteen korjaukset, oikoluku ja kuvien kokoaminen tarvitsevat aikaa. Jos kirja käsittelee muiden ihmisten tarinoita tai käyttää heidän aineistoaan, selvitä myös julkaisun sopivuus ja käyttömahdollisuudet.
+Kesäkuussa kirjasi voi olla Storytelissa, BookBeatissa, kirjastoissa ja kirjakaupoissa, ja painettu kirja omassa kädessäsi.
 
-Julkaisupakettien tuotanto alkaa valmiista käsikirjoituksesta. Oikoluku ja sisällön muokkaus eivät sisälly niihin. [Julkaisuprosessin opas](/oppaat/miten-julkaisen-oman-kirjan) auttaa erottamaan työvaiheet toisistaan.
+Lue: [Miten julkaisen oman kirjan? Täydellinen opas 2026](/oppaat/miten-julkaisen-oman-kirjan)
 
-## Suunnittele julkaisu ja budjetti ajoissa
+## Miksi julkaisupaikka kannattaa varata jo tammikuussa?
 
-Thunderin **Digi 890 €** sisältää taiton, kannen, e-kirjan, äänikirjan ja jakelun. **Printti 1 690 €** sisältää lisäksi 50 painettua kirjaa. **Premium 2 990 €** sisältää yhteensä 100 painettua kirjaa sekä lanseerauksen tukea. Hinnat sisältävät ALV:n 25,5 % ja koskevat valmiita, alle 250-sivuisia käsikirjoituksia. [Vertaa paketteja ja rajauksia](/hinnat).
+1. **Deadline pitää sinut liikkeessä.** Kun julkaisulla on päivämäärä, kirjoittaminen ei enää jää "sitten kun".
+2. **Saat apua jo kirjoitusvaiheessa.** Kun tiedämme kirjastasi etukäteen, voimme neuvoa rakenteessa ja aikataulussa.
+3. **Kevät on hyvä julkaisuaika.** Kesälomien lukijat ja kuuntelijat etsivät uutta luettavaa.
 
-Maksusivulla näet sinulle tarjolla olevat Klarna-vaihtoehdot ehtoineen. Julkaisun ajankohta sovitaan teoskohtaisesti. Tavoite on noin 4–8 viikkoa valmiista aineistosta, mutta painotalon aikataulu, toimitukset ja sesonki voivat vaikuttaa kestoon. Älä rakenna omaa kirjoitussuunnitelmaasi pelkän nopeimman mahdollisen tuotannon varaan.
+## Mitä se maksaa?
 
-## Aloita siitä, missä olet nyt
+- **Digi**, 890 €: e-kirja ja äänikirja
+- **Printti**, 1 690 €: lisäksi 50 painettua kirjaa ja jakelu kirjakauppoihin
+- **Premium**, 2 990 €: yhteensä 100 painettua kirjaa ja lanseeraus- ja markkinointipaketti
 
-Kartoitusta varten ei tarvitse esittää olevansa pidemmällä kuin on. Kerro, onko käsissäsi idea, keskeneräinen teksti vai valmis käsikirjoitus. Voimme keskustella siitä, millainen julkaisutapa ja aikataulu sopivat tavoitteeseesi.
+Kaikki hinnat sisältävät ALV:n. Maksa kerralla tai osissa Klarnalla. Näet sinulle tarjolla olevat vaihtoehdot ja niiden ehdot maksusivulla.
 
-Jos kirjasi tukee asiantuntijatyötä, tutustu [asiantuntijakirjan oppaaseen](/oppaat/asiantuntijakirja). Muistelmateoksen tekijälle sopii [muistelmakirjan kirjoittamisen ja julkaisun opas](/oppaat/muistelmakirjan-julkaiseminen).
+[Katso paketit →](/hinnat)
+
+---
+
+**Tee tästä vuodesta se vuosi.** Pyydä hinta-arvio ja kerro, missä vaiheessa kirjasi on. Suunnittelemme kanssasi realistisen aikataulun käsikirjoituksen valmistumiseen ja julkaisuun. Otamme yhteyttä yhden arkipäivän kuluessa.
+
+[Pyydä hinta-arvio →](/tarjouspyynto)
+
+*Aloitatko vasta? [Lataa ilmainen 10 askeleen tarkistuslista](/lataa-opas) ja tulosta se työpöydän viereen.*
+
+Pakettihinnat koskevat valmiita, alle 250-sivuisia käsikirjoituksia. Oikoluku ja sisällön muokkaus eivät sisälly paketteihin. Hinnat sisältävät ALV:n 25,5 %. Tuotannon tavoiteaikataulu on noin 4–8 viikkoa valmiista aineistosta. Painotalon aikataulu, toimitukset ja sesonki voivat vaikuttaa kestoon; sovimme aikataulun teoskohtaisesti.
