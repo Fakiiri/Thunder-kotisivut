@@ -2,6 +2,8 @@ import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import net from "net";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 // OAuth and storage proxy removed — not needed outside Manus
 import { appRouter } from "../routers";
@@ -49,7 +51,9 @@ async function startServer() {
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
-    serveStatic(app);
+    const rendererURL = pathToFileURL(path.resolve(process.cwd(), "dist/ssr/entry-ssr.js")).href;
+    const { renderPage } = await import(rendererURL);
+    serveStatic(app, undefined, renderPage);
   }
 
   const preferredPort = parseInt(process.env.PORT || "3000");

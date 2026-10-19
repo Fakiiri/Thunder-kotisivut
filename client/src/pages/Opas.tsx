@@ -224,6 +224,7 @@ export default function Opas() {
             </Link>
           </div>
 
+          <p className="mb-12"><Link href="/asiantuntijakirja" className="thunder-orange font-semibold underline underline-offset-4">Kirja oman asiantuntijuutesi tueksi? Tutustu asiantuntijakirjan julkaisuun →</Link></p>
           {others.length > 0 && (
             <div>
               <h2 className="thunder-heading text-2xl text-foreground mb-6">Lue myös</h2>

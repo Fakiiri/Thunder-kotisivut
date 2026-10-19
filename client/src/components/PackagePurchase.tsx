@@ -10,8 +10,8 @@ export function KlarnaNote() {
   if (!klarnaEnabled || !["digi", "printti", "premium", "joulu990"].some(id => paymentLinkFor(id))) return null;
   return <p className="text-sm text-muted-foreground text-center mt-4">
     {lang === "en"
-      ? "You can also pay with Klarna when it is available for your order at checkout."
-      : "Voit maksaa myös Klarnalla. Näet pakettiisi tarjolla olevat maksutavat maksusivulla."}
+      ? "Pay in full or in instalments with Klarna. Your available payment options and terms are shown at checkout."
+      : "Maksa kerralla tai osissa Klarnalla. Näet sinulle tarjolla olevat maksuvaihtoehdot ja niiden ehdot maksusivulla."}
   </p>;
 }
 

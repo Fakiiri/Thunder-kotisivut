@@ -3,6 +3,8 @@
 // Muokkaa tätä tiedostoa päivittääksesi hinnat, paketit ja sisällön
 // ============================================================
 
+import { PREMIUM_FEATURES } from "./sales-content";
+
 export const PACKAGES = [
   {
     id: "digi",
@@ -13,10 +15,10 @@ export const PACKAGES = [
     highlight: false,
     description: "Täydellinen digitaalinen julkaisupaketti kirjallesi — e-kirja, äänikirja ja jakelu kaikkiin suomalaisiin suoratoistopalveluihin.",
     features: [
+      "Äänikirjatuotanto",
       "Ammattimainen taitto",
       "Kansisuunnittelu",
       "E-kirja (EPUB3)",
-      "Äänikirjatuotanto",
       "Jakelu: Storytel, BookBeat, Nextory",
       "Jakelu: Spotify äänikirjat",
       "Jakelu: Suomen kirjastot",
@@ -52,15 +54,7 @@ export const PACKAGES = [
     tagline: "Täyden palvelun paketti",
     highlight: false,
     description: "Täyden palvelun paketti kirjailijalle, joka haluaa maksimaalisen näkyvyyden ja ammattimaisen lanseerauksen.",
-    features: [
-      "Kaikki Printti-paketin sisältö",
-      "100 kpl painettuja kirjoja",
-      "Markkinointipaketti",
-      "Lehdistötiedote (media)",
-      "Sosiaalisen median lanseerauspaketti",
-      "Kirjailijan mediakoulutus",
-      "Prioriteettituki 12 kk",
-    ],
+    features: PREMIUM_FEATURES.fi,
     notIncluded: [],
     cta: "Pyydä hinta-arvio",
   },

@@ -1,9 +1,9 @@
 // Thunder Kustannus — SEO hook
 // Hallitsee kaikkien sivujen meta-tagit, Open Graph ja canonical URL:t
 
-import { useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
 
-interface SEOProps {
+export interface SEOProps {
   title: string;
   description: string;
   canonical?: string;
@@ -12,6 +12,9 @@ interface SEOProps {
   keywords?: string;
   noIndex?: boolean;
 }
+
+// Per-request collector: never store one visitor's metadata in a global variable.
+export const ServerSEO = createContext<{ current?: SEOProps } | null>(null);
 
 const SITE_NAME = "Thunder Kustannus";
 const BASE_URL = "https://thunderkustannus.fi";
@@ -26,6 +29,8 @@ export function useSEO({
   keywords,
   noIndex = false,
 }: SEOProps) {
+  const serverSEO = useContext(ServerSEO);
+  if (serverSEO) serverSEO.current = { title, description, canonical, ogImage, ogType, keywords, noIndex };
   useEffect(() => {
     // Title
     const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
@@ -76,7 +81,7 @@ export function useSEO({
     // Basic meta
     setMetaName("description", description);
     if (keywords) setMetaName("keywords", keywords);
-    setMetaName("robots", noIndex ? "noindex, nofollow" : "index, follow");
+    setMetaName("robots", noIndex || import.meta.env.VITE_EDITORIAL_PREVIEW === "true" ? "noindex, nofollow" : "index, follow");
     setMetaName("author", SITE_NAME);
 
     // Canonical

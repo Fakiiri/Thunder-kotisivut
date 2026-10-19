@@ -1,6 +1,7 @@
 // Thunder Kustannus — FI/EN translations
 // Oppaat (guides) remain Finnish-only
 
+import { PREMIUM_FEATURES, PACKAGE_TERMS } from "./sales-content";
 export type Lang = "fi" | "en";
 
 export const translations = {
@@ -209,10 +210,10 @@ export const translations = {
           tagline: "Digital publishing",
           description: "The complete digital publishing package for your book — e-book, audiobook and distribution to all Finnish streaming services.",
           features: [
+            "Audiobook production",
             "Professional typesetting",
             "Cover design",
             "E-book (EPUB3)",
-            "Audiobook production",
             "Distribution: Storytel, BookBeat, Nextory",
             "Distribution: Spotify audiobooks",
             "Distribution: Finnish libraries",
@@ -236,15 +237,7 @@ export const translations = {
         {
           tagline: "Market leader choice",
           description: "Full-service package for the author who wants maximum visibility and a professional launch.",
-          features: [
-            "Everything in Printti package",
-            "100 printed copies",
-            "Marketing package",
-            "Press release (media)",
-            "Social media launch package",
-            "Author media training",
-            "Priority support 12 months",
-          ],
+          features: PREMIUM_FEATURES.en,
           notIncluded: [],
         },
       ],
@@ -481,7 +474,7 @@ export const translations = {
     pricingFaq: [
       {
         q: "How long does the publishing process take?",
-        a: "Typically 4–8 weeks from receiving the manuscript to a finished book. Audiobook production may add 2–4 weeks.",
+        a: PACKAGE_TERMS.en,
       },
       {
         q: "Do I retain the rights to my book?",

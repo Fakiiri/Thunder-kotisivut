@@ -20,12 +20,14 @@ import LataaSivu from "./pages/LataaSivu";
 import ArvioRedirect from "./pages/ArvioRedirect";
 import TietosuojaRedirect from "./pages/TietosuojaRedirect";
 import TilausKiitos from "./pages/TilausKiitos";
+import Asiantuntijakirja from "./pages/Asiantuntijakirja";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/hinnat" component={Hinnat} />
+      <Route path="/asiantuntijakirja" component={Asiantuntijakirja} />
       <Route path="/tilaus-kiitos" component={TilausKiitos} />
       <Route path="/kiitos" component={TilausKiitos} />
       <Route path="/kirjat" component={Kirjat} />

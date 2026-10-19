@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GUIDES } from "../../client/src/lib/data";
+import { renderHTML, type RenderedPage } from "./render-html";
 
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
@@ -47,7 +48,7 @@ export async function setupVite(app: Express, server: Server) {
   });
 }
 
-export function serveStatic(app: Express, distPath = path.resolve(process.cwd(), "dist", "public")) {
+export function serveStatic(app: Express, distPath = path.resolve(process.cwd(), "dist", "public"), renderPage?: (url: string) => RenderedPage | null) {
   // Use process.cwd() which is always /app on Railway
   if (!fs.existsSync(distPath)) {
     console.error(
@@ -55,11 +56,11 @@ export function serveStatic(app: Express, distPath = path.resolve(process.cwd(),
     );
   }
 
-  app.use(express.static(distPath));
+  app.use(express.static(distPath, { index: false }));
 
   const pagePaths = new Set([
     "/", "/hinnat", "/kirjat", "/tarjouspyynto", "/arvio", "/oppaat",
-    "/meista", "/sopimusehdot", "/tietosuoja", "/yhteystiedot", "/lataa-opas", "/tilaus-kiitos", "/kiitos",
+    "/meista", "/asiantuntijakirja", "/sopimusehdot", "/tietosuoja", "/yhteystiedot", "/lataa-opas", "/tilaus-kiitos", "/kiitos",
     ...GUIDES.map(guide => `/oppaat/${guide.slug}`),
   ]);
 
@@ -69,6 +70,22 @@ export function serveStatic(app: Express, distPath = path.resolve(process.cwd(),
     if (pagePath.startsWith("/api/") || path.extname(pagePath)) {
       res.status(404).type("text/plain").send("Not found");
       return;
+    }
+    // The same React components and HTML are served to people and crawlers.
+    // No user-agent branching, extra bot-only copy, or JavaScript dependency for reading.
+    if (renderPage && pagePaths.has(pagePath)) {
+      try {
+        const page = renderPage(pagePath);
+        if (page) {
+          const template = fs.readFileSync(path.resolve(distPath, "index.html"), "utf8");
+          res.status(200).type("html").send(renderHTML(template, page));
+          return;
+        }
+      } catch (error) {
+        console.error("[SSR] Page rendering failed", pagePath);
+        res.status(500).type("text/plain").send("Page rendering failed");
+        return;
+      }
     }
     // Unknown page URLs render the existing React 404 page with a real 404.
     res.status(pagePaths.has(pagePath) ? 200 : 404)

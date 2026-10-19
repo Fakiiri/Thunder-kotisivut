@@ -38,6 +38,7 @@ export default function Oppaat() {
             )}
           </div>
 
+          <Link href="/asiantuntijakirja" className="block border border-orange-200 bg-orange-50 rounded-xl p-6 mb-8"><span className="font-bold block text-lg mb-2">{lang === "en" ? "A book for your expertise" : "Osaamisestasi asiantuntijakirja"}</span><span className="text-sm text-muted-foreground">{lang === "en" ? "Explore publishing and launch support for experts and entrepreneurs →" : "Tutustu asiantuntijan ja yrittäjän julkaisuun sekä lanseerauksen tukeen →"}</span></Link>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {GUIDES.map((guide) => (
               <article key={guide.id}>

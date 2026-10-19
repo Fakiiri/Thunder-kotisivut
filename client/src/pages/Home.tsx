@@ -5,6 +5,9 @@ import { useSEO } from "@/hooks/useSEO";
 import { ArrowRight, BookOpen, Headphones, Store, CheckCircle2, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import CampaignBanner from "@/components/CampaignBanner";
+import AuthorFeedback from "@/components/AuthorFeedback";
+import PackageFeatures from "@/components/PackageFeatures";
+import { PACKAGE_TERMS } from "@/lib/sales-content";
 import Footer from "@/components/Footer";
 import { PACKAGES, GUIDES, COMPANY } from "@/lib/data";
 import PackagePurchase, { KlarnaNote } from "@/components/PackagePurchase";
@@ -46,7 +49,7 @@ export default function Home() {
 
         <div className="container relative z-10 pt-32 pb-16">
           <div className="max-w-xl">
-            <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+            <motion.div initial={false} animate="visible" variants={fadeUp}>
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-orange-400 mb-5">
                 <span className="w-6 h-px bg-orange-400 inline-block" />
                 {t.home.badge}
@@ -54,20 +57,20 @@ export default function Home() {
             </motion.div>
 
             <motion.h1
-              initial="hidden" animate="visible" variants={fadeUp}
+              initial={false} animate="visible" variants={fadeUp}
               className="thunder-heading text-5xl md:text-6xl lg:text-7xl text-white mb-5"
             >
               {t.home.h1}
             </motion.h1>
 
             <motion.p
-              initial="hidden" animate="visible" variants={fadeUp}
+              initial={false} animate="visible" variants={fadeUp}
               className="text-white/75 text-lg leading-relaxed mb-8 max-w-md"
             >
               {t.home.lead}
             </motion.p>
 
-            <motion.div initial="hidden" animate="visible" variants={fadeUp} className="flex flex-wrap gap-3">
+            <motion.div initial={false} animate="visible" variants={fadeUp} className="flex flex-wrap gap-3">
               <Link href="/arvio" className="thunder-btn-primary px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2">
                 {t.home.ctaPrimary} <ArrowRight className="w-4 h-4" />
               </Link>
@@ -76,7 +79,7 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            <motion.div initial="hidden" animate="visible" variants={fadeUp} className="flex flex-wrap gap-5 mt-10">
+            <motion.div initial={false} animate="visible" variants={fadeUp} className="flex flex-wrap gap-5 mt-10">
               {COMPANY.distribution.slice(0, 4).map((b) => (
                 <span key={b} className="text-white/35 text-xs font-medium uppercase tracking-wider">{b}</span>
               ))}
@@ -85,6 +88,12 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-[#191918] border-t border-white/15 text-white py-7">
+        <div className="container flex flex-col md:flex-row gap-5 md:items-center md:justify-between">
+          <div><p className="font-bold text-xl md:text-2xl">{lang === "en" ? "An audiobook is already included in the 890 € package." : "Äänikirja kuuluu jo 890 €:n pakettiin."}</p><p className="text-white/65 text-sm mt-2">Storytel · BookBeat · Nextory · Spotify</p></div>
+          <Link href="/hinnat" className="inline-flex items-center gap-2 text-orange-400 font-bold shrink-0">{lang === "en" ? "Explore Digi" : "Tutustu Digi-pakettiin"}<ArrowRight size={18} /></Link>
+        </div>
+      </section>
       <CampaignBanner />
 
       {/* ── PALVELUT — vaalea tausta ── */}
@@ -129,7 +138,7 @@ export default function Home() {
             ].map((item) => (
               <motion.div
                 key={item.title}
-                initial="hidden"
+                initial={false}
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
@@ -185,11 +194,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-6 max-w-6xl mx-auto">
             {PACKAGES.map((pkg) => (
               <motion.div
                 key={pkg.id}
-                initial="hidden"
+                initial={false}
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
@@ -216,17 +225,9 @@ export default function Home() {
                     <span className="text-muted-foreground text-sm">{pkg.priceNote}</span>
                   </div>
                 </div>
-                <ul className="space-y-2 mb-7 flex-1">
-                  {(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features).slice(0, 5).map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-foreground/80">
-                      <CheckCircle2 className="w-4 h-4 thunder-orange mt-0.5 flex-shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                  {(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features).length > 5 && (
-                    <li className="text-muted-foreground text-xs pl-6">+ {(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features).length - 5} {t.home.pricingMore2}</li>
-                  )}
-                </ul>
+                <div className="mb-7 flex-1">
+                  <PackageFeatures emphasizeAudio={pkg.id === "digi"} features={(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features)} />
+                </div>
                 <PackagePurchase
                   packageId={pkg.id}
                   placement="home_packages"
@@ -236,11 +237,13 @@ export default function Home() {
                 >
                   {lang === "en" ? "Get a free estimate" : pkg.cta}
                 </PackagePurchase>
+                {pkg.id === "premium" && <Link href="/asiantuntijakirja" className="inline-flex justify-center items-center gap-2 font-semibold text-sm thunder-orange underline underline-offset-4 mt-5">{lang === "en" ? "For experts and entrepreneurs" : "Lue lisää asiantuntijoille"}<ArrowRight size={15} /></Link>}
               </motion.div>
             ))}
           </div>
 
           <KlarnaNote />
+          <p className="text-sm leading-relaxed text-muted-foreground max-w-4xl mx-auto mt-6">{PACKAGE_TERMS[lang]}</p>
           <div className="text-center mt-8">
             <Link href="/hinnat" className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground text-sm transition-colors">
               {t.home.pricingMore} <ChevronRight className="w-4 h-4" />
@@ -248,6 +251,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <AuthorFeedback />
 
       {/* ── OPPAAT ── */}
       <section className="thunder-section bg-background">
@@ -269,7 +274,7 @@ export default function Home() {
             {GUIDES.slice(0, 3).map((guide) => (
               <motion.article
                 key={guide.id}
-                initial="hidden"
+                initial={false}
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}

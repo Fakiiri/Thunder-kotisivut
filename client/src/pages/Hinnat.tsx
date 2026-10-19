@@ -3,6 +3,8 @@ import { Link } from "wouter";
 import { CheckCircle2, XCircle, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
+import PackageFeatures from "@/components/PackageFeatures";
+import { PACKAGE_TERMS } from "@/lib/sales-content";
 import Footer from "@/components/Footer";
 import PackagePurchase, { KlarnaNote } from "@/components/PackagePurchase";
 import { PACKAGES } from "@/lib/data";
@@ -16,7 +18,7 @@ export default function Hinnat() {
     lang === "en" && t.pricing.packages ? t.pricing.packages : undefined;
 
   const FI_FAQ = [
-    { q: "Kuinka kauan julkaisuprosessi kestää?", a: "Tyypillisesti 4–8 viikkoa käsikirjoituksen vastaanottamisesta valmiiseen kirjaan. Äänikirjan tuotanto voi lisätä 2–4 viikkoa." },
+    { q: "Kuinka kauan julkaisuprosessi kestää?", a: PACKAGE_TERMS.fi },
     { q: "Säilytänkö oikeudet kirjaani?", a: "Kyllä, täysin. Kirjailija omistaa aina tekijänoikeudet kirjaansa. Me hoidamme julkaisuprosessin, mutta oikeudet pysyvät sinulla." },
     { q: "Miten tekijänpalkkiot maksetaan?", a: "Maksamme tekijänpalkkiot neljännesvuosittain. Saat yksityiskohtaiset myyntiraportit kaikista jakelukanavista." },
     { q: "Voinko muuttaa kirjan hintaa myöhemmin?", a: "Kyllä. Voit muuttaa kirjan myyntihintaa milloin tahansa — me päivitämme hinnan kaikkiin jakelukanaviin." },
@@ -45,7 +47,7 @@ export default function Hinnat() {
         {
           "@type": "FAQPage",
           "mainEntity": [
-            { "@type": "Question", "name": "Kuinka kauan julkaisuprosessi kestää?", "acceptedAnswer": { "@type": "Answer", "text": "Tyypillisesti 4–8 viikkoa käsikirjoituksen vastaanottamisesta valmiiseen kirjaan. Äänikirjan tuotanto voi lisätä 2–4 viikkoa." } },
+            { "@type": "Question", "name": "Kuinka kauan julkaisuprosessi kestää?", "acceptedAnswer": { "@type": "Answer", "text": PACKAGE_TERMS.fi } },
             { "@type": "Question", "name": "Säilytänkö oikeudet kirjaani?", "acceptedAnswer": { "@type": "Answer", "text": "Kyllä, täysin. Kirjailija omistaa aina tekijänoikeudet kirjaansa. Me hoidamme julkaisuprosessin, mutta oikeudet pysyvät sinulla." } },
             { "@type": "Question", "name": "Miten tekijänpalkkiot maksetaan?", "acceptedAnswer": { "@type": "Answer", "text": "Maksamme tekijänpalkkiot neljännesvuosittain. Saat yksityiskohtaiset myyntiraportit kaikista jakelukanavista." } },
             { "@type": "Question", "name": "Voinko muuttaa kirjan hintaa myöhemmin?", "acceptedAnswer": { "@type": "Answer", "text": "Kyllä. Voit muuttaa kirjan myyntihintaa milloin tahansa — me päivitämme hinnan kaikkiin jakelukanaviin." } },
@@ -81,7 +83,7 @@ export default function Hinnat() {
           </div>
 
           {/* Packages */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-8 max-w-6xl mx-auto mb-20">
             {PACKAGES.map((pkg) => (
               <div
                 key={pkg.id}
@@ -117,14 +119,7 @@ export default function Hinnat() {
                   <p className="text-foreground/40 text-xs uppercase tracking-widest mb-4">
                     {lang === "en" ? "Included" : "Sisältyy"}
                   </p>
-                  <ul className="space-y-3">
-                    {(pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features).map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-sm text-foreground/80">
-                        <CheckCircle2 className="w-4 h-4 thunder-orange mt-0.5 flex-shrink-0" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
+                  <PackageFeatures emphasizeAudio={pkg.id === "digi"} features={pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.features ?? pkg.features : pkg.features} />
 
                   {((pkgTranslations ? pkgTranslations[PACKAGES.indexOf(pkg)]?.notIncluded ?? pkg.notIncluded : pkg.notIncluded).length > 0) && (
                     <>
@@ -152,11 +147,12 @@ export default function Hinnat() {
                 >
                   {pkg.cta} <ArrowRight className="inline w-4 h-4 ml-1" />
                 </PackagePurchase>
+                {pkg.id === "premium" && <Link href="/asiantuntijakirja" className="mt-5 text-center font-semibold text-sm thunder-orange underline underline-offset-4">{lang === "en" ? "For experts and entrepreneurs" : "Lue lisää asiantuntijoille"}</Link>}
               </div>
             ))}
           </div>
 
-          <div className="mb-12"><KlarnaNote /></div>
+          <div className="mb-12 max-w-4xl mx-auto"><KlarnaNote /><p className="mt-6 text-sm leading-relaxed text-muted-foreground border border-border rounded-xl p-5">{PACKAGE_TERMS[lang]}</p></div>
           {/* FAQ */}
           <div className="max-w-3xl mx-auto">
             <h2 className="thunder-heading text-3xl text-foreground mb-8 text-center">
