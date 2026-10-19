@@ -29,7 +29,7 @@ Kirja lahjana sanoo: *sinun tarinasi on tärkeä.*
 Lahjaksi annetaan julkaisupaketti. Thunder Kustannus hoitaa koko matkan tekstistä valmiiseen kirjaan:
 
 - **Ammattimainen taitto** ja **kansisuunnittelu**
-- **Painetut kirjat** (Printti 50 kpl, Premium 100 kpl), riittävästi koko suvulle
+- **Painetut kirjat**: Painettu kirja tuo käsin kosketeltavan kirjan, mutta ei ole nykyaikana pakollinen
 - **E-kirja** ja **äänikirja**
 - **ISBN-tunnus** ja jakelu kirjastoihin, kirjakauppoihin ja äänikirjapalveluihin
 - Oikeudet pysyvät kirjoittajalla. Aina.
@@ -40,9 +40,9 @@ Katso pakettien sisällöt ja hinnat: [Hinnat](/hinnat). Lue myös [miten oma ki
 
 ## Miten lahja annetaan jouluna, kun kirja valmistuu myöhemmin?
 
-Kirjaa ei tarvitse saada valmiiksi jouluaatoksi. Voit antaa lahjaksi lupauksen auttaa läheisesi tarinan kirjaksi ja sopia julkaisusta hänen kanssaan. Meillä ei ole vielä ostettavaa lahjakorttia.
+Kirjaa ei tarvitse saada valmiiksi jouluaatoksi. Voit antaa lahjaksi lupauksen auttaa läheisesi tarinan kirjaksi ja sopia julkaisusta hänen kanssaan.
 
-**Kysy ensin lahjaksi annettavasta julkaisusta.** Käymme yhdessä läpi käsikirjoituksen tilanteen, sopivan paketin ja sen, miten lahjan käytännön järjestelyt voidaan hoitaa. Aloituksesta ja yhteydenotosta sovitaan erikseen — vanhempasi saa itse päättää tarinansa julkaisemisesta.
+**Kysy ensin lahjaksi annettavasta julkaisusta.** Käymme yhdessä läpi käsikirjoituksen tilanteen, sopivan paketin ja sen, miten lahjan käytännön järjestelyt voidaan hoitaa. Aloituksesta ja yhteydenotosta sovitaan erikseen, vanhempasi saa itse päättää tarinansa julkaisemisesta.
 
 Monelle juuri tämä on paras osa: tieto siitä, että joku haluaa kuulla hänen tarinansa.
 
