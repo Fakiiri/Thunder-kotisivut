@@ -1,6 +1,6 @@
 # Oppaiden julkaisuehdotus — 19.10.2026
 
-Ei tuotantojulkaisua tässä muutoksessa. Tämä haara ja kuusi tekstiä odottavat Santerin hyväksyntää. Sivuston jo hyväksyttyä Premium-, Klarna- tai palautesisältöä ei palauteta vanhaan versioon.
+Santeri hyväksyi kuusi opasta ja niiden tuotantojulkaisun 19.10.2026. Julkaisu säilyttää alla olevan päiväkohtaisen aikataulun. Sivuston jo hyväksyttyä Premium-, Klarna- tai palautesisältöä ei palauteta vanhaan versioon.
 
 ## Julkaisupäivät Suomen aikaa
 
@@ -13,7 +13,7 @@ Ei tuotantojulkaisua tässä muutoksessa. Tämä haara ja kuusi tekstiä odottav
 | 19.11.2026 | /oppaat/hylatty-kasikirjoitus | Uusi luonnos Santerin pyynnöstä |
 | 29.12.2026 | /oppaat/kirja-valmiiksi-2027 | Uusi luonnos Santerin pyynnöstä |
 
-Julkaisupäivät astuvat käyttöön vasta, kun tämä muutos hyväksytään ja julkaistaan tuotantoon. Jos jonkin oppaan päivämäärä on silloin jo mennyt, se tulee näkyviin heti. Neljä itse kirjoitettua luonnosta pitää lukea ennen hyväksyntää.
+Julkaisupäivät astuvat käyttöön vasta, kun tämä muutos hyväksytään ja julkaistaan tuotantoon. Jos jonkin oppaan päivämäärä on silloin jo mennyt, se tulee näkyviin heti. Myös neljä itse kirjoitettua luonnosta on hyväksytty.
 
 ## Tekstit ja rajaukset
 
@@ -54,3 +54,7 @@ Rakennuksen jälkeen apupalvelimen voi kääntää komennolla `esbuild server/gu
 ## Tarkistuslistan sähköpostit
 
 Nykyinen sivustokoodi lisää lataajan Brevon listalle ja lähettää oppaan sähköpostitse. Tähän muutokseen ei lisätty eikä käynnistetty viiden viestin sähköpostisarjaa. Brevon mahdollisia erikseen tehtyjä automaatioita ei ole tässä tarkastettu tai muutettu.
+
+## Julkaisua edeltävä linkkitarkistus
+
+19.10.2026: kaikki 17 opasta ja Oppaat-listaus tarkistettu paikallisessa esikatselussa. Tarkistettu 530 sisäistä linkkiä, 28 eri kohdetta ja listauksen kaikkien opaskorttien kohteet. Virheellisiä reittejä tai puuttuvia ankkurikohteita ei löytynyt. Ajastuksen ja reitityksen testit: 31 läpi; TypeScript-tarkistus läpi.
