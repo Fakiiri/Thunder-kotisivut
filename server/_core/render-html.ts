@@ -1,3 +1,4 @@
+import type { Guide } from "../../shared/guides";
 export interface RenderedPage {
   body: string;
   seo: {
@@ -18,7 +19,22 @@ const escape = (value: string) =>
         char
       ]!
   );
-export function renderHTML(template: string, page: RenderedPage) {
+export function appendGuideData(html: string, guides?: readonly Guide[]) {
+  if (!guides) return html;
+  const json = JSON.stringify(guides)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026");
+  return html.replace(
+    "</head>",
+    () => `<script>window.__THUNDER_GUIDES__=${json};</script></head>`
+  );
+}
+export function renderHTML(
+  template: string,
+  page: RenderedPage,
+  guides?: readonly Guide[]
+) {
   const seo = page.seo;
   const title = seo.title.includes("Thunder Kustannus")
     ? seo.title
@@ -52,8 +68,11 @@ export function renderHTML(template: string, page: RenderedPage) {
     /<link rel="canonical"[^>]*>/,
     () => `<link rel="canonical" href="${escape(canonical)}" />`
   );
-  return html.replace(
-    '<div id="root"></div>',
-    () => `<div id="root">${page.body}</div>`
+  return appendGuideData(
+    html.replace(
+      '<div id="root"></div>',
+      () => `<div id="root">${page.body}</div>`
+    ),
+    guides
   );
 }

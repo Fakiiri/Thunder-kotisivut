@@ -1,3 +1,4 @@
+import { useGuides } from "@/contexts/GuidesContext";
 // Thunder Kustannus — Etusivu v2
 // Design: Warm white bg, charcoal text, orange accents, Plus Jakarta Sans headings
 import { Link } from "wouter";
@@ -9,7 +10,7 @@ import AuthorFeedback from "@/components/AuthorFeedback";
 import PackageFeatures from "@/components/PackageFeatures";
 import { PACKAGE_TERMS } from "@/lib/sales-content";
 import Footer from "@/components/Footer";
-import { PACKAGES, GUIDES, COMPANY } from "@/lib/data";
+import { PACKAGES, COMPANY } from "@/lib/data";
 import PackagePurchase, { KlarnaNote } from "@/components/PackagePurchase";
 import { paymentLinkFor } from "@/lib/payments";
 import { trackPurchaseClick } from "@/lib/purchase-analytics";
@@ -28,6 +29,7 @@ const fadeUp = {
 };
 
 export default function Home() {
+  const GUIDES = useGuides();
   const { t, lang } = useLang();
   const pkgTranslations = lang === "en" && t.pricing?.packages ? t.pricing.packages : undefined;
   useSEO({
@@ -71,7 +73,7 @@ export default function Home() {
             </motion.p>
 
             <motion.div initial={false} animate="visible" variants={fadeUp} className="flex flex-wrap gap-3">
-              <Link href="/arvio" className="thunder-btn-primary px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2">
+              <Link href="/tarjouspyynto" className="thunder-btn-primary px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2">
                 {t.home.ctaPrimary} <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/hinnat" className="px-7 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2 border-2 border-white/30 text-white hover:border-white/60 transition-colors">

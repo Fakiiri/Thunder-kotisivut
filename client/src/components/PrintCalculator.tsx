@@ -325,7 +325,7 @@ export default function PrintCalculator() {
                   {t.calc.ctaLead}
                 </p>
                 <Link
-                  href="/arvio"
+                  href="/tarjouspyynto"
                   className="thunder-btn-primary px-6 py-3 rounded-lg text-sm font-bold inline-flex items-center gap-2 whitespace-nowrap"
                 >
                   {t.calc.ctaBtn} <ArrowRight className="w-4 h-4" />
@@ -345,7 +345,7 @@ export default function PrintCalculator() {
                 {t.calc.noResultLead}
               </p>
               <Link
-                href="/arvio"
+                href="/tarjouspyynto"
                 className="thunder-btn-primary px-6 py-3 rounded-lg text-sm font-bold inline-flex items-center gap-2"
               >
                 {t.calc.ctaBtn} <ArrowRight className="w-4 h-4" />

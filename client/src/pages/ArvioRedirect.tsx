@@ -13,7 +13,7 @@ export default function ArvioRedirect() {
   const [, setLocation] = useLocation();
 
   useEffect(() => {
-    setLocation("/tarjouspyynto");
+    setLocation("/tarjouspyynto" + window.location.search, { replace: true });
   }, [setLocation]);
 
   return null;
