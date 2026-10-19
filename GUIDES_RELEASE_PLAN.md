@@ -7,7 +7,7 @@ Santeri hyväksyi kuusi opasta ja niiden tuotantojulkaisun 19.10.2026. Julkaisu 
 | Päivä klo 00.00 | Osoite | Tekstin alkuperä |
 |---|---|---|
 | 22.10.2026 | /oppaat/kirja-lahjaksi | Santerin liite, palvelulupaukset tarkennettu |
-| 29.10.2026 | /oppaat/muistelmakirjan-julkaiseminen | Uusi luonnos Santerin pyynnöstä |
+| 22.10.2026 | /oppaat/muistelmakirjan-julkaiseminen | Uusi luonnos Santerin pyynnöstä |
 | 5.11.2026 | /oppaat/asiantuntijakirja | Santerin liite, palvelulupaukset tarkennettu |
 | 12.11.2026 | /oppaat/sukukirjan-tekeminen | Uusi luonnos Santerin pyynnöstä |
 | 19.11.2026 | /oppaat/hylatty-kasikirjoitus | Uusi luonnos Santerin pyynnöstä |

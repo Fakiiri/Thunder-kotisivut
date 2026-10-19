@@ -1,52 +1,78 @@
 ---
 julkaisupaiva: 2026-11-19
 slug: hylatty-kasikirjoitus
-kategoria: JULKAISUVAIHTOEHDOT
-lukuaika: 4 min
-title: "Kustantamo hylkäsi käsikirjoituksen? Vaihtoehdot julkaisuun | Thunder Kustannus"
-meta_description: "Hylkäys ei sulje kaikkia julkaisuvaihtoehtoja. Arvioi käsikirjoituksesi, vertaa julkaisutapoja ja suunnittele seuraava askel ilman kiirettä."
+kategoria: STRATEGIA
+lukuaika: 5 min
+title: "Kustantamo hylkäsi käsikirjoituksen? Näin julkaiset kirjasi silti | Thunder Kustannus"
+meta_description: "Hylkäyskirje ei tarkoita, että kirjasi on huono. Näin julkaiset käsikirjoituksesi itse ammattimaisesti: painettuna, e-kirjana ja äänikirjana."
 cta_title: "Haluatko arvion seuraavasta julkaisuaskeleesta?"
 ---
 
-# Kustantamo hylkäsi käsikirjoituksen? Näin voit edetä
+# Kustantamo hylkäsi käsikirjoituksen? Näin julkaiset kirjasi silti
 
-Hylkäysviesti voi tuntua päätökseltä koko kirjasta. Se on kuitenkin yhden kustantamon päätös yhdestä käsikirjoituksesta. Viesti ei yksin kerro, kannattaako teksti julkaista, viimeistellä uudestaan vai tarjota muualle.
+Kirjoitit kirjan. Lähetit sen kustantamoihin. Odotit kuukausia. Sitten tuli lyhyt viesti: *"Käsikirjoitus ei valitettavasti sovi julkaisuohjelmaamme."*
 
-Seuraavan askeleen ei tarvitse olla uusi lähetys saman tien. Aloita katsomalla käsikirjoitusta ja omaa tavoitettasi erikseen.
+Tai vastausta ei tullut ollenkaan.
 
-## Mitä hylkäys kertoo — ja mitä se jättää kertomatta?
+Jos tämä kuulostaa tutulta, et ole yksin. Pelkästä hylkäyksestä ei voi päätellä käsikirjoituksen laatua.
 
-Jos sait perusteluja, kirjaa ne ylös. Koskevatko ne rakennetta, kohderyhmää, tyyliä vai teoksen sopivuutta kustantamon valikoimaan? Kaikki palaute ei tarkoita samaa muutostarvetta.
+## Miksi kustantamo sanoo ei?
 
-Jos perusteluja ei ole, älä rakenna niiden tilalle varmaa selitystä. Pyydä käsikirjoituksellesi lukijapalautetta, joka auttaa tunnistamaan kehityskohdat. Pelkkä julkaisumahdollisuus ei korvaa tekstin laatua.
+Perinteiset kustantamot julkaisevat vain pienen osan saamistaan käsikirjoituksista. Hylkäykseen voi vaikuttaa moni asia:
 
-## Tee vielä yksi lukukierros lukijan näkökulmasta
+- **Julkaisuohjelma on jo täynnä** vuodeksi tai kahdeksi eteenpäin.
+- **Aihe ei sovi kustantamon linjaan** tai on liian kapea heidän myyntiarvioonsa.
+- **Esikoiskirjailija on riski.** Tunnettu nimi myy helpommin.
+- **Käsikirjoituksia on liikaa.** Niitä tulee enemmän kuin ehditään lukea.
 
-Kysy itseltäsi, miksi juuri tämän lukijan pitäisi tarttua kirjaan. Romaanissa vastaus voi löytyä henkilöistä, jännitteestä tai kielestä. Tietokirjassa se voi olla selkeä ongelma ja siihen tarjottu näkökulma.
+Monet nykyään menestyneet kirjat on hylätty ensin useaan kertaan.
 
-- Onko alussa syy jatkaa lukemista?
-- Eteneekö kokonaisuus vai toistuuko sama asia?
-- Tietääkö ulkopuolinen lukija riittävästi ymmärtääkseen tapahtumat tai väitteet?
-- Onko käsikirjoitus oikoluettu ja aineisto tuotantokunnossa?
+## Kolme vaihtoehtoa hylkäyksen jälkeen
 
-Lue myös [kirjoittamisen aloitus- ja työskentelyvinkit](/oppaat/kirjan-kirjoittaminen-aloittelijalle). Ne voivat auttaa myös käsikirjoituksen uudella kierroksella.
+**1. Lähetä uudelleen ja odota.**
+Muokkaa ja lähetä muille kustantamoille. Tämä voi toimia, mutta kestää usein vuosia.
 
-## Vertaa julkaisutapoja tavoitteen perusteella
+**2. Tee kaikki itse.**
+Opettele taitto, tee kansi, hae ISBN, neuvottele jakelusopimukset ja tuota äänikirja. Se on mahdollista, mutta vaatii aikaa ja eri tuotantovaiheiden osaamista.
 
-Voit tarjota viimeisteltyä tekstiä muille kustantamoille, jatkaa sen muokkaamista tai harkita omakustannetta ja julkaisupalvelua. Näissä vastuut ja kustannukset jakautuvat eri tavoin.
+**3. Julkaise julkaisualustan kautta.**
+Ammattilaiset hoitavat taiton, kannen, ISBN:n, äänikirjan ja jakelun. Sinä pidät oikeudet ja saat suurimman osan tuloista.
 
-Julkaisupalvelussa ostat sovitut tuotanto- ja jakelupalvelut. Se ei ole kustantamon myöntämä laatupalkinto eikä takaus kysynnästä. Vastineeksi voit suunnitella julkaisua omista lähtökohdistasi ja sopia palvelujen sisällöstä etukäteen. [Vertaa omakustannetta ja perinteistä kustantamoa](/oppaat/omakustanne-vai-perinteinen-kustantamo).
+Lue vertailu: [Omakustannekirja vai perinteinen kustantamo?](/oppaat/omakustanne-vai-perinteinen-kustantamo)
 
-## Mitä palveluna julkaiseminen maksaa?
+## Mitä saat, kun julkaiset Thunderin kautta
 
-Thunderin **Digi 890 €** sisältää taiton, kannen, e-kirjan, äänikirjan ja jakelun. **Printti 1 690 €** lisää Digi-palveluihin 50 painettua kirjaa. **Premium 2 990 €** sisältää yhteensä 100 painettua kirjaa sekä markkinoinnin ja lanseerauksen tukea. Hinnat sisältävät ALV:n 25,5 %. [Katso tarkat sisällöt](/hinnat).
+- **Oikeudet pysyvät sinulla.** Aina.
+- **Tekijänpalkkio 60 % kirjailijalle ja 40 % Thunderille**, sopimuksessa määritellystä jakoperusteesta.
+- **Tavoiteaikataulu noin 4–8 viikkoa** valmiista aineistosta, teoskohtaisesti sovittuna.
+- **Äänikirja mukana jo pienimmässä paketissa.** Äänikirjat ovat Suomessa suosittuja, ja moni lukija löytää kirjan nykyään Storytelista, BookBeatista tai Nextorysta.
+- **Jakelu kirjakauppoihin ja kirjastoihin** Printti-paketissa.
 
-Pakettihinnat koskevat valmista, alle 250-sivuista käsikirjoitusta. Oikoluku ja sisällön muokkaus eivät sisälly hintaan, joten niiden tarve kannattaa ratkaista ennen tuotantoa. Maksusivulla näet tarjolla olevat Klarna-vaihtoehdot ja niiden ehdot.
+**Digi**, 890 €: taitto, kansi, e-kirja, äänikirja ja jakelu äänikirja- ja e-kirjapalveluihin sekä kirjastoihin.
+**Printti**, 1 690 €: Digin sisältö, 50 painettua kirjaa ja jakelu Suomalaiseen Kirjakauppaan ja Adlibrisiin.
 
-Tuotannon tavoite on noin 4–8 viikkoa valmiista aineistosta. Painotalon aikataulu, toimitukset ja sesonki voivat vaikuttaa kestoon. Aikataulu sovitaan teoskohtaisesti, eikä hylkäysviesti tarkoita, että nyt pitäisi kiirehtiä ostamaan palvelua.
+Maksa kerralla tai osissa Klarnalla. Näet sinulle tarjolla olevat vaihtoehdot ja niiden ehdot maksusivulla.
 
-## Pyydä kartoitus, jos seuraava askel on epäselvä
+[Katso paketit →](/hinnat)
 
-Kerro kirjasi aihe, kohderyhmä, laajuus ja käsikirjoituksen nykyinen vaihe. Voit kertoa myös saamastasi palautteesta. Kartoituksessa keskustelemme sopivasta etenemisestä ja siitä, mitä pitäisi saada valmiiksi ennen tuotantoa.
+## Ennen kuin julkaiset: tarkista nämä
 
-Lisää käytännön tietoa löydät [julkaisuprosessin oppaasta](/oppaat/miten-julkaisen-oman-kirjan) ja [kirjan kustannuksista](/oppaat/kirjan-kustannukset).
+- **Onko käsikirjoitus luettu ulkopuolisella?** Koelukija näkee sen, mitä sinä et enää näe.
+- **Onko teksti oikoluettu?** Kirjoitusvirheet heikentävät uskottavuutta.
+- **Tiedätkö, kuka on lukijasi?** Se ohjaa kantta, kuvausta ja markkinointia.
+
+Lue lisää: [Kirjan markkinointi: 10 tapaa myydä omakustannekirjaasi](/oppaat/kirjan-markkinointi)
+
+## Hylkäyskirje ei ole tuomio
+
+Kustantamon "ei" voi kertoa julkaisuohjelmasta, kohderyhmästä tai käsikirjoituksen kehitystarpeista. Lukijat ratkaisevat, onko kirja hyvä. Siihen kirjan pitää ensin päästä heidän käsiinsä.
+
+---
+
+**Onko käsikirjoituksesi valmis?** Kerro siitä meille. Annamme rehellisen arvion siitä, miten kirjasi kannattaa julkaista. Otamme yhteyttä yhden arkipäivän kuluessa, ilman sitoumuksia.
+
+[Pyydä hinta-arvio →](/tarjouspyynto)
+
+*Haluatko tarkistaa ensin, että kaikki on valmista? [Lataa ilmainen 10 askeleen tarkistuslista](/lataa-opas).*
+
+Pakettihinnat koskevat valmiita, alle 250-sivuisia käsikirjoituksia. Oikoluku ja sisällön muokkaus eivät sisälly paketteihin. Hinnat sisältävät ALV:n 25,5 %. Tuotannon tavoiteaikataulu on noin 4–8 viikkoa valmiista aineistosta. Painotalon aikataulu, toimitukset ja sesonki voivat vaikuttaa kestoon; sovimme aikataulun teoskohtaisesti.

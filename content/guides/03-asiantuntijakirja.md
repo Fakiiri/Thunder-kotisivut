@@ -2,12 +2,10 @@
 julkaisupaiva: 2026-11-05
 slug: asiantuntijakirja
 kategoria: ASIANTUNTIJALLE
-cta_title: "Tehdäänkö osaamisestasi kirja?"
 lukuaika: 6 min
 title: "Asiantuntijakirja: kirja on yrittäjän vahvin myyntityökalu | Thunder Kustannus"
 meta_description: "Miksi konsultin, kouluttajan tai yrittäjän kannattaa julkaista kirja? Näin voit käyttää asiantuntijakirjaa osaamisen, puheenvuorojen ja asiakastyön tukena."
-segmentti: C (konsultit, kouluttajat, johtajat, terapeutit, yrittäjät)
-myyntitavoite: Premium; linkki /asiantuntijakirja-myyntisivulle
+cta_title: "Tehdäänkö osaamisestasi kirja?"
 ---
 
 # Asiantuntijakirja: kirja on yrittäjän vahvin myyntityökalu

@@ -2,51 +2,73 @@
 julkaisupaiva: 2026-11-12
 slug: sukukirjan-tekeminen
 kategoria: SUKUKIRJAT
-lukuaika: 4 min
-title: "Sukukirjan tekeminen: tutkimuksesta valmiiksi kirjaksi | Thunder Kustannus"
-meta_description: "Tee sukututkimuksesta luettava kirja. Näin rajaat aineiston, järjestät kuvat, kokoat käsikirjoituksen ja suunnittelet sukukirjan painoksen."
+lukuaika: 6 min
+title: "Sukukirjan tekeminen: näin sukututkimuksesta tulee kirja | Thunder Kustannus"
+meta_description: "Opas sukukirjan tekemiseen: rakenne, sukutaulut, valokuvat, tekijänoikeudet ja tietosuoja. Näin sukututkimuksesta tulee painettu kirja koko suvulle."
 cta_title: "Tehdäänkö sukusi tarinasta kirja?"
 ---
 
-# Sukukirjan tekeminen: tutkimuksesta kirjaksi, jota luetaan
+# Sukukirjan tekeminen: näin sukututkimuksesta tulee kirja
 
-Sukututkimus voi täyttää monta kansiota. Sukukirja tekee aineistosta kokonaisuuden, jonka toinenkin ihminen osaa avata. Sen arvo ei synny vain nimien määrästä, vaan siitä, että lukija ymmärtää, keitä ihmiset olivat ja miten heidän elämänsä liittyvät toisiinsa.
+Sukututkija tekee usein vuosien työn: arkistoja, kirkonkirjoja, haastatteluja ja valokuvia. Liian usein se kaikki jää kansioihin ja tietokoneen kovalevylle.
 
-Ennen taittoa kannattaa päättää, millaisen kirjan olet tekemässä: yhden suvun historiaa, tietyn talon tarinaa vai kokoelmaa suvun ihmisten muistoista.
+Sukukirja kokoaa työn yhteen ja tekee siitä pysyvän. Se on kirja, jota luetaan sukujuhlissa ja jota lapsenlapset etsivät hyllystä vielä vuosikymmenten päästä.
 
-## Rajaa ensimmäinen kirja toteutettavaksi
+## Mitä sukukirjaan kuuluu?
 
-Kaikkea kerättyä ei tarvitse julkaista samalla kertaa. Valitse aikakausi, sukuhaara tai paikka ja kirjoita rajaus itsellesi näkyviin. Mieti myös lukijaa. Sukukokouksen osallistuja ja historiasta kiinnostunut ulkopuolinen tarvitsevat erilaisen määrän taustatietoa.
+Hyvä sukukirja on enemmän kuin luettelo nimistä ja vuosiluvuista.
 
-Jos aineisto on laaja, kirjasarja voi olla yhtä suurta nidettä toimivampi ratkaisu. Kerro laajuudesta jo tarjouspyynnössä: sivumäärä vaikuttaa tuotantoon ja hintaan.
+- **Johdanto:** miksi kirja on tehty, ja mistä suku on lähtöisin.
+- **Sukutaulut:** selkeät taulut tai kaaviot sukupolvista.
+- **Henkilötarinat:** elävät kuvaukset kiinnostavimmista esivanhemmista.
+- **Paikat:** kotitilat, kylät ja muuttoliikkeet. Kartat auttavat lukijaa.
+- **Valokuvat ja asiakirjat:** vanhat kuvat, kirjeet ja todistukset.
+- **Lähteet:** mistä tiedot on saatu, jotta tutkimusta voidaan jatkaa.
 
-## Anna lukijalle reitti aineistoon
+## Rakenne: sukuhaaroittain vai aikajärjestyksessä?
 
-Toimiva sisällysluettelo kertoo, mistä lukija löytää oman sukuhaaransa tai tietyn ajanjakson. Käytä samoja nimi- ja päivämääräkäytäntöjä läpi käsikirjoituksen. Selitä lyhenteet ja kerro, mistä tiedot on saatu.
+**Sukuhaaroittain** toimii, kun suku on suuri ja lukijat haluavat löytää oman haaransa nopeasti.
 
-- Aloita lyhyellä johdannolla: mitä kirja käsittelee ja mitä se ei käsittele.
-- Järjestä luvut ajanjaksoittain, sukuhaaroittain tai teemoittain.
-- Lisää kuvatekstit ja tunnista kuvissa olevat ihmiset mahdollisuuksien mukaan.
-- Kokoa lähteet niin, että tietoihin voi palata myöhemmin.
+**Aikajärjestys** toimii, kun kirja kertoo suvun tarinaa: esimerkiksi talonpojista tehdastyöläisiksi tai siirtokarjalaisista kaupunkilaisiksi.
 
-Merkitse epävarmat tiedot epävarmoiksi. Selkeästi kerrottu aukko on lukijalle hyödyllisempi kuin tarkalta näyttävä arvaus.
+Monessa onnistuneessa sukukirjassa yhdistyvät molemmat: tarinallinen alkuosa ja haaroittain etenevä sukuluettelo.
 
-## Kokoa kuvat erillisinä tiedostoina
+## Tietosuoja: mitä elävistä henkilöistä saa julkaista?
 
-Sivun sisään liitetty pieni kuva ei aina riitä painoon. Säilytä kuvat mahdollisimman laadukkaina erillistiedostoina ja nimeä ne järjestelmällisesti. Tee kuvista luettelo: tiedostonimi, kuvateksti, lähde ja julkaisun lupa tai muu selvitys käyttömahdollisuudesta.
+Sukukirjassa on usein tietoja myös elävistä ihmisistä. Rajaa julkaistavat tiedot kirjan tarkoituksen mukaan, selvitä tarvittavat luvat ja tarkistuta epäselvät tilanteet ennen julkaisua. Suvun sisäinen painos ja yleiseen myyntiin tarkoitettu kirja voivat vaatia erilaisia sisältövalintoja.
 
-Näin taittaja voi yhdistää oikean kuvan oikeaan kohtaan. Kuvien painokelpoisuus ja mahdolliset erityistarpeet kannattaa arvioida ennen työn aloittamista. Lue lisää [taitosta ja kansisuunnittelusta](/oppaat/kirjan-taitto-ja-kansisuunnittelu).
+## Valokuvat ja kuvien tekijänoikeudet
 
-## Suunnittele painos lukijoiden mukaan
+Vanhat valokuvat ovat sukukirjan sydän. Skannaa ne niin, että tarkkuus on lopullisessa painokoossa noin 300 dpi. Jos kuva on museon, arkiston tai valokuvaamon, tarkista käyttöoikeus ja merkitse lähde.
 
-Kysy suvulta tai sukuseuralta alustavasti kiinnostusta ennen painosmäärän päättämistä. Mieti myös, tarvitaanko kirjoja tuleviin sukukokouksiin, uusille jäsenille tai paikallisiin kirjastoihin.
+Lue lisää: [Kirjan taitto ja kansisuunnittelu](/oppaat/kirjan-taitto-ja-kansisuunnittelu)
 
-Thunderin Printti-paketti maksaa **1 690 €** ja sisältää Digi-palvelut sekä 50 painettua kirjaa. Premium **2 990 €** sisältää yhteensä 100 painettua kirjaa ja lanseerauksen tukea. Hinnat sisältävät ALV:n 25,5 %. Suuremmasta painoksesta, laajasta teoksesta tai poikkeavasta rakenteesta tehdään erillinen tarjous. [Katso paketit ja painolaskuri](/hinnat).
+## Taitto ratkaisee sukukirjassa enemmän kuin muissa kirjoissa
 
-Pakettihinnat koskevat valmista, alle 250-sivuista käsikirjoitusta, eivätkä sisällä oikolukua tai sisällön muokkausta. Maksusivulla näkyvät tarjolla olevat Klarna-vaihtoehdot ehtoineen. Tuotannon tavoiteaikataulu on noin 4–8 viikkoa valmiista aineistosta; painotalon aikataulu, toimitukset ja sesonki voivat vaikuttaa kestoon.
+Sukutaulut, kuvat, kartat ja tekstit samassa kirjassa vaativat ammattimaisen taiton. Huonosti taitettu sukukirja on vaikea lukea, ja hyvä tutkimustyö hukkuu sekavaan ulkoasuun.
 
-## Näillä tiedoilla pääset eteenpäin
+## Paljonko painoksia tarvitaan?
 
-Kerro käsikirjoituksen nykyinen laajuus, kuvien määrä, toivottu painos ja mahdollinen sukukokouksen päivämäärä. Niiden pohjalta voimme keskustella kirjalle sopivasta toteutuksesta ja realistisesta aikataulusta.
+Laske, montako perhettä suvussa on. Usein hyvä lähtökohta on yksi kirja jokaiselle perheelle ja muutama lisäkappale kirjastoille ja sukuseuralle.
 
-Tutustu myös [julkaisuprosessin vaiheisiin](/oppaat/miten-julkaisen-oman-kirjan) ja [kirjan kustannuksiin](/oppaat/kirjan-kustannukset). Jos kirja rakentuu yhden ihmisen muistojen ympärille, [muistelmakirjan opas](/oppaat/muistelmakirjan-julkaiseminen) auttaa rajaamisessa.
+- **Printti-paketti:** 50 painettua kirjaa, e-kirja ja äänikirja.
+- **Premium-paketti:** 100 painettua kirjaa ja lisäksi markkinointi- ja lanseeraustuki.
+- **Isompi painos sukuseuralle:** pyydä räätälöity tarjous.
+
+ISBN-tunnus ja sovittu kirjastojakelu auttavat tekemään kirjan löydettäväksi. Kirjastot päättävät hankinnoistaan itse.
+
+[Katso paketit →](/hinnat)
+
+## Sukukirja sukuseuran hankkeena
+
+Monessa suvussa kirja tehdään sukuseuran yhteisenä hankkeena. Kustannukset voidaan jakaa, ja kirjoja voidaan myydä sukujuhlissa. Kerro hinta-arviolomakkeessa, jos kirja on sukuseuran hanke.
+
+---
+
+**Onko sukututkimuksesi valmis kirjaksi?** Kerro meille aineistostasi. Soitamme ja kerromme, miten siitä saadaan selkeä ja kaunis kirja. Otamme yhteyttä yhden arkipäivän kuluessa.
+
+[Pyydä hinta-arvio →](/tarjouspyynto)
+
+*Mietitkö vielä? [Lataa ilmainen tarkistuslista](/lataa-opas) kirjan julkaisemisesta.*
+
+Pakettihinnat koskevat valmiita, alle 250-sivuisia käsikirjoituksia. Oikoluku ja sisällön muokkaus eivät sisälly paketteihin. Hinnat sisältävät ALV:n 25,5 %. Tuotannon tavoiteaikataulu on noin 4–8 viikkoa valmiista aineistosta. Painotalon aikataulu, toimitukset ja sesonki voivat vaikuttaa kestoon; sovimme aikataulun teoskohtaisesti.
