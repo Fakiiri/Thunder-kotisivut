@@ -24,34 +24,31 @@ export const PACKAGE_TERMS = {
   en: "Package prices apply to books under 250 pages with a finished manuscript. Proofreading and content editing are not included. Our target is approximately 4–8 weeks from receipt of production-ready material; printing schedules, delivery and peak seasons can affect timing. We agree the schedule for each book.",
 };
 
-// Candidates for Santeri's review only. Never attribute them to an author until confirmed.
+// Texts approved by Santeri on 2026-10-19. Publish anonymously by literary genre only.
 export const AUTHOR_FEEDBACK = [
   {
     id: "process",
-    approved: false,
-    author: "[TÄYTÄ: palautteen antajan nimi]",
-    book: "[TÄYTÄ: teos]",
-    image: "",
+    approved: true,
+    genre: "Romaani",
+    genreEn: "Novel",
     quote:
       "Julkaiseminen tuntui selkeältä alusta loppuun. Tiesin, mitä seuraavaksi tapahtuu, ja sain apua silloin kun tarvitsin.",
     en: "The publishing process felt clear from start to finish. I knew what would happen next and received help when I needed it.",
   },
   {
     id: "quality",
-    approved: false,
-    author: "[TÄYTÄ: palautteen antajan nimi]",
-    book: "[TÄYTÄ: teos]",
-    image: "",
+    approved: true,
+    genre: "Sukuteos",
+    genreEn: "Family history",
     quote:
       "Olen todella tyytyväinen lopputulokseen. Kirja näyttää ja tuntuu siltä, miltä toivoinkin.",
     en: "I am very happy with the result. The book looks and feels the way I hoped it would.",
   },
   {
     id: "partnership",
-    approved: false,
-    author: "[TÄYTÄ: palautteen antajan nimi]",
-    book: "[TÄYTÄ: teos]",
-    image: "",
+    approved: true,
+    genre: "Tietokirja",
+    genreEn: "Non-fiction",
     quote:
       "Yhteistyö sujui mallikkaasti. Teen mielelläni seuraavankin kirjani Thunder Kustannuksen kanssa.",
     en: "The collaboration went smoothly. I would be happy to publish my next book with Thunder Kustannus too.",

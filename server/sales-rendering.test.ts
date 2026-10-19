@@ -36,7 +36,7 @@ describe("server-rendered sales pages", () => {
     }
     expect(renderPage("/oppaat/nonexistent")).toBeNull();
   });
-  it("keeps payment destinations and prices, exposes complete Premium terms and hides unapproved feedback", () => {
+  it("keeps payment destinations and prices, exposes complete Premium terms and approved anonymous feedback", () => {
     vi.stubEnv("VITE_EDITORIAL_PREVIEW", "false");
     const page = renderPage("/")!;
     for (const pkg of PACKAGES) expect(page.body).toContain(pkg.price);
@@ -46,17 +46,22 @@ describe("server-rendered sales pages", () => {
     expect(page.body).toContain("/asiantuntijakirja");
     expect(page.body).not.toContain("+ 2 muuta");
     expect(page.body).not.toContain("[TÄYTÄ:");
-    for (const feedback of AUTHOR_FEEDBACK)
-      expect(page.body).not.toContain(feedback.quote);
+    for (const feedback of AUTHOR_FEEDBACK) {
+      expect(page.body).toContain(feedback.quote);
+      expect(page.body).toContain(feedback.genre);
+    }
+    expect(page.body).not.toContain("Tekstiehdotus");
     expect(page.body).toContain(
       "https://buy.stripe.com/4gM28rg8f9pr7wL9SP8g001"
     );
   });
-  it("marks feedback drafts visibly and makes editorial previews noindex", () => {
+  it("makes editorial previews noindex", () => {
     vi.stubEnv("VITE_EDITORIAL_PREVIEW", "true");
     const page = renderPage("/")!;
-    expect(page.body).toContain("Tekstiehdotus · ei julkaistavaksi");
-    expect(page.body).toContain("eivät varmennettuja lainauksia");
+    expect(page.body).not.toContain("[TÄYTÄ:");
+    expect(page.body).toContain(
+      "Kirjailijoiden nimiä tai teoksia ei julkaista"
+    );
     expect(renderHTML(template, page)).toContain('content="noindex, nofollow"');
   });
   it("does not keep an expired campaign in the server-rendered HTML", () => {

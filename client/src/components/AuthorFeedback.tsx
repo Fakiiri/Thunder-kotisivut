@@ -4,7 +4,9 @@ import { useLang } from "@/contexts/LanguageContext";
 export default function AuthorFeedback() {
   const { lang } = useLang();
   const preview = import.meta.env.VITE_EDITORIAL_PREVIEW === "true";
-  const feedback = AUTHOR_FEEDBACK.filter(item => item.approved || preview);
+  const feedback = AUTHOR_FEEDBACK.filter(
+    item => (item.approved && item.genre.trim()) || preview
+  );
   if (!feedback.length) return null;
   return (
     <section
@@ -23,9 +25,9 @@ export default function AuthorFeedback() {
         </h2>
         {preview && (
           <p className="p-4 mb-6 border-2 border-amber-500 rounded-xl bg-amber-50 text-amber-950 font-semibold">
-            ESIKATSELU: nämä ovat palautetekstien ehdotuksia, eivät
-            varmennettuja lainauksia. Hyväksy teksti, palautteen antaja, teos ja
-            julkaisulupa ennen näkyviin ottamista.
+            ESIKATSELU: vain hyväksytyt palautteet, joiden kirjallisuuslaji on
+            vahvistettu, näkyvät julkisessa versiossa. Kirjailijoiden nimiä tai
+            teoksia ei julkaista.
           </p>
         )}
         <div className="grid md:grid-cols-3 gap-6">
@@ -36,19 +38,13 @@ export default function AuthorFeedback() {
                   Tekstiehdotus · ei julkaistavaksi
                 </p>
               )}
-              {item.image && (
-                <img
-                  src={item.image}
-                  alt={item.book}
-                  className="h-36 object-contain mb-4"
-                  loading="lazy"
-                />
-              )}
               <p className="text-lg leading-relaxed mb-6">
                 {lang === "en" ? item.en : item.quote}
               </p>
-              <p className="text-sm font-bold">{item.author}</p>
-              <p className="text-sm text-muted-foreground">{item.book}</p>
+              <p className="text-sm font-bold">
+                {(lang === "en" ? item.genreEn || item.genre : item.genre) ||
+                  "[TÄYTÄ: kirjallisuuslaji]"}
+              </p>
             </article>
           ))}
         </div>

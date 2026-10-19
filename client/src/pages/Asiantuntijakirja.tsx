@@ -277,7 +277,7 @@ export default function Asiantuntijakirja() {
                 <h2 className="thunder-heading text-3xl md:text-4xl mb-4">
                   {en
                     ? "What could your book make possible?"
-                    : "Mitä sinun kirjasi voisi avata?"}
+                    : "Tee osaamisestasi kirja."}
                 </h2>
                 <p className="text-white/70 max-w-2xl leading-relaxed mb-4">
                   {en

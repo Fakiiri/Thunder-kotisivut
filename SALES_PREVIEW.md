@@ -1,6 +1,6 @@
 # Myyntisivujen esikatselu — 19.10.2026
 
-Tämä haara on tarkistettavaksi. Ei yhdistämistä main-haaraan eikä julkaisua ilman Santerin lupaa.
+Santeri hyväksyi julkaisun 19.10.2026 sekä palautetekstit anonyymisti vain kirjallisuuslajilla.
 
 ## Muutokset
 - Premiumin vahvistettu sisältö yhdessä tiedostossa `client/src/lib/sales-content.ts`, suomeksi ja englanniksi. Hinnat ja pakettien nimet ennallaan.
@@ -12,22 +12,19 @@ Tämä haara on tarkistettavaksi. Ei yhdistämistä main-haaraan eikä julkaisua
 - Sivukohtainen title, description, canonical ja OG-tiedot suoraan HTML:ssä. Sitemap päivitetty. Kampanjan voimassaolo tarkistetaan jokaisella palvelinrenderöinnillä.
 
 ## Paikallinen esikatselu
-Rakenna sekä selain- että SSR-versio ympäristömuuttujalla `VITE_EDITORIAL_PREVIEW=true`. Käynnistä palvelin `NODE_ENV=production`, `PAYMENTS_ENABLED=false` ja halutulla PORT-arvolla. Palauteluonnoksissa näkyvät varoitusmerkinnät ja esikatselu on noindex.
+Rakenna sekä selain- että SSR-versio ympäristömuuttujalla `VITE_EDITORIAL_PREVIEW=true`. Käynnistä palvelin `NODE_ENV=production`, `PAYMENTS_ENABLED=false` ja halutulla PORT-arvolla. Keskeneräisissä palautetiedoissa näkyvät merkinnät ja esikatselu on noindex.
 
-**Älä aseta VITE_EDITORIAL_PREVIEW=true tuotantoon.** Julkisessa oletusversiossa näkyvät vain hyväksytyt palautteet. `approved` muutetaan true vasta tekstin ja nimettynä julkaisemisen luvan vahvistamisen jälkeen. Lisää silloin myös oikea kansikuva samassa datassa.
+**Älä aseta VITE_EDITORIAL_PREVIEW=true tuotantoon.** Julkisessa oletusversiossa näkyvät vain hyväksytyt palautteet. Palautteen julkaisu vaatii hyväksytyn tekstin ja vahvistetun `genre`-arvon. Nimiä, teoksia ja kansikuvia ei julkaista.
 
 ## Santerin hyväksyttävät palautetekstit
-Nämä ovat kirjoitusehdotuksia, eivät varmennettuja asiakaslainauksia.
+Santeri on hyväksynyt seuraavat palautetekstit. Kirjailijan nimeä, teosta tai kansikuvaa ei julkaista.
 
 1. Julkaiseminen tuntui selkeältä alusta loppuun. Tiesin, mitä seuraavaksi tapahtuu, ja sain apua silloin kun tarvitsin.
-   - [TÄYTÄ: palautteen antajan nimi]
-   - [TÄYTÄ: teos]
+   - Romaani
 2. Olen todella tyytyväinen lopputulokseen. Kirja näyttää ja tuntuu siltä, miltä toivoinkin.
-   - [TÄYTÄ: palautteen antajan nimi]
-   - [TÄYTÄ: teos]
+   - Sukuteos
 3. Yhteistyö sujui mallikkaasti. Teen mielelläni seuraavankin kirjani Thunder Kustannuksen kanssa.
-   - [TÄYTÄ: palautteen antajan nimi]
-   - [TÄYTÄ: teos]
+   - Tietokirja
 
 Harri Lauslahden Leading in the Age of AI on mukana julkaisureferenssinä olemassa olevalla kuvalla. Sen yhteydessä ei ole vahvistamatonta lausuntoa. Janin, Ellimarian tai Harrin nimiin ei ole liitetty ehdotuksia.
 
@@ -38,3 +35,5 @@ Harri Lauslahden Leading in the Age of AI on mukana julkaisureferenssinä olemas
 
 ## Hakunäkyvyyden käytännön raja
 HTML:n luettavuus paranee, mutta se ei takaa hakusijoitusta tai pääsyä AI-vastauksiin. Tekniset linjaukset: https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics
+
+Julkaisuvahvistus 19.10.2026: palautteet 1–3 antamisjärjestyksessä Romaani, Sukuteos, Tietokirja. Neljänneksi mainitulle elämäkerralle ei luotu ylimääräistä palautetta. Uusi loppuotsikko: Tee osaamisestasi kirja.
