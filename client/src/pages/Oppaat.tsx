@@ -1,13 +1,14 @@
+import { useGuides } from "@/contexts/GuidesContext";
 // Thunder Kustannus — Oppaat-listaussivu v3 (FI/EN)
 import { Link } from "wouter";
 import { ArrowRight, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { GUIDES } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
 import { useLang } from "@/contexts/LanguageContext";
 
 export default function Oppaat() {
+  const GUIDES = useGuides();
   const { t, lang } = useLang();
   useSEO({
     title: "Thunder Kustannus — Oppaat kirjailijoille",

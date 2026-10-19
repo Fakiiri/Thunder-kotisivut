@@ -1,3 +1,4 @@
+import { GuidesProvider } from "./contexts/GuidesContext";
 import { trpc } from "@/lib/trpc";
 import { UNAUTHED_ERR_MSG } from '@shared/const';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -57,7 +58,7 @@ createRoot(document.getElementById("root")!).render(
   <trpc.Provider client={trpcClient} queryClient={queryClient}>
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
-        <App />
+        <GuidesProvider><App /></GuidesProvider>
       </LanguageProvider>
     </QueryClientProvider>
   </trpc.Provider>

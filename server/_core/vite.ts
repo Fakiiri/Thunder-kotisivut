@@ -4,8 +4,9 @@ import { type Server } from "http";
 import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
-import { GUIDES } from "../../client/src/lib/data";
-import { renderHTML, type RenderedPage } from "./render-html";
+import { getPublicGuides } from "../guides";
+import type { Guide } from "../../shared/guides";
+import { renderHTML, appendGuideData, type RenderedPage } from "./render-html";
 
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
@@ -48,7 +49,11 @@ export async function setupVite(app: Express, server: Server) {
   });
 }
 
-export function serveStatic(app: Express, distPath = path.resolve(process.cwd(), "dist", "public"), renderPage?: (url: string) => RenderedPage | null) {
+export function serveStatic(
+  app: Express,
+  distPath = path.resolve(process.cwd(), "dist", "public"),
+  renderPage?: (url: string, guides?: Guide[]) => RenderedPage | null
+) {
   // Use process.cwd() which is always /app on Railway
   if (!fs.existsSync(distPath)) {
     console.error(
@@ -59,13 +64,40 @@ export function serveStatic(app: Express, distPath = path.resolve(process.cwd(),
   app.use(express.static(distPath, { index: false }));
 
   const pagePaths = new Set([
-    "/", "/hinnat", "/kirjat", "/tarjouspyynto", "/arvio", "/oppaat",
-    "/meista", "/asiantuntijakirja", "/sopimusehdot", "/tietosuoja", "/yhteystiedot", "/lataa-opas", "/tilaus-kiitos", "/kiitos",
-    ...GUIDES.map(guide => `/oppaat/${guide.slug}`),
+    "/",
+    "/hinnat",
+    "/kirjat",
+    "/tarjouspyynto",
+    "/arvio",
+    "/oppaat",
+    "/meista",
+    "/asiantuntijakirja",
+    "/sopimusehdot",
+    "/tietosuoja",
+    "/yhteystiedot",
+    "/lataa-opas",
+    "/tilaus-kiitos",
+    "/kiitos",
   ]);
 
   app.use("*", (req, res) => {
-    const pagePath = new URL(req.originalUrl, "http://localhost").pathname.replace(/\/+$/, "") || "/";
+    const pagePath =
+      new URL(req.originalUrl, "http://localhost").pathname.replace(
+        /\/+$/,
+        ""
+      ) || "/";
+    const guides = getPublicGuides();
+    const knownPage =
+      pagePaths.has(pagePath) ||
+      guides.some(guide => pagePath === `/oppaat/${guide.slug}`);
+    if (pagePath.startsWith("/oppaat/") && !knownPage) {
+      res
+        .set("Cache-Control", "no-store")
+        .status(404)
+        .type("text/plain")
+        .send("Not found");
+      return;
+    }
     // Missing assets must not masquerade as successful HTML pages.
     if (pagePath.startsWith("/api/") || path.extname(pagePath)) {
       res.status(404).type("text/plain").send("Not found");
@@ -73,12 +105,19 @@ export function serveStatic(app: Express, distPath = path.resolve(process.cwd(),
     }
     // The same React components and HTML are served to people and crawlers.
     // No user-agent branching, extra bot-only copy, or JavaScript dependency for reading.
-    if (renderPage && pagePaths.has(pagePath)) {
+    if (renderPage && knownPage) {
       try {
-        const page = renderPage(pagePath);
+        const page = renderPage(pagePath, guides);
         if (page) {
-          const template = fs.readFileSync(path.resolve(distPath, "index.html"), "utf8");
-          res.status(200).type("html").send(renderHTML(template, page));
+          const template = fs.readFileSync(
+            path.resolve(distPath, "index.html"),
+            "utf8"
+          );
+          res
+            .set("Cache-Control", "no-store")
+            .status(200)
+            .type("html")
+            .send(renderHTML(template, page, guides));
           return;
         }
       } catch (error) {
@@ -88,7 +127,14 @@ export function serveStatic(app: Express, distPath = path.resolve(process.cwd(),
       }
     }
     // Unknown page URLs render the existing React 404 page with a real 404.
-    res.status(pagePaths.has(pagePath) ? 200 : 404)
-      .sendFile(path.resolve(distPath, "index.html"));
+    res
+      .status(knownPage ? 200 : 404)
+      .type("html")
+      .send(
+        appendGuideData(
+          fs.readFileSync(path.resolve(distPath, "index.html"), "utf8"),
+          renderPage ? guides : undefined
+        )
+      );
   });
 }

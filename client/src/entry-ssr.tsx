@@ -1,3 +1,5 @@
+import { GuidesProvider } from "./contexts/GuidesContext";
+import type { Guide } from "../../shared/guides";
 import { renderToString } from "react-dom/server";
 import { Router, Route, Switch } from "wouter";
 import { LanguageProvider } from "./contexts/LanguageContext";
@@ -19,32 +21,41 @@ const paths = new Set([
   "/kirjat",
   "/oppaat",
   "/asiantuntijakirja",
-  ...GUIDES.map(guide => `/oppaat/${guide.slug}`),
 ]);
 export function renderPage(
-  url: string
+  url: string,
+  guides: Guide[] = GUIDES
 ): { body: string; seo: SEOProps } | null {
   const pathname =
     new URL(url, "https://thunderkustannus.fi").pathname.replace(/\/+$/, "") ||
     "/";
-  if (!paths.has(pathname)) return null;
+  if (
+    !paths.has(pathname) &&
+    !guides.some(guide => pathname === `/oppaat/${guide.slug}`)
+  )
+    return null;
   const metadata: { current?: SEOProps } = {};
   const body = renderToString(
     <ServerSEO.Provider value={metadata}>
       <LanguageProvider>
-        <ThemeProvider defaultTheme="dark">
-          <Router ssrPath={pathname}>
-            <Switch>
-              <Route path="/" component={Home} />
-              <Route path="/hinnat" component={Hinnat} />
-              <Route path="/meista" component={Meista} />
-              <Route path="/kirjat" component={Kirjat} />
-              <Route path="/oppaat" component={Oppaat} />
-              <Route path="/oppaat/:slug" component={Opas} />
-              <Route path="/asiantuntijakirja" component={Asiantuntijakirja} />
-            </Switch>
-          </Router>
-        </ThemeProvider>
+        <GuidesProvider initialGuides={guides}>
+          <ThemeProvider defaultTheme="dark">
+            <Router ssrPath={pathname}>
+              <Switch>
+                <Route path="/" component={Home} />
+                <Route path="/hinnat" component={Hinnat} />
+                <Route path="/meista" component={Meista} />
+                <Route path="/kirjat" component={Kirjat} />
+                <Route path="/oppaat" component={Oppaat} />
+                <Route path="/oppaat/:slug" component={Opas} />
+                <Route
+                  path="/asiantuntijakirja"
+                  component={Asiantuntijakirja}
+                />
+              </Switch>
+            </Router>
+          </ThemeProvider>
+        </GuidesProvider>
       </LanguageProvider>
     </ServerSEO.Provider>
   );

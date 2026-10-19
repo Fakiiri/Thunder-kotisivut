@@ -4,6 +4,7 @@
 // ============================================================
 
 import { PREMIUM_FEATURES } from "./sales-content";
+import type { Guide } from "../../../shared/guides";
 
 export const PACKAGES = [
   {
@@ -60,7 +61,7 @@ export const PACKAGES = [
   },
 ];
 
-export const GUIDES = [
+export const GUIDES: Guide[] = [
   {
     id: "miten-julkaisen-oman-kirjan",
     title: "Miten julkaisen oman kirjan? Täydellinen opas 2026",
@@ -84,7 +85,7 @@ Ennen kuin aloitat julkaisuprosessin, käsikirjoituksen tulee olla mahdollisimma
 
 **Sisällön tarkistus:** Onko rakenne looginen? Eteneekö tarina tai argumentaatio johdonmukaisesti? Onko kaikki oleellinen mukana ja turha karsittu?
 
-**Oikoluku:** Kielioppivirheet, kirjoitusvirheet ja toistot heikentävät kirjan uskottavuutta. Suosittele käyttämään ammattimaista oikolukijaa tai vähintään luettamaan teksti useammalla henkilöllä.
+**Oikoluku:** Kielioppivirheet, kirjoitusvirheet ja toistot heikentävät kirjan uskottavuutta. Suosittelemme käyttämään ammattimaista oikolukijaa tai vähintään luettamaan teksti useammalla henkilöllä.
 
 **Ulkopuolinen palaute:** Kirjailija sokeutuu helposti omalle tekstilleen. Koelukijat, ystävät, kirjoitusryhmät tai ammattitoimittaja antavat arvokasta palautetta ennen julkaisua.
 
@@ -92,7 +93,7 @@ Ennen kuin aloitat julkaisuprosessin, käsikirjoituksen tulee olla mahdollisimma
 
 ## Vaihe 2: Kansi ja taitto
 
-Kirjan kansi on tärkein markkinointivälineesi. Tutkimusten mukaan lukijat tekevät ostopäätöksen alle 3 sekunnissa kannen perusteella. Erityisesti verkkokaupassa, jossa kansi näkyy pienenä kuvakkeena. Ammattimainen kansisuunnittelu ei ole ylellisyys, vaan investointi.
+Kirjan kansi on tärkein markkinointivälineesi. Lukija päättää usein sekunneissa, kiinnostaako kirja, ja kansi ratkaisee. Erityisesti verkkokaupassa, jossa kansi näkyy pienenä kuvakkeena. Ammattimainen kansisuunnittelu ei ole ylellisyys, vaan investointi.
 
 Taitto tarkoittaa kirjan sisäsivujen visuaalista suunnittelua: fonttivalinnat, rivivälit, marginaalit, otsikoiden hierarkia ja kuvien sijoittelu. Huono taitto tekee kirjasta vaikealukuisen ja epäammattimaisen näköisen. Vaikka sisältö olisi kuinka hyvä tahansa.
 
@@ -543,7 +544,13 @@ Omakustantamot, tai julkaisualustat, kuten tykkäämme Thunder Kustannuksella sa
 - Kaikki palvelut koordinoitu yhteen prosessiin
 - Selkeä kokonaishinta ilman yllätyksiä
 
-Thunder Kustannuksen paketit alkavat 890 eurosta (Digi-paketti,  sis. ALV 25,5 %).
+Thunder Kustannuksen julkaisupaketit (sis. ALV 25,5 %):
+
+- **Digi 890 €:** taitto, kansi, e-kirja, äänikirja ja jakelu.
+- **Printti 1 690 €:** Digi-paketin palvelut ja 50 painettua kirjaa.
+- **Premium 2 990 €:** Printti-palvelut, yhteensä 100 painettua kirjaa sekä markkinointi- ja lanseeraustuki.
+
+Maksa kerralla tai osissa Klarnalla. Maksusivulla näet sinulle tarjolla olevat vaihtoehdot ja niiden ehdot. [Katso pakettien sisällöt ja rajaukset](/hinnat).
 
 ## Mitä kannattaa ottaa huomioon?
 
@@ -553,7 +560,7 @@ Thunder Kustannuksen paketit alkavat 890 eurosta (Digi-paketti,  sis. ALV 25,5 %
 
 **Jakelu ratkaisee.** Kirja, jota ei löydy kirjakaupoista tai suoratoistopalveluista, ei myy. Laaja jakelu on kriittinen osa julkaisuprosessia.
 
-**ROI-näkökulma:** Asiantuntijakirja on markkinointiväline, joka voi tuoda kymmeniä tai satoja tuhansia euroja konsultointi-, puhujapalkkio- tai koulutustuloina. Tässä kontekstissa 1 000–3 000 euron julkaisukustannus on pieni investointi.
+**ROI-näkökulma:** Asiantuntijakirjaa voi käyttää konsultoinnin, koulutusten ja puheenvuorojen tukena. Arvioi investointia oman asiakastyösi ja tavoitteidesi pohjalta; julkaisu ei takaa myyntiä tai uusia asiakkaita. Tutustu [asiantuntijakirjan julkaisuun](/asiantuntijakirja).
 
 ## Yhteenveto
 
