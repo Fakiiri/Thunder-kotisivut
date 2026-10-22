@@ -11,6 +11,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { configureOrderAutomation } from "../payments";
+import { configureQuiz } from "../quiz";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -35,6 +36,7 @@ async function startServer() {
   const app = express();
   const server = createServer(app);
   configureOrderAutomation(app);
+  await configureQuiz(app);
   registerGuideRoutes(app);
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));

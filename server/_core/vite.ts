@@ -66,6 +66,7 @@ export function serveStatic(
   const pagePaths = new Set([
     "/",
     "/hinnat",
+    "/julkaisutesti",
     "/kirjat",
     "/tarjouspyynto",
     "/arvio",

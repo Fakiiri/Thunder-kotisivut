@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { ArrowRight, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import QuizCTA from "@/components/QuizCTA";
 import { useSEO } from "@/hooks/useSEO";
 import { useLang } from "@/contexts/LanguageContext";
 
@@ -82,6 +83,7 @@ export default function Oppaat() {
           </div>
         </div>
       </div>
+      <div className="container"><QuizCTA source="guides_index" /></div>
       <Footer />
     </div>
   );

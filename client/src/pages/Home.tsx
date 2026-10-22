@@ -6,6 +6,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { ArrowRight, BookOpen, Headphones, Store, CheckCircle2, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import CampaignBanner from "@/components/CampaignBanner";
+import QuizCTA from "@/components/QuizCTA";
 import AuthorFeedback from "@/components/AuthorFeedback";
 import PackageFeatures from "@/components/PackageFeatures";
 import { PACKAGE_TERMS } from "@/lib/sales-content";
@@ -97,6 +98,7 @@ export default function Home() {
         </div>
       </section>
       <CampaignBanner />
+      <div className="container"><QuizCTA source="home" /></div>
 
       {/* ── PALVELUT — vaalea tausta ── */}
       <section className="thunder-section bg-background">

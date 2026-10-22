@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <script>
+      // Remove private quiz tokens before any third-party script can collect the URL.
+      if (location.pathname === '/julkaisutesti' && /^#(oma-tulos|puhelu)=[a-f0-9]{64}$/.test(location.hash)) {
+        window.thunderQuizLink = location.hash;
+        try { sessionStorage.setItem('thunder_quiz_link', location.hash); } catch (_) {}
+        history.replaceState(null, '', location.pathname);
+      }
+    </script>
     <title>Thunder Kustannus — Julkaise kirjasi ammattilaisena</title>
     <meta name="description" content="Thunder Kustannus auttaa sinua julkaisemaan oman kirjasi — painettu kirja, e-kirja ja äänikirja. Jakelu kirjakauppoihin, Storyteliin, BookBeatiin ja Spotifyhin. Tilaa paketti tänään." />
     <meta name="keywords" content="Thunder Kustannus, omakustanne, kirjan julkaiseminen, äänikirja, e-kirja, hybridikustantamo, hybridijulkaisualusta, omakustannekirja, julkaise kirja, kirjan kustannukset, isbn-tunnus" />
@@ -48,20 +57,7 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('config', 'G-CPH1G8WHXE', { 'send_page_view': true });
     </script>
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1203339451883726');
-    fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code (noscript moved to body) -->
+    <!-- Meta Pixel is loaded by CookieBanner only after marketing consent. -->
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -177,15 +173,8 @@
     </script>
   </head>
   <body>
-    <!-- Meta Pixel noscript fallback -->
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1203339451883726&ev=PageView&noscript=1"
-    /></noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+
   </body>
 </html>

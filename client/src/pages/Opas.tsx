@@ -12,6 +12,7 @@ import { Link, useParams } from "wouter";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
+import QuizCTA from "@/components/QuizCTA";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 
@@ -202,6 +203,7 @@ export default function Opas() {
               </p>
             )}
           {guide.slug === "aanikirjan-tekeminen" && <AudioPackageCallout />}
+          <QuizCTA source="guide" />
           <GuideEstimate title={ctaTitle} />
 
           <p className="mb-12">

@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import PackageFeatures from "@/components/PackageFeatures";
 import { PACKAGE_TERMS } from "@/lib/sales-content";
 import Footer from "@/components/Footer";
+import QuizCTA from "@/components/QuizCTA";
 import PackagePurchase, { KlarnaNote } from "@/components/PackagePurchase";
 import { PACKAGES } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
@@ -185,6 +186,7 @@ export default function Hinnat() {
           </div>
         </div>
       </div>
+      <div className="container"><QuizCTA source="pricing" /></div>
       <Footer />
     </div>
   );

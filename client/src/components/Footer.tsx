@@ -63,6 +63,7 @@ export default function Footer() {
                 { href: "/hinnat", label: t.footer.pricing },
                 { href: "/tarjouspyynto", label: t.footer.estimate },
                 { href: "/oppaat", label: t.footer.guides },
+                { href: "/julkaisutesti", label: "Tee 2 minuutin testi" },
                 { href: "/kirjat", label: t.nav.books },
                 { href: "/meista", label: t.footer.about },
               ].map((l) => (

@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from "react";
 import { X, ChevronDown, ChevronUp, Shield } from "lucide-react";
+import { updateMetaConsent } from "@/lib/meta-consent";
 
 type ConsentState = {
   analytics: boolean;
@@ -20,6 +21,7 @@ declare global {
 }
 
 function updateGoogleConsent(consent: ConsentState) {
+  if (typeof window !== "undefined") updateMetaConsent(consent.marketing);
   if (typeof window === "undefined" || !window.gtag) return;
   window.gtag("consent", "update", {
     analytics_storage: consent.analytics ? "granted" : "denied",

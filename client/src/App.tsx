@@ -21,12 +21,15 @@ import ArvioRedirect from "./pages/ArvioRedirect";
 import TietosuojaRedirect from "./pages/TietosuojaRedirect";
 import TilausKiitos from "./pages/TilausKiitos";
 import Asiantuntijakirja from "./pages/Asiantuntijakirja";
+import Julkaisutesti from "./pages/Julkaisutesti";
+import QuizPrivacy from "./pages/QuizPrivacy";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/hinnat" component={Hinnat} />
+      <Route path="/julkaisutesti" component={Julkaisutesti} />
       <Route path="/asiantuntijakirja" component={Asiantuntijakirja} />
       <Route path="/tilaus-kiitos" component={TilausKiitos} />
       <Route path="/kiitos" component={TilausKiitos} />
@@ -37,7 +40,7 @@ function Router() {
       <Route path="/oppaat/:slug" component={Opas} />
       <Route path="/meista" component={Meista} />
       <Route path="/sopimusehdot" component={Sopimusehdot} />
-      <Route path="/tietosuoja" component={TietosuojaRedirect} />
+      <Route path="/tietosuoja" component={QuizPrivacy} />
       <Route path="/yhteystiedot" component={Yhteystiedot} />
       <Route path="/lataa-opas" component={LataaSivu} />
       <Route path="/404" component={NotFound} />
