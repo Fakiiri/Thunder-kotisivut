@@ -26,6 +26,7 @@ export default function Navbar() {
     { href: "/hinnat", label: t.nav.pricing },
     { href: "/kirjat", label: t.nav.books },
     { href: "/oppaat", label: t.nav.guides },
+    { href: "/kansisuunnittelija", label: lang === "en" ? "Cover designer" : "Kansisuunnittelija" },
     { href: "/meista", label: t.nav.about },
     { href: "/yhteystiedot", label: t.nav.contact },
   ];

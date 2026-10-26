@@ -18,6 +18,7 @@ describe("server-rendered sales pages", () => {
     for (const route of [
       "/",
       "/hinnat",
+      "/kansisuunnittelija",
       "/meista",
       "/kirjat",
       "/oppaat",
@@ -54,6 +55,15 @@ describe("server-rendered sales pages", () => {
     expect(page.body).toContain(
       "https://buy.stripe.com/4gM28rg8f9pr7wL9SP8g001"
     );
+  });
+  it("publishes the cover tool without the development-only order form", () => {
+    vi.stubEnv("DEV", false);
+    const page = renderPage("/kansisuunnittelija")!;
+    expect(page.body).toContain("Oma kuva");
+    expect(page.body).toContain("Pyydä toteutus tälle kirjalle");
+    expect(page.body).not.toContain("Lataa tilausesikatselu liitteineen");
+    expect(page.body).not.toContain("Työkalua ei ole");
+    expect(page.seo.noIndex).toBe(false);
   });
   it("makes editorial previews noindex", () => {
     vi.stubEnv("VITE_EDITORIAL_PREVIEW", "true");

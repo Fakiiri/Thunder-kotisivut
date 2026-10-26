@@ -1,5 +1,6 @@
 // Thunder Kustannus — Tarjouspyyntösivu v4 (FI/EN)
 import { useState } from "react";
+import { coverRequestMessage } from "@shared/cover-request";
 import { CheckCircle2, Send, Phone, Mail, User, BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -25,7 +26,7 @@ const requiredStar = <span className="text-orange-500 ml-0.5">*</span>;
 export default function Tarjouspyynto() {
   const { t, lang } = useLang();
   const ef = t.estimateForm;
-  const [form, setForm] = useState<FormData>(INITIAL);
+  const [form, setForm] = useState<FormData>(() => ({...INITIAL, message: typeof window === "undefined" ? "" : coverRequestMessage(window.location.search)}));
   useSEO({
     title: "Ilmainen arvio kirjaprojektistasi | Thunder Kustannus",
     description: "Pyydä hinta-arvio kirjasi julkaisemisesta. Arvioimme kirjaprojektisi ja kerromme mitä se maksaa. Vastaamme 24 tunnin sisällä. Ei sitoumuksia.",

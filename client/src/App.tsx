@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
@@ -23,12 +24,22 @@ import TilausKiitos from "./pages/TilausKiitos";
 import Asiantuntijakirja from "./pages/Asiantuntijakirja";
 import Julkaisutesti from "./pages/Julkaisutesti";
 import QuizPrivacy from "./pages/QuizPrivacy";
+const Kansisuunnittelija = lazy(() => import("./pages/Kansisuunnittelija"));
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/hinnat" component={Hinnat} />
+      {Kansisuunnittelija && (
+        <Route path="/kansisuunnittelija">
+          <Suspense
+            fallback={<div className="p-24">Avataan kansistudiota…</div>}
+          >
+            <Kansisuunnittelija />
+          </Suspense>
+        </Route>
+      )}
       <Route path="/julkaisutesti" component={Julkaisutesti} />
       <Route path="/asiantuntijakirja" component={Asiantuntijakirja} />
       <Route path="/tilaus-kiitos" component={TilausKiitos} />

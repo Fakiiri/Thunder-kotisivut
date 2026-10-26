@@ -13,6 +13,7 @@ import Oppaat from "./pages/Oppaat";
 import Opas from "./pages/Opas";
 import Asiantuntijakirja from "./pages/Asiantuntijakirja";
 import Julkaisutesti from "./pages/Julkaisutesti";
+import Kansisuunnittelija from "./pages/Kansisuunnittelija";
 import QuizPrivacy from "./pages/QuizPrivacy";
 import { GUIDES } from "./lib/data";
 
@@ -24,6 +25,7 @@ const paths = new Set([
   "/oppaat",
   "/asiantuntijakirja",
   "/julkaisutesti",
+  "/kansisuunnittelija",
   "/tietosuoja",
 ]);
 export function renderPage(
@@ -49,6 +51,10 @@ export function renderPage(
                 <Route path="/" component={Home} />
                 <Route path="/hinnat" component={Hinnat} />
                 <Route path="/julkaisutesti" component={Julkaisutesti} />
+                <Route
+                  path="/kansisuunnittelija"
+                  component={Kansisuunnittelija}
+                />
                 <Route path="/tietosuoja" component={QuizPrivacy} />
                 <Route path="/meista" component={Meista} />
                 <Route path="/kirjat" component={Kirjat} />

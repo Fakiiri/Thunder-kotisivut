@@ -8,6 +8,7 @@ import { useLang } from "@/contexts/LanguageContext";
 import { Link } from "wouter";
 import { ArrowRight, Calculator, AlertCircle, BookOpen } from "lucide-react";
 import { SOFTCOVER_PRICING, QUANTITIES } from "@/lib/pricingData";
+import { printQuote } from "@shared/print-production";
 
 // Paperin nimet suomeksi
 const PAPER_LABELS: Record<string, string> = {
@@ -26,10 +27,13 @@ const FORMAT_LABELS: Record<string, string> = {
 };
 
 // Kaikki uniikkit formaatit
-const ALL_FORMATS = Array.from(new Set(SOFTCOVER_PRICING.map((d) => d.format)));
+const ALL_FORMATS = Array.from(new Set(SOFTCOVER_PRICING.map(d => d.format)));
 
 function fmt(n: number) {
-  return n.toLocaleString("fi-FI", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return n.toLocaleString("fi-FI", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 }
 
 export default function PrintCalculator() {
@@ -44,16 +48,19 @@ export default function PrintCalculator() {
   const availablePapers = useMemo(() => {
     if (!format) return [];
     return Array.from(
-      new Set(SOFTCOVER_PRICING.filter((d) => d.format === format).map((d) => d.paper))
+      new Set(
+        SOFTCOVER_PRICING.filter(d => d.format === format).map(d => d.paper)
+      )
     );
   }, [format]);
 
   // Mitä sivumääriä on saatavilla valitulle koolle + paperille?
   const availablePages = useMemo(() => {
     if (!format || !paper) return [];
-    return SOFTCOVER_PRICING
-      .filter((d) => d.format === format && d.paper === paper)
-      .map((d) => d.pages)
+    return SOFTCOVER_PRICING.filter(
+      d => d.format === format && d.paper === paper
+    )
+      .map(d => d.pages)
       .sort((a, b) => a - b);
   }, [format, paper]);
 
@@ -61,10 +68,12 @@ export default function PrintCalculator() {
   const availableQtys = useMemo(() => {
     if (!format || !paper || pages === "") return [];
     const entry = SOFTCOVER_PRICING.find(
-      (d) => d.format === format && d.paper === paper && d.pages === Number(pages)
+      d => d.format === format && d.paper === paper && d.pages === Number(pages)
     );
     if (!entry) return [];
-    return QUANTITIES.filter((q) => (entry.prices as Record<string, number>)[String(q)] != null);
+    return QUANTITIES.filter(
+      q => (entry.prices as Record<string, number>)[String(q)] != null
+    );
   }, [format, paper, pages]);
 
   // Validointi
@@ -74,12 +83,20 @@ export default function PrintCalculator() {
   const result = useMemo(() => {
     if (!allFilled) return null;
     const entry = SOFTCOVER_PRICING.find(
-      (d) => d.format === format && d.paper === paper && d.pages === Number(pages)
+      d => d.format === format && d.paper === paper && d.pages === Number(pages)
     );
     if (!entry) return null;
     const unitPrice = (entry.prices as Record<string, number>)[String(qty)];
     if (!unitPrice) return null;
-    const totalPrice = unitPrice * Number(qty);
+    const quote = printQuote({
+      format,
+      paper,
+      pages: Number(pages),
+      quantity: Number(qty),
+      interior: "ready",
+    });
+    if (!quote) return null;
+    const totalPrice = quote.printCents / 100;
     const spine = entry.spine_mm;
     const is32 = Number(pages) === 32;
     return { unitPrice, totalPrice, spine, is32 };
@@ -145,11 +162,11 @@ export default function PrintCalculator() {
               </label>
               <select
                 value={format}
-                onChange={(e) => handleFormatChange(e.target.value)}
+                onChange={e => handleFormatChange(e.target.value)}
                 className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
               >
                 <option value="">{t.calc.selectSize}</option>
-                {ALL_FORMATS.map((f) => (
+                {ALL_FORMATS.map(f => (
                   <option key={f} value={f}>
                     {FORMAT_LABELS[f] ?? f}
                   </option>
@@ -164,12 +181,14 @@ export default function PrintCalculator() {
               </label>
               <select
                 value={paper}
-                onChange={(e) => handlePaperChange(e.target.value)}
+                onChange={e => handlePaperChange(e.target.value)}
                 disabled={!format}
                 className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-40"
               >
-                <option value="">{format ? t.calc.selectPaper : t.calc.selectSizeFirst}</option>
-                {availablePapers.map((p) => (
+                <option value="">
+                  {format ? t.calc.selectPaper : t.calc.selectSizeFirst}
+                </option>
+                {availablePapers.map(p => (
                   <option key={p} value={p}>
                     {PAPER_LABELS[p] ?? p}
                   </option>
@@ -187,12 +206,18 @@ export default function PrintCalculator() {
               </label>
               <select
                 value={pages}
-                onChange={(e) => handlePagesChange(e.target.value === "" ? "" : Number(e.target.value))}
+                onChange={e =>
+                  handlePagesChange(
+                    e.target.value === "" ? "" : Number(e.target.value)
+                  )
+                }
                 disabled={!paper}
                 className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-40"
               >
-                <option value="">{paper ? t.calc.selectPages : t.calc.selectPaperFirst}</option>
-                {availablePages.map((p) => (
+                <option value="">
+                  {paper ? t.calc.selectPages : t.calc.selectPaperFirst}
+                </option>
+                {availablePages.map(p => (
                   <option key={p} value={p}>
                     {p} sivua{p === 32 ? " (vihko)" : ""}
                   </option>
@@ -207,12 +232,17 @@ export default function PrintCalculator() {
               </label>
               <select
                 value={qty}
-                onChange={(e) => { setQty(e.target.value === "" ? "" : Number(e.target.value)); setCalculated(false); }}
+                onChange={e => {
+                  setQty(e.target.value === "" ? "" : Number(e.target.value));
+                  setCalculated(false);
+                }}
                 disabled={pages === ""}
                 className="w-full rounded-lg border border-border bg-background text-foreground px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-40"
               >
-                <option value="">{pages !== "" ? t.calc.selectQty : t.calc.selectPagesFirst}</option>
-                {availableQtys.map((q) => (
+                <option value="">
+                  {pages !== "" ? t.calc.selectQty : t.calc.selectPagesFirst}
+                </option>
+                {availableQtys.map(q => (
                   <option key={q} value={q}>
                     {q} kpl
                   </option>
@@ -294,17 +324,23 @@ export default function PrintCalculator() {
               {/* Tekniset tiedot */}
               <div className="border-t border-border/50 pt-4 grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
                 <div>
-                  <p className="text-muted-foreground text-xs mb-0.5">{t.calc.spine}</p>
+                  <p className="text-muted-foreground text-xs mb-0.5">
+                    {t.calc.spine}
+                  </p>
                   <p className="font-semibold text-foreground">
                     {result.spine !== null ? `${result.spine} mm` : "—"}
                   </p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-xs mb-0.5">{t.calc.cover}</p>
+                  <p className="text-muted-foreground text-xs mb-0.5">
+                    {t.calc.cover}
+                  </p>
                   <p className="font-semibold text-foreground">Metsä Board</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-xs mb-0.5">{t.calc.binding}</p>
+                  <p className="text-muted-foreground text-xs mb-0.5">
+                    {t.calc.binding}
+                  </p>
                   <p className="font-semibold text-foreground">
                     {result.is32 ? t.calc.stapled : t.calc.glued}
                   </p>
@@ -319,6 +355,27 @@ export default function PrintCalculator() {
                 </p>
               )}
 
+              <p className="text-sm text-muted-foreground">
+                Kotiintoimitus 50 €. Yli 200 kirjan eristä pyydä tarjous.
+              </p>
+              {(
+                <Link
+                  href={
+                    "/kansisuunnittelija?format=" +
+                    format +
+                    "&paper=" +
+                    encodeURIComponent(paper) +
+                    "&pages=" +
+                    pages +
+                    "&quantity=" +
+                    qty
+                  }
+                  className="thunder-btn-primary px-6 py-3 rounded-lg text-sm font-bold inline-flex items-center gap-2"
+                >
+                  Suunnittele tämän kirjan kansi{" "}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              )}
               {/* CTA */}
               <div className="border-t border-border/50 pt-4 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
                 <p className="text-sm text-muted-foreground">

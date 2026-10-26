@@ -67,6 +67,7 @@ export function serveStatic(
     "/",
     "/hinnat",
     "/julkaisutesti",
+    "/kansisuunnittelija",
     "/kirjat",
     "/tarjouspyynto",
     "/arvio",
