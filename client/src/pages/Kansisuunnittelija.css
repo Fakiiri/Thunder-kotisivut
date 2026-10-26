@@ -628,6 +628,9 @@
   justify-content: space-between;
   gap: 25px;
 }
+.cover-next p {
+  color: #fff5df;
+}
 .cover-next .cover-eyebrow {
   color: #dbc494;
 }
