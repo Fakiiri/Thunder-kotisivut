@@ -137,10 +137,14 @@ export const projectSchema = z.object({
     .object({
       data: z
         .string()
-        .max(12_000_000)
+        .max(18_000_000)
         .regex(/^data:image\/(jpeg|png);base64,[A-Za-z0-9+/=]+$/),
-      width: z.number().int().positive().max(3600),
-      height: z.number().int().positive().max(3600),
+      width: z.number().int().positive().max(12000),
+      height: z.number().int().positive().max(12000),
+      original: z.boolean().optional(),
+    })
+    .refine(i => i.width * i.height <= 24_000_000, {
+      message: "Kuva ylittää 24 megapikselin rajan.",
     })
     .nullable(),
   photo: z.object({

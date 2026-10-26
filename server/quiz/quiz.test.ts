@@ -29,13 +29,19 @@ const answers: QuizAnswers = {
   audio: "yes",
 };
 it("offers eight genre and audience directions independently of the package", () => {
-  const results = (["fiction", "memoir", "children", "expert"] as const).flatMap(genre =>
-    (["personal", "sales"] as const).map(goal => quizResult({ ...answers, genre, goal }))
+  const results = (
+    ["fiction", "memoir", "children", "expert"] as const
+  ).flatMap(genre =>
+    (["personal", "sales"] as const).map(goal =>
+      quizResult({ ...answers, genre, goal })
+    )
   );
   expect(new Set(results.map(r => r.name)).size).toBe(8);
   expect(new Set(results.map(r => r.summary)).size).toBe(8);
   expect(results.every(r => r.profile === "digi")).toBe(true);
-  expect(quizResult({ ...answers, genre: "family" }).direction).toBe("life-public");
+  expect(quizResult({ ...answers, genre: "family" }).direction).toBe(
+    "life-public"
+  );
 });
 const job: Job = {
   id: "job1",
@@ -154,6 +160,24 @@ describe("email safety", () => {
       )
     ).toBe(false);
   });
+  it("pauses quiz promotions during a cover journey or personal service", async () => {
+    const request = vi.fn();
+    vi.stubGlobal("fetch", request);
+    for (const listId of [21, 22, 23]) {
+      request.mockResolvedValue(
+        new Response(
+          JSON.stringify({ listIds: [listId], emailBlacklisted: false })
+        )
+      );
+      expect(
+        await followupAllowed(
+          job,
+          { suppressed: async () => false },
+          { ...config, coverPauseLists: [21, 22, 23] }
+        )
+      ).toBe(false);
+    }
+  });
   it("fails closed on provider lookup errors", async () => {
     vi.stubGlobal(
       "fetch",
@@ -193,9 +217,12 @@ describe("email safety", () => {
 });
 describe("public routes", () => {
   let server: Server;
-  async function app(store: QuizStore | null,bookingURL:string|null=null) {
+  async function app(
+    store: QuizStore | null,
+    bookingURL: string | null = null
+  ) {
     const application = express();
-    registerQuizRoutes(application, store,bookingURL);
+    registerQuizRoutes(application, store, bookingURL);
     server = createServer(application);
     await new Promise<void>(resolve => server.listen(0, "127.0.0.1", resolve));
     return `http://127.0.0.1:${(server.address() as { port: number }).port}`;
@@ -213,12 +240,20 @@ describe("public routes", () => {
     requestKey: "a0c3aaf2-7a3c-41b2-899d-55b310f55ffe",
   };
   const headers = { "Content-Type": "application/json", origin: config.base };
-  it("pauses follow-ups before opening the verified calendar without claiming a reservation",async()=>{
-    const pauseForCalendar=vi.fn();
-    const bookingURL="https://calendar.app.google/verified-example";
-    const base=await app({find:async()=>job.lead,pauseForCalendar} as unknown as QuizStore,bookingURL);
-    const response=await fetch(base+"/api/quiz/calendar",{method:"POST",headers,body:JSON.stringify({token:job.lead.token})});
-    expect(response.status).toBe(200);expect(await response.json()).toEqual({url:bookingURL});
+  it("pauses follow-ups before opening the verified calendar without claiming a reservation", async () => {
+    const pauseForCalendar = vi.fn();
+    const bookingURL = "https://calendar.app.google/verified-example";
+    const base = await app(
+      { find: async () => job.lead, pauseForCalendar } as unknown as QuizStore,
+      bookingURL
+    );
+    const response = await fetch(base + "/api/quiz/calendar", {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ token: job.lead.token }),
+    });
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ url: bookingURL });
     expect(pauseForCalendar).toHaveBeenCalledWith(job.lead);
   });
   it("reports unavailable service honestly without losing the local result", async () => {

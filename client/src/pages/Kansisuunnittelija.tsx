@@ -25,6 +25,9 @@ import Navbar from "@/components/Navbar";
 import CoverCanvas from "@/components/cover/CoverCanvas";
 import CoverProduction from "@/components/cover/CoverProduction";
 import CoverOrder from "@/components/cover/CoverOrder";
+import CoverAccount from "@/components/cover/CoverAccount";
+import CoverPreflight from "@/components/cover/CoverPreflight";
+import CoverServiceHelp from "@/components/cover/CoverServiceHelp";
 import CoverPrintNext from "@/components/cover/CoverPrintNext";
 import {
   coverGeometry,
@@ -126,7 +129,7 @@ function Slider({
 }
 export default function Kansisuunnittelija() {
   useSEO({
-    title: "Kansisuunnittelija",
+    title: "Kirjan kannen suunnittelu – maksuton kansisuunnittelija",
     description:
       "Kokeile kahdeksaa kansipohjaa ja luonnostele oman kirjasi kansi. Kuvat ja luonnokset säilyvät omalla laitteellasi.",
     canonical: "/kansisuunnittelija",
@@ -140,6 +143,28 @@ export default function Kansisuunnittelija() {
   const p = history.present;
   const currentProject = useRef(p);
   currentProject.current = p;
+  const [privateMode, setPrivateMode] = useState(false);
+  const [cloudAvailable, setCloudAvailable] = useState(false);
+  const showPrivateTools = import.meta.env.DEV || cloudAvailable;
+  useEffect(() => {
+    let active = true;
+    fetch("/api/cover/status", { cache: "no-store" })
+      .then(r => (r.ok ? r.json() : null))
+      .then(status => {
+        if (active)
+          setCloudAvailable(
+            status?.available === true && status?.loginEnabled === true
+          );
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+  const [cloudVersion, setCloudVersion] = useState<{
+    id: string;
+    json: string;
+  } | null>(null);
   const [loaded, setLoaded] = useState(false),
     [tab, setTab] = useState<Tab>("templates"),
     [view, setView] = useState<CoverView>("spread");
@@ -251,6 +276,10 @@ export default function Kansisuunnittelija() {
   }, []);
   useEffect(() => {
     if (!loaded) return;
+    if (privateMode) {
+      setStatus("Yksityinen projekti · tallenna muutokset omaan projektiin");
+      return;
+    }
     const current = ++generation.current;
     setStatus("Tallennetaan tähän selaimeen…");
     const timer = setTimeout(() => {
@@ -267,7 +296,7 @@ export default function Kansisuunnittelija() {
         });
     }, 650);
     return () => clearTimeout(timer);
-  }, [p, loaded]);
+  }, [p, loaded, privateMode]);
   useEffect(() => {
     const canvas = document.createElement("canvas");
     canvas.width = 600;
@@ -343,8 +372,8 @@ export default function Kansisuunnittelija() {
     setBusy(true);
     setError("");
     try {
-      if (file.size > 16 * 1024 * 1024)
-        throw new Error("Työtiedosto on liian suuri (enintään 16 Mt).");
+      if (file.size > 24 * 1024 * 1024)
+        throw new Error("Työtiedosto on liian suuri (enintään 24 Mt).");
       const parsed = projectSchema.safeParse(JSON.parse(await file.text()));
       if (!parsed.success)
         throw new Error(
@@ -369,6 +398,14 @@ export default function Kansisuunnittelija() {
   }
 
   async function makePdf() {
+    await Promise.all(
+      [
+        '400 16px "Thunder Cover Serif"',
+        '700 16px "Thunder Cover Serif"',
+        '400 16px "Thunder Cover Sans"',
+        '700 16px "Thunder Cover Sans"',
+      ].map(font => document.fonts.load(font))
+    );
     if (p.image && !decodedImage) throw new Error("Odota kuvan avautumista.");
     const g = coverGeometry(p.production),
       canvas = document.createElement("canvas");
@@ -483,7 +520,7 @@ export default function Kansisuunnittelija() {
         {import.meta.env.DEV
           ? "PAIKALLINEN ESIKATSELU"
           : "MAKSUTON KANSISUUNNITTELIJA"}{" "}
-        · Kuvat käsitellään omalla laitteellasi
+        · Kuviasi ja kansiluonnostasi ei julkaista
       </div>
       <header className="cover-heading">
         <div>
@@ -497,7 +534,11 @@ export default function Kansisuunnittelija() {
         <span className="cover-free">
           <ShieldCheck size={17} /> Maksuton kokeilu
           <br />
-          <small>Ei kirjautumista</small>
+          <small>
+            {privateMode
+              ? "Oma yksityinen projekti"
+              : "Kokeile ilman kirjautumista"}
+          </small>
         </span>
       </header>
       <main
@@ -505,6 +546,35 @@ export default function Kansisuunnittelija() {
         className="cover-workspace"
         aria-busy={!loaded || busy}
       >
+        {showPrivateTools && (
+          <CoverAccount
+            project={p}
+            privateMode={privateMode}
+            onSaved={(id, saved) =>
+              setCloudVersion({ id, json: JSON.stringify(saved) })
+            }
+            onLoad={next => {
+              setPrivateMode(true);
+              setHistory({
+                past: [],
+                present: projectSchema.parse(next),
+                future: [],
+              });
+              setNotice("");
+            }}
+            onPrivate={() => {
+              setPrivateMode(true);
+              void storeDraft(null);
+            }}
+            onLogout={() => {
+              setPrivateMode(false);
+              setCloudVersion(null);
+              setHistory({ past: [], present: createProject(), future: [] });
+              setNotice("");
+              void storeDraft(null);
+            }}
+          />
+        )}
         <CoverProduction
           production={p.production}
           disabled={!loaded || busy}
@@ -819,8 +889,8 @@ export default function Kansisuunnittelija() {
                           })
                         }
                       >
-                        <option value="serif">Klassinen — Georgia</option>
-                        <option value="sans">Selkeä — Arial</option>
+                        <option value="serif">Klassinen — Noto Serif</option>
+                        <option value="sans">Selkeä — Noto Sans</option>
                       </select>
                     </label>
                     <div
@@ -828,8 +898,8 @@ export default function Kansisuunnittelija() {
                       style={{
                         fontFamily:
                           p.font === "serif"
-                            ? "Georgia, serif"
-                            : "Arial, sans-serif",
+                            ? '"Thunder Cover Serif", Georgia, serif'
+                            : '"Thunder Cover Sans", Arial, sans-serif',
                       }}
                     >
                       Tarina, joka jää.
@@ -928,7 +998,12 @@ export default function Kansisuunnittelija() {
                       </>
                     )}
                     <p className="cover-privacy">
-                      <LockKeyhole size={16} /> Kuvaa ei lähetetä palvelimelle.
+                      <LockKeyhole size={16} />{" "}
+                      {privateMode
+                        ? "Kuva tallentuu vain omaan yksityiseen projektiisi."
+                        : showPrivateTools
+                          ? "Kuva pysyy laitteellasi, kunnes valitset yksityisen projektitallennuksen."
+                          : "Kuva pysyy omalla laitteellasi."}
                       Se pysyy tässä selaimessa ja lataamassasi työtiedostossa.
                     </p>
                   </>
@@ -1034,7 +1109,9 @@ export default function Kansisuunnittelija() {
               <p>
                 {view === "spread"
                   ? "Kannen selkä ja koko tulevat hintalaskurin hinnastosta. Leikkuuvara on 5 mm jokaisella ulkoreunalla. Oranssi katkoviiva näyttää tekstien turva-alueen."
-                  : "Kokeile rauhassa. Luonnos säilyy tässä selaimessa. Lataa työtiedosto talteen, jotta voit jatkaa myös toisella laitteella."}
+                  : privateMode
+                    ? "Tallenna muutokset omaan projektiin, jotta voit jatkaa toisella laitteella."
+                    : "Kokeile rauhassa. Luonnos säilyy tässä selaimessa. Lataa työtiedosto talteen, jotta voit jatkaa myös toisella laitteella."}
               </p>
             </div>
           </section>
@@ -1084,6 +1161,13 @@ export default function Kansisuunnittelija() {
       ) : (
         <CoverPrintNext production={p.production} />
       )}
+      {showPrivateTools && (
+        <CoverPreflight
+          projectId={cloudVersion?.id || null}
+          dirty={!!cloudVersion && cloudVersion.json !== JSON.stringify(p)}
+        />
+      )}
+      <CoverServiceHelp />
       <section className="cover-next">
         <div>
           <p className="cover-eyebrow">MUUT JULKAISUPALVELUT</p>
@@ -1105,9 +1189,11 @@ export default function Kansisuunnittelija() {
       <footer className="cover-local-footer">
         <LockKeyhole size={15} />
         <p>
-          Tässä luonnostyökalussa ei lähetetä kuvia, kirjan tietoja eikä
-          sähköposteja. Selaintietojen poistaminen voi poistaa paikallisen
-          luonnoksen.
+          {privateMode
+            ? "Tämä on yksityinen projekti. Tallenna muutokset omaan projektiin ennen uloskirjautumista."
+            : showPrivateTools
+              ? "Luonnos tallentuu tähän selaimeen. Selaintietojen poistaminen voi poistaa sen. Lataa työtiedosto talteen tai valitse yksityinen projektitallennus."
+              : "Luonnos tallentuu tähän selaimeen. Selaintietojen poistaminen voi poistaa sen. Lataa työtiedosto talteen, jotta voit jatkaa myöhemmin."}
         </p>
         <button
           onClick={() => {

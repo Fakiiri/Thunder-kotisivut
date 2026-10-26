@@ -14,6 +14,17 @@ import {
   type CoverView,
   type TextKey,
 } from "./model";
+export type CoverTextRun = {
+  key: TextKey;
+  text: string;
+  x: number;
+  y: number;
+  size: number;
+  bold: boolean;
+  align: CanvasTextAlign;
+  baseline: "top" | "middle";
+  rotation: number;
+};
 export type TextBox = {
   key: TextKey;
   x: number;
@@ -24,6 +35,8 @@ export type TextBox = {
 };
 type Options = {
   guides?: boolean;
+  backgroundOnly?: boolean;
+  textRuns?: CoverTextRun[];
   selected?: TextKey;
   image?: HTMLImageElement | null;
   thumbnail?: boolean;
@@ -79,6 +92,7 @@ function motif(c: CanvasRenderingContext2D, p: CoverProject) {
   c.save();
   c.fillStyle = p.accent;
   c.strokeStyle = p.accent;
+  c.lineWidth = 2.4;
   if (m === "landscape") {
     circle(c, 421, 484, 70, p.accent);
     c.fillStyle = p.ink;
@@ -121,7 +135,7 @@ function motif(c: CanvasRenderingContext2D, p: CoverProject) {
     c.fill();
     c.strokeStyle = p.ink;
     c.globalAlpha = 0.3;
-    c.lineWidth = 1.5;
+    c.lineWidth = 2.4;
     for (let i = 0; i < 5; i++) {
       c.beginPath();
       c.roundRect(172 + i * 12, 418 + i * 12, 256 - i * 24, 270 - i * 12, [
@@ -159,7 +173,7 @@ function motif(c: CanvasRenderingContext2D, p: CoverProject) {
     c.strokeRect(28, 28, 544, 796);
   } else if (m === "grid") {
     c.globalAlpha = 0.3;
-    c.lineWidth = 1;
+    c.lineWidth = 2.4;
     for (let i = 0; i < 9; i++) {
       c.beginPath();
       c.moveTo(44 + i * 64, 380);
@@ -191,7 +205,7 @@ function motif(c: CanvasRenderingContext2D, p: CoverProject) {
     c.globalAlpha = 0.7;
     circle(c, 354, 489, 119, p.bg);
     c.globalAlpha = 0.5;
-    c.lineWidth = 1;
+    c.lineWidth = 2.4;
     c.beginPath();
     c.moveTo(300, 440);
     c.lineTo(300, 728);
@@ -231,7 +245,7 @@ function motif(c: CanvasRenderingContext2D, p: CoverProject) {
       c.restore();
     });
   } else {
-    c.lineWidth = 1.5;
+    c.lineWidth = 2.4;
     c.strokeRect(80, 80, 440, 692);
     c.globalAlpha = 0.5;
     c.strokeRect(88, 88, 424, 676);
@@ -264,19 +278,18 @@ export function renderCover(
   const boxes: TextBox[] = [];
   const family =
     p.font === "serif"
-      ? "Georgia, 'Times New Roman', serif"
-      : "Arial, Helvetica, sans-serif";
+      ? '"Thunder Cover Serif", Georgia, serif'
+      : '"Thunder Cover Sans", Arial, sans-serif';
   function text(key: Exclude<TextKey, "spine">, offset: number) {
     const pos = p.positions[key],
       size = pos.size,
       lineHeight = size * 1.25;
     c.font = (key === "title" ? "bold " : "") + size + "px " + family;
     const maxWidth = key === "back" ? W * 0.72 : W * 0.8;
+    c.textAlign = pos.align;
+    c.textBaseline = "top";
     const lines = wrapLines(c, p[key], maxWidth),
-      usedWidth = Math.min(
-        maxWidth,
-        Math.max(0, ...lines.map(t => c.measureText(t).width))
-      );
+      usedWidth = Math.max(0, ...lines.map(t => c.measureText(t).width));
     const anchor = pos.x * W,
       left =
         pos.align === "left"
@@ -288,6 +301,28 @@ export function renderCover(
       height = lines.length * lineHeight,
       safe = g.safeMm * g.unit;
     if (!p[key].trim()) return;
+    // Include real glyph overhangs and accents, rather than advance widths alone.
+    const glyphs = lines.map((line, i) => {
+      const m = c.measureText(line),
+        top = y + i * lineHeight;
+      return [
+        m.actualBoundingBoxLeft,
+        m.actualBoundingBoxRight,
+        m.actualBoundingBoxAscent,
+        m.actualBoundingBoxDescent,
+      ].every(Number.isFinite)
+        ? {
+            left: anchor - m.actualBoundingBoxLeft,
+            right: anchor + m.actualBoundingBoxRight,
+            top: top - m.actualBoundingBoxAscent,
+            bottom: top + m.actualBoundingBoxDescent,
+          }
+        : { left, right: left + usedWidth, top, bottom: top + lineHeight };
+    });
+    const inkLeft = Math.min(left, ...glyphs.map(m => m.left)),
+      inkRight = Math.max(left + usedWidth, ...glyphs.map(m => m.right)),
+      inkTop = Math.min(y, ...glyphs.map(m => m.top)),
+      inkBottom = Math.max(y + height, ...glyphs.map(m => m.bottom));
     const barcode = {
       x: W * 0.59,
       y: H * 0.85,
@@ -296,25 +331,38 @@ export function renderCover(
     };
     boxes.push({
       key,
-      x: offset + left,
-      y: B + y,
-      width: usedWidth,
-      height,
+      x: offset + inkLeft,
+      y: B + inkTop,
+      width: inkRight - inkLeft,
+      height: inkBottom - inkTop,
       overflow:
-        left < safe ||
-        left + usedWidth > W - safe ||
-        y < safe ||
-        y + height > H - safe ||
+        inkLeft < safe ||
+        inkRight > W - safe ||
+        inkTop < safe ||
+        inkBottom > H - safe ||
         (key === "back" &&
-          left + usedWidth > barcode.x &&
-          left < barcode.x + barcode.width &&
-          y + height > barcode.y &&
-          y < barcode.y + barcode.height),
+          inkRight > barcode.x &&
+          inkLeft < barcode.x + barcode.width &&
+          inkBottom > barcode.y &&
+          inkTop < barcode.y + barcode.height),
     });
     c.fillStyle = p.ink;
     c.textAlign = pos.align;
     c.textBaseline = "top";
-    lines.forEach((line, i) => c.fillText(line, anchor, y + i * lineHeight));
+    lines.forEach((line, i) => {
+      options.textRuns?.push({
+        key,
+        text: line,
+        x: offset + anchor,
+        y: B + y + i * lineHeight,
+        size,
+        bold: key === "title",
+        align: pos.align,
+        baseline: "top",
+        rotation: 0,
+      });
+      if (!options.backgroundOnly) c.fillText(line, anchor, y + i * lineHeight);
+    });
     if (options.guides && options.selected === key) {
       c.save();
       c.strokeStyle = "#e46a20";
@@ -399,7 +447,18 @@ export function renderCover(
       c.fillStyle = p.ink;
       c.textAlign = pos.align;
       c.textBaseline = "middle";
-      c.fillText(p.spine, 0, 0);
+      options.textRuns?.push({
+        key: "spine",
+        text: p.spine,
+        x: B + W + S * pos.x,
+        y: B + H * pos.y,
+        size: pos.size,
+        bold: false,
+        align: pos.align,
+        baseline: "middle",
+        rotation: 90,
+      });
+      if (!options.backgroundOnly) c.fillText(p.spine, 0, 0);
       const length = c.measureText(p.spine).width,
         safe = SPINE_TEXT_INSET_MM * g.unit;
       const left =
@@ -408,18 +467,37 @@ export function renderCover(
           : pos.align === "right"
             ? length
             : 0;
+      const metrics = c.measureText(p.spine);
+      const measured = [
+        metrics.actualBoundingBoxLeft,
+        metrics.actualBoundingBoxRight,
+        metrics.actualBoundingBoxAscent,
+        metrics.actualBoundingBoxDescent,
+      ].every(Number.isFinite);
+      const minX = measured
+        ? Math.min(-pos.size / 2, -metrics.actualBoundingBoxDescent)
+        : -pos.size / 2;
+      const maxX = measured
+        ? Math.max(pos.size / 2, metrics.actualBoundingBoxAscent)
+        : pos.size / 2;
+      const minY = measured
+        ? Math.min(-left, -metrics.actualBoundingBoxLeft)
+        : -left;
+      const maxY = measured
+        ? Math.max(length - left, metrics.actualBoundingBoxRight)
+        : length - left;
       boxes.push({
         key: "spine",
-        x: B + W + S * pos.x - pos.size / 2,
-        y: B + H * pos.y - left,
-        width: pos.size,
-        height: length,
+        x: B + W + S * pos.x + minX,
+        y: B + H * pos.y + minY,
+        width: maxX - minX,
+        height: maxY - minY,
         overflow:
-          pos.size > S - 2 * safe ||
-          H * pos.y - left < g.safeMm * g.unit ||
-          H * pos.y - left + length > H - g.safeMm * g.unit ||
-          S * pos.x - pos.size / 2 < safe ||
-          S * pos.x + pos.size / 2 > S - safe,
+          maxX - minX > S - 2 * safe ||
+          H * pos.y + minY < g.safeMm * g.unit ||
+          H * pos.y + maxY > H - g.safeMm * g.unit ||
+          S * pos.x + minX < safe ||
+          S * pos.x + maxX > S - safe,
       });
     }
     c.restore();
@@ -465,7 +543,7 @@ export function coverWarnings(p: CoverProject, boxes: TextBox[]) {
     g = coverLayout(p, "spread");
   if (!p.title.trim()) warnings.push("Lisää kirjan nimi.");
   if (!p.author.trim()) warnings.push("Lisää tekijän nimi.");
-  if (p.author === "Tekijän nimi")
+  if (p.author.includes("Tekijän nimi"))
     warnings.push("Vaihda malliteksti omiin tietoihisi.");
   if (!p.image && contrast(p.bg, p.ink) < 4.5)
     warnings.push(

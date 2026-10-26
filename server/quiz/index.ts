@@ -1,3 +1,4 @@
+import { parseJourneyLists } from "../../shared/cover-journey";
 import express, { type Express } from "express";
 import { createHash } from "node:crypto";
 import { z } from "zod";
@@ -40,6 +41,8 @@ type Config = {
   owner: string;
   sender: string;
   buyerList: number;
+  coverPauseLists?: number[];
+  pauseFollowups?: boolean;
 };
 class ProviderError extends Error {
   constructor(public retryable: boolean) {
@@ -127,7 +130,12 @@ export async function followupAllowed(
     ].includes(job.lead.email)
   )
     return false;
-  if (!job.lead.marketing || (await store.suppressed(job.lead))) return false;
+  if (
+    config.pauseFollowups ||
+    !job.lead.marketing ||
+    (await store.suppressed(job.lead))
+  )
+    return false;
   const response = await brevoRequest(
     config,
     `/contacts/${encodeURIComponent(job.lead.email)}`
@@ -136,7 +144,10 @@ export async function followupAllowed(
   const contact = await response.json();
   return (
     !contact.emailBlacklisted &&
-    !(contact.listIds || []).includes(config.buyerList)
+    !(contact.listIds || []).includes(config.buyerList) &&
+    !(contact.listIds || []).some((id: number) =>
+      (config.coverPauseLists || []).includes(id)
+    )
   );
 }
 export async function deliverQuizJob(
@@ -484,7 +495,24 @@ export async function configureQuiz(app: Express) {
     sender: process.env.ORDER_SENDER_EMAIL || "info@thunderkustannus.fi",
     buyerList: Number(process.env.BREVO_BUYER_LIST_ID || 10),
   };
-  const bookingURL = readBookingURL(process.env.QUIZ_BOOKING_URL ?? QUIZ_BOOKING_URL);
+  // Cover studio owns the sales conversation while its stage list is active.
+  // The requested quiz result still goes out; only promotional follow-ups pause.
+  if (process.env.COVER_SYNC_ENABLED === "true") {
+    try {
+      const cover = parseJourneyLists(
+        JSON.parse(process.env.COVER_BREVO_LISTS || "")
+      );
+      config.coverPauseLists = [cover.start, cover.ready, cover.personal];
+    } catch {
+      config.pauseFollowups = true;
+      console.error(
+        "[Quiz] Cover list mapping invalid; promotional follow-ups paused"
+      );
+    }
+  }
+  const bookingURL = readBookingURL(
+    process.env.QUIZ_BOOKING_URL ?? QUIZ_BOOKING_URL
+  );
   if (!process.env.DATABASE_URL || !config.apiKey || !bookingURL) {
     console.error(
       "[Quiz] Activation requires MySQL, Brevo and Santeri's verified booking URL"

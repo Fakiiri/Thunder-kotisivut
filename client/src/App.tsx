@@ -25,6 +25,9 @@ import Asiantuntijakirja from "./pages/Asiantuntijakirja";
 import Julkaisutesti from "./pages/Julkaisutesti";
 import QuizPrivacy from "./pages/QuizPrivacy";
 const Kansisuunnittelija = lazy(() => import("./pages/Kansisuunnittelija"));
+const KansipolkuPreview = import.meta.env.DEV
+  ? lazy(() => import("./pages/KansipolkuPreview"))
+  : null;
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -37,6 +40,13 @@ function Router() {
             fallback={<div className="p-24">Avataan kansistudiota…</div>}
           >
             <Kansisuunnittelija />
+          </Suspense>
+        </Route>
+      )}
+      {KansipolkuPreview && (
+        <Route path="/kansisuunnittelija-polku">
+          <Suspense fallback={<div className="p-24">Avataan esikatselua…</div>}>
+            <KansipolkuPreview />
           </Suspense>
         </Route>
       )}

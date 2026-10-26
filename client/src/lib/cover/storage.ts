@@ -9,7 +9,14 @@ async function database() {
       reject(new Error("Selaintallennus ei ole käytettävissä."));
   });
 }
-export async function storeDraft(project: CoverProject | null) {
+let draftWrites: Promise<void> = Promise.resolve();
+export function storeDraft(project: CoverProject | null): Promise<void> {
+  // Preserve write/delete order even if IndexedDB opens complete out of order.
+  const next = draftWrites.catch(() => {}).then(() => writeDraft(project));
+  draftWrites = next;
+  return next;
+}
+async function writeDraft(project: CoverProject | null) {
   const db = await database();
   try {
     await new Promise<void>((resolve, reject) => {
@@ -108,27 +115,20 @@ export async function readImage(
     const img = new Image();
     img.src = url;
     await img.decode();
-    const factor = Math.min(
-      1,
-      3600 / Math.max(img.naturalWidth, img.naturalHeight)
-    );
-    const canvas = document.createElement("canvas");
-    canvas.width = Math.round(img.naturalWidth * factor);
-    canvas.height = Math.round(img.naturalHeight * factor);
-    const ctx = canvas.getContext("2d");
-    if (!ctx) throw new Error("Kuvien käsittely ei onnistu tässä selaimessa.");
-    ctx.fillStyle = "#fff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    const data = canvas.toDataURL("image/jpeg", 0.88);
-    if (data.length > 12_000_000)
-      throw new Error(
-        "Kuva on käsiteltynä liian suuri. Valitse pienempi JPG-kuva."
+    const data = await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result));
+      reader.onerror = () =>
+        reject(new Error("Alkuperäiskuvan lukeminen epäonnistui."));
+      reader.readAsDataURL(
+        new Blob([buffer], { type: png ? "image/png" : "image/jpeg" })
       );
+    });
     return {
       data,
-      width: canvas.width,
-      height: canvas.height,
+      width: img.naturalWidth,
+      height: img.naturalHeight,
+      original: true,
     };
   } finally {
     URL.revokeObjectURL(url);
@@ -142,7 +142,7 @@ export async function validateProjectImage(
   const image = await readImage(
     new Blob([Uint8Array.from(binary, c => c.charCodeAt(0))])
   );
-  return { ...p, image };
+  return { ...p, image: { ...image, original: p.image.original === true } };
 }
 export function downloadBlob(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);

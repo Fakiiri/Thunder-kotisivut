@@ -157,7 +157,7 @@ export default function CoverProduction({
       <details className="cover-production-note">
         <summary>Tekniset ohjeet ennen painoa</summary>
         <p>
-          Mitat ja hinta perustuvat Drukātavan hinnastoon. Paperin, sidonnan tai
+          Mitat ja hinta perustuvat käyttämäämme painatushinnastoon. Paperin, sidonnan tai
           painotalon vaihtuessa selän leveys vahvistetaan uudelleen.
           Kovakantinen kirja tarvitsee oman kansipohjansa.
         </p>

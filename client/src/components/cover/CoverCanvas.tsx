@@ -32,6 +32,21 @@ export default function CoverCanvas({
   onReady,
   onError,
 }: Props) {
+  const [fontsReady, setFontsReady] = useState(false);
+  useEffect(() => {
+    let active = true;
+    Promise.all([
+      document.fonts.load('16px "Thunder Cover Serif"'),
+      document.fonts.load('bold 16px "Thunder Cover Serif"'),
+      document.fonts.load('16px "Thunder Cover Sans"'),
+      document.fonts.load('bold 16px "Thunder Cover Sans"'),
+    ]).then(() => {
+      if (active) setFontsReady(true);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
   const geometry = coverLayout(project, view);
   const canvas = useRef<HTMLCanvasElement>(null);
   const boxes = useRef<TextBox[]>([]);
@@ -74,7 +89,7 @@ export default function CoverCanvas({
       guides,
       selected,
     });
-  }, [project, view, image, guides, selected]);
+  }, [fontsReady, project, view, image, guides, selected]);
   function coordinates(e: React.PointerEvent<HTMLCanvasElement>) {
     const r = e.currentTarget.getBoundingClientRect();
     return {

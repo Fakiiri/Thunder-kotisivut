@@ -12,6 +12,7 @@ import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { configureOrderAutomation } from "../payments";
 import { configureQuiz } from "../quiz";
+import { configureCover } from "../cover";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -37,6 +38,7 @@ async function startServer() {
   const server = createServer(app);
   configureOrderAutomation(app);
   await configureQuiz(app);
+  await configureCover(app);
   registerGuideRoutes(app);
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
@@ -55,7 +57,9 @@ async function startServer() {
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
-    const rendererURL = pathToFileURL(path.resolve(process.cwd(), "dist/ssr/entry-ssr.js")).href;
+    const rendererURL = pathToFileURL(
+      path.resolve(process.cwd(), "dist/ssr/entry-ssr.js")
+    ).href;
     const { renderPage } = await import(rendererURL);
     serveStatic(app, undefined, renderPage);
   }
