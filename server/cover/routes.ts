@@ -1,3 +1,4 @@
+import { coverClientIp } from "./client-ip";
 import express, { type Express, type Request } from "express";
 import { randomBytes } from "node:crypto";
 import { z } from "zod";
@@ -85,7 +86,7 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
         const key = await config.vault.requestLink(
           input.data.email,
           input.data.marketing,
-          req.socket.remoteAddress || "unknown"
+          coverClientIp(req, config.base)
         );
         if (key)
           await config.sendAccess({
@@ -111,7 +112,7 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
         }
         if (
           !(await config.vault.throttle(
-            req.socket.remoteAddress || "unknown",
+            coverClientIp(req, config.base),
             "verify"
           ))
         ) {
