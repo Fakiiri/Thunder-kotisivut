@@ -1,3 +1,4 @@
+import { PAGE_PRICE_NOTICE } from "@shared/page-settlement";
 import { useEffect, useRef, useState } from "react";
 import {
   coverGeometry,
@@ -22,10 +23,12 @@ export default function CoverOrder({
   createPdf,
   onInteriorChange,
   intake = false,
+  checkoutAvailable = false,
   projectId = null,
   dirty = false,
 }: {
   intake?: boolean;
+  checkoutAvailable?: boolean;
   projectId?: string | null;
   dirty?: boolean;
   project: CoverProject;
@@ -48,6 +51,7 @@ export default function CoverOrder({
     [notice, setNotice] = useState(""),
     [busy, setBusy] = useState(false);
   const [received, setReceived] = useState(false);
+  const [receiptId, setReceiptId] = useState<string | null>(null);
   const requestKey = useRef({ signature: "", id: "" });
   useEffect(() => {
     if (!intake) return;
@@ -149,7 +153,9 @@ export default function CoverOrder({
         const bytes = new Uint8Array(await file.arrayBuffer());
         let binary = "";
         for (let i = 0; i < bytes.length; i += 8192)
-          binary += String.fromCharCode(...Array.from(bytes.subarray(i, i + 8192)));
+          binary += String.fromCharCode(
+            ...Array.from(bytes.subarray(i, i + 8192))
+          );
         const manuscript = btoa(binary);
         const checksum = Array.from(
           new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))
@@ -186,6 +192,7 @@ export default function CoverOrder({
               "Aineiston lähetys ei onnistunut. Yritä myöhemmin samalla lomakkeella."
           );
         setReceived(true);
+        setReceiptId(receipt.id);
         setFile(null);
         setNotice(
           "Aineisto vastaanotettu. Pyyntösi tunniste: " +
@@ -363,6 +370,11 @@ export default function CoverOrder({
                   : "Lataa tilausesikatselu liitteineen"}
             </button>
           </fieldset>
+          {receiptId && checkoutAvailable && (
+            <a className="cover-primary" href={"/kansi-maksu/" + receiptId}>
+              Tarkista tiedot ja siirry maksamaan →
+            </a>
+          )}
           {error && (
             <p role="alert" className="cover-order-error">
               {error}
@@ -409,6 +421,7 @@ export default function CoverOrder({
             Painatushinta tulee suoraan nykyisestä hintalaskurista. Tämä on
             painatuspalvelu; verkkokauppajakelu ei sisälly tähän tilaukseen.
           </p>
+          <p className="cover-order-note">{PAGE_PRICE_NOTICE}</p>
           <strong>
             {intake
               ? "Lähetys ei veloita mitään."

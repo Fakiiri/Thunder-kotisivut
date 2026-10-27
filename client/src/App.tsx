@@ -1,3 +1,4 @@
+import KansiMaksu from "./pages/KansiMaksu";
 import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -52,6 +53,7 @@ function Router() {
       )}
       <Route path="/julkaisutesti" component={Julkaisutesti} />
       <Route path="/asiantuntijakirja" component={Asiantuntijakirja} />
+      <Route path="/kansi-maksu/:id" component={KansiMaksu} />
       <Route path="/tilaus-kiitos" component={TilausKiitos} />
       <Route path="/kiitos" component={TilausKiitos} />
       <Route path="/kirjat" component={Kirjat} />

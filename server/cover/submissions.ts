@@ -300,6 +300,15 @@ export class CoverSubmissions {
     }
     return receipt;
   }
+  async paymentSource(session: string, requestId: string) {
+    const user = await this.vault.identity(session);
+    if (!user) throw Error("unauthorized");
+    if (!z.string().uuid().safeParse(requestId).success)
+      throw Error("not-found");
+    const row = await this.repo.get(this.key(user.owner, requestId));
+    if (!row || row.expires <= this.now()) throw Error("not-found");
+    return { owner: user.owner, source: this.crypt.open<Submission>(row) };
+  }
   async getReceipt(session: string, requestId: string) {
     const user = await this.vault.identity(session);
     if (!user) throw Error("unauthorized");

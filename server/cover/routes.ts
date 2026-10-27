@@ -1,3 +1,4 @@
+import type { CoverCheckoutService } from "./checkout-service";
 import type { CoverSubmissions } from "./submissions";
 import { coverClientIp } from "./client-ip";
 import express, { type Express, type Request } from "express";
@@ -7,6 +8,7 @@ import { CoverVault } from "./vault";
 export type AccessMail = { email: string; url: string };
 export type CoverRouteOptions = {
   submissions?: CoverSubmissions | null;
+  checkout?: CoverCheckoutService | null;
   prepress?: {
     inspect: (project: unknown, confirmed: boolean) => Promise<unknown>;
     export: (
@@ -23,6 +25,12 @@ const requestSchema = z.object({
   email: emailSchema,
   marketing: z.boolean(),
   website: z.string().max(100).default(""),
+  returnPath: z
+    .string()
+    .regex(
+      /^\/kansi-maksu\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
+    )
+    .optional(),
 });
 const verifySchema = z.object({
   token: z.string().regex(/^[a-f0-9]{64}$/),
@@ -66,6 +74,7 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
       available: !!config.vault,
       loginEnabled: !!config.sendAccess,
       submissionEnabled: !!config.submissions,
+      checkoutEnabled: !!config.checkout,
       maxProjects: 5,
       maxImageMB: 12,
     })
@@ -89,7 +98,8 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
         const key = await config.vault.requestLink(
           input.data.email,
           input.data.marketing,
-          coverClientIp(req, config.base)
+          coverClientIp(req, config.base),
+          input.data.returnPath
         );
         if (key)
           await config.sendAccess({
@@ -145,7 +155,11 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
           path: "/",
           maxAge: 30 * 86400000,
         });
-        res.json({ verified: true, email: access.email });
+        res.json({
+          verified: true,
+          email: access.email,
+          ...(access.returnPath ? { returnPath: access.returnPath } : {}),
+        });
       } catch {
         res.sendStatus(503);
       }
@@ -177,6 +191,100 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
       res.sendStatus(503);
     }
   });
+  router.use("/checkout", async (req, res, next) => {
+    try {
+      if (!config.checkout || !config.vault) {
+        res.sendStatus(503);
+        return;
+      }
+      const user = await config.vault.identity(token(req));
+      if (!user) {
+        res.sendStatus(401);
+        return;
+      }
+      if (
+        !(await config.vault.throttle(
+          user.owner,
+          req.method === "POST" ? "checkout-create" : "checkout-read",
+          req.method === "POST" ? 12 : 120
+        ))
+      ) {
+        res.sendStatus(429);
+        return;
+      }
+      if (
+        req.method === "POST" &&
+        (!(await config.vault.throttle(
+          coverClientIp(req, config.base),
+          "checkout-ip",
+          20
+        )) ||
+          !(await config.vault.throttle("all", "checkout-global", 60)))
+      ) {
+        res.sendStatus(429);
+        return;
+      }
+      next();
+    } catch {
+      res.sendStatus(503);
+    }
+  });
+  router.get("/checkout/:id", async (req, res) => {
+    try {
+      if (!z.string().uuid().safeParse(req.params.id).success) {
+        res.sendStatus(404);
+        return;
+      }
+      res.json(
+        await config.checkout!.preview(token(req), String(req.params.id))
+      );
+    } catch (e) {
+      res
+        .status(e instanceof Error && e.message === "not-found" ? 404 : 503)
+        .json({ error: "Maksun tietoja ei voitu avata." });
+    }
+  });
+  router.post(
+    "/checkout/:id",
+    express.json({ limit: "2kb" }),
+    async (req, res) => {
+      try {
+        if (!z.string().uuid().safeParse(req.params.id).success) {
+          res.sendStatus(404);
+          return;
+        }
+        const input = z
+          .object({
+            sourceDigest: z.string().regex(/^[a-f0-9]{64}$/),
+            pagePolicyVersion: z.string().max(60),
+            priceTermsAccepted: z.literal(true),
+          })
+          .strict()
+          .parse(req.body);
+        res.json(
+          await config.checkout!.start(token(req), String(req.params.id), input)
+        );
+      } catch (e) {
+        const reason = e instanceof Error ? e.message : "";
+        res
+          .status(
+            reason === "not-found"
+              ? 404
+              : reason === "checkout-needs-review"
+                ? 409
+                : e instanceof z.ZodError
+                  ? 400
+                  : 503
+          )
+          .json({
+            error:
+              reason === "checkout-needs-review"
+                ? "Maksuyritys tarvitsee tarkistuksen. Ota yhteyttä Santeriin ennen uutta maksua."
+                : "Maksusivua ei voitu avata. Älä maksa toisella linkillä; voit yrittää samalla sivulla uudelleen tai ottaa yhteyttä.",
+          });
+      }
+    }
+  );
   // Authenticate before buffering a manuscript. No public file URLs or downloads.
   router.use("/submissions", async (req, res, next) => {
     try {
@@ -556,7 +664,7 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
     res
       .type("html")
       .send(
-        `<!doctype html><html lang="fi"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Avaa kansiprojektisi | Thunder Kustannus</title><body style="font:18px system-ui;background:#f8f6f1;color:#253c34;max-width:600px;margin:70px auto;padding:24px"><h1>Avaa kansiprojektisi</h1><p>Vahvista oma sähköpostiosoitteesi. Käyttölinkki on henkilökohtainen ja voimassa 15 minuuttia.</p><label>Sähköpostiosoite<input id="email" type="email" autocomplete="email" style="display:block;padding:14px;width:90%;margin:12px 0"></label><button id="open" style="padding:16px;background:#c64600;color:white;border:0;border-radius:8px">Vahvista ja avaa kansisuunnittelija</button><p id="status" role="status"></p><a href="/kansisuunnittelija">Takaisin kansisuunnittelijaan</a><script nonce="${nonce}">const token=new URLSearchParams(location.hash.slice(1)).get("token")||"";history.replaceState(null,"","/kansi-kirjaudu");const button=document.getElementById("open"),status=document.getElementById("status");button.disabled=!/^[a-f0-9]{64}$/.test(token);button.addEventListener("click",async()=>{button.disabled=true;try{const email=document.getElementById("email").value;const response=await fetch("/api/cover/access/verify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token,email})});const data=await response.json();if(!response.ok)throw Error(data.error||"Kirjautuminen ei onnistunut.");location.replace("/kansisuunnittelija?cloud=1");}catch(error){status.textContent=error.message;button.disabled=false;}});</script></body></html>`
+        `<!doctype html><html lang="fi"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Avaa kansiprojektisi | Thunder Kustannus</title><body style="font:18px system-ui;background:#f8f6f1;color:#253c34;max-width:600px;margin:70px auto;padding:24px"><h1>Avaa kansiprojektisi</h1><p>Vahvista oma sähköpostiosoitteesi. Käyttölinkki on henkilökohtainen ja voimassa 15 minuuttia.</p><label>Sähköpostiosoite<input id="email" type="email" autocomplete="email" style="display:block;padding:14px;width:90%;margin:12px 0"></label><button id="open" style="padding:16px;background:#c64600;color:white;border:0;border-radius:8px">Vahvista ja avaa kansisuunnittelija</button><p id="status" role="status"></p><a href="/kansisuunnittelija">Takaisin kansisuunnittelijaan</a><script nonce="${nonce}">const token=new URLSearchParams(location.hash.slice(1)).get("token")||"";history.replaceState(null,"","/kansi-kirjaudu");const button=document.getElementById("open"),status=document.getElementById("status");button.disabled=!/^[a-f0-9]{64}$/.test(token);button.addEventListener("click",async()=>{button.disabled=true;try{const email=document.getElementById("email").value;const response=await fetch("/api/cover/access/verify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token,email})});const data=await response.json();if(!response.ok)throw Error(data.error||"Kirjautuminen ei onnistunut.");location.replace(data.returnPath||"/kansisuunnittelija?cloud=1");}catch(error){status.textContent=error.message;button.disabled=false;}});</script></body></html>`
       );
   });
 }

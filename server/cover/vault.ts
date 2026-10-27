@@ -498,7 +498,12 @@ export class CoverVault {
     private crypt: VaultCrypto,
     private now = () => Date.now()
   ) {}
-  async requestLink(email: string, marketing: boolean, ip: string) {
+  async requestLink(
+    email: string,
+    marketing: boolean,
+    ip: string,
+    returnPath?: string
+  ) {
     email = email.trim().toLowerCase();
     const owner = this.crypt.id("owner:" + email),
       now = this.now();
@@ -518,7 +523,11 @@ export class CoverVault {
       kind: "link",
       revision: 1,
       expires: now + 15 * 60000,
-      payload: this.crypt.seal(id, { email, marketing }),
+      payload: this.crypt.seal(id, {
+        email,
+        marketing,
+        returnPath: validPaymentReturn(returnPath),
+      }),
     });
     return token;
   }
@@ -543,7 +552,11 @@ export class CoverVault {
     }
     const row = await this.repo.takeLink("link:" + this.crypt.id(token), now);
     if (!row) return null;
-    const value = this.crypt.open<{ email: string; marketing: boolean }>(row);
+    const value = this.crypt.open<{
+      email: string;
+      marketing: boolean;
+      returnPath?: string;
+    }>(row);
     const session = randomBytes(32).toString("hex"),
       id = "session:" + this.crypt.id(session);
     await this.repo.save({
@@ -576,7 +589,11 @@ export class CoverVault {
         }),
       });
     }
-    return { session, email: value.email };
+    return {
+      session,
+      email: value.email,
+      returnPath: validPaymentReturn(value.returnPath),
+    };
   }
   async identity(session: string) {
     if (!/^[a-f0-9]{64}$/.test(session)) return null;
@@ -743,4 +760,13 @@ function coverHash(project: CoverProject) {
   return createHash("sha256")
     .update(JSON.stringify(projectSchema.parse(project)))
     .digest("hex");
+}
+
+function validPaymentReturn(path: unknown) {
+  return typeof path === "string" &&
+    /^\/kansi-maksu\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(
+      path
+    )
+    ? path
+    : undefined;
 }

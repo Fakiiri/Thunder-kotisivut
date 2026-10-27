@@ -1,3 +1,6 @@
+import { ThunderCheckoutClient } from "./checkout";
+import { MysqlCoverCheckoutStore } from "./checkout-store";
+import { CoverCheckoutService } from "./checkout-service";
 import { deliverSubmissionNotice } from "./submission-mail";
 import { CoverSubmissions, MysqlSubmissionRepository } from "./submissions";
 import type { Express } from "express";
@@ -124,6 +127,7 @@ export async function configureCover(app: Express) {
     };
     // Deliberately off by default: intake is separate from payment and email dispatch.
     let submissions: CoverSubmissions | null = null;
+    let checkout: CoverCheckoutService | null = null;
     if (
       process.env.COVER_SUBMISSIONS_ENABLED === "true" &&
       process.env.BREVO_API_KEY
@@ -178,6 +182,43 @@ export async function configureCover(app: Express) {
           }
         }, 30000);
         notices.unref();
+        if (process.env.COVER_CHECKOUT_ENABLED === "true") {
+          let paymentStore: MysqlCoverCheckoutStore | null = null;
+          try {
+            const mode = process.env.COVER_STRIPE_MODE;
+            if (
+              !["live", "test"].includes(mode || "") ||
+              (process.env.NODE_ENV === "production" && mode !== "live") ||
+              process.env.PAYMENTS_ENABLED !== "true"
+            )
+              throw Error("Checkout mode unavailable");
+            const provider = new ThunderCheckoutClient({
+              secret: process.env.COVER_STRIPE_SECRET_KEY || "",
+              mode: mode as "live" | "test",
+              taxRates: JSON.parse(process.env.COVER_STRIPE_TAX_RATES || "{}"),
+            });
+            await provider.initialize();
+            paymentStore = new MysqlCoverCheckoutStore(
+              process.env.DATABASE_URL!,
+              new VaultCrypto(Buffer.from(key, "hex"))
+            );
+            await paymentStore.init();
+            checkout = new CoverCheckoutService(
+              vault,
+              submissions,
+              paymentStore,
+              provider,
+              mode === "live"
+            );
+            app.locals.coverCheckout = (event: unknown) =>
+              checkout!.receive(event);
+          } catch {
+            await paymentStore?.close();
+            console.error(
+              "[Cover] Direct checkout unavailable; manuscript intake remains enabled"
+            );
+          }
+        }
       } catch {
         await intakeRepo.close();
         console.error(
@@ -191,6 +232,7 @@ export async function configureCover(app: Express) {
       sendAccess,
       prepress,
       submissions,
+      checkout,
     });
   } catch {
     console.error("[Cover] Private storage setup unavailable");

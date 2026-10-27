@@ -146,6 +146,7 @@ export default function Kansisuunnittelija() {
   const [privateMode, setPrivateMode] = useState(false);
   const [cloudAvailable, setCloudAvailable] = useState(false);
   const [intakeAvailable, setIntakeAvailable] = useState(false);
+  const [checkoutAvailable, setCheckoutAvailable] = useState(false);
   const showPrivateTools = import.meta.env.DEV || cloudAvailable;
   useEffect(() => {
     let active = true;
@@ -154,6 +155,7 @@ export default function Kansisuunnittelija() {
       .then(status => {
         if (active) {
           setIntakeAvailable(status?.submissionEnabled === true);
+          setCheckoutAvailable(status?.checkoutEnabled === true);
           setCloudAvailable(
             status?.available === true && status?.loginEnabled === true
           );
@@ -1150,6 +1152,7 @@ export default function Kansisuunnittelija() {
       {import.meta.env.DEV || intakeAvailable ? (
         <CoverOrder
           intake={intakeAvailable}
+          checkoutAvailable={checkoutAvailable}
           projectId={cloudVersion?.id || null}
           dirty={!!cloudVersion && cloudVersion.json !== JSON.stringify(p)}
           project={p}
