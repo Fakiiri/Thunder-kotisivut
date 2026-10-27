@@ -270,7 +270,7 @@ export class ThunderCheckoutClient {
       expires_at: String(Math.floor(attempt.expiresAt / 1000)),
     });
     ["card", "klarna", "mobilepay"].forEach((method, i) =>
-      body.set("payment_method_types[" + i + "]", method)
+      body.set("allowed_payment_method_types[" + i + "]", method)
     );
     const metadata = {
       integration: "thunder-cover-print-v1",

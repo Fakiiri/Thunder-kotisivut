@@ -210,7 +210,7 @@ describe("print checkout account and quote boundaries", () => {
     expect(body.get("automatic_tax[enabled]")).toBe("false");
     expect(body.get("adaptive_pricing[enabled]")).toBe("false");
     expect(body.get("allow_promotion_codes")).toBe("false");
-    expect(body.get("payment_method_types[1]")).toBe("klarna");
+    expect(body.get("allowed_payment_method_types[1]")).toBe("klarna");
     expect(
       [...body.entries()]
         .filter(([k]) => k.startsWith("metadata"))
