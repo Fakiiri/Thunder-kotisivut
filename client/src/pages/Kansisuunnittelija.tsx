@@ -145,16 +145,19 @@ export default function Kansisuunnittelija() {
   currentProject.current = p;
   const [privateMode, setPrivateMode] = useState(false);
   const [cloudAvailable, setCloudAvailable] = useState(false);
+  const [intakeAvailable, setIntakeAvailable] = useState(false);
   const showPrivateTools = import.meta.env.DEV || cloudAvailable;
   useEffect(() => {
     let active = true;
     fetch("/api/cover/status", { cache: "no-store" })
       .then(r => (r.ok ? r.json() : null))
       .then(status => {
-        if (active)
+        if (active) {
+          setIntakeAvailable(status?.submissionEnabled === true);
           setCloudAvailable(
             status?.available === true && status?.loginEnabled === true
           );
+        }
       })
       .catch(() => {});
     return () => {
@@ -1144,8 +1147,11 @@ export default function Kansisuunnittelija() {
           </div>
         </div>
       </main>
-      {import.meta.env.DEV ? (
+      {import.meta.env.DEV || intakeAvailable ? (
         <CoverOrder
+          intake={intakeAvailable}
+          projectId={cloudVersion?.id || null}
+          dirty={!!cloudVersion && cloudVersion.json !== JSON.stringify(p)}
           project={p}
           createPdf={makePdf}
           onInteriorChange={() =>

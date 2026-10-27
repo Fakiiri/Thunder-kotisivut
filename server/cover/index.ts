@@ -1,3 +1,5 @@
+import { deliverSubmissionNotice } from "./submission-mail";
+import { CoverSubmissions, MysqlSubmissionRepository } from "./submissions";
 import type { Express } from "express";
 import { processCoverSyncBatch } from "./sync";
 import { parseJourneyLists } from "../../shared/cover-journey";
@@ -120,7 +122,76 @@ export async function configureCover(app: Express) {
         });
       },
     };
-    registerCoverRoutes(app, { base, vault, sendAccess, prepress });
+    // Deliberately off by default: intake is separate from payment and email dispatch.
+    let submissions: CoverSubmissions | null = null;
+    if (
+      process.env.COVER_SUBMISSIONS_ENABLED === "true" &&
+      process.env.BREVO_API_KEY
+    ) {
+      const intakeRepo = new MysqlSubmissionRepository(
+        process.env.DATABASE_URL!
+      );
+      try {
+        await intakeRepo.init();
+        await intakeRepo.prune(Date.now());
+        submissions = new CoverSubmissions(
+          vault,
+          intakeRepo,
+          new VaultCrypto(Buffer.from(key, "hex"))
+        );
+        const retention = setInterval(() => {
+          void intakeRepo
+            .prune(Date.now())
+            .catch(() =>
+              console.error("[Cover] Intake retention cleanup pending")
+            );
+        }, 3600000);
+        retention.unref();
+        let notifying = false;
+        const notices = setInterval(async () => {
+          if (notifying) return;
+          notifying = true;
+          try {
+            const job = await intakeRepo.claimNotice();
+            if (job) {
+              try {
+                await deliverSubmissionNotice(
+                  job,
+                  new VaultCrypto(Buffer.from(key, "hex")),
+                  process.env.BREVO_API_KEY!
+                );
+                await intakeRepo.finishNotice(job);
+              } catch (e) {
+                await intakeRepo.failNotice(
+                  job,
+                  (e as { retryable?: boolean })?.retryable === true
+                );
+                console.error(
+                  "[Cover] Intake notification queued or needs review"
+                );
+              }
+            }
+          } catch {
+            console.error("[Cover] Intake notification worker unavailable");
+          } finally {
+            notifying = false;
+          }
+        }, 30000);
+        notices.unref();
+      } catch {
+        await intakeRepo.close();
+        console.error(
+          "[Cover] Intake unavailable; existing project tools remain enabled"
+        );
+      }
+    }
+    registerCoverRoutes(app, {
+      base,
+      vault,
+      sendAccess,
+      prepress,
+      submissions,
+    });
   } catch {
     console.error("[Cover] Private storage setup unavailable");
     registerCoverRoutes(app, { base, vault: null, sendAccess: null });

@@ -12,12 +12,22 @@ import {
   type OrderCustomer,
 } from "@/lib/cover/order";
 import { downloadBlob } from "@/lib/cover/storage";
-import { safeFilename, type CoverProject } from "@/lib/cover/model";
+import {
+  safeFilename,
+  projectSchema,
+  type CoverProject,
+} from "@/lib/cover/model";
 export default function CoverOrder({
   project: p,
   createPdf,
   onInteriorChange,
+  intake = false,
+  projectId = null,
+  dirty = false,
 }: {
+  intake?: boolean;
+  projectId?: string | null;
+  dirty?: boolean;
   project: CoverProject;
   createPdf: () => Promise<Blob>;
   onInteriorChange: () => void;
@@ -37,6 +47,22 @@ export default function CoverOrder({
   const [error, setError] = useState(""),
     [notice, setNotice] = useState(""),
     [busy, setBusy] = useState(false);
+  const [received, setReceived] = useState(false);
+  const requestKey = useRef({ signature: "", id: "" });
+  useEffect(() => {
+    if (!intake) return;
+    let active = true;
+    fetch("/api/cover/session", { cache: "no-store" })
+      .then(r => r.json())
+      .then(s => {
+        if (active)
+          setCustomer(c => ({ ...c, email: s.authenticated ? s.email : "" }));
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [intake, projectId]);
   const input = useRef<HTMLInputElement>(null),
     working = useRef(false);
   const q = printQuote(p.production)!,
@@ -95,9 +121,79 @@ export default function CoverOrder({
       );
       return;
     }
+    if (intake && (!projectId || dirty)) {
+      setError(
+        "Tallenna ensin kansiprojektisi viimeisin versio sivun yläosasta."
+      );
+      return;
+    }
     working.current = true;
     setBusy(true);
     try {
+      if (intake) {
+        const savedResponse = await fetch("/api/cover/projects/" + projectId, {
+          cache: "no-store",
+        });
+        if (!savedResponse.ok)
+          throw Error(
+            "Avaa projekti käyttölinkillä ja tallenna se ennen lähettämistä."
+          );
+        const saved = await savedResponse.json();
+        if (
+          JSON.stringify(projectSchema.parse(saved.project)) !==
+          JSON.stringify(projectSchema.parse(p))
+        )
+          throw Error(
+            "Projektia on muutettu toisella laitteella. Avaa ja tarkista uusin kansiversio ennen lähettämistä."
+          );
+        const bytes = new Uint8Array(await file.arrayBuffer());
+        let binary = "";
+        for (let i = 0; i < bytes.length; i += 8192)
+          binary += String.fromCharCode(...Array.from(bytes.subarray(i, i + 8192)));
+        const manuscript = btoa(binary);
+        const checksum = Array.from(
+          new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))
+        )
+          .map(x => x.toString(16).padStart(2, "0"))
+          .join("");
+        const signature = JSON.stringify({
+          customer: result.data,
+          projectId,
+          revision: saved.revision,
+          checksum,
+          filename: file.name,
+          confirmed,
+        });
+        if (requestKey.current.signature !== signature)
+          requestKey.current = { signature, id: crypto.randomUUID() };
+        const response = await fetch("/api/cover/submissions/" + projectId, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            requestId: requestKey.current.id,
+            revision: saved.revision,
+            customer: result.data,
+            filename: file.name,
+            manuscript,
+            confirmedPages: confirmed,
+            permission: true,
+          }),
+        });
+        const receipt = await response.json().catch(() => null);
+        if (!response.ok)
+          throw Error(
+            receipt?.error ||
+              "Aineiston lähetys ei onnistunut. Yritä myöhemmin samalla lomakkeella."
+          );
+        setReceived(true);
+        setFile(null);
+        setNotice(
+          "Aineisto vastaanotettu. Pyyntösi tunniste: " +
+            receipt.id +
+            ". Santeri tarkistaa tiedot ja ottaa yhteyttä yhden arkipäivän kuluessa. Tämä ei vielä ole tilaus tai veloitus."
+        );
+        return;
+      }
       const pdf = await createPdf(),
         summary = orderSummary(
           p,
@@ -134,13 +230,20 @@ export default function CoverOrder({
         <p className="cover-panel-kicker">3. KÄSIKIRJOITUS JA KOTIINTOIMITUS</p>
         <h2 id="cover-order-heading">Tarkista kirjapaketin tiedot.</h2>
         <p className="cover-help">
-          Tässä esikatselussa voit valmistella koko tilauksen liitteineen. Se ei
-          lähetä sähköpostia eikä avaa maksua.
+          {intake
+            ? "Lähetä käsikirjoitus ja kirjan tiedot meille tarkistettavaksi. Vahvistamme aineiston ja lopullisen toteutuksen ennen tilausta tai maksua."
+            : "Tässä esikatselussa voit valmistella koko tilauksen liitteineen. Se ei lähetä sähköpostia eikä avaa maksua."}
         </p>
       </div>
       <div className="cover-order-grid">
-        <form onSubmit={prepare}>
-          <fieldset disabled={busy} className="cover-order-fields">
+        <form onSubmit={prepare} className="manus-no-record">
+          {intake && (!projectId || dirty) && (
+            <p className="cover-order-note">
+              Avaa henkilökohtainen käyttölinkkisi ja tallenna kansiprojektin
+              uusin versio sivun yläosasta ennen aineiston lähettämistä.
+            </p>
+          )}
+          <fieldset disabled={busy || received} className="cover-order-fields">
             <div className="cover-order-inputs">
               {(
                 [
@@ -158,6 +261,7 @@ export default function CoverOrder({
                     type={type}
                     name={"private-order-" + key}
                     value={customer[key]}
+                    readOnly={intake && key === "email"}
                     maxLength={key === "postal" ? 5 : 150}
                     required={key !== "phone"}
                     autoComplete={
@@ -190,8 +294,9 @@ export default function CoverOrder({
                 onChange={e => void choose(e.target.files?.[0])}
               />
               <small>
-                Yksi PDF- tai DOCX-tiedosto, enintään 8 Mt. Kuva ja
-                käsikirjoitus pysyvät tässä esikatselussa omalla laitteellasi.
+                {intake
+                  ? "Yksi PDF- tai DOCX-tiedosto, enintään 8 Mt. Lähetetty käsikirjoitus toimitetaan Thunder Kustannukselle sähköpostitse ja tallennetaan salattuna 30 päiväksi. Aineistoa ei käytetä markkinointiin."
+                  : "Yksi PDF- tai DOCX-tiedosto, enintään 8 Mt. Kuva ja käsikirjoitus pysyvät tässä esikatselussa omalla laitteellasi."}
               </small>
             </label>
             {file && (
@@ -234,22 +339,28 @@ export default function CoverOrder({
                 checked={terms}
                 onChange={e => setTerms(e.target.checked)}
               />
-              Minulla on oikeus käyttää toimittamaani aineistoa. Ymmärrän, että
-              kyseessä on tilausesikatselu ja että aineisto tarkistetaan ennen
-              painoon lähettämistä.
+              {intake
+                ? "Minulla on oikeus toimittaa aineisto. Pyydän sen lähettämistä Thunder Kustannukselle sähköpostitse tarkistusta ja yhteydenottoa varten. Tämä ei vielä ole sitova tilaus."
+                : "Minulla on oikeus käyttää toimittamaani aineistoa. Ymmärrän, että kyseessä on tilausesikatselu ja että aineisto tarkistetaan ennen painoon lähettämistä."}
             </label>
             <button
               type="submit"
               className="cover-primary"
               disabled={
                 busy ||
+                received ||
+                (intake && (!projectId || dirty)) ||
                 !file ||
                 !verified ||
                 !terms ||
                 (p.production.interior === "ready" && !confirmed)
               }
             >
-              {busy ? "Valmistellaan…" : "Lataa tilausesikatselu liitteineen"}
+              {busy
+                ? "Valmistellaan…"
+                : intake
+                  ? "Lähetä aineisto tarkistettavaksi"
+                  : "Lataa tilausesikatselu liitteineen"}
             </button>
           </fieldset>
           {error && (
@@ -298,11 +409,15 @@ export default function CoverOrder({
             Painatushinta tulee suoraan nykyisestä hintalaskurista. Tämä on
             painatuspalvelu; verkkokauppajakelu ei sisälly tähän tilaukseen.
           </p>
-          <strong>Maksu ei ole käytössä esikatselussa.</strong>
+          <strong>
+            {intake
+              ? "Lähetys ei veloita mitään."
+              : "Maksu ei ole käytössä esikatselussa."}
+          </strong>
           <p className="cover-help">
-            Varsinainen tilausten vastaanotto, suojattu aineistolähetys ja maksu
-            kytketään vasta hyväksytyn esikatselun jälkeen. Käsikirjoitusta ei
-            tallenneta selaimen automaattiseen luonnokseen.
+            {intake
+              ? "Tallenna kansiprojekti ennen lähettämistä. Aineiston vastaanotto ei takaa painokelpoisuutta. Santeri vahvistaa toteutuksen ja maksutavan kanssasi erikseen. Käsikirjoitusta ei tallenneta selaimen automaattiseen luonnokseen."
+              : "Varsinainen tilausten vastaanotto, suojattu aineistolähetys ja maksu kytketään vasta hyväksytyn esikatselun jälkeen. Käsikirjoitusta ei tallenneta selaimen automaattiseen luonnokseen."}
           </p>
         </aside>
       </div>

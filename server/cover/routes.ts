@@ -1,3 +1,4 @@
+import type { CoverSubmissions } from "./submissions";
 import { coverClientIp } from "./client-ip";
 import express, { type Express, type Request } from "express";
 import { randomBytes } from "node:crypto";
@@ -5,6 +6,7 @@ import { z } from "zod";
 import { CoverVault } from "./vault";
 export type AccessMail = { email: string; url: string };
 export type CoverRouteOptions = {
+  submissions?: CoverSubmissions | null;
   prepress?: {
     inspect: (project: unknown, confirmed: boolean) => Promise<unknown>;
     export: (
@@ -63,6 +65,7 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
     res.json({
       available: !!config.vault,
       loginEnabled: !!config.sendAccess,
+      submissionEnabled: !!config.submissions,
       maxProjects: 5,
       maxImageMB: 12,
     })
@@ -170,6 +173,123 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
         path: "/",
       });
       res.sendStatus(204);
+    } catch {
+      res.sendStatus(503);
+    }
+  });
+  // Authenticate before buffering a manuscript. No public file URLs or downloads.
+  router.use("/submissions", async (req, res, next) => {
+    try {
+      if (!config.submissions || !config.vault) {
+        res.sendStatus(503);
+        return;
+      }
+      if (!(await config.vault.identity(token(req)))) {
+        res.sendStatus(401);
+        return;
+      }
+      const user = await config.vault.identity(token(req));
+      if (
+        req.method === "POST" &&
+        (!(await config.vault.throttle(user!.owner, "intake-body", 12)) ||
+          !(await config.vault.throttle(
+            coverClientIp(req, config.base),
+            "intake-ip",
+            20
+          )) ||
+          !(await config.vault.throttle("all", "intake-body-global", 120)))
+      ) {
+        res.sendStatus(429);
+        return;
+      }
+      next();
+    } catch {
+      res.sendStatus(503);
+    }
+  });
+  let receiving = false;
+  router.post(
+    "/submissions/:projectId",
+    (req, res, next) => {
+      if (!req.is("application/json")) {
+        res.sendStatus(415);
+        return;
+      }
+      if (receiving) {
+        res.sendStatus(429);
+        return;
+      }
+      receiving = true;
+      let released = false;
+      const release = () => {
+        if (!released) {
+          receiving = false;
+          released = true;
+        }
+      };
+      res.once("finish", release);
+      res.once("close", release);
+      next();
+    },
+    express.json({ limit: "12mb", inflate: false }),
+    async (req, res) => {
+      try {
+        if (!z.string().uuid().safeParse(req.params.projectId).success) {
+          res.sendStatus(404);
+          return;
+        }
+        res
+          .status(201)
+          .json(
+            await config.submissions!.submit(
+              token(req),
+              String(req.params.projectId),
+              req.body
+            )
+          );
+      } catch (e) {
+        const reason = e instanceof Error ? e.message : "";
+        const status =
+          reason === "unauthorized"
+            ? 401
+            : reason === "not-found"
+              ? 404
+              : reason === "conflict"
+                ? 409
+                : ["rate", "quota"].includes(reason)
+                  ? 429
+                  : e instanceof z.ZodError ||
+                      [
+                        "email-mismatch",
+                        "invalid-file",
+                        "layout-required",
+                        "pages-unconfirmed",
+                        "quote-required",
+                      ].includes(reason)
+                    ? 422
+                    : 503;
+        res.status(status).json({
+          error:
+            status === 409
+              ? "Projekti tai lähetyksen tiedot ovat muuttuneet. Avaa uusin versio ja tarkista tiedot."
+              : status === 429
+                ? "Vastaanoton raja täyttyi. Yritä myöhemmin tai ota yhteyttä."
+                : "Aineiston vastaanotto ei onnistunut. Tarkista tiedosto ja kirjan tiedot.",
+        });
+      }
+    }
+  );
+  router.get("/submissions/:id", async (req, res) => {
+    try {
+      const receipt = await config.submissions!.getReceipt(
+        token(req),
+        String(req.params.id)
+      );
+      if (!receipt) {
+        res.sendStatus(404);
+        return;
+      }
+      res.json(receipt);
     } catch {
       res.sendStatus(503);
     }
