@@ -815,19 +815,6 @@ export default function Kansisuunnittelija() {
                         )
                       }
                     />
-                    <label className="cover-field">
-                      <span>Tasaus</span>
-                      <select
-                        value={pos.align}
-                        onChange={e =>
-                          position("align", e.target.value as typeof pos.align)
-                        }
-                      >
-                        <option value="left">Vasemmalle</option>
-                        <option value="center">Keskelle</option>
-                        <option value="right">Oikealle</option>
-                      </select>
-                    </label>
                     <Slider
                       label="Sijainti sivusuunnassa"
                       value={Math.round(pos.x * 100)}
