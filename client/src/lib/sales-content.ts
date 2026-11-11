@@ -5,7 +5,7 @@ export const PREMIUM_FEATURES = {
     "Rinnakkaisjulkaisut: materiaalit omiin kanaviisi ja kirjasi nostoja Thunder Kustannuksen kanavissa.",
     "Lehdistötiedotteen kirjoitus ja sähköpostilähetys laajasti teokseen sopiville medioille. Julkaisupäätös on medialla.",
     "45 minuutin henkilökohtainen sparraus markkinointiammattilaisen kanssa",
-    "Kirjan myynnin verkkovalmennuspolku Tiia Sandberg Akademissa",
+    "Kirjan markkinoinnin verkkovalmennus",
     "Prioriteettituki 12 kk kirjasi julkaisuun ja lanseeraukseen",
   ],
   en: [
@@ -14,7 +14,7 @@ export const PREMIUM_FEATURES = {
     "Co-publishing: assets for your own channels and book features on Thunder Kustannus channels.",
     "Press release: we write it and email it on your behalf to a broad selection of relevant media. Editorial coverage is at each outlet’s discretion.",
     "A personal 45-minute session with a marketing professional",
-    "A book marketing learning path at Tiia Sandberg Akademi as part of your launch",
+    "Online course on book marketing",
     "12 months of priority support for your publishing and launch project",
   ],
 };

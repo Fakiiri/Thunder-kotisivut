@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import { PACKAGES } from "@/lib/data";
 import { useSEO } from "@/hooks/useSEO";
 import { useLang } from "@/contexts/LanguageContext";
+import { analyticsAllowed } from "@/lib/purchase-analytics";
+import { leadSourceLabel, readLeadSource } from "@shared/lead-source";
 
 type FormData = {
   name: string; email: string; phone: string; package: string;
@@ -47,6 +49,8 @@ export default function Tarjouspyynto() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    let source = "suora / orgaaninen";
+    try { source = leadSourceLabel(readLeadSource(window.sessionStorage)); } catch { /* storage blocked */ }
     try {
       const res = await fetch("https://formspree.io/f/mdayqggn", {
         method: "POST",
@@ -63,10 +67,32 @@ export default function Tarjouspyynto() {
           audiobook: form.audiobook,
           timeline: form.timeline,
           message: form.message,
+          source,
         }),
       });
       if (res.ok) {
         setSent(true);
+        // Rinnakkainen kopio Thunderin Brevo-tarjouspyyntölistalle. Ei saa estää onnistunutta lähetystä.
+        fetch("/api/hinta-arvio", {
+          method: "POST",
+          keepalive: true,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: form.email, name: form.name, package: form.package,
+            pages: form.pages, timeline: form.timeline, source,
+          }),
+        }).catch(() => undefined);
+        try {
+          if (analyticsAllowed(window.localStorage)) {
+            window.gtag?.("event", "generate_lead", {
+              form: "hinta-arvio",
+              page_path: "/tarjouspyynto",
+              page_location: window.location.origin + "/tarjouspyynto",
+            });
+          }
+        } catch {
+          // Analytics must not affect a successful submission.
+        }
       } else {
         alert(ef?.errorGeneral ?? "Lomakkeen lähetys epäonnistui. Yritä uudelleen tai ota yhteyttä: info@thunderkustannus.fi");
       }

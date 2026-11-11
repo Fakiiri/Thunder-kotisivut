@@ -66,7 +66,7 @@ Siksi Thunderin **Premium-paketissa** on Printti-paketin sisällön lisäksi:
 - Materiaalit omiin kanaviisi ja rinnakkaisjulkaisuja Thunder Kustannuksen kanavissa
 - Lehdistötiedotteen kirjoitus ja sähköpostilähetys teokseen sopiville medioille
 - 45 minuutin sparraus markkinointiammattilaisen kanssa
-- Kirjan myynnin verkkovalmennuspolku Tiia Sandberg Akademissa
+- Kirjan markkinoinnin verkkovalmennus
 - Prioriteettituki 12 kuukaudeksi
 
 Premium maksaa 2 990 € (sis. ALV 25,5 %). Maksusivulla näet myös tarjolla olevat Klarna-vaihtoehdot ja niiden ehdot. Maksettu mainonta ei sisälly pakettiin. Median julkaisupäätöksiä emme voi luvata.

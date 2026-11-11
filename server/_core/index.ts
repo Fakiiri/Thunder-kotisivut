@@ -1,4 +1,6 @@
+import { QUIZ_BOOKING_URL } from "../../shared/publication-quiz";
 import { registerGuideRoutes } from "../guides";
+import { registerQuoteRoutes } from "../quote";
 import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
@@ -40,6 +42,10 @@ async function startServer() {
   await configureQuiz(app);
   await configureCover(app);
   registerGuideRoutes(app);
+  registerQuoteRoutes(app);
+  app.get("/varaa-puhelu", (_req, res) => {
+    res.redirect(302, QUIZ_BOOKING_URL);
+  });
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));

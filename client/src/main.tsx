@@ -9,6 +9,9 @@ import App from "./App";
 import { getLoginUrl } from "./const";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import "./index.css";
+import { captureLeadSource } from "@shared/lead-source";
+
+captureLeadSource(window.location.search, window.location.pathname, window.sessionStorage);
 
 const queryClient = new QueryClient();
 
