@@ -15,6 +15,8 @@ import Asiantuntijakirja from "./pages/Asiantuntijakirja";
 import Julkaisutesti from "./pages/Julkaisutesti";
 import Kansisuunnittelija from "./pages/Kansisuunnittelija";
 import QuizPrivacy from "./pages/QuizPrivacy";
+import Linkit from "./pages/Linkit";
+import { KurssiSivu, MuistelmaSivu, NaytekirjaSivu } from "./pages/Magneetti";
 import { GUIDES } from "./lib/data";
 
 const paths = new Set([
@@ -27,6 +29,10 @@ const paths = new Set([
   "/julkaisutesti",
   "/kansisuunnittelija",
   "/tietosuoja",
+  "/kirjasi-5-paivassa",
+  "/muistelman-aloitus",
+  "/naytekirja",
+  "/linkit",
 ]);
 export function renderPage(
   url: string,
@@ -56,6 +62,10 @@ export function renderPage(
                   component={Kansisuunnittelija}
                 />
                 <Route path="/tietosuoja" component={QuizPrivacy} />
+                <Route path="/kirjasi-5-paivassa" component={KurssiSivu} />
+                <Route path="/muistelman-aloitus" component={MuistelmaSivu} />
+                <Route path="/naytekirja" component={NaytekirjaSivu} />
+                <Route path="/linkit" component={Linkit} />
                 <Route path="/meista" component={Meista} />
                 <Route path="/kirjat" component={Kirjat} />
                 <Route path="/oppaat" component={Oppaat} />

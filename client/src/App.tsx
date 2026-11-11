@@ -25,6 +25,8 @@ import TilausKiitos from "./pages/TilausKiitos";
 import Asiantuntijakirja from "./pages/Asiantuntijakirja";
 import Julkaisutesti from "./pages/Julkaisutesti";
 import QuizPrivacy from "./pages/QuizPrivacy";
+import Linkit from "./pages/Linkit";
+import { KurssiSivu, MuistelmaSivu, NaytekirjaSivu } from "./pages/Magneetti";
 const Kansisuunnittelija = lazy(() => import("./pages/Kansisuunnittelija"));
 const KansipolkuPreview = import.meta.env.DEV
   ? lazy(() => import("./pages/KansipolkuPreview"))
@@ -66,6 +68,10 @@ function Router() {
       <Route path="/tietosuoja" component={QuizPrivacy} />
       <Route path="/yhteystiedot" component={Yhteystiedot} />
       <Route path="/lataa-opas" component={LataaSivu} />
+      <Route path="/kirjasi-5-paivassa" component={KurssiSivu} />
+      <Route path="/muistelman-aloitus" component={MuistelmaSivu} />
+      <Route path="/naytekirja" component={NaytekirjaSivu} />
+      <Route path="/linkit" component={Linkit} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

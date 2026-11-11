@@ -80,6 +80,10 @@ export function serveStatic(
     "/lataa-opas",
     "/tilaus-kiitos",
     "/kiitos",
+    "/kirjasi-5-paivassa",
+    "/muistelman-aloitus",
+    "/naytekirja",
+    "/linkit",
   ]);
 
   app.use("*", (req, res) => {

@@ -1,6 +1,7 @@
 import { QUIZ_BOOKING_URL } from "../../shared/publication-quiz";
 import { registerGuideRoutes } from "../guides";
 import { registerQuoteRoutes } from "../quote";
+import { registerMagnetRoutes } from "../magnet";
 import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
@@ -43,6 +44,7 @@ async function startServer() {
   await configureCover(app);
   registerGuideRoutes(app);
   registerQuoteRoutes(app);
+  registerMagnetRoutes(app);
   app.get("/varaa-puhelu", (_req, res) => {
     res.redirect(302, QUIZ_BOOKING_URL);
   });
