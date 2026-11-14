@@ -37,7 +37,7 @@ export default function Home() {
   const pkgTranslations = lang === "en" && t.pricing?.packages ? t.pricing.packages : undefined;
   useSEO({
     title: "Omakustanne ja kirjan julkaisu",
-    description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin — painettu kirja, e-kirja ja äänikirja. Sinulla pysyvät oikeudet ja 60–70 % myyntituloista.",
+    description: "Thunder Kustannus on suomalainen kirjailijoiden julkaisualusta. Yhdistämme ammattimaisen kustannustoiminnan ja kirjailijan täyden kontrollin — painettu kirja, e-kirja ja äänikirja. Kirjan oikeudet pysyvät sinulla, ja päätät itse painetun kirjasi kustantajahinnan.",
     canonical: "/",
     keywords: "omakustanne, kirjan julkaiseminen, äänikirja, e-kirja, kustantamo, julkaisualusta, omakustannekirja",
   });

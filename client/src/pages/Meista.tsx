@@ -54,8 +54,8 @@ export default function Meista() {
       value: ae?.statsTimeValue ?? "4–8 viikkoa",
     },
     {
-      label: ae?.statsRoyalty ?? "Tekijänpalkkio",
-      value: ae?.statsRoyaltyValue ?? "60–70 %",
+      label: ae?.statsRoyalty ?? "Painetun kirjan tekijänpalkkio painokulun jälkeen",
+      value: ae?.statsRoyaltyValue ?? "60 %",
     },
     {
       label: ae?.statsRights ?? "Oikeudet",
