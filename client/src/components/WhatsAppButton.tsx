@@ -1,7 +1,8 @@
 // Thunder Kustannus — Kelluva WhatsApp-nappi (pelkkä ikoni)
 import { useLang } from "@/contexts/LanguageContext";
 
-const PHONE = "358403519546";
+export const WHATSAPP_PHONE = "358403519546";
+const PHONE = WHATSAPP_PHONE;
 
 const FI_MESSAGE = "Hei! Haluaisin tietää lisää kirjan julkaisemisesta.";
 const EN_MESSAGE = "Hi! I'd like to know more about publishing my book.";

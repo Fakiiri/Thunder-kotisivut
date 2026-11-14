@@ -7,6 +7,8 @@ import { ArrowRight, BookOpen, Headphones, Store, CheckCircle2, ChevronRight } f
 import Navbar from "@/components/Navbar";
 import CampaignBanner from "@/components/CampaignBanner";
 import QuizCTA from "@/components/QuizCTA";
+import AudioSampleCTA from "@/components/AudioSampleCTA";
+import GuideMagnetCTA from "@/components/GuideMagnetCTA";
 import AuthorFeedback from "@/components/AuthorFeedback";
 import PackageFeatures from "@/components/PackageFeatures";
 import { PACKAGE_TERMS } from "@/lib/sales-content";
@@ -91,14 +93,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#191918] border-t border-white/15 text-white py-7">
-        <div className="container flex flex-col md:flex-row gap-5 md:items-center md:justify-between">
-          <div><p className="font-bold text-xl md:text-2xl">{lang === "en" ? "An audiobook is already included in the 890 € package." : "Äänikirja kuuluu jo 890 €:n pakettiin."}</p><p className="text-white/65 text-sm mt-2">Storytel · BookBeat · Nextory · Spotify</p></div>
-          <Link href="/hinnat" className="inline-flex items-center gap-2 text-orange-400 font-bold shrink-0">{lang === "en" ? "Explore Digi" : "Tutustu Digi-pakettiin"}<ArrowRight size={18} /></Link>
-        </div>
-      </section>
+      {/* Ilmainen ääninäyte (sisältää myös Digi-paketin noston) */}
+      <AudioSampleCTA />
       <CampaignBanner />
-      <div className="container"><QuizCTA source="home" /></div>
+      <div className="container my-10 grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+        <GuideMagnetCTA source="home" />
+        <QuizCTA source="home" className="h-full" />
+      </div>
 
       {/* ── PALVELUT — vaalea tausta ── */}
       <section className="thunder-section bg-background">

@@ -19,8 +19,8 @@ export default function LataaSivu() {
   const [error, setError] = useState("");
 
   useSEO({
-    title: "Lataa ilmainen opas: Kirjan julkaisemisen tarkistuslista",
-    description: "Lataa ilmainen 10 askeleen tarkistuslista kirjan julkaisemiseen. Kaikki mitä tarvitset käsikirjoituksesta valmiiseen kirjaan.",
+    title: "Lataa ilmainen julkaisuopas 2027 ja tarkistuslista",
+    description: "Ilmainen julkaisuopas 2027: hinnat, oikeudet, tekijänpalkkio, aikataulu ja 10 askeleen tarkistuslista kirjan julkaisemiseen.",
     canonical: "/lataa-opas",
     keywords: "kirjan julkaiseminen opas, omakustanne tarkistuslista, kirjailija opas, ilmainen opas",
   });
@@ -53,24 +53,24 @@ export default function LataaSivu() {
             <div>
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-orange-500 mb-5">
                 <span className="w-6 h-px bg-orange-500 inline-block" />
-                {dl?.badge ?? "Ilmainen opas"}
+                {dl?.badge ?? "Ilmainen opas · päivitetty 2027"}
               </span>
               <h1 className="thunder-heading text-4xl md:text-5xl text-foreground mb-5 leading-tight">
-                {dl?.h1Part1 ?? "Kirjan julkaisemisen"}{" "}
-                <span className="thunder-orange">{dl?.h1Highlight ?? "10 askeleen"}</span>{" "}
-                {dl?.h1Part2 ?? "tarkistuslista"}
+                {dl?.h1Part1 ?? "Julkaisuopas"}{" "}
+                <span className="thunder-orange">{dl?.h1Highlight ?? "2027:"}</span>{" "}
+                {dl?.h1Part2 ?? "kaikki, mitä kysyt ennen kuin maksat"}
               </h1>
               <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                {dl?.lead ?? "Kaikki mitä tarvitset käsikirjoituksesta valmiiseen, myyvään kirjaan — askel askeleelta. Lataa PDF ja aloita julkaisuprosessi tänään."}
+                {dl?.lead ?? "Hinnat, oikeudet, tekijänpalkkio ja aikataulu selkokielellä. Mukana päivitetty 10 askeleen tarkistuslista käsikirjoituksesta valmiiseen kirjaan."}
               </p>
 
               <ul className="space-y-3 mb-8">
                 {[
-                  dl?.check1 ?? "ISBN-tunnuksen hakeminen ja viivakoodi",
-                  dl?.check2 ?? "Julkaisumuodon valinta (painettu, e-kirja, äänikirja)",
-                  dl?.check3 ?? "Kansisuunnittelu ja taitto",
-                  dl?.check4 ?? "Jakelukanavat: Storytel, Suomalainen Kirjakauppa ja muut",
-                  dl?.check5 ?? "Markkinointi ennen ja jälkeen julkaisun",
+                  dl?.check1 ?? "Mitä on ilmaista, mistä maksat ja mitä paketti ei sisällä",
+                  dl?.check2 ?? "Kolme laskuesimerkkiä oikealla kirjalla",
+                  dl?.check3 ?? "Tekijänpalkkio, oikeudet ja sopimus selkokielellä",
+                  dl?.check4 ?? "Aikajana viikko viikolta ja 9 kysymystä ennen allekirjoitusta",
+                  dl?.check5 ?? "10 askeleen tarkistuslista: ISBN, kansi, taitto, jakelu ja markkinointi",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-foreground/80">
                     <CheckCircle2 className="w-4 h-4 thunder-orange mt-0.5 flex-shrink-0" />
@@ -81,7 +81,7 @@ export default function LataaSivu() {
 
               <div className="flex items-center gap-3 text-muted-foreground text-sm">
                 <BookOpen className="w-4 h-4" />
-                <span>{dl?.pdfNote ?? "PDF-opas · 10 askelta · Ilmainen"}</span>
+                <span>{dl?.pdfNote ?? "PDF-opas · 2027 · Ilmainen"}</span>
               </div>
             </div>
 

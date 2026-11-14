@@ -84,6 +84,8 @@ export function serveStatic(
     "/muistelman-aloitus",
     "/naytekirja",
     "/linkit",
+    "/ukk",
+    "/nain-julkaiset",
   ]);
 
   app.use("*", (req, res) => {
