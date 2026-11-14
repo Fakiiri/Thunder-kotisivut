@@ -75,7 +75,7 @@ export default function Asiantuntijakirja() {
         ],
         [
           "Ready for production",
-          "You deliver a finished manuscript. We agree the production details and schedule. Proofreading and content editing are not included.",
+          "You deliver a finished manuscript. We agree the production details and schedule. Every book is checked and edited by a real person before publication. Extensive developmental editing, such as restructuring or rewriting content, is not included.",
         ],
         [
           "Production",
@@ -93,7 +93,7 @@ export default function Asiantuntijakirja() {
         ],
         [
           "Aineisto tuotantokuntoon",
-          "Toimitat valmiin käsikirjoituksen. Sovimme tuotannon yksityiskohdat ja aikataulun. Oikoluku ja sisällön muokkaus eivät sisälly pakettiin.",
+          "Toimitat valmiin käsikirjoituksen. Sovimme tuotannon yksityiskohdat ja aikataulun. Jokaisen kirjan tarkistaa ja editoi oikea ihminen ennen julkaisua. Laaja kustannustoimitus, kuten rakenteen tai sisällön uudelleenkirjoitus, ei sisälly pakettiin.",
         ],
         [
           "Tuotanto",

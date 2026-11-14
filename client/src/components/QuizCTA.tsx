@@ -1,9 +1,9 @@
 import { Link } from "wouter";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { trackQuiz } from "@/lib/quiz-analytics";
-export default function QuizCTA({ source = "content" }: { source?: string }) {
+export default function QuizCTA({ source = "content", className = "my-10" }: { source?: string; className?: string }) {
   return (
-    <aside className="my-10 rounded-2xl border border-orange-200 bg-[#fff7ed] p-7 md:p-10">
+    <aside className={`${className} rounded-2xl border border-orange-200 bg-[#fff7ed] p-7 md:p-10`}>
       <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-700">
         <Sparkles size={16} aria-hidden="true" /> Maksuton · noin 2 minuuttia
       </div>

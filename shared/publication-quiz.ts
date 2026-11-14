@@ -173,7 +173,7 @@ export function quizResult(a: QuizAnswers) {
     a.readiness === "idea" || a.readiness === "draft"
       ? "Kirjoita ensin teokselle rakenne ja kokonainen käsikirjoitus. Tuotantopakettia ei tarvitse ostaa vielä."
       : a.readiness === "revision"
-        ? "Viimeistele teksti ja pyydä siitä koelukijan palaute. Oikoluku ja sisällön muokkaus eivät sisälly julkaisupakettiin."
+        ? "Viimeistele teksti ja pyydä siitä koelukijan palaute. Oikea ihminen tarkistaa ja editoi kirjasi ennen julkaisua, mutta rakenteen ja sisällön uudelleenkirjoitus ei sisälly pakettiin."
         : "Tarkista lopullinen teksti, kuvien käyttöluvat ja lähdetiedot ennen tuotannon aloittamista.",
     a.goal === "family"
       ? "Arvioi, kenelle haluat antaa kirjan. Laske tarvittavat kappaleet ennen painosmäärän valintaa."

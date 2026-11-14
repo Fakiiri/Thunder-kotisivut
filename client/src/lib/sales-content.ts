@@ -20,8 +20,8 @@ export const PREMIUM_FEATURES = {
 };
 
 export const PACKAGE_TERMS = {
-  fi: "Pakettihinnat koskevat alle 250-sivuisia teoksia ja valmista käsikirjoitusta. Oikoluku ja sisällön muokkaus eivät sisälly pakettiin. Tavoiteaikataulu on noin 4–8 viikkoa valmiin aineiston vastaanottamisesta; painotalon aikataulu, toimitukset ja kiiresesonki voivat vaikuttaa kestoon. Sovimme aikataulun teoskohtaisesti.",
-  en: "Package prices apply to books under 250 pages with a finished manuscript. Proofreading and content editing are not included. Our target is approximately 4–8 weeks from receipt of production-ready material; printing schedules, delivery and peak seasons can affect timing. We agree the schedule for each book.",
+  fi: "Pakettihinnat koskevat alle 250-sivuisia teoksia ja valmista käsikirjoitusta. Jokaisen kirjan tarkistaa ja editoi oikea ihminen ennen julkaisua. Laaja kustannustoimitus, kuten rakenteen tai sisällön uudelleenkirjoitus, ei sisälly pakettiin. Tavoiteaikataulu on noin 4–8 viikkoa valmiin aineiston vastaanottamisesta; painotalon aikataulu, toimitukset ja kiiresesonki voivat vaikuttaa kestoon. Sovimme aikataulun teoskohtaisesti.",
+  en: "Package prices apply to books under 250 pages with a finished manuscript. Every book is checked and edited by a real person before publication. Extensive developmental editing, such as restructuring or rewriting content, is not included. Our target is approximately 4–8 weeks from receipt of production-ready material; printing schedules, delivery and peak seasons can affect timing. We agree the schedule for each book.",
 };
 
 // Texts approved by Santeri on 2026-10-19. Publish anonymously by literary genre only.

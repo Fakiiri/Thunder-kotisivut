@@ -13,3 +13,5 @@
 - Clauden toimittajakohtainen myyntisuunnitelma on operatiivinen lähde. Pidä suunnitelma ja TILANNE-taulukko samassa Thunderin hallinnoimassa Drive-kansiossa.
 - Varmista Codexin ja Clauden pääsy samalla testirivillä ja Clauden omalla kuittauksella.
 - Käytä julkaisupuheluihin Santerin kalenteria. Varmista varauslinkki Santerilta ja seuraa pääsypyyntöjen kuittaukset samasta sähköpostiketjusta.
+
+- Kuvaa painetun kirjan tekijänpalkkio 60/40-jakona verottomasta kustantajahinnasta painokulun vähentämisen jälkeen. Kirjailija päättää kustantajahinnan, ja kirjakauppa määrittää kuluttajahinnan.
