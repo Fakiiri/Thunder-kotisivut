@@ -93,10 +93,10 @@ export const FAQ: FaqCategory[] = [
         },
       },
       {
-        q: { fi: "Pitääkö käsikirjoituksen olla oikoluettu?", en: "Does the manuscript need to be proofread?" },
+        q: { fi: "Tarkistaako ja editoiko joku tekstini?", en: "Will someone check and edit my text?" },
         a: {
-          fi: "Pakettihinnat koskevat valmista käsikirjoitusta. Oikoluku ja sisällön muokkaus eivät sisälly pakettiin. Kysy niistä hinta-arviossa.",
-          en: "Package prices apply to a finished manuscript. Proofreading and content editing are not included. Ask about them in your estimate request.",
+          fi: "Kyllä. Jokaisen kirjan tarkistaa ja editoi oikea ihminen ennen julkaisua. Pakettihinnat koskevat valmista käsikirjoitusta: laaja kustannustoimitus, kuten rakenteen tai sisällön uudelleenkirjoitus, ei sisälly pakettiin. Kysy siitä hinta-arviossa.",
+          en: "Yes. Every book is checked and edited by a real person before publication. Package prices apply to a finished manuscript: extensive developmental editing, such as restructuring or rewriting content, is not included. Ask about it in your estimate request.",
         },
       },
       {
@@ -223,6 +223,7 @@ export const INCLUDED = {
   paid: {
     title: { fi: "Sisältyy pakettiin", en: "Included in the package" },
     items: [
+      { fi: "Oikean ihmisen tekemä tarkistus ja editointi", en: "Checking and editing by a real person" },
       { fi: "Ammattimainen taitto ja kansisuunnittelu", en: "Professional layout and cover design" },
       { fi: "Äänikirja ja e-kirja (EPUB3)", en: "Audiobook and e-book (EPUB3)" },
       { fi: "ISBN-tunnukset", en: "ISBNs" },
@@ -233,7 +234,7 @@ export const INCLUDED = {
   notIncluded: {
     title: { fi: "Ei sisälly pakettiin", en: "Not included" },
     items: [
-      { fi: "Oikoluku ja sisällön muokkaus", en: "Proofreading and content editing" },
+      { fi: "Laaja kustannustoimitus (rakenteen tai sisällön uudelleenkirjoitus)", en: "Developmental editing (restructuring or rewriting content)" },
       { fi: "Yli 250-sivuiset teokset (hinta-arvio erikseen)", en: "Books over 250 pages (separate estimate)" },
       { fi: "Markkinointipaketti Digissä ja Printissä (sisältyy Premiumiin)", en: "Marketing package in Digi and Printti (included in Premium)" },
     ],
@@ -281,7 +282,7 @@ export const TIMELINE = [
 export const NINE_QUESTIONS: FaqEntry[] = [
   { q: { fi: "Kuka omistaa kirjan oikeudet?", en: "Who owns the rights?" }, a: { fi: "Sinä. Aina.", en: "You. Always." } },
   { q: { fi: "Mitä maksan, ja mitä se sisältää?", en: "What do I pay and what does it include?" }, a: { fi: "Kiinteä pakettihinta: Digi 890 €, Printti 1 690 €, Premium 2 990 € (sis. alv). Sisältö on listattu hinnat-sivulla.", en: "A fixed package price: Digi 890 €, Printti 1,690 €, Premium 2,990 € (VAT incl.). Contents are listed on the pricing page." } },
-  { q: { fi: "Mitä paketti ei sisällä?", en: "What is not included?" }, a: { fi: "Oikoluku ja sisällön muokkaus, sekä yli 250-sivuiset teokset ilman erillistä hinta-arviota.", en: "Proofreading and content editing, and books over 250 pages without a separate estimate." } },
+  { q: { fi: "Mitä paketti ei sisällä?", en: "What is not included?" }, a: { fi: "Laaja kustannustoimitus (rakenteen tai sisällön uudelleenkirjoitus) sekä yli 250-sivuiset teokset ilman erillistä hinta-arviota. Ihmisen tekemä tarkistus ja editointi sisältyvät.", en: "Developmental editing (restructuring or rewriting content) and books over 250 pages without a separate estimate. Checking and editing by a real person are included." } },
   { q: { fi: "Pitääkö minun ostaa painos?", en: "Must I buy a print run?" }, a: { fi: "Ei. Painetut kirjat sisältyvät Printtiin (50) ja Premiumiin (100). Digissä painettua kirjaa ei ole.", en: "No. Printed copies are included in Printti (50) and Premium (100). Digi has no printed edition." } },
   { q: { fi: "Paljonko saan myydystä kirjasta?", en: "How much do I earn per sale?" }, a: { fi: "60–70 % myyntituloista kanavan mukaan.", en: "60–70% of sales revenue depending on the channel." } },
   { q: { fi: "Milloin palkkio maksetaan?", en: "When are royalties paid?" }, a: { fi: "Neljännesvuosittain, ja saat myyntiraportit.", en: "Quarterly, with sales reports." } },

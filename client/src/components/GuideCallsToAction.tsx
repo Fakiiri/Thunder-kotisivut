@@ -40,8 +40,8 @@ export function GuideEstimate({
       {!compact && (
         <p className="text-sm leading-relaxed mb-5 text-muted-foreground">
           Digi 890 € · Printti 1 690 € · Premium 2 990 € (sis. ALV 25,5 %).
-          Valmiille, alle 250-sivuisille käsikirjoituksille. Oikoluku ja
-          sisällön muokkaus eivät sisälly paketteihin.
+          Valmiille, alle 250-sivuisille käsikirjoituksille. Oikea ihminen
+          tarkistaa ja editoi jokaisen kirjan ennen julkaisua.
         </p>
       )}
       <Link
