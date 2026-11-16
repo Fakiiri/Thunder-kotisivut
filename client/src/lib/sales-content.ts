@@ -24,33 +24,34 @@ export const PACKAGE_TERMS = {
   en: "Package prices apply to books under 250 pages with a finished manuscript. Every book is checked and edited by a real person before publication. Extensive developmental editing, such as restructuring or rewriting content, is not included. Our target is approximately 4–8 weeks from receipt of production-ready material; printing schedules, delivery and peak seasons can affect timing. We agree the schedule for each book.",
 };
 
-// Texts approved by Santeri on 2026-10-19. Publish anonymously by literary genre only.
+// Original Finnish feedback and first-name attribution supplied by Santeri on 2026-11-16.
 export const AUTHOR_FEEDBACK = [
   {
-    id: "process",
-    approved: true,
-    genre: "Romaani",
-    genreEn: "Novel",
-    quote:
-      "Julkaiseminen tuntui selkeältä alusta loppuun. Tiesin, mitä seuraavaksi tapahtuu, ja sain apua silloin kun tarvitsin.",
-    en: "The publishing process felt clear from start to finish. I knew what would happen next and received help when I needed it.",
+    "id": "jukka",
+    "approved": true,
+    "author": "Jukka",
+    "quote": "kiitos erinomaisesta työstä.\n\nLöysin someen tekemäsi klipin, jossa mainostit ”Onnellisia”. Se oli mainio ja jaoimme sen eteenpäin. Löysin kirjan eilen myös Book Beatista. Lisäsin lukunopeutta, se paransi entisestään kuuntelukokemaa.",
+    "en": "thank you for the excellent work.\n\nI found the clip you made for social media promoting ‘Onnellisia’. It was great, and we shared it. I also found the book on BookBeat yesterday. I increased the playback speed, which made the listening experience even better."
   },
   {
-    id: "quality",
-    approved: true,
-    genre: "Sukuteos",
-    genreEn: "Family history",
-    quote:
-      "Olen todella tyytyväinen lopputulokseen. Kirja näyttää ja tuntuu siltä, miltä toivoinkin.",
-    en: "I am very happy with the result. The book looks and feels the way I hoped it would.",
+    "id": "esko",
+    "approved": true,
+    "author": "Esko",
+    "quote": "KRIMINAL TANGO tuli. Näytti hyvältä!\n- Siitä tuli heti 25 kpl tilaus.  Mihin hintaan onnistuu lisäpainatus, jos tarvitsee? Hinta ja aikataulu?",
+    "en": "KRIMINAL TANGO arrived. It looked good!\n- It immediately brought in an order for 25 copies. What would a reprint cost if needed? Price and schedule?"
   },
   {
-    id: "partnership",
-    approved: true,
-    genre: "Tietokirja",
-    genreEn: "Non-fiction",
-    quote:
-      "Yhteistyö sujui mallikkaasti. Teen mielelläni seuraavankin kirjani Thunder Kustannuksen kanssa.",
-    en: "The collaboration went smoothly. I would be happy to publish my next book with Thunder Kustannus too.",
+    "id": "tiina-print",
+    "approved": true,
+    "author": "Tiina",
+    "quote": "Olen saanut kirjani.\nKiitos!\nPainojälki on hieno ja taitto niin ikään.\nKiitos Santeri.",
+    "en": "I have received my books.\nThank you!\nThe print quality is excellent, as is the layout.\nThank you, Santeri."
   },
+  {
+    "id": "tiina-illustrations",
+    "approved": true,
+    "author": "Tiina",
+    "quote": "Ja kaikki muutokset ja ”korjaukset” mitä olette piirroksiin tehneet ovat ihan nappiin. Todella hienosti tehty. Kiitos kaikille jotka ovat piirroksia käsitelleet.",
+    "en": "And all the changes and ‘corrections’ you have made to the drawings are spot on. Really beautifully done. Thank you to everyone who has worked on the drawings."
+  }
 ];
