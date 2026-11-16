@@ -5,7 +5,7 @@ export default function AuthorFeedback() {
   const { lang } = useLang();
   const preview = import.meta.env.VITE_EDITORIAL_PREVIEW === "true";
   const feedback = AUTHOR_FEEDBACK.filter(
-    item => (item.approved && item.genre.trim()) || preview
+    item => (item.approved && item.author.trim()) || preview
   );
   if (!feedback.length) return null;
   return (
@@ -25,12 +25,11 @@ export default function AuthorFeedback() {
         </h2>
         {preview && (
           <p className="p-4 mb-6 border-2 border-amber-500 rounded-xl bg-amber-50 text-amber-950 font-semibold">
-            ESIKATSELU: vain hyväksytyt palautteet, joiden kirjallisuuslaji on
-            vahvistettu, näkyvät julkisessa versiossa. Kirjailijoiden nimiä tai
-            teoksia ei julkaista.
+            ESIKATSELU: julkisessa versiossa näkyvät vain hyväksytyt palautteet
+            ja niiden yhteydessä hyväksytyt etunimet.
           </p>
         )}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {feedback.map(item => (
             <article key={item.id} className="thunder-card p-7">
               {!item.approved && (
@@ -38,12 +37,11 @@ export default function AuthorFeedback() {
                   Tekstiehdotus · ei julkaistavaksi
                 </p>
               )}
-              <p className="text-lg leading-relaxed mb-6">
+              <p className="text-lg leading-relaxed mb-6 whitespace-pre-line">
                 {lang === "en" ? item.en : item.quote}
               </p>
               <p className="text-sm font-bold">
-                {(lang === "en" ? item.genreEn || item.genre : item.genre) ||
-                  "[TÄYTÄ: kirjallisuuslaji]"}
+                {item.author}
               </p>
             </article>
           ))}
