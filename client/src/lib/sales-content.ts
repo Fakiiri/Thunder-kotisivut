@@ -53,5 +53,12 @@ export const AUTHOR_FEEDBACK = [
     "author": "Tiina",
     "quote": "Ja kaikki muutokset ja ”korjaukset” mitä olette piirroksiin tehneet ovat ihan nappiin. Todella hienosti tehty. Kiitos kaikille jotka ovat piirroksia käsitelleet.",
     "en": "And all the changes and ‘corrections’ you have made to the drawings are spot on. Really beautifully done. Thank you to everyone who has worked on the drawings."
+  },
+  {
+    "id": "antti",
+    "approved": true,
+    "author": "Antti",
+    "quote": "Kiitos. Ja kiitos myös nopeasta toiminnasta.",
+    "en": "Thank you. And thank you also for acting so quickly."
   }
 ];
