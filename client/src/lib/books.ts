@@ -13,6 +13,12 @@ export interface Book {
 }
 
 export const books: Book[] = [
+  { category: "printed", image: "/images/books/Berattelsen_Tiina.jpg", title: "Berättelsen om gräsanden, katten, höken och nio nyfödda andungar", author: "Tiina Piipponen", width: 1072, height: 1467,
+    description: "Fia-sinisorsa hautoo yhdeksää munaansa kesämökin vieressä. Kun mökille saapuvat lapset, koira ja kissa, pesäpaikan rauha rikkoutuu. Tiina Piipposen kuvitettu tarina on saatavilla painettuna kirjana." },
+  { category: "publications", image: "/images/books/Noita_Sisko.jpg", formats: ["audio"], title: "Noita Hassuttelija", author: "Sisko Vainio", width: 1122, height: 1402,
+    description: "Noitalaaksossa kasvava tyttö haaveilee omasta noidanviitasta. Sisko Vainion sadussa opetellaan loitsuja, kohdataan taikametsän yllätyksiä ja tutustutaan siivekkääseen Kissa Täplikkääseen. Saatavilla äänikirjana." },
+  { category: "publications", image: "/images/books/Harri_AI_Journey.jpg", formats: ["audio"], title: "The Entrepreneur’s and SME’s AI Journey", author: "Harri Lauslahti", language: "en", width: 1072, height: 1467,
+    description: "Mistä yrittäjän kannattaa aloittaa tekoälyn hyödyntäminen? Harri Lauslahden opas auttaa yrittäjiä ja pk-yritysten johtoa tunnistamaan hyödyllisiä käyttökohteita, arvioimaan investointeja ja ottamaan tekoälyä käyttöön vastuullisesti. Englanninkielinen teos on saatavilla äänikirjana." },
   { category: "printed", image: "/images/books/Harakiri_Antti.png", title: "Harakiri – Kylmälompakko", author: "Antti Eskelinen", width: 896, height: 1120 },
   { category: "printed", image: "/images/books/Suvaksen_Antti.png", title: "Suvaksen syvänne – Rautavaaran lihasoppa", author: "Antti Eskelinen", width: 896, height: 1120 },
   { category: "printed", image: "/images/books/Kriminal_Esko.png", title: "Kriminal Tango", author: "Esko Juntunen", width: 896, height: 1120 },
