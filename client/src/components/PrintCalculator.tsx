@@ -1,5 +1,5 @@
 // Thunder Kustannus — Kirjapainolaskuri
-// Hinnat: Druktava-hinnasto, porrastettu kate (x3.0 / x2.5 / x2.1) + ALV 13.5%
+// Hinnat: Druktava-hinnasto x2.2 + ALV 13.5%
 // Kannen materiaali: Metsä Board
 // Vain yhdistelmät joille on hinta Excelissä näytetään
 

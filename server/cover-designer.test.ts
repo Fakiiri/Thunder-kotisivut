@@ -226,8 +226,8 @@ describe("one print production source", () => {
   it("adds shipping once and the 217 euro layout only when selected", () => {
     const p = { ...DEFAULT_PRODUCTION };
     const q = printQuote(p)!;
-    expect(q.printCents).toBe(73800);
-    expect(q.totalCents).toBe(78800);
+    expect(q.printCents).toBe(64900);
+    expect(q.totalCents).toBe(69900);
     const layout = printQuote({ ...p, interior: "layout" })!;
     expect(layout.layoutCents).toBe(21700);
     expect(layout.totalCents).toBe(q.totalCents! + 21700);
@@ -327,7 +327,7 @@ describe("local order attachment boundary", () => {
     ).toBe(false);
     const text = orderSummary(createProject(), customer, true);
     expect(text).toContain("50,00 €");
-    expect(text).toContain("788,00 €");
+    expect(text).toContain("699,00 €");
     expect(text).toContain("315 × 220 mm");
     expect(text).toContain("ei lähetetty");
   });
@@ -410,7 +410,7 @@ describe("public cover quote handoff", () => {
     );
     expect(message).toContain("148 × 210");
     expect(message).toContain("100 kpl");
-    expect(message).toContain("788,00");
+    expect(message).toContain("699,00");
   });
   it("ignores tampered prices, unknown formats and non-cover requests", () => {
     expect(
