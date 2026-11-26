@@ -173,6 +173,10 @@ export default function Kansisuunnittelija() {
   const [loaded, setLoaded] = useState(false),
     [tab, setTab] = useState<Tab>("templates"),
     [view, setView] = useState<CoverView>("spread");
+  const [accessRequest, setAccessRequest] = useState<{
+    email: string;
+    sequence: number;
+  }>();
   const [selected, setSelected] = useState<TextKey>("title"),
     [guides, setGuides] = useState(true),
     [error, setError] = useState(""),
@@ -553,6 +557,7 @@ export default function Kansisuunnittelija() {
       >
         {showPrivateTools && (
           <CoverAccount
+            accessRequest={accessRequest}
             project={p}
             privateMode={privateMode}
             onSaved={(id, saved) =>
@@ -1138,6 +1143,12 @@ export default function Kansisuunnittelija() {
       </main>
       {import.meta.env.DEV || intakeAvailable ? (
         <CoverOrder
+          onRequestAccess={email =>
+            setAccessRequest(previous => ({
+              email,
+              sequence: (previous?.sequence || 0) + 1,
+            }))
+          }
           intake={intakeAvailable}
           checkoutAvailable={checkoutAvailable}
           projectId={cloudVersion?.id || null}

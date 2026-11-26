@@ -26,11 +26,13 @@ export default function CoverOrder({
   checkoutAvailable = false,
   projectId = null,
   dirty = false,
+  onRequestAccess,
 }: {
   intake?: boolean;
   checkoutAvailable?: boolean;
   projectId?: string | null;
   dirty?: boolean;
+  onRequestAccess?: (email: string) => void;
   project: CoverProject;
   createPdf: () => Promise<Blob>;
   onInteriorChange: () => void;
@@ -52,6 +54,7 @@ export default function CoverOrder({
     [busy, setBusy] = useState(false);
   const [received, setReceived] = useState(false);
   const [receiptId, setReceiptId] = useState<string | null>(null);
+  const [sessionEmail, setSessionEmail] = useState("");
   const requestKey = useRef({ signature: "", id: "" });
   useEffect(() => {
     if (!intake) return;
@@ -59,8 +62,13 @@ export default function CoverOrder({
     fetch("/api/cover/session", { cache: "no-store" })
       .then(r => r.json())
       .then(s => {
-        if (active)
-          setCustomer(c => ({ ...c, email: s.authenticated ? s.email : "" }));
+        if (active) {
+          const authenticatedEmail = s.authenticated ? s.email : "";
+          setSessionEmail(authenticatedEmail);
+          // A late anonymous session response must not erase a typed address.
+          if (authenticatedEmail)
+            setCustomer(c => ({ ...c, email: authenticatedEmail }));
+        }
       })
       .catch(() => {});
     return () => {
@@ -268,8 +276,13 @@ export default function CoverOrder({
                     type={type}
                     name={"private-order-" + key}
                     value={customer[key]}
-                    readOnly={intake && key === "email"}
-                    maxLength={key === "postal" ? 5 : 150}
+                    readOnly={intake && !!sessionEmail && key === "email"}
+                    aria-describedby={
+                      intake && key === "email" ? "order-email-help" : undefined
+                    }
+                    maxLength={
+                      key === "postal" ? 5 : key === "email" ? 254 : 150
+                    }
                     required={key !== "phone"}
                     autoComplete={
                       key === "name"
@@ -292,6 +305,34 @@ export default function CoverOrder({
                 </label>
               ))}
             </div>
+            {intake && (
+              <div id="order-email-help" className="cover-order-note">
+                {sessionEmail ? (
+                  <p>
+                    Sähköpostiosoite tulee henkilökohtaisesta käyttölinkistäsi.
+                  </p>
+                ) : (
+                  <>
+                    <p>
+                      Ennen aineiston lähettämistä vahvista sähköpostiosoitteesi
+                      käyttölinkillä ja tallenna kansi omaksi projektiksi. Näin
+                      aineisto yhdistyy oikeaan kansiversioon.
+                    </p>
+                    <button
+                      type="button"
+                      className="cover-secondary"
+                      onClick={() => onRequestAccess?.(customer.email)}
+                    >
+                      Jatka käyttölinkin pyytämiseen →
+                    </button>
+                    <p>
+                      Käyttölinkki pyydetään sivun yläosasta. Täyttämäsi osoite
+                      siirtyy sinne valmiiksi.
+                    </p>
+                  </>
+                )}
+              </div>
+            )}
             <label className="cover-order-file">
               Käsikirjoitus
               <input

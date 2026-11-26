@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { CoverProject } from "@/lib/cover/model";
 import { COVER_CONSENT_TEXT } from "@shared/cover-funnel";
 type Saved = { id: string; revision: number; title: string; expires: number };
@@ -19,6 +19,7 @@ export default function CoverAccount({
   onPrivate,
   onLogout,
   onSaved,
+  accessRequest,
 }: {
   project: CoverProject;
   privateMode: boolean;
@@ -26,7 +27,9 @@ export default function CoverAccount({
   onPrivate: () => void;
   onSaved: (id: string, project: CoverProject) => void;
   onLogout: () => void;
+  accessRequest?: { email: string; sequence: number };
 }) {
+  const emailInput = useRef<HTMLInputElement>(null);
   const [available, setAvailable] = useState(false),
     [loginEnabled, setLoginEnabled] = useState(false),
     [email, setEmail] = useState(""),
@@ -39,6 +42,12 @@ export default function CoverAccount({
     [busy, setBusy] = useState(false),
     [status, setStatus] = useState(""),
     [error, setError] = useState("");
+  useEffect(() => {
+    if (!accessRequest) return;
+    setEmail(accessRequest.email);
+    emailInput.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    emailInput.current?.focus({ preventScroll: true });
+  }, [accessRequest]);
   useEffect(() => {
     let active = true;
     api("/status")
@@ -102,6 +111,7 @@ export default function CoverAccount({
   }
   return (
     <section
+      id="oma-kansiprojekti"
       className="cover-account manus-no-record"
       aria-labelledby="cover-account-heading"
     >
@@ -237,6 +247,7 @@ export default function CoverAccount({
           <label>
             Sähköpostiosoite
             <input
+              ref={emailInput}
               type="email"
               required
               maxLength={254}
