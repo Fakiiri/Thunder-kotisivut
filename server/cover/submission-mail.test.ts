@@ -5,6 +5,7 @@ import { createProject } from "../../client/src/lib/cover/model";
 import { coverGeometry, printQuote } from "../../shared/print-production";
 import { deliverSubmissionNotice } from "./submission-mail";
 import type { Submission, SubmissionNotice } from "./submissions";
+import { PDFDocument } from "pdf-lib";
 function fixture() {
   const crypt = new VaultCrypto(randomBytes(32)),
     project = createProject(),
@@ -53,6 +54,63 @@ function fixture() {
   return { crypt, job, value };
 }
 describe("owner manuscript notification", () => {
+  it("splits large original/padded attachments into bounded, idempotent owner emails", async () => {
+    const f = fixture();
+    f.value.directOrder = true;
+    f.value.manuscript = Buffer.alloc(8 * 1024 * 1024).toString("base64");
+    f.value.pressManuscript = f.value.manuscript;
+    f.job.row.payload = f.crypt.seal(f.job.row.id, f.value);
+    const sent: any[] = [];
+    await deliverSubmissionNotice(f.job, f.crypt, "test-only", (async (
+      _url,
+      init
+    ) => {
+      const raw = String(init?.body);
+      expect(Buffer.byteLength(raw)).toBeLessThan(20_000_000);
+      const body = JSON.parse(raw);
+      sent.push({
+        to: body.to,
+        key: body.headers.idempotencyKey,
+        names: body.attachment.map((a: any) => a.name),
+      });
+      return new Response("{}", { status: 201 });
+    }) as typeof fetch);
+    expect(sent).toHaveLength(2);
+    expect(sent[0].key).toBe(f.job.key);
+    expect(sent[1].key).not.toBe(f.job.key);
+    expect(sent.flatMap(s => s.names)).toContain("sisus-tyhjat-loppusivut.pdf");
+    expect(sent.every(s => s.to[0].email === "info@thunderkustannus.fi")).toBe(
+      true
+    );
+  });
+  it("delivers the original, padded PDF and immutable cover preview only to Thunder", async () => {
+    const f = fixture();
+    f.value.directOrder = true;
+    f.value.pdfPages = { sourcePages: 150, billedPages: 160, blankPages: 10 };
+    f.value.pressManuscript = Buffer.from("synthetic padded copy").toString(
+      "base64"
+    );
+    f.job.row.payload = f.crypt.seal(f.job.row.id, f.value);
+    let body: any;
+    await deliverSubmissionNotice(f.job, f.crypt, "test-only", (async (
+      _url,
+      init
+    ) => {
+      body = JSON.parse(String(init?.body));
+      return new Response("{}", { status: 201 });
+    }) as typeof fetch);
+    expect(body.to).toEqual([{ email: "info@thunderkustannus.fi" }]);
+    expect(body.attachment.map((a: any) => a.name)).toEqual([
+      "sisus.pdf",
+      "kansi-esikatselu.pdf",
+      "sisus-tyhjat-loppusivut.pdf",
+    ]);
+    const cover = await PDFDocument.load(
+      Buffer.from(body.attachment[1].content, "base64")
+    );
+    expect(cover.getPageCount()).toBe(1);
+    expect(body.textContent).toContain("10 tyhjää loppusivua");
+  });
   it("sends only to the fixed owner, with authenticated reply-to and original attachment", async () => {
     const f = fixture();
     let body: any;
@@ -69,7 +127,7 @@ describe("owner manuscript notification", () => {
     expect(body.textContent).toContain("Ei maksettua");
     expect(body.headers.idempotencyKey).toBe(f.job.key);
   });
-  it("does not mark ambiguous delivery errors as automatically retryable", async () => {
+  it("retries transient delivery errors using the same idempotency key", async () => {
     const f = fixture();
     await expect(
       deliverSubmissionNotice(
@@ -78,7 +136,7 @@ describe("owner manuscript notification", () => {
         "test-only",
         (async () => new Response("{}", { status: 503 })) as typeof fetch
       )
-    ).rejects.toMatchObject({ retryable: false });
+    ).rejects.toMatchObject({ retryable: true });
     await expect(
       deliverSubmissionNotice(
         f.job,

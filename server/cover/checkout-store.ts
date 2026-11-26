@@ -105,6 +105,7 @@ export class MysqlCoverCheckoutStore implements CoverCheckoutStore {
           amountTotal: record.quote.totalCents,
           currency: "eur",
           coverRequestId: record.id,
+          coverPriceLocked: !record.quote.provisional,
         };
         await db.execute(
           "INSERT IGNORE INTO payment_orders (session_id,payload) VALUES (?,?)",

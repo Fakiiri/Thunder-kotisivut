@@ -1452,3 +1452,8 @@
 
 .cover-account button,.cover-preflight button {font-size:16px;min-height:46px;}
 .cover-preflight .cover-order-check {font-size:16px;line-height:1.65;}
+.cover-buy-bar{position:sticky;top:80px;z-index:20;max-width:1396px;margin:0 auto 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;background:#fff;border-bottom:1px solid #ded9d1;box-shadow:0 4px 15px #0000000a;}
+.cover-buy-bar strong{display:block;font-size:24px;}.cover-buy-bar span{font-size:13px;}.cover-buy-bar a{white-space:nowrap;}
+#kannen-tilaus{scroll-margin-top:180px;}.cover-order-fields input:invalid:not(:placeholder-shown):focus{outline:2px solid #e56921;}
+@media(max-width:650px){body:has(.cover-page) a.fixed[href^="https://wa.me/"]{bottom:100px;}}
+@media(max-width:650px){.cover-buy-bar{top:auto;bottom:0;position:fixed;width:100%;margin:0;padding:12px 14px;z-index:40;box-shadow:0 -4px 20px #0002;}.cover-buy-bar strong{font-size:20px;}.cover-buy-bar a{padding:13px;font-size:14px;}.cover-local-footer{padding-bottom:110px;}}

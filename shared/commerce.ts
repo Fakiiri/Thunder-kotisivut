@@ -2,7 +2,7 @@ export const ORDER_PACKAGES = {
   painatus: {
     name: "Kirjan painatuspalvelu",
     preparation:
-      "Käsikirjoitus ja kansiprojektin tiedot ovat meillä jo. Vahvistamme toteutuneen sivumäärän, lopullisen painatushinnan ja painoaineiston ennen tuotantoa. Jos sivumäärä kasvaa yli 10 %, lisäkustannus laskutetaan erikseen. Mahdollinen hintaero sovitaan ennen painatusta.",
+      "Käsikirjoitus ja kansiprojektin tiedot ovat meillä jo. Tarkistamme aineiston vielä manuaalisesti ennen painoon lähettämistä. Jos havaitsemme ongelmia, otamme sinuun yhteyttä ennen tuotantoa. Tarkistus ei sisällä oikolukua tai taiton korjaamista.",
   },
   digi: {
     name: "Digi-paketti",

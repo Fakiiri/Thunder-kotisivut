@@ -45,7 +45,7 @@ export function projectFingerprint(p: CoverProject) {
     .update(JSON.stringify(projectSchema.parse(p)))
     .digest("hex");
 }
-async function scene(p: CoverProject) {
+async function scene(p: CoverProject, fullPreview = false) {
   registerCoverFonts();
   const g = coverLayout(p, "spread"),
     s = (300 * g.widthMm) / (25.4 * g.width);
@@ -85,12 +85,19 @@ async function scene(p: CoverProject) {
     p,
     "spread",
     {
-      backgroundOnly: true,
+      backgroundOnly: !fullPreview,
       textRuns: text,
       image: image as unknown as HTMLImageElement,
     }
   );
   return { canvas, boxes, text, g };
+}
+// RGB review copy of the immutable order snapshot, never labelled press-ready.
+export async function exportReviewCover(project: CoverProject) {
+  const sc = await scene(projectSchema.parse(project), true);
+  const { coverPdf } = await import("../../client/src/lib/cover/pdf");
+  const jpeg = sc.canvas.toBuffer("image/jpeg");
+  return Buffer.from(await coverPdf(new Uint8Array(jpeg),sc.canvas.width,sc.canvas.height,project.production).arrayBuffer());
 }
 export async function inspectCover(
   input: unknown,

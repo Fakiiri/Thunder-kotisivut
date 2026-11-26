@@ -13,6 +13,7 @@ import {
 import {
   PAGE_PRICE_POLICY_VERSION,
   PAGE_PRICE_NOTICE,
+  PDF_PRICE_NOTICE,
 } from "../../shared/page-settlement";
 import type { CoverCheckoutStore, CoverCheckoutRecord } from "./checkout-store";
 export type CheckoutProvider = Pick<
@@ -29,7 +30,7 @@ export class CoverCheckoutService {
     private now = Date.now
   ) {}
   private async owner(session: string) {
-    const user = await this.vault.identity(session);
+    const user = await this.vault.identity(session, true);
     if (!user) throw Error("unauthorized");
     return user.owner;
   }
@@ -60,7 +61,7 @@ export class CoverCheckoutService {
       quantity: source.project.production.quantity,
       format: source.project.production.format,
       pagePolicyVersion: PAGE_PRICE_POLICY_VERSION,
-      pagePolicyNotice: PAGE_PRICE_NOTICE,
+      pagePolicyNotice: source.pdfPages ? PDF_PRICE_NOTICE : PAGE_PRICE_NOTICE,
     };
   }
   private summary(record: CoverCheckoutRecord) {
@@ -85,7 +86,7 @@ export class CoverCheckoutService {
       quantity: q.quantity,
       format: q.format,
       pagePolicyVersion: q.pagePolicyVersion,
-      pagePolicyNotice: PAGE_PRICE_NOTICE,
+      pagePolicyNotice: q.provisional ? PAGE_PRICE_NOTICE : PDF_PRICE_NOTICE,
     };
   }
   async start(

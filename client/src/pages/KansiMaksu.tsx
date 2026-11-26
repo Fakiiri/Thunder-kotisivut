@@ -154,6 +154,14 @@ export default function KansiMaksu() {
         </p>
         <h1 className="thunder-heading text-4xl mb-7">Kirjasi painatus</h1>
         {unauthorized && (
+          <p role="alert">
+            Tilaus ei avaudu tässä selaimessa. Avaa maksu samalla selaimella,
+            jolla lähetit aineiston, tai ota yhteyttä info@thunderkustannus.fi.
+            Älä tee uutta maksua, jos olet jo maksanut.
+          </p>
+        )}
+        {/* Legacy email-link login remains in the code, disabled for direct orders. */}
+        {false && unauthorized && (
           <form onSubmit={login} className="rounded-2xl border p-6 space-y-4">
             <h2 className="text-2xl font-semibold">Avaa oma maksusi</h2>
             <p>
@@ -222,6 +230,12 @@ export default function KansiMaksu() {
                   sähköpostiisi. Otamme yhteyttä yhden arkipäivän kuluessa ja
                   tarkistamme toteutuksen ennen painatusta.
                 </p>
+                <a
+                  href={"/api/cover/checkout/" + id + "/cover"}
+                  className="inline-block mt-4 underline font-semibold"
+                >
+                  Lataa tilauksesi kansi PDF:nä
+                </a>
               </div>
             ) : data.state === "review" ? (
               <p role="status">
@@ -234,7 +248,7 @@ export default function KansiMaksu() {
                   <h3 className="font-bold mb-2">
                     Sivumäärä ja lopullinen hinta
                   </h3>
-                  <p>{PAGE_PRICE_NOTICE}</p>
+                  <p>{data.pagePolicyNotice}</p>
                 </div>
                 <p>
                   Maksu ei käynnistä painatusta automaattisesti. Tarkistamme

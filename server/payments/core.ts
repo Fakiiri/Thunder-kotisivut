@@ -6,6 +6,7 @@ export type PaidOrder = {
   eventId: string;
   packageId: OrderPackageId;
   coverRequestId?: string;
+  coverPriceLocked?: boolean;
   email: string;
   name: string;
   amountTotal: number;

@@ -228,6 +228,7 @@ export async function configureCover(app: Express) {
     }
     registerCoverRoutes(app, {
       base,
+      directOrderEnabled: process.env.COVER_DIRECT_ORDER_ENABLED === "true",
       vault,
       sendAccess,
       prepress,

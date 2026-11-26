@@ -18,6 +18,30 @@ export default function QuizPrivacy() {
         <p>Päivitetty 21.10.2026.</p>
         <section>
           <h2 className="font-bold text-xl mb-3">
+            Kansisuunnittelijan painatustilaukset
+          </h2>
+          <p>
+            Voit suunnitella kannen ilman kirjautumista. Luonnos tallentuu
+            selaimeesi. Kun jatkat maksamaan, toimitat Thunder Kustannukselle
+            käsikirjoituksen, kannen, yhteystietosi ja toimitusosoitteesi
+            tilauksen käsittelyä, aineiston tarkistusta ja yhteydenottoa varten.
+          </p>
+          <p>
+            Aineisto ja tilaukseen liittyvä kansiversio tallennetaan
+            palvelimelle salattuina 30 päiväksi ja toimitetaan Thunderille
+            sähköpostitse Brevon kautta. Sähköpostiin toimitettua aineistoa
+            käsitellään kirjaprojektisi hoitamiseksi. Kuviasi tai
+            käsikirjoitustasi ei julkaista tai käytetä markkinointiin ilman
+            erillistä sopimusta.
+          </p>
+          <p>
+            Maksun käsittelee Stripe. Tämä tilauslomake ei liitä sinua
+            uutiskirjelistalle. Tilaus avautuu samalla selaimella suojatun
+            evästeen avulla; se ei anna pääsyä muihin kirjaprojekteihin.
+          </p>
+        </section>
+        <section>
+          <h2 className="font-bold text-xl mb-3">
             Rekisterinpitäjä ja yhteydenotot
           </h2>
           <p>

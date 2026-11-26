@@ -5,8 +5,13 @@ import express, { type Express, type Request } from "express";
 import { randomBytes } from "node:crypto";
 import { z } from "zod";
 import { CoverVault } from "./vault";
+import { submissionSchema } from "./submissions";
+import { projectSchema } from "../../client/src/lib/cover/model";
+import { PAGE_PRICE_POLICY_VERSION } from "../../shared/page-settlement";
+import { exportReviewCover } from "./prepress";
 export type AccessMail = { email: string; url: string };
 export type CoverRouteOptions = {
+  directOrderEnabled?: boolean;
   submissions?: CoverSubmissions | null;
   checkout?: CoverCheckoutService | null;
   prepress?: {
@@ -44,14 +49,24 @@ const saveSchema = z.object({
 export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
   const secure = new URL(config.base).protocol === "https:",
     cookieName = secure ? "__Host-thunder_cover" : "thunder_cover_dev";
-  const token = (req: Request) => {
+  const orderCookie = (id: string) =>
+    (secure ? "__Host-" : "") + "thunder_order_" + id;
+  const cookieToken = (req: Request, name: string) => {
     const value =
       (req.headers.cookie || "")
         .split(";")
         .map(v => v.trim())
-        .find(v => v.startsWith(cookieName + "="))
-        ?.slice(cookieName.length + 1) || "";
+        .find(v => v.startsWith(name + "="))
+        ?.slice(name.length + 1) || "";
     return /^[a-f0-9]{64}$/.test(value) ? value : "";
+  };
+  const token = (req: Request) => {
+    const id = req.originalUrl
+      .split("?")[0]
+      .match(/\/(?:checkout|submissions)\/([0-9a-f-]{36})(?:\/cover)?$/)?.[1];
+    return (
+      (id && cookieToken(req, orderCookie(id))) || cookieToken(req, cookieName)
+    );
   };
   const router = express.Router();
   router.use((req, res, next) => {
@@ -75,6 +90,11 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
       loginEnabled: !!config.sendAccess,
       submissionEnabled: !!config.submissions,
       checkoutEnabled: !!config.checkout,
+      directOrderEnabled:
+        !!config.directOrderEnabled &&
+        !!config.submissions &&
+        !!config.checkout &&
+        !!config.vault,
       maxProjects: 5,
       maxImageMB: 12,
     })
@@ -191,13 +211,161 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
       res.sendStatus(503);
     }
   });
+  let directReceiving = false;
+  router.post(
+    "/orders",
+    async (req, res, next) => {
+      try {
+        if (
+          !config.directOrderEnabled ||
+          !config.vault ||
+          !config.submissions ||
+          !config.checkout
+        ) {
+          res.sendStatus(503);
+          return;
+        }
+        if (!req.is("application/json")) {
+          res.sendStatus(415);
+          return;
+        }
+        if (
+          directReceiving ||
+          !(await config.vault.throttle(
+            coverClientIp(req, config.base),
+            "direct-order-body",
+            6
+          )) ||
+          !(await config.vault.throttle("all", "direct-order-body-global", 30))
+        ) {
+          res.sendStatus(429);
+          return;
+        }
+        directReceiving = true;
+        const release = () => {
+          directReceiving = false;
+        };
+        res.once("finish", release);
+        res.once("close", release);
+        next();
+      } catch {
+        res.sendStatus(503);
+      }
+    },
+    express.json({ limit: "30mb", inflate: false }),
+    async (req, res) => {
+      let createdGuestSession = "",
+        persisted = false;
+      try {
+        const input = z
+          .object({
+            submission: submissionSchema,
+            project: projectSchema,
+            website: z.literal(""),
+            priceTermsAccepted: z.literal(true),
+          })
+          .strict()
+          .parse(req.body);
+        const requestId = input.submission.requestId,
+          name = orderCookie(requestId);
+        let session = cookieToken(req, name),
+          user = await config.vault!.identity(session, true),
+          projectId = user?.projectId;
+        if (
+          user?.orderOnly &&
+          user.orderRequestId === requestId &&
+          user.email === input.submission.customer.email
+        ) {
+          const saved = await config.vault!.getProject(
+            session,
+            projectId!,
+            true
+          );
+          if (
+            !saved ||
+            JSON.stringify(saved.project) !== JSON.stringify(input.project)
+          )
+            throw Error("conflict");
+        } else {
+          const guest = await config.vault!.createGuestOrder(
+            input.submission.customer.email,
+            input.project,
+            requestId
+          );
+          session = guest.session;
+          createdGuestSession = session;
+          projectId = guest.projectId;
+        }
+        res.cookie(name, session, {
+          httpOnly: true,
+          secure,
+          sameSite: "lax",
+          path: "/",
+          maxAge: 30 * 86400000,
+        });
+        const receipt = await config.submissions!.submit(
+          session,
+          projectId!,
+          input.submission,
+          true
+        );
+        persisted = true;
+        const { source } = await config.submissions!.paymentSource(
+          session,
+          receipt.id
+        );
+        try {
+          const checkout = await config.checkout!.start(session, receipt.id, {
+            sourceDigest: source.digest,
+            pagePolicyVersion: PAGE_PRICE_POLICY_VERSION,
+            priceTermsAccepted: true,
+          });
+          res.status(201).json({ ...receipt, ...checkout });
+        } catch {
+          res.status(201).json({ ...receipt, paymentPending: true });
+        }
+      } catch (e) {
+        if (createdGuestSession && !persisted)
+          await config
+            .vault!.discardGuestOrder(createdGuestSession)
+            .catch(() => {});
+        const reason = e instanceof Error ? e.message : "";
+        res
+          .status(
+            e instanceof z.ZodError ||
+              [
+                "invalid-file",
+                "pdf-size-mismatch",
+                "page-count-mismatch",
+                "layout-required",
+                "pages-unconfirmed",
+                "quote-required",
+              ].includes(reason)
+              ? 422
+              : reason === "conflict"
+                ? 409
+                : ["rate", "quota"].includes(reason)
+                  ? 429
+                  : 503
+          )
+          .json({
+            error:
+              reason === "pdf-size-mismatch"
+                ? "PDF:n sivukoko ei vastaa valittua kirjakokoa."
+                : reason === "page-count-mismatch"
+                  ? "PDF:n sivumäärä on muuttunut. Valitse tiedosto uudelleen."
+                  : "Tilausta ei voitu valmistella. Tarkista tiedosto ja tiedot tai yritä myöhemmin uudelleen.",
+          });
+      }
+    }
+  );
   router.use("/checkout", async (req, res, next) => {
     try {
       if (!config.checkout || !config.vault) {
         res.sendStatus(503);
         return;
       }
-      const user = await config.vault.identity(token(req));
+      const user = await config.vault.identity(token(req), true);
       if (!user) {
         res.sendStatus(401);
         return;
@@ -227,6 +395,27 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
       next();
     } catch {
       res.sendStatus(503);
+    }
+  });
+  router.get("/checkout/:id/cover", async (req, res) => {
+    try {
+      const id = String(req.params.id),
+        view = await config.checkout!.preview(token(req), id);
+      if (view.state !== "paid") {
+        res.sendStatus(403);
+        return;
+      }
+      const { source } = await config.submissions!.paymentSource(
+        token(req),
+        id
+      );
+      res.setHeader(
+        "Content-Disposition",
+        'attachment; filename="kansi-esikatselu.pdf"'
+      );
+      res.type("pdf").send(await exportReviewCover(source.project));
+    } catch {
+      res.sendStatus(404);
     }
   });
   router.get("/checkout/:id", async (req, res) => {
@@ -285,7 +474,7 @@ export function registerCoverRoutes(app: Express, config: CoverRouteOptions) {
       }
     }
   );
-  // Authenticate before buffering a manuscript. No public file URLs or downloads.
+  // Legacy authenticated intake remains available for existing projects.
   router.use("/submissions", async (req, res, next) => {
     try {
       if (!config.submissions || !config.vault) {

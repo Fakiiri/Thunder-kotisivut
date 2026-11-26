@@ -595,12 +595,71 @@ export class CoverVault {
       returnPath: validPaymentReturn(value.returnPath),
     };
   }
-  async identity(session: string) {
+  // Order-only guest capabilities cannot open verified-email projects or enrol marketing.
+  async createGuestOrder(
+    email: string,
+    input: unknown,
+    orderRequestId: string
+  ) {
+    const project = projectSchema.parse(input),
+      now = this.now();
+    const session = randomBytes(32).toString("hex"),
+      owner = this.crypt.id("guest:" + randomUUID());
+    const sessionId = "session:" + this.crypt.id(session),
+      projectId = randomUUID(),
+      id = "project:" + projectId;
+    await this.repo.save({
+      id: sessionId,
+      owner,
+      kind: "session",
+      revision: 1,
+      expires: now + 30 * 86400000,
+      payload: this.crypt.seal(sessionId, {
+        email,
+        verifiedAt: 0,
+        orderOnly: true,
+        projectId,
+        orderRequestId,
+      }),
+    });
+    try {
+      await this.repo.projectSave(
+        {
+          id,
+          owner,
+          kind: "project",
+          revision: 1,
+          expires: now + 30 * 86400000,
+          payload: this.crypt.seal(id, { project }),
+        },
+        0
+      );
+    } catch (error) {
+      await this.repo.remove(owner, sessionId);
+      throw error;
+    }
+    return { session, projectId, revision: 1 };
+  }
+  async identity(session: string, allowOrderOnly = false) {
     if (!/^[a-f0-9]{64}$/.test(session)) return null;
     const row = await this.repo.get("session:" + this.crypt.id(session));
     if (!row || row.expires <= this.now()) return null;
-    const info = this.crypt.open<{ email: string; verifiedAt: number }>(row);
+    const info = this.crypt.open<{
+      email: string;
+      verifiedAt: number;
+      orderOnly?: boolean;
+      projectId?: string;
+      orderRequestId?: string;
+    }>(row);
+    if (info.orderOnly && !allowOrderOnly) return null;
     return { owner: row.owner, ...info };
+  }
+  async discardGuestOrder(session: string) {
+    const user = await this.identity(session, true);
+    if (!user?.orderOnly) return;
+    if (user.projectId)
+      await this.repo.remove(user.owner, "project:" + user.projectId);
+    await this.repo.remove(user.owner, "session:" + this.crypt.id(session));
   }
   async projects(session: string) {
     const user = await this.identity(session);
@@ -620,8 +679,8 @@ export class CoverVault {
         };
       });
   }
-  async getProject(session: string, id: string) {
-    const user = await this.identity(session);
+  async getProject(session: string, id: string, allowOrderOnly = false) {
+    const user = await this.identity(session, allowOrderOnly);
     if (!user) throw Error("unauthorized");
     const row = await this.repo.get("project:" + id);
     if (!row || row.owner !== user.owner || row.expires <= this.now())
@@ -715,7 +774,14 @@ export class CoverVault {
       : null;
     const sessions = (await this.repo.list(owner, "session"))
       .filter(r => r.expires > now)
-      .map(r => this.crypt.open<{ email: string; verifiedAt: number }>(r))
+      .map(r =>
+        this.crypt.open<{
+          email: string;
+          verifiedAt: number;
+          orderOnly?: boolean;
+        }>(r)
+      )
+      .filter(s => !s.orderOnly)
       .sort((a, b) => a.verifiedAt - b.verifiedAt);
     const email = consent?.email || sessions[0]?.email;
     if (!email) return null;

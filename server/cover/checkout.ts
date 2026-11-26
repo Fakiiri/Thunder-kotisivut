@@ -1,6 +1,7 @@
 import {
   PAGE_PRICE_POLICY_VERSION,
   PAGE_PRICE_NOTICE,
+  PDF_PRICE_NOTICE,
 } from "../../shared/page-settlement";
 import { createHash } from "node:crypto";
 import { z } from "zod";
@@ -24,7 +25,7 @@ export type ApprovedPrintQuote = {
   deliveryCents: number;
   totalCents: number;
   provisional: boolean;
-  pagePolicyVersion: typeof PAGE_PRICE_POLICY_VERSION;
+  pagePolicyVersion: typeof PAGE_PRICE_POLICY_VERSION | "actual-pages-v1";
   approvedAt: number;
   expires: number;
 };
@@ -70,7 +71,7 @@ export function prepareInitialPrintQuote(
     acceptance.priceTermsAccepted !== true
   )
     throw Error("price-terms-required");
-  return buildStoredQuote(source, now, true);
+  return buildStoredQuote(source, now, !source.pdfPages);
 }
 
 function buildStoredQuote(
@@ -128,7 +129,7 @@ export function validateApprovedQuote(q: ApprovedPrintQuote, now: number) {
     createHash("sha256").update(JSON.stringify(value)).digest("hex") !==
       digest ||
     q.expires <= now ||
-    q.pagePolicyVersion !== PAGE_PRICE_POLICY_VERSION ||
+    ![PAGE_PRICE_POLICY_VERSION, "actual-pages-v1"].includes(q.pagePolicyVersion) ||
     q.approvedAt > now ||
     !z.email().safeParse(q.email).success
   )
@@ -253,8 +254,7 @@ export class ThunderCheckoutClient {
       throw Error("invalid-attempt");
     const body = new URLSearchParams({
       "custom_text[submit][message]":
-        "Maksat ilmoitettuun sivumäärään perustuvan maksun. " +
-        PAGE_PRICE_NOTICE,
+        quote.provisional ? PAGE_PRICE_NOTICE : PDF_PRICE_NOTICE,
       mode: "payment",
       locale: "fi",
       currency: "eur",

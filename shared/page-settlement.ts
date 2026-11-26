@@ -1,6 +1,8 @@
-export const PAGE_PRICE_POLICY_VERSION = "actual-pages-v1";
+export const PAGE_PRICE_POLICY_VERSION = "file-type-pages-v2";
 export const PAGE_PRICE_NOTICE =
-  "Hinta perustuu ilmoittamaasi sivumäärään. Lopullinen painatushinta määräytyy toteutuneen sivumäärän mukaan. Jos sivumäärä kasvaa yli 10 %, lisäkustannus laskutetaan erikseen. Mahdollinen hintaero vahvistetaan kanssasi ennen painatusta.";
+  "Word-aineiston hinta perustuu arvioituun sivumäärään. Lopullinen sivumäärä selviää taitossa. Jos se ylittää arvion yli 10 %, lähetämme lisäkustannuksesta erillisen laskun. Mahdollinen lisämaksu vahvistetaan kanssasi ennen painatusta.";
+export const PDF_PRICE_NOTICE = "PDF-aineiston hinta on lukittu tämän tiedoston mukaan. Sivumäärä täydennetään hinnaston seuraavaan sivumäärään tyhjillä loppusivuilla. Tästä sivumäärästä ei tule lisälaskua. Aineiston vaihtaminen edellyttää uutta hintalaskentaa.";
+export const MANUAL_REVIEW_NOTICE = "Tarkistamme aineiston vielä manuaalisesti ennen painoon lähettämistä. Jos havaitsemme ongelmia, otamme sinuun yhteyttä ennen tuotantoa. Tarkistus ei sisällä oikolukua tai taiton korjaamista.";
 
 // This determines the review/settlement path. It never initiates a charge or refund.
 export function assessPageChange(estimatedPages: number, actualPages: number) {

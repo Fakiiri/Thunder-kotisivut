@@ -1,5 +1,6 @@
 import { ORDER_PACKAGES } from "../../shared/commerce";
 import type { PaidOrder } from "./core";
+import { PDF_PRICE_NOTICE, PAGE_PRICE_NOTICE } from "../../shared/page-settlement";
 
 export function escapeHtml(text: string) {
   return text.replace(
@@ -25,6 +26,7 @@ export function customerMessage(order: PaidOrder, window: ResponseWindow) {
       : `Otamme sinuun yhteyttä ${promise} ja annamme ohjeet aineiston toimittamista varten.`,
     "",
     pkg.preparation,
+    ...(order.coverRequestId ? ["",order.coverPriceLocked ? PDF_PRICE_NOTICE : PAGE_PRICE_NOTICE] : []),
     "",
     order.packageId === "painatus"
       ? "Sinun ei tarvitse lähettää samoja tiedostoja uudelleen. Maksu ei käynnistä painatusta automaattisesti: tarkistamme aineiston ensin."
@@ -74,7 +76,7 @@ export function ownerMessage(order: PaidOrder, window: ResponseWindow) {
       `Stripe-tilaustunnus: ${order.sessionId}`,
       "",
       order.packageId === "painatus"
-        ? `Aineistopyyntö: ${order.coverRequestId}. Aineisto on jo toimitettu. Tarkista toteutunut sivumäärä ja lopullinen painatushinta ennen tuotantoa. Mahdollinen hintaero sovitaan asiakkaan kanssa.`
+        ? `Aineistopyyntö: ${order.coverRequestId}. Aineisto on jo toimitettu. Tee manuaalinen tarkistus ennen tuotantoa. ${order.coverPriceLocked ? PDF_PRICE_NOTICE : PAGE_PRICE_NOTICE}`
         : `Ota asiakkaaseen yhteyttä ${window === "24h" ? "24 tunnin" : "yhden arkipäivän"} kuluessa ja lähetä aineiston toimitusohjeet.`,
       "Ostajan lisääminen Brevon Tilanneet-listalle käsitellään omana jonotehtävänään. Tarkista jonon tilanne, jos myyntisarja on käynnissä.",
     ].join("\n"),

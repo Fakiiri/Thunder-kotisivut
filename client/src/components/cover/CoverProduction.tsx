@@ -14,10 +14,12 @@ export default function CoverProduction({
   production: p,
   onChange,
   disabled = false,
+  pdfLockedPages = null,
 }: {
   production: Production;
   onChange: (p: Production) => void;
   disabled?: boolean;
+  pdfLockedPages?: number | null;
 }) {
   const g = coverGeometry(p),
     q = printQuote(p)!;
@@ -75,6 +77,7 @@ export default function CoverProduction({
           Sisäsivujen määrä
           <select
             aria-label="Sisäsivujen määrä"
+            disabled={pdfLockedPages !== null}
             value={p.pages}
             onChange={e => patch({ pages: Number(e.target.value) })}
           >
@@ -103,6 +106,7 @@ export default function CoverProduction({
           Sisäsivujen taitto
           <select
             aria-label="Sisäsivujen taitto"
+            disabled={pdfLockedPages !== null}
             value={p.interior}
             onChange={e =>
               patch({ interior: e.target.value as Production["interior"] })
@@ -149,7 +153,7 @@ export default function CoverProduction({
       <p className="cover-production-note">
         {p.interior === "layout"
           ? "Sisäsivujen taitto voi muuttaa sivumäärää, hintaa ja selän leveyttä. Lopullinen kansi vahvistetaan taiton valmistuttua."
-          : "Valitse taitetun sisuksen todellinen sivumäärä, myös tyhjät sivut. Hinnaston väliin osuvia sivumääriä ei pyöristetä eikä selkämittoja arvata."}{" "}
+          : "PDF:n sivut lasketaan tilausvaiheessa tiedostosta ja täydennetään hinnaston seuraavaan sivumäärään tyhjillä loppusivuilla."}{" "}
         Tämä hinnasto koskee pehmeäkantisia kirjoja. Kotiintoimitus 50 €
         sisältyy yllä näkyvään kokonaishintaan. Yli 200 kirjan tilauksista pyydä
         tarjous.

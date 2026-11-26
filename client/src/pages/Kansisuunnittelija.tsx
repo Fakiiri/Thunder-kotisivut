@@ -25,6 +25,7 @@ import Navbar from "@/components/Navbar";
 import CoverCanvas from "@/components/cover/CoverCanvas";
 import CoverProduction from "@/components/cover/CoverProduction";
 import CoverOrder from "@/components/cover/CoverOrder";
+import DirectCoverOrder from "@/components/cover/DirectCoverOrder";
 import CoverAccount from "@/components/cover/CoverAccount";
 import CoverPreflight from "@/components/cover/CoverPreflight";
 import CoverServiceHelp from "@/components/cover/CoverServiceHelp";
@@ -34,6 +35,8 @@ import {
   formatMm,
   productionSchema,
   printEntry,
+  printQuote,
+  formatMoney,
   type Production,
 } from "@shared/print-production";
 import { coverPdf, canvasJpeg } from "@/lib/cover/pdf";
@@ -147,13 +150,17 @@ export default function Kansisuunnittelija() {
   const [cloudAvailable, setCloudAvailable] = useState(false);
   const [intakeAvailable, setIntakeAvailable] = useState(false);
   const [checkoutAvailable, setCheckoutAvailable] = useState(false);
-  const showPrivateTools = import.meta.env.DEV || cloudAvailable;
+  // Legacy email-link/account tools are retained, but disabled in the purchase flow.
+  const showPrivateTools = false;
+  const [directOrderAvailable, setDirectOrderAvailable] = useState(false);
+  const [pdfLockedPages, setPdfLockedPages] = useState<number | null>(null);
   useEffect(() => {
     let active = true;
     fetch("/api/cover/status", { cache: "no-store" })
       .then(r => (r.ok ? r.json() : null))
       .then(status => {
         if (active) {
+          setDirectOrderAvailable(status?.directOrderEnabled === true);
           setIntakeAvailable(status?.submissionEnabled === true);
           setCheckoutAvailable(status?.checkoutEnabled === true);
           setCloudAvailable(
@@ -550,6 +557,15 @@ export default function Kansisuunnittelija() {
           </small>
         </span>
       </header>
+      <div className="cover-buy-bar">
+        <div>
+          <strong>{formatMoney(printQuote(p.production)!.totalCents!)}</strong>
+          <span>Painatus ja toimitus, sis. alv</span>
+        </div>
+        <a href="#kannen-tilaus" className="cover-primary">
+          Jatka tilaamaan →
+        </a>
+      </div>
       <main
         id="kansistudio"
         className="cover-workspace"
@@ -586,6 +602,7 @@ export default function Kansisuunnittelija() {
           />
         )}
         <CoverProduction
+          pdfLockedPages={pdfLockedPages}
           production={p.production}
           disabled={!loaded || busy}
           onChange={production => update({ ...p, production })}
@@ -1141,28 +1158,13 @@ export default function Kansisuunnittelija() {
           </div>
         </div>
       </main>
-      {import.meta.env.DEV || intakeAvailable ? (
-        <CoverOrder
-          onRequestAccess={email =>
-            setAccessRequest(previous => ({
-              email,
-              sequence: (previous?.sequence || 0) + 1,
-            }))
-          }
-          intake={intakeAvailable}
-          checkoutAvailable={checkoutAvailable}
-          projectId={cloudVersion?.id || null}
-          dirty={!!cloudVersion && cloudVersion.json !== JSON.stringify(p)}
+      {import.meta.env.DEV || directOrderAvailable ? (
+        <DirectCoverOrder
           project={p}
-          createPdf={makePdf}
-          onInteriorChange={() =>
-            update({
-              ...currentProject.current,
-              production: {
-                ...currentProject.current.production,
-                interior: "layout",
-              },
-            })
+          enabled={directOrderAvailable}
+          onPdfLock={setPdfLockedPages}
+          onProduction={production =>
+            update({ ...currentProject.current, production })
           }
         />
       ) : (

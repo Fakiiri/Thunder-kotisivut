@@ -9,6 +9,7 @@ import {
 import { printQuote, coverGeometry } from "../../shared/print-production";
 import { CoverVault, VaultCrypto, type VaultRow } from "./vault";
 import type { CoverProject } from "../../client/src/lib/cover/model";
+import { preparePdf } from "./pdf-worker";
 
 export const SUBMISSION_RETENTION_MS = 30 * 86400000;
 export const submissionSchema = z
@@ -51,6 +52,9 @@ export type Submission = {
   receivedAt: number;
   // Files are quarantined attachments, NOT certified malware-free or print-ready.
   review: "required";
+  pdfPages?: { sourcePages: number; billedPages: number; blankPages: number };
+  pressManuscript?: string;
+  directOrder?: boolean;
 };
 export type SubmissionNotice = {
   row: VaultRow;
@@ -218,8 +222,13 @@ export class CoverSubmissions {
     if (digest && saved.digest !== digest) throw Error("conflict");
     return saved.receipt;
   }
-  async submit(session: string, projectId: string, unknownInput: unknown) {
-    const user = await this.vault.identity(session);
+  async submit(
+    session: string,
+    projectId: string,
+    unknownInput: unknown,
+    directOrder = false
+  ) {
+    const user = await this.vault.identity(session, directOrder);
     if (!user) throw Error("unauthorized");
     const input = submissionSchema.parse(unknownInput);
     // The authenticated address is authoritative; no third-party receipt target.
@@ -236,7 +245,7 @@ export class CoverSubmissions {
       !(await this.vault.throttle("all", "submission-global", 30))
     )
       throw Error("rate");
-    const saved = await this.vault.getProject(session, projectId);
+    const saved = await this.vault.getProject(session, projectId, directOrder);
     if (!saved) throw Error("not-found");
     if (saved.revision !== input.revision) throw Error("conflict");
     const p = saved.project;
@@ -257,6 +266,11 @@ export class CoverSubmissions {
     }
     if (kind === "docx" && p.production.interior !== "layout")
       throw Error("layout-required");
+    const pdf =
+      directOrder && kind === "pdf"
+        ? await preparePdf(bytes, p.production)
+        : null;
+    if (pdf && p.production.interior !== "ready") throw Error("invalid-file");
     const quote = printQuote(p.production);
     if (!quote || quote.totalCents === null) throw Error("quote-required");
     const receipt: SubmissionReceipt = {
@@ -279,6 +293,19 @@ export class CoverSubmissions {
       quote,
       receivedAt: this.now(),
       review: "required",
+      ...(directOrder ? { directOrder: true } : {}),
+      ...(pdf
+        ? {
+            pdfPages: {
+              sourcePages: pdf.sourcePages,
+              billedPages: pdf.billedPages,
+              blankPages: pdf.blankPages,
+            },
+            ...(pdf.blankPages
+              ? { pressManuscript: pdf.bytes.toString("base64") }
+              : {}),
+          }
+        : {}),
     };
     // Encrypt manuscript, contact details and immutable cover snapshot together.
     const row: VaultRow = {
@@ -301,7 +328,7 @@ export class CoverSubmissions {
     return receipt;
   }
   async paymentSource(session: string, requestId: string) {
-    const user = await this.vault.identity(session);
+    const user = await this.vault.identity(session, true);
     if (!user) throw Error("unauthorized");
     if (!z.string().uuid().safeParse(requestId).success)
       throw Error("not-found");
@@ -310,7 +337,7 @@ export class CoverSubmissions {
     return { owner: user.owner, source: this.crypt.open<Submission>(row) };
   }
   async getReceipt(session: string, requestId: string) {
-    const user = await this.vault.identity(session);
+    const user = await this.vault.identity(session, true);
     if (!user) throw Error("unauthorized");
     if (!z.string().uuid().safeParse(requestId).success) return null;
     const row = await this.repo.get(this.key(user.owner, requestId));
