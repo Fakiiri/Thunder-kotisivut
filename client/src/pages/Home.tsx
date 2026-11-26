@@ -56,7 +56,7 @@ export default function Home() {
       <Navbar />
 
       {/* ── HERO — tumma osio, valkoisella tekstillä ── */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+      <section className="relative flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={HERO_IMG}
@@ -66,7 +66,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/65 to-black/20" />
         </div>
 
-        <div className="container relative z-10 pt-32 pb-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="container relative z-10 pt-32 pb-14">
           <div className="max-w-xl">
             <motion.div initial={false} animate="visible" variants={fadeUp}>
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-orange-400 mb-5">
@@ -97,12 +97,19 @@ export default function Home() {
               initial={false}
               animate="visible"
               variants={fadeUp}
-              className="flex flex-wrap gap-3"
+              className="flex"
             >
               <Link
                 href="/kansisuunnittelija"
-                className="thunder-btn-primary px-8 py-5 rounded-xl text-base sm:text-lg font-bold inline-flex items-center gap-5 leading-relaxed"
+                className="thunder-btn-primary px-4 py-4 sm:px-5 sm:py-5 rounded-xl text-sm sm:text-lg font-bold inline-flex items-center gap-3 sm:gap-4 leading-relaxed max-w-full"
               >
+                <img
+                  src="/images/kirjaprojekti-avoin-kirja.jpg"
+                  alt=""
+                  className="w-[64px] sm:w-[88px] h-auto rounded-md shrink-0"
+                  width="244"
+                  height="174"
+                />
                 <span>
                   <span className="block">
                     {lang === "en"
@@ -115,47 +122,9 @@ export default function Home() {
                       : "Tilaa helposti täältä"}
                   </span>
                 </span>
-                <ArrowRight className="w-6 h-6 shrink-0" />
               </Link>
             </motion.div>
-
-            <motion.div
-              initial={false}
-              animate="visible"
-              variants={fadeUp}
-              className="flex flex-wrap gap-5 mt-10"
-            >
-              {COMPANY.distribution.slice(0, 4).map(b => (
-                <span
-                  key={b}
-                  className="text-white/35 text-xs font-medium uppercase tracking-wider"
-                >
-                  {b}
-                </span>
-              ))}
-            </motion.div>
           </div>
-          <Link
-            href="/kansisuunnittelija"
-            aria-label={
-              lang === "en"
-                ? "Design and order your book"
-                : "Suunnittele ja tilaa oma kirjasi"
-            }
-            className="block w-full max-w-[360px] justify-self-center rounded-2xl overflow-hidden shadow-2xl border border-white/20 transition-transform hover:scale-[1.02] focus-visible:outline-4 focus-visible:outline-orange-400"
-          >
-            <img
-              src="/images/kirjaprojekti-avoin-kirja.jpg"
-              alt={
-                lang === "en"
-                  ? "An open printed book"
-                  : "Avoin painettu kirja – siirry suunnittelemaan oma kirjasi"
-              }
-              className="w-full h-auto"
-              width="244"
-              height="174"
-            />
-          </Link>
         </div>
       </section>
 
