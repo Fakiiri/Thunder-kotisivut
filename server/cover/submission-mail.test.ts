@@ -6,6 +6,7 @@ import { coverGeometry, printQuote } from "../../shared/print-production";
 import { deliverSubmissionNotice } from "./submission-mail";
 import type { Submission, SubmissionNotice } from "./submissions";
 import { PDFDocument } from "pdf-lib";
+import sharp from "sharp";
 function fixture() {
   const crypt = new VaultCrypto(randomBytes(32)),
     project = createProject(),
@@ -85,6 +86,8 @@ describe("owner manuscript notification", () => {
   });
   it("delivers the original, padded PDF and immutable cover preview only to Thunder", async () => {
     const f = fixture();
+    const image=await sharp({create:{width:1000,height:1500,channels:3,background:'#287b93'}}).jpeg().toBuffer();
+    f.value.project.image={data:'data:image/jpeg;base64,'+image.toString('base64'),width:1000,height:1500};
     f.value.directOrder = true;
     f.value.pdfPages = { sourcePages: 150, billedPages: 160, blankPages: 10 };
     f.value.pressManuscript = Buffer.from("synthetic padded copy").toString(

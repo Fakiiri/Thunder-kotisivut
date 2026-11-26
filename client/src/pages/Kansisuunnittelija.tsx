@@ -1017,8 +1017,8 @@ export default function Kansisuunnittelija() {
                         ? "Kuva tallentuu vain omaan yksityiseen projektiisi."
                         : showPrivateTools
                           ? "Kuva pysyy laitteellasi, kunnes valitset yksityisen projektitallennuksen."
-                          : "Kuva pysyy omalla laitteellasi."}
-                      Se pysyy tässä selaimessa ja lataamassasi työtiedostossa.
+                          : "Kuva pysyy laitteellasi, kunnes jatkat maksamaan. Silloin se tallentuu tilauksesi kansiversioon."}{" "}
+                      Voit ladata kuvan sisältävän työtiedoston myös omalle laitteellesi.
                     </p>
                   </>
                 )}
