@@ -358,6 +358,9 @@ export default function PrintCalculator() {
               <p className="text-sm text-muted-foreground">
                 Kotiintoimitus 50 €. Yli 200 kirjan eristä pyydä tarjous.
               </p>
+              <p className="text-base font-semibold text-foreground">
+                Laskettuasi hinnan voit suunnitella kannen ja tehdä tilauksen.
+              </p>
               {(
                 <Link
                   href={
@@ -372,7 +375,7 @@ export default function PrintCalculator() {
                   }
                   className="thunder-btn-primary px-6 py-3 rounded-lg text-sm font-bold inline-flex items-center gap-2"
                 >
-                  Suunnittele tämän kirjan kansi{" "}
+                  Suunnittele kansi ja tilaa kirjat{" "}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               )}

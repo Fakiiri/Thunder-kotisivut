@@ -275,7 +275,7 @@ export default function Kansisuunnittelija() {
       .catch(() => {
         if (active)
           setError(
-            "Selaintallennusta ei voitu avata. Voit silti suunnitella ja ladata työtiedoston omalle laitteellesi."
+            "Selaintallennusta ei voitu avata. Pidä sivu auki työskentelyn ajan. Kansi tallentuu tilaukseen, kun jatkat maksamaan."
           );
       })
       .finally(() => {
@@ -307,7 +307,7 @@ export default function Kansisuunnittelija() {
         .catch(() => {
           if (current === generation.current)
             setStatus(
-              "Automaattitallennus ei onnistu. Lataa työtiedosto talteen."
+              "Automaattitallennus ei onnistu. Pidä sivu auki työskentelyn ajan."
             );
         });
     }, 650);
@@ -516,7 +516,7 @@ export default function Kansisuunnittelija() {
           "-luonnos.png"
       );
       setNotice(
-        "Esikatselu ladattiin PNG-kuvana. Lataa myös työtiedosto, jos haluat jatkaa muokkaamista myöhemmin."
+        "Esikatselu ladattiin PNG-kuvana. Luonnoksen muokkaamista voit jatkaa tässä selaimessa."
       );
     } catch (e) {
       setError(e instanceof Error ? e.message : "Lataus ei onnistunut.");
@@ -615,57 +615,24 @@ export default function Kansisuunnittelija() {
           </div>
           <div className="cover-tools">
             <button
-              onClick={undo}
-              disabled={!history.past.length || busy || !loaded}
-              title="Peru (Ctrl/Cmd + Z)"
-              aria-label="Peru"
-            >
-              <Undo2 size={18} />
-            </button>
-            <button
-              onClick={redo}
-              disabled={!history.future.length || busy || !loaded}
-              title="Tee uudelleen"
-              aria-label="Tee uudelleen"
-            >
-              <Redo2 size={18} />
-            </button>
-            <span className="cover-divider" />
-            <button
-              aria-label="Avaa luonnos"
-              onClick={() => projectInput.current?.click()}
-              disabled={busy || !loaded}
-            >
-              <FileUp size={16} />
-              <span>Avaa luonnos</span>
-            </button>
-            <button
-              aria-label="Lataa työtiedosto"
-              onClick={saveProject}
-              disabled={busy || !loaded}
-            >
-              <ArrowDownToLine size={16} />
-              <span>Lataa työtiedosto</span>
-            </button>
-            <button
               className="cover-primary"
               onClick={() => {
-                setNotice("");
-                setError("");
-                dialog.current?.showModal();
+                setTab("image");
+                fileInput.current?.click();
               }}
               disabled={busy || !loaded}
             >
-              Lataa kansi <ArrowRight size={17} />
+              <ImagePlus size={20} />
+              {p.image ? "Vaihda oma kuva" : "Lisää oma kuva kanteen"}
             </button>
           </div>
         </div>
         <input
-          ref={projectInput}
-          type="file"
-          accept=".json,application/json"
+          ref={fileInput}
           hidden
-          onChange={e => void open(e.target.files?.[0])}
+          type="file"
+          accept="image/jpeg,image/png"
+          onChange={e => void upload(e.target.files?.[0])}
         />
         {error && (
           <div className="cover-message cover-error" role="alert">
@@ -953,13 +920,6 @@ export default function Kansisuunnittelija() {
                       </strong>
                       <span>JPG tai PNG · enintään 12 Mt / 24 MP</span>
                     </button>
-                    <input
-                      ref={fileInput}
-                      hidden
-                      type="file"
-                      accept="image/jpeg,image/png"
-                      onChange={e => void upload(e.target.files?.[0])}
-                    />
                     {p.image && (
                       <>
                         <Slider
@@ -1018,7 +978,7 @@ export default function Kansisuunnittelija() {
                         : showPrivateTools
                           ? "Kuva pysyy laitteellasi, kunnes valitset yksityisen projektitallennuksen."
                           : "Kuva pysyy laitteellasi, kunnes jatkat maksamaan. Silloin se tallentuu tilauksesi kansiversioon."}{" "}
-                      Voit ladata kuvan sisältävän työtiedoston myös omalle laitteellesi.
+                      Sinun ei tarvitse tallentaa erillistä työtiedostoa.
                     </p>
                   </>
                 )}
@@ -1125,7 +1085,7 @@ export default function Kansisuunnittelija() {
                   ? "Kannen selkä ja koko tulevat hintalaskurin hinnastosta. Leikkuuvara on 5 mm jokaisella ulkoreunalla. Oranssi katkoviiva näyttää tekstien turva-alueen."
                   : privateMode
                     ? "Tallenna muutokset omaan projektiin, jotta voit jatkaa toisella laitteella."
-                    : "Kokeile rauhassa. Luonnos säilyy tässä selaimessa. Lataa työtiedosto talteen, jotta voit jatkaa myös toisella laitteella."}
+                    : "Kokeile rauhassa. Luonnos säilyy tässä selaimessa. Kansi tallentuu tilaukseen automaattisesti, kun jatkat maksamaan."}
               </p>
             </div>
           </section>
@@ -1202,18 +1162,18 @@ export default function Kansisuunnittelija() {
             ? "Tämä on yksityinen projekti. Tallenna muutokset omaan projektiin ennen uloskirjautumista."
             : showPrivateTools
               ? "Luonnos tallentuu tähän selaimeen. Selaintietojen poistaminen voi poistaa sen. Lataa työtiedosto talteen tai valitse yksityinen projektitallennus."
-              : "Luonnos tallentuu tähän selaimeen. Selaintietojen poistaminen voi poistaa sen. Lataa työtiedosto talteen, jotta voit jatkaa myöhemmin."}
+              : "Luonnos tallentuu tähän selaimeen. Selaintietojen poistaminen voi poistaa sen. Voit jatkaa samalla laitteella ja selaimella. Kansi tallentuu myös tilaukseen."}
         </p>
         <button
           onClick={() => {
             if (
               window.confirm(
-                "Poistetaanko tähän selaimeen tallennettu kansiluonnos ja aloitetaanko tyhjästä? Lataa ensin työtiedosto, jos haluat säilyttää nykyisen työn."
+                "Poistetaanko tähän selaimeen tallennettu kansiluonnos ja aloitetaanko tyhjästä? Nykyinen luonnos korvataan uudella."
               )
             ) {
               update(createProject());
               setNotice(
-                "Uusi luonnos aloitettu. Edelliseen voi vielä palata Peru-painikkeella."
+                "Uusi luonnos aloitettu. Edelliseen voi vielä palata näppäimillä Ctrl/Cmd + Z."
               );
             }
           }}
@@ -1233,8 +1193,8 @@ export default function Kansisuunnittelija() {
         <p className="cover-eyebrow">HYVÄ ALKU KIRJALLESI</p>
         <h2>Ota luonnoksesi talteen.</h2>
         <p>
-          Esikatselukuva sopii kannen arvioimiseen. Työtiedostolla voit jatkaa
-          muokkaamista myöhemmin.
+          Esikatselukuva ja PDF sopivat kannen arvioimiseen. Kansi tallentuu
+          tilaukseen automaattisesti, kun jatkat maksamaan.
         </p>
         <button
           className="cover-primary"
@@ -1251,15 +1211,6 @@ export default function Kansisuunnittelija() {
                   ? "takakannen"
                   : "koko kannen") +
               " esikatselu"}
-        </button>
-        <button
-          className="cover-secondary"
-          aria-label="Lataa työtiedosto"
-          onClick={saveProject}
-          disabled={busy}
-        >
-          <ArrowDownToLine size={18} />
-          Lataa muokattava työtiedosto
         </button>
         {(notice || error) && (
           <p role={error ? "alert" : "status"}>{error || notice}</p>
